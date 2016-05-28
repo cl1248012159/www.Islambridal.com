@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+		<new_dev translate="title" module="catalog">
+			<title>new_dev</title>
+			<sort_order>100</sort_order>
+			<children>
+				<ibanners>
+					<title>iBanners</title>
+					<sort_order>24</sort_order>
+					<action>adminhtml/iBanners</action>
+				</ibanners>
+			</children>
+		</new_dev>
+	</menu>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<cms>
+						<children>
+							<ibanners>
+								<title>iBanners</title>
+								<sort_order>120</sort_order>
+							</ibanners>
+						</children>
+					</cms>
+					<system>
+						<children>
+							<config>
+								<children>
+									<ibanners>
+										<title>iBanners</title>
+										<sort_order>990</sort_order>
+									</ibanners>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

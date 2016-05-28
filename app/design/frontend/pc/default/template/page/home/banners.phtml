@@ -1,0 +1,63 @@
+<div class="home_banners_1 owl-carousel">
+    <?php $home_big_banners = $top_promotion = Mage::getModel('ibanners/group')->loadByCode('home_big_banners')->getBannerCollection(); ?>
+    <?php foreach($home_big_banners as $banner): ?>
+        <a class="item" href="<?php echo $banner->getUrl(); ?>">
+            <img title="<?php echo $banner->getTitle();?>" alt="<?php echo $banner->getAlt();?>" src="<?php echo $banner->getImageUrl();?>"/>
+        </a>
+    <?php endforeach; ?>
+</div>
+<script>
+    jQuery(document).ready(function(){
+        jQuery('.home_banners_1').each(function() {
+            if(jQuery('.item', this).length > 1) {
+                jQuery(this).owlCarousel({
+                    loop: true,
+                    nav: false,
+                    items: 1,
+                    autoplay: true,
+                    autoplayTimeout: 20000,
+                    autoplayHoverPause:true
+                });
+            }
+        });
+    });
+</script>
+
+
+<div class="home_banners_3">
+    <?php $home_banners_3 = Mage::getModel('ibanners/group')->loadByCode('home_banners_3')->getBannerCollection(); ?>
+    <?php foreach($home_banners_3 as $banner): ?>
+        <a class="item" href="<?php echo $banner->getUrl(); ?>">
+            <img title="<?php echo $banner->getTitle();?>" alt="<?php echo $banner->getAlt();?>" src="<?php echo $banner->getImageUrl();?>"/>
+        </a>
+    <?php endforeach; ?>
+    <div class="clearer"></div>
+</div>
+
+
+<div class="MT10 home_category_banners owl-carousel">
+    <?php $home_category_banners = Mage::getModel('ibanners/group')->loadByCode('home_category_banners')->getBannerCollection(); ?>
+    <?php foreach($home_category_banners as $banner): ?>
+        <a class="item" href="<?php echo $banner->getUrl(); ?>">
+            <img title="<?php echo $banner->getTitle();?>" alt="<?php echo $banner->getAlt();?>" src="<?php echo $banner->getImageUrl();?>"/>
+        </a>
+    <?php endforeach; ?>
+</div>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('.home_category_banners').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:false,
+            dots: false,
+            autoWidth:true,
+            items:5,
+            autoplay:true,
+            autoplayTimeout:10000,
+            autoplayHoverPause:true
+        });
+    });
+</script>
+
+
+

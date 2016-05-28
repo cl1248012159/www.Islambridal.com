@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dotsquares_Import>
+            <active>true</active>
+            <codePool>local</codePool>
+		</Dotsquares_Import>
+    </modules>
+</config>

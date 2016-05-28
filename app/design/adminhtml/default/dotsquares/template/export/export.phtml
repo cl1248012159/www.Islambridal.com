@@ -1,0 +1,62 @@
+<?php
+/**
+ * export template
+ *
+ * @see Dotsquares_Export_Block_Adminhtml_Export
+ */
+?>
+<?php $adminobj= new Mage_Adminhtml_Block_Template(); ?>
+<div class="content-header">
+	<table cellspacing="0">
+		<tbody>
+			<tr>
+				<td style="width: 50%;"><h3 class="icon-head head-upcoming"><?php echo $this->__('Export Categories'); ?></h3></td>
+				<td class="a-right">&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="entry-edit">
+	<form method="post" action="<?php echo $this->getExportUrl('category', 'categories'); ?>" id="edit_form">
+		<div><input name="form_key" type="hidden" value="<?php echo $adminobj->getFormKey() ?>" /></div>
+			<div class="entry-edit-head">
+			<h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Export Settings'); ?></h4>
+			<div class="form-buttons"></div>
+			</div>
+			<div id="base_fieldset" class="fieldset ">
+			<div class="hor-scroll">
+				<table cellspacing="0" class="form-list">
+					<tbody>
+						<tr>
+							<td class="label"><label for="entity"><?php echo $this->__('Entity Type'); ?></label></td>
+							<td class="value">
+							<select class=" select" title="Entity Type" name="entity" id="category" >
+							<option value="catalog_category"><?php echo $this->__('Category'); ?></option>
+							</select>
+							</td>
+						</tr>
+						<tr id="cat_id" >
+							<td class="label"><label for="entity"><?php echo $this->__('Include Category IDs'); ?></label></td>
+							<td class="value">
+							<input type="checkbox" name="cat_id"  value="1">
+							</td>
+						</tr>
+						<tr>
+							<td class="label"><label for="file_format"><?php echo $this->__('Export File Format'); ?></label></td>
+							<td class="value">
+							<select class=" select" title="Export File Format" name="file_format" id="file_format">
+							<option value="csv">CSV</option>
+							</select>       
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="value" align="right">
+							<button class="button" type="submit"><?php echo $this->__('Submit'); ?></button> 
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</form>
+</div>

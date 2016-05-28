@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dotsquares_Core>
+            <version>1.1.0</version>
+        </Dotsquares_Core>
+	</modules>
+
+	<global>
+		<helpers>
+			<dotsquares_core>
+				<class>Dotsquares_Core_Helper</class>
+			</dotsquares_core>
+		</helpers>
+
+		<models>
+			<dotsquares_core>
+				<class>Dotsquares_Core_Model</class>
+				<resourceModel>dotsquares_core_mysql4</resourceModel>
+			</dotsquares_core>
+			<dotsquares_core_mysql4>
+				<class>Dotsquares_Core_Model_Mysql4</class>
+			</dotsquares_core_mysql4>
+        </models>
+	</global>
+</config>

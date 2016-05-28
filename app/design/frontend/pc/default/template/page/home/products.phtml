@@ -1,0 +1,70 @@
+<?php
+$Hot_Selling_Products = Mage::getModel('catalog/category')->load(4)
+    ->getProductCollection()
+    ->addAttributeToSelect('*')
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToFilter('visibility', 4);
+?>
+<?php if($Hot_Selling_Products->count()>0):?>
+    <div class="Hot_Selling_Products owl-carousel">
+        <?php foreach($Hot_Selling_Products as $_product):?>
+            <a class="item" href="<?php echo $_product->getProductUrl() ?>">
+                <img title="" alt="" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>"/>
+                <span><?php echo $_product->getName()?></span>
+                <?php echo $this->getPriceHtml($_product, true) ?>
+            </a>
+        <?php endforeach; ?>
+    </div>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery('.Hot_Selling_Products').each(function() {
+                if(jQuery('.item', this).length > 1) {
+                    jQuery(this).owlCarousel({
+                        loop: true,
+                        nav: true,
+                        dots:false,
+                        items: 5,
+                        autoplay: false
+                    });
+                }
+            });
+        });
+    </script>
+<?php endif;?>
+
+
+
+
+<?php
+$New_Arrival_Products = Mage::getModel('catalog/category')->load(111)
+    ->getProductCollection()
+    ->addAttributeToSelect('*')
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToFilter('visibility', 4);
+?>
+<?php if($New_Arrival_Products->count()>0):?>
+    <div class="New_Arrival_Products owl-carousel">
+        <?php foreach($New_Arrival_Products as $_product):?>
+            <a class="item" href="<?php echo $_product->getProductUrl() ?>">
+                <img title="" alt="" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>"/>
+                <span><?php echo $_product->getName()?></span>
+                <?php echo $this->getPriceHtml($_product, true) ?>
+            </a>
+        <?php endforeach; ?>
+    </div>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery('.New_Arrival_Products').each(function() {
+                if(jQuery('.item', this).length > 1) {
+                    jQuery(this).owlCarousel({
+                        loop: true,
+                        nav: true,
+                        dots:false,
+                        items: 5,
+                        autoplay: false
+                    });
+                }
+            });
+        });
+    </script>
+<?php endif;?>

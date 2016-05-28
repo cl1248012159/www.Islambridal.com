@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+		<dotsquares_core>
+			<children>
+				<Import translate="title" module="dotsquares_import">
+					<title>Import Categories</title>
+					<action>adminhtml/import</action>
+					<sort_order>20</sort_order>
+				</Import>
+			</children>
+		</dotsquares_core>
+	</menu>
+
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<dotsquares_core>
+						<children>
+							<Import translate="title" module="dotsquares_import">
+								<title>Import Categories</title>
+								<sort_order>20</sort_order>
+							</Import>
+						</children>
+					</dotsquares_core>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

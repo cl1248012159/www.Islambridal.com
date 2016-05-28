@@ -1,0 +1,61 @@
+<?php
+/**
+ * import template
+ *
+ * @see Dotsquares_Import_Block_Adminhtml_Import
+ */
+?>
+<?php $adminobj= new Mage_Adminhtml_Block_Template(); ?>
+<div class="content-header">
+	<table cellspacing="0">
+		<tbody>
+			<tr>
+				<td style="width: 50%;"><h3 class="icon-head head-upcoming"><?php echo $this->__('Import Categories'); ?></h3></td>
+				<td class="a-right">&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="entry-edit">
+
+	<form enctype="multipart/form-data" method="post" action="<?php echo $this->getImportUrl('category', 'categories'); ?>" id="edit_form">
+	<div><input name="form_key" type="hidden" value="<?php echo $adminobj->getFormKey() ?>" /></div>
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Import Settings'); ?></h4>
+		<div class="form-buttons"></div>
+	</div>
+	<div id="base_fieldset" class="fieldset ">
+		<div class="hor-scroll">
+			<table cellspacing="0" class="form-list">
+				<tbody>
+					<tr>
+						<td class="label"><label for="entity"><?php echo $this->__('Entity Type'); ?><span class="required">*</span></label></td>
+						<td class="value">
+						<select class=" required-entry select" title="Entity Type" name="entity" id="entity">
+						<option value="catalog_category"><?php echo $this->__('Category'); ?></option>
+						</select>           
+						</td>
+					</tr>
+					<tr style="display: block; width: 200px;" id="cat_id">
+						<td class="label"><label for="entity"><?php echo $this->__('Include Category IDs'); ?></label></td>
+						<td class="value">
+						<input type="checkbox" value="1" name="cat_id">
+						</td>
+					</tr>
+					<tr>
+						<td class="label"><label for="import_file"><?php echo $this->__('Select File to Import'); ?><span class="required">*</span></label></td>
+						<td class="value">
+						<input type="file" class=" required-entry" title="Select File to Import" value="" name="import_filecat" id="import_file">            </td>
+					</tr>
+					<tr>
+						<td align="center" class="value" colspan="2">
+						<button type="submit" class="button"><?php echo $this->__('Submit'); ?></button> 
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</form>
+</div>

@@ -1,0 +1,113 @@
+<header>
+    <div class="new_header">
+        <div class="header_top">
+            <?php echo $this->getChildHtml('top.currency') ?>
+            <div class="welcome_message">
+                <div id="demo">
+                    <div id="demo1">
+                        <?php $top_promotion = Mage::getModel('ibanners/group')->loadByCode('top_center_promotion')->getBannerCollection();?>
+                        <?php foreach($top_promotion as $promotion):?>
+                            <?php echo $promotion->getHtml();?>
+                        <?php endforeach;?>
+                    </div>
+                    <div id="demo2"></div>
+                </div>
+                <script>
+                    //头部－上下滚动显示欢迎语和店内活动。
+                    function Marquee(){
+                        if(demo2.offsetTop-demo.scrollTop<=0)
+                            demo.scrollTop-=demo1.offsetHeight
+                        else{
+                            demo.scrollTop++
+                        }
+                    }
+                    var speed=100;
+                    demo2.innerHTML=demo1.innerHTML
+                    var MyMar=setInterval(Marquee,speed)
+                    demo.onmouseover=function() {clearInterval(MyMar)}
+                    demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+                </script>
+            </div>
+            <div class="top_nav">
+                <?php $links = Mage::getModel('ibanners/group')->loadByCode('top_right_link')->getBannerCollection();?>
+                <?php foreach($links as $link):?>
+                    <?php echo $link->getHtml();?>
+                <?php endforeach;?>
+                </ul>
+            </div>
+        </div>
+        <div class="header_content">
+            <div class="header_search">
+                <?php echo $this->getChildHtml('topSearch') ?>
+            </div>
+            <div class="header_logo">
+                <?php if ($this->getIsHomePage()):?>
+                    <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                <?php else:?>
+                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                <?php endif?>
+            </div>
+            <div class="header_cart">
+                <a href="<?php echo $this->getUrl('wishlist')?>" class="favor"><em>favor</em></a>
+                <?php echo $this->getChildHtml('top.cart') ?>
+            </div>
+        </div>
+        <div class="header_menu">
+            <ul>
+                <li class="home"><a href="<?php echo $this->getUrl();?>">home</a></li>
+                <?php
+                $menu_tops = Mage::getModel('catalog/category')
+                    ->setStoreId(Mage::app()->getStore()->getId())
+                    ->load(2)
+                    ->getChildrenCategories();
+                ?>
+                <?php foreach($menu_tops as $menu):?>
+                    <li>
+                        <a href="<?php echo $menu->getUrl();?>"><?php echo $menu->getName();?></a>
+                        <div class="level2">
+                            <?php echo $this->getLayout()->createBlock('cms/block')
+                                ->setBlockId($menu->getUrlKey())
+                                ->toHtml() ?>
+                        </div>
+                    </li>
+                <?php endforeach;?>
+            </ul>
+            <script>
+                jQuery(".header_menu ul li").on('mouseover',function(){
+                    var level2 = jQuery(this).find('.level2');
+                    level2.show();
+
+                    if (document.documentElement && document.documentElement.clientWidth){
+                        winWidth = document.documentElement.clientWidth;
+                    }
+
+                    var li_offset = jQuery(this).offset();
+                    var li_left = li_offset.left;
+                    var li_right = winWidth - li_left - jQuery(this)[0].clientWidth;
+
+                    var offset = level2.offset();
+                    var level2_left = offset.left;
+                    var level2_right = winWidth - li_left - level2[0].clientWidth;
+
+                    if(li_left<100 ){
+                        level2.css({left:'0',right:'auto'});
+                    }else{
+                        if(level2_right>0){
+                            level2.css({left:'-100px',right:'auto'});
+                        }else{
+                            if(level2[0].clientWidth - level2_right*(-1) > 200 ){
+                                level2.css({left:'auto',right:'-100px'});
+                            }else{
+                                level2.css({left:'auto',right:'0'});
+                            }
+                        }
+                    }
+                });
+
+                jQuery(".header_menu ul li").on('mouseout',function(){
+                    jQuery(this).find('.level2').hide();
+                });
+            </script>
+        </div>
+    </div>
+</header>

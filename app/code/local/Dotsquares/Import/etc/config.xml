@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dotsquares_Import>
+            <version>1.1.0</version>
+        </Dotsquares_Import>
+	</modules>
+
+	<global>
+		<helpers>
+			<dotsquares_import>
+				<class>Dotsquares_Import_Helper</class>
+			</dotsquares_import>
+        </helpers>
+
+		<blocks>
+			<dotsquares_import>
+				<class>Dotsquares_Import_Block</class>
+			</dotsquares_import>
+		</blocks>
+	</global>
+
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<dotsquares_import after="Mage_Adminhtml">Dotsquares_Import_Adminhtml</dotsquares_import>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+
+	<adminhtml>
+		<layout>
+			<updates>
+				<dotsquares_import>
+					<file>import.xml</file>
+				</dotsquares_import>
+			</updates>
+		</layout>
+
+		<translate>
+			<modules>
+				<Dotsquares_Import>
+					<files>
+						<default>Dotsquares_Import.csv</default>
+					</files>
+				</Dotsquares_Import>
+			</modules>
+		</translate>
+	</adminhtml>
+
+	<stores>
+		<admin>
+			<design>
+				<package>
+					<name>default</name>
+				</package>
+				<theme>
+					<default>dotsquares</default>
+				</theme>
+			</design>
+		</admin>
+	</stores>
+</config>
