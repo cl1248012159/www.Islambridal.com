@@ -76,7 +76,9 @@
                 jQuery(".header_menu ul li").on('mouseover',function(){
                     var level2 = jQuery(this).find('.level2');
                     level2.show();
-
+                    if(jQuery(this).index()<3){
+                        return false;
+                    }
                     if (document.documentElement && document.documentElement.clientWidth){
                         winWidth = document.documentElement.clientWidth;
                     }

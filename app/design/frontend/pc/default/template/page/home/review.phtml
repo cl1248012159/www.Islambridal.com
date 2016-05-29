@@ -1,1 +1,73 @@
-review
+<?php
+    $_reviewsCollection = Mage::getModel('review/review')->getCollection()
+                ->addStoreFilter(Mage::app()->getStore()->getId())
+                ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
+                ->addFieldToFilter(
+                                        array(
+                                            array('attribute'=>'detailc','eq'=>'reviewimage1'),
+                                            array('attribute'=>'detailc','eq'=>'reviewimage2'),
+                                            array('attribute'=>'detailc','eq'=>'reviewimage3'),
+                                            array('attribute'=>'detailc','eq'=>'reviewimage4'),
+                                            array('attribute'=>'detailc','eq'=>'reviewimage5'),
+                                        ), 
+                                        array( 
+                                            array(  array('notnull' => true) ),
+                                            array(  array('notnull' => true) ), 
+                                            array(  array('notnull' => true) ), 
+                                            array(  array('notnull' => true) ), 
+                                            array(  array('notnull' => true) ), 
+                                        )
+                                    )
+                ->setDateOrder();
+
+    $_items =  $_reviewsCollection->getItems();
+?>
+<div class="home_review_title">
+    <div class="h1"><strong>D-daydress's Customers Show</strong></div>
+    <div class="h4">*Share your look to get $15 discount!</div>
+</div>
+<div class="MT10 home_review owl-carousel">
+    
+    <?php foreach($_items as $review): ?>
+        <a class="item" href="">
+            <?php if(  $review->getReviewimage1()  ):?>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();?>);"></span>
+            <?php elseif(  $review->getReviewimage2()  ): ?>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2();?>);"></span>
+            <?php elseif(  $review->getReviewimage3()  ): ?>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3();?>);"></span>
+            <?php elseif(  $review->getReviewimage4()  ): ?>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4();?>);"></span>
+            <?php elseif(  $review->getReviewimage5()  ): ?>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5();?>);"></span>
+            <?php endif;?> 
+        </a>
+    <?php endforeach; ?>
+
+</div>
+<div class="review_btn">
+    <button class="up">
+        <span></span>
+        <span>UPLOAD A PHOTO</span>
+    </button>
+    <button class="view">
+        <span></span>
+        <span>VIEW GALLERY</span>
+    </button>
+</div>
+<script>
+    jQuery(document).ready(function(){
+        jQuery('.home_review').each(function() {
+            if(jQuery('.item', this).length > 1) {
+                jQuery(this).owlCarousel({
+                    loop: true,
+                    nav: true,
+                    dots: false,
+                    autoWidth:true,
+                    margin:10,
+                    autoplay: false
+                });
+            }
+        });
+    });
+</script>

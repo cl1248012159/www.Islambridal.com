@@ -1,33 +1,30 @@
-<?php
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-?>
-<div class="footer-container">
-    <div class="footer">
-        <?php echo $this->getChildHtml() ?>
-        <p class="bugs"><?php echo $this->__('Help Us to Keep Magento Healthy') ?> - <a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target='_blank'"><strong><?php echo $this->__('Report All Bugs') ?></strong></a> <?php echo $this->__('(ver. %s)', Mage::getVersion()) ?></p>
-        <address><?php echo $this->getCopyright() ?></address>
+<footer>
+    <div class="footer_contant">
+        <div class="join_us">
+            <h2>Join our community</h2>
+            <ul>
+                <li class="mini-facebook"><a href=""></a></li>
+                <li class="mini-instagram"><a href=""></a></li>
+                <li class="mini-pinterest"><a href=""></a></li>
+                <li class="mini-youtube"><a href=""></a></li>
+                <li class="mini-twitter"><a href=""></a></li>
+                <li class="mini-tumbler"><a href=""></a></li>
+                <li class="mini-blog"><a href=""></a></li>
+                <li class="mini-vk"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="customer_help">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_customer_help')->toHtml() ?>
+        </div>
+        <div class="payments">
+            <span class="banks">visa, master card, maestro, carte blue</span>
+            <a href="javascript:void(0);" target="_top" class="paypal">paypal</a>
+            <a href="javascript:void(0);" title="wholesale PaypalVerify " class="paypalVerified">paypal verified</a>
+            <span class="boleto-logo-footer"></span>
+            <span class="westernUnion">western union</span>
+            <span class="norton-logo"></span>
+            <span class="delivery">dhl ups ems</span>
+        </div>
+        <div class="copyright"><address><?php echo $this->getCopyright() ?></address></div>
     </div>
-</div>
+</footer> 

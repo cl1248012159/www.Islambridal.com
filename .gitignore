@@ -2,3 +2,7 @@ var/
 node_modules/
 downloader/
 .DS_Store
+.sass-cache/
+.sass-cache/*
+.idea/
+.idea/*

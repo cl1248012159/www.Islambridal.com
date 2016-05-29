@@ -1,4 +1,4 @@
-<div class="home_banners_1 owl-carousel">
+<div class="owl-carousel home_banners_1">
     <?php $home_big_banners = $top_promotion = Mage::getModel('ibanners/group')->loadByCode('home_big_banners')->getBannerCollection(); ?>
     <?php foreach($home_big_banners as $banner): ?>
         <a class="item" href="<?php echo $banner->getUrl(); ?>">
@@ -15,7 +15,7 @@
                     nav: false,
                     items: 1,
                     autoplay: true,
-                    autoplayTimeout: 20000,
+                    autoplayTimeout: 5000,
                     autoplayHoverPause:true
                 });
             }
@@ -35,11 +35,11 @@
 </div>
 
 
-<div class="MT10 home_category_banners owl-carousel">
+<div class="MT10 owl-carousel home_category_banners">
     <?php $home_category_banners = Mage::getModel('ibanners/group')->loadByCode('home_category_banners')->getBannerCollection(); ?>
     <?php foreach($home_category_banners as $banner): ?>
         <a class="item" href="<?php echo $banner->getUrl(); ?>">
-            <img title="<?php echo $banner->getTitle();?>" alt="<?php echo $banner->getAlt();?>" src="<?php echo $banner->getImageUrl();?>"/>
+            <img src="<?php echo $banner->getImageUrl();?>" title="<?php echo $banner->getTitle();?>" alt="<?php echo $banner->getAlt();?>"/>
         </a>
     <?php endforeach; ?>
 </div>
@@ -51,10 +51,7 @@
             nav:false,
             dots: false,
             autoWidth:true,
-            items:5,
-            autoplay:true,
-            autoplayTimeout:10000,
-            autoplayHoverPause:true
+            autoplay:false
         });
     });
 </script>

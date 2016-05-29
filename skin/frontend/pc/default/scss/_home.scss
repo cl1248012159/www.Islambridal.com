@@ -277,6 +277,10 @@
 
 .home_banners_1{
     background: #eeeeff;
+    height:488px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
 
     .owl-controls{
         position: absolute;
@@ -284,14 +288,258 @@
         right: 0;
         bottom: 0;
         margin:0;
+
+        img{
+            width:100%;
+            height:100%;
+        }
     }
 }
 .home_banners_3{
     display:block;
     width:100%;
+    height:125px;
     a{
         display: inline-block;
         float: left;
         width: 33.33%;
+        img{
+            width: 100%;
+        }
     }
+}
+.home_product_title{
+    display: block;
+    height: 33px;
+    line-height: 33px;
+    background-color: #d3d4d4;
+    color: #666666;
+    line-height: 33px;
+    padding-left: 10px;
+    font-size:16px;
+}
+.home_product{
+    padding:10px;
+    position:relative;
+    width:100%;
+
+    &.owl-theme .owl-controls{
+        margin:0;
+
+        .owl-prev,.owl-next{
+            position:absolute;
+            bottom:50%;
+            width: 45px;
+            height: 45px;
+            z-index: 125;
+            text-indent: -99999px;
+        }
+        .owl-prev{
+            left: 0;
+            background: url(../images/commont/index_slide_btn01.png) no-repeat 0 -53px;
+            &:hover {
+                background: url(../images/commont/index_slide_btn.png) no-repeat 0 0;
+            }
+        }
+        .owl-next{
+            right: 0;
+            background: url(../images/commont/index_slide_btn01.png) no-repeat 0 0;
+            &:hover {
+                background: url(../images/commont/index_slide_btn.png) no-repeat 0 -55px;
+            }
+        }
+    }
+
+    dl {
+        float: left;
+        width: 180px;
+        height: 340px;
+        background: #fff;
+        padding-bottom: 5px;
+
+        dt {
+            border: 1px solid #ccc;
+            padding: 2px;
+            height: 240px;
+            width: 186px;
+            margin-bottom: 5px;
+            display: table;
+            a {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            img {
+                border: none;
+                max-width: 180px;
+            }
+        }
+
+        dd {
+            text-align: center;
+            font-family: verdana;
+            font-size: 12px;
+
+            p {
+                width: 100%;
+                line-height: 15px;
+                height: 30px;
+                overflow: hidden;
+
+                a {
+                    color: #666666;
+                    display: block;
+                }
+            }
+            .home_price{
+                display: inline-block;
+
+                .price-box{
+                    display: inline-block;
+                    margin: 0;
+
+                    .old-price{
+                        display: none;
+                    }
+                    .special-price{
+                        padding:0;
+
+                        .price-label{
+                            display: none;
+                        }
+                    }
+                }
+                &>span{
+                    padding-right:3px;
+                }
+                &>span , .price-box .special-price , .price-box .special-price .price{
+                    float: left;
+                    display: inline-block;
+                    color: #f39;
+                    font-size: 14px;
+                    height: 26px;
+                    line-height: 26px;
+                    font-weight:normal;
+                }
+            }
+        }
+    }
+}
+
+.home_review_title{
+    text-align: center;
+
+    .h1{
+        font-size:20px;
+        font-family: cursive,fantasy,sans-serif;
+        position:relative;
+        strong{
+            display: inline-block;
+            background-color:#fff;
+            padding:0 20px;
+            color:#000;
+        }
+        &:after{
+            content: ' ';
+            display: block;
+            position:absolute;
+            height: 1px;
+            width: 100%;
+            background-color:#f4eff5;
+            bottom:50%;
+            z-index: -1;
+        }
+    }
+    .h2{
+        color: #555;
+    }
+}
+.home_review{
+    padding:0 10px;
+    position:relative;
+    .item{
+        width: 216px;
+        height:286px;
+        border:1px solid #ccc;
+        padding:2px;
+        display: block;
+        span{
+            width: 210px;
+            height: 280px;
+            display: block;
+            background-repeat:no-repeat;
+            background-position:center;
+            background-size: 100%;
+        }
+    }
+    &.owl-theme .owl-controls{
+        margin:0;
+
+        .owl-prev,.owl-next{
+            position:absolute;
+            bottom:50%;
+            width: 45px;
+            height: 45px;
+            z-index: 125;
+            text-indent: -99999px;
+        }
+        .owl-prev{
+            left: 0;
+            background: url(../images/commont/index_slide_btn01.png) no-repeat 0 -53px;
+            &:hover {
+                background: url(../images/commont/index_slide_btn.png) no-repeat 0 0;
+            }
+        }
+        .owl-next{
+            right: 0;
+            background: url(../images/commont/index_slide_btn01.png) no-repeat 0 0;
+            &:hover {
+                background: url(../images/commont/index_slide_btn.png) no-repeat 0 -55px;
+            }
+        }
+    }
+}
+
+
+.home_category_banners{
+    width: 100%;
+    height:570px;
+    overflow: hidden;
+    display: block;
+
+    .item{
+        width:100%;
+        img{
+            width:100%;
+            height:100%;
+        }
+    }
+
+}
+.review_btn{
+    text-align: center;
+    display: block;
+    height:100px;
+    line-height: 100px;
+    width: 100%;
+
+    button{
+        height:30px;
+        line-height: 30px;
+        padding: 0 15px;
+        border:1px solid #000;
+        border-radius:15px;
+        margin:0 8px;
+        
+    }
+    .up{
+        background:#fff;
+        color: #000;
+    }
+    .view{
+        background:#000;
+        color: #fff;
+    }
+}
+.std{
+    padding:10px;
 }

@@ -1,70 +1,91 @@
 <?php
-$Hot_Selling_Products = Mage::getModel('catalog/category')->load(4)
-    ->getProductCollection()
-    ->addAttributeToSelect('*')
-    ->addAttributeToFilter('status', 1)
-    ->addAttributeToFilter('visibility', 4);
+    $Hot_Selling_Products = Mage::getModel('catalog/category')->load(4)
+                            ->getProductCollection()
+                            ->addAttributeToSelect('*')
+                            ->addAttributeToFilter('status', 1)
+                            ->addAttributeToFilter('visibility', 4);
 ?>
 <?php if($Hot_Selling_Products->count()>0):?>
-    <div class="Hot_Selling_Products owl-carousel">
+    <div class="home_product_title">Hot Selling Products</div>
+    <div class="home_product Hot_Selling_Products owl-carousel">
         <?php foreach($Hot_Selling_Products as $_product):?>
-            <a class="item" href="<?php echo $_product->getProductUrl() ?>">
-                <img title="" alt="" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>"/>
-                <span><?php echo $_product->getName()?></span>
-                <?php echo $this->getPriceHtml($_product, true) ?>
-            </a>
+
+            <dl class="item">
+                <dt>
+                    <a href="<?php echo $_product->getProductUrl() ?>">
+                        <img width="180" height="240" alt="<?php echo $_product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(240,320); ?>">
+                    </a>
+                </dt>
+                <dd>
+                    <p>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName()?>">
+                            <?php echo $_product->getName()?>
+                        </a>
+                    </p>
+                    <div class="home_price">
+                        <span><?php echo Mage::app()->getStore()->getCurrentCurrency()->getCode();?></span>
+                        <?php echo $this->getPriceHtml($_product, true) ?>
+                    </div>
+                </dd>
+            </dl>
+
         <?php endforeach; ?>
     </div>
-    <script>
-        jQuery(document).ready(function(){
-            jQuery('.Hot_Selling_Products').each(function() {
-                if(jQuery('.item', this).length > 1) {
-                    jQuery(this).owlCarousel({
-                        loop: true,
-                        nav: true,
-                        dots:false,
-                        items: 5,
-                        autoplay: false
-                    });
-                }
-            });
-        });
-    </script>
+
 <?php endif;?>
 
 
 
 
 <?php
-$New_Arrival_Products = Mage::getModel('catalog/category')->load(111)
-    ->getProductCollection()
-    ->addAttributeToSelect('*')
-    ->addAttributeToFilter('status', 1)
-    ->addAttributeToFilter('visibility', 4);
+    $New_Arrival_Products = Mage::getModel('catalog/category')->load(111)
+                            ->getProductCollection()
+                            ->addAttributeToSelect('*')
+                            ->addAttributeToFilter('status', 1)
+                            ->addAttributeToFilter('visibility', 4);
 ?>
 <?php if($New_Arrival_Products->count()>0):?>
-    <div class="New_Arrival_Products owl-carousel">
+    <div class="home_product_title">Low Price Products</div>
+    <div class="home_product New_Arrival_Products owl-carousel">
         <?php foreach($New_Arrival_Products as $_product):?>
-            <a class="item" href="<?php echo $_product->getProductUrl() ?>">
-                <img title="" alt="" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>"/>
-                <span><?php echo $_product->getName()?></span>
-                <?php echo $this->getPriceHtml($_product, true) ?>
-            </a>
+
+            <dl class="item">
+                <dt>
+                    <a href="<?php echo $_product->getProductUrl() ?>">
+                        <img width="180" height="240" alt="<?php echo $_product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(240,320); ?>">
+                    </a>
+                </dt>
+                <dd>
+                    <p>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName()?>">
+                            <?php echo $_product->getName()?>
+                        </a>
+                    </p>
+                    <div class="home_price">
+                        <span><?php echo Mage::app()->getStore()->getCurrentCurrency()->getCode();?></span>
+                        <?php echo $this->getPriceHtml($_product, true) ?>
+                    </div>
+                </dd>
+            </dl>
+
         <?php endforeach; ?>
     </div>
-    <script>
+   
+<?php endif;?>
+
+ <script>
         jQuery(document).ready(function(){
-            jQuery('.New_Arrival_Products').each(function() {
+            jQuery('.home_product').each(function() {
                 if(jQuery('.item', this).length > 1) {
                     jQuery(this).owlCarousel({
                         loop: true,
                         nav: true,
                         dots:false,
-                        items: 5,
+                        autoWidth:true,
+                        margin:15,
                         autoplay: false
                     });
                 }
             });
         });
     </script>
-<?php endif;?>
