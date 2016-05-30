@@ -2595,4 +2595,29 @@ tr.summary-details-excluded { font-style: italic; }
 
 .std { padding: 10px; }
 
+.register_page { display: inline-block; width: 100%; text-align: left; padding: 0 32px; }
+.register_page h1 { font: 18px Georgia; color: #333; margin: 20px 0; }
+.register_page .account_before { display: inline-block; width: 49%; float: left; }
+.register_page .account_before .title { border-top: 1px solid #D9D9DA; border-radius: 4px 4px 0 0; height: 29px; line-height: 29px; padding: 0 10px; background: -webkit-linear-gradient(#F6F6F6, #ccc); background: linear-gradient(#F6F6F6, #ccc); font: 400 14px/29px georgia; color: #990000; }
+.register_page .account_before .box { border: 1px solid #E2CCC9; padding: 10px; margin-bottom: 14px; color: #000; font: 12px Verdana; }
+.register_page .account_before .box .form_row { min-height: 45px; line-height: 45px; padding: 0 5px; }
+.register_page .account_before .box .form_row > div { margin-left: 50%; }
+.register_page .account_before .box label { width: 30%; display: inline-block; white-space: nowrap; }
+.register_page .account_before .box input { width: 65%; padding: 1px; height: 24px; font: bold 13px arial; border: 1px solid #ccc; background: #FFF; }
+.register_page .account_before .box button { background: none; width: 104px; height: 40px; border: 0; float: right; }
+.register_page .account_before .box a { display: inline-block; }
+.register_page .account_before .box a:link, .register_page .account_before .box a:visited { text-decoration: underline; color: #666; }
+.register_page .login .box { background-color: #EEEEEE; }
+.register_page .login .box button { background-image: url(../images/register_login.png); background-repeat: no-repeat; background-position: 0 0; }
+.register_page .login .box button:hover { background-position: 0 -43px; }
+.register_page .register { margin-left: 2%; }
+.register_page .register .box { background-color: #fff; }
+.register_page .register .box input[type="checkbox"] { width: auto; vertical-align: middle; }
+.register_page .register .box button { background-image: url(../images/register_login.png); background-repeat: no-repeat; background-position: 0 -86px; }
+.register_page .register .box button:hover { background-position: 0 -129px; }
+.register_page .register .require { color: #990000; margin-right: 5px; vertical-align: sub; }
+.register_page .register .indicates { color: #666; font-size: 10px; }
+
+.page .breadcrumbs { margin: 5px 0; }
+
 /*# sourceMappingURL=styles.css.map */

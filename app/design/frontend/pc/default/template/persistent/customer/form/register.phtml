@@ -1,0 +1,47 @@
+<div class="account_before register">
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+    <?php echo $this->getChildHtml('form_fields_before')?>
+    <?php echo $this->getChildHtml('customer.form.register.extra')?>
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
+        <div class="title">Register a New Account</div>
+        <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+        <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+
+
+        <div class="box">
+        <div class="form_row"><em class="require">*</em><span class="indicates"> Indicates required fields.</span></div>
+        <div class="form_row">
+            <label><em class="require">*</em>Email:</label>
+            <input type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" class="input-text validate-email required-entry" />
+        </div>
+        <div class="form_row">
+            <label><em class="require">*</em>Password:</label>
+            <input type="password" name="password" id="password" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Password')) ?>" class="input-text required-entry validate-password" />
+        </div>
+        <div class="form_row">
+            <label><em class="require">*</em>Confirm Password:</label>
+            <input type="password" name="confirmation" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Confirm Password')) ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+        </div>
+        <div class="form_row">
+            <em class="require">*</em>
+            <input type="checkbox" id="agree"> I agree to D-daydress.com <a href="">Terms and Conditions</a>.
+        </div>
+        <div class="form_row"><label></label><button type="submit" class="button" id="send22"></button></div>
+        <?php echo $this->getChildHtml('form.additional.info'); ?>
+    </div>
+        <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
+            <input name="context" type="hidden" value="checkout" />
+        <?php endif; ?>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    <?php if($this->getShowAddressFields()): ?>
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+    <?php endif; ?>
+//]]>
+</script>

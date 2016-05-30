@@ -1,0 +1,68 @@
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+
+
+<div class="register_page">
+    <h1>Sign In Or Register A New Account</h1>
+
+    <div class="account_before login">
+        <?php echo $this->getChildHtml('customer.form.login.extra')?>
+        <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+            <div class="title">Login</div>
+            <div class="box">
+                <?php echo $this->getBlockHtml('formkey'); ?>
+                <div class="form_row">
+                    <label>Email:</label>
+                    <input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" />
+                </div>
+                <div class="form_row">
+                    <label>Password:</label>
+                    <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Password')) ?>" />
+                </div>
+                <?php echo $this->getChildHtml('form.additional.info'); ?>
+                <div class="form_row">
+                    <label></label>
+                    <a href="<?php echo $this->getForgotPasswordUrl() ?>"><?php echo $this->__('Forgot Your Password?') ?></a>
+                </div>
+                <div class="form_row">
+                    <label></label>
+                    <button type="submit" class="button" name="send" id="send2"></button>
+                </div>
+            </div>
+            <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+            <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>                   
+            <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
+                <input name="context" type="hidden" value="checkout" />
+            <?php endif; ?>   
+        </form>
+    </div>
+
+    <?php echo $this->getChildHtml('customer_form_register_new')?>
+</div>
+           
+</form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+    //]]>
+    </script>                                
+                          
+                                
+                            
+                        
+                        
+                   
+                    
+                    
+               
+        
+            
+            
+                
+                    
+                    
+            
+           
+       
+        
+    
+
