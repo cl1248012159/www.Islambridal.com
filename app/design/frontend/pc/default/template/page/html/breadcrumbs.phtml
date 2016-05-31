@@ -1,22 +1,37 @@
-
-
 <?php if($crumbs && is_array($crumbs)): ?>
 <div class="breadcrumbs">
     <ul>
         <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
-            <li class="<?php echo $_crumbName ?>">
+
+            <li class="<?php echo $_crumbName ?> <?php if($_crumbInfo['last']){ echo 'last';} ?>">
+
             <?php if($_crumbInfo['link']): ?>
+
                 <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['title']) ?>"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></a>
+
             <?php elseif($_crumbInfo['last']): ?>
+
                 <strong><?php echo $this->escapeHtml($_crumbInfo['label']) ?></strong>
+
             <?php else: ?>
+
                 <?php echo $this->escapeHtml($_crumbInfo['label']) ?>
+
             <?php endif; ?>
-            <?php if(!$_crumbInfo['last']): ?>
-                <span>/ </span>
-            <?php endif; ?>
+
+            
+
             </li>
+
         <?php endforeach; ?>
     </ul>
+
+    <div class="share">
+        <span>Share</span>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-574c55c4ca60398e"></script> -->
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_sharing_toolbox"></div>
+    </div>
 </div>
 <?php endif; ?>
