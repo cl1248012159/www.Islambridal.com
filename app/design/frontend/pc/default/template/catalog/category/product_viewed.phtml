@@ -1,0 +1,51 @@
+<?php if ($_products = $this->getRecentlyViewedProducts()): ?>
+<div class="block block-list block-viewed">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Recently Viewed Products') ?></span></strong>
+    </div>
+    <div class="block-content">
+        <ol id="recently-viewed-items" class="owl-carousel">
+
+
+
+        <?php foreach ($_products as $_item): ?>
+            <li class="item">
+
+                <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_item, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_item, 'small_image'), null, true) ?>" /></a>
+
+                <p class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName() , 'name') ?></a></p>
+
+                <?php if($_item->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_item, 'short') ?>
+                <?php endif; ?>
+
+
+                <?php echo $this->getPriceHtml($_item, true) ?>
+
+            </li>
+        <?php endforeach; ?>
+
+
+
+        </ol>
+        <script type="text/javascript">
+            decorateList('recently-viewed-items');
+
+            jQuery(document).ready(function(){
+                jQuery('#recently-viewed-items').each(function() {
+                    if(jQuery('.item', this).length > 1) {
+                        jQuery(this).owlCarousel({
+                            loop: true,
+                            nav: false,
+                            dots: false,
+                            items: 6,
+                            autoplay: false
+                        });
+                    }
+                });
+            });
+
+        </script>
+    </div>
+</div>
+<?php endif; ?>

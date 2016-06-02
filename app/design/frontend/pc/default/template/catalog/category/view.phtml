@@ -1,13 +1,7 @@
 <?php echo $this->getMessagesBlock()->toHtml() ?>
-<?php
-    $_category  = $this->getCurrentCategory();
-?>
 
 
-<div class="category_name">
-    <span><?php echo $_category->getName() ?></span>
-
-
+<?php echo $this->getChildHtml('catalog_layer') ?>
 
 
 <?php echo $this->getProductListHtml() ?>
@@ -18,3 +12,60 @@
         <?php echo $_description ?>
     </div>
 <?php endif; ?>
+
+
+
+<?php
+    $_reviewsCollection = Mage::getModel('review/review')->getCollection()
+        ->addStoreFilter(Mage::app()->getStore()->getId())
+        ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
+        ->addFieldToFilter(
+            array(
+                array('attribute'=>'detailc','eq'=>'reviewimage1'),
+                array('attribute'=>'detailc','eq'=>'reviewimage2'),
+                array('attribute'=>'detailc','eq'=>'reviewimage3'),
+                array('attribute'=>'detailc','eq'=>'reviewimage4'),
+                array('attribute'=>'detailc','eq'=>'reviewimage5'),
+            ),
+            array(
+                array(  array('notnull' => true) ),
+                array(  array('notnull' => true) ),
+                array(  array('notnull' => true) ),
+                array(  array('notnull' => true) ),
+                array(  array('notnull' => true) ),
+            )
+        )
+        ->setDateOrder();
+
+    $_reviews_items =  $_reviewsCollection->getItems();
+?>
+<div class="MT10 category_review owl-carousel">
+
+    <?php foreach($_reviews_items as $review): ?>
+        <a class="item" href="">
+            <?php if(  $review->getReviewimage1()  ):?>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();?>);"></span>
+            <?php elseif(  $review->getReviewimage2()  ): ?>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2();?>);"></span>
+            <?php elseif(  $review->getReviewimage3()  ): ?>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3();?>);"></span>
+            <?php elseif(  $review->getReviewimage4()  ): ?>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4();?>);"></span>
+            <?php elseif(  $review->getReviewimage5()  ): ?>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5();?>);"></span>
+            <?php endif;?>
+        </a>
+    <?php endforeach; ?>
+
+</div>
+
+
+
+<?php echo $this->getChildHtml('catalog_children') ?>
+
+
+
+<?php echo $this->getChildHtml('product_viewed') ?>
+
+
+
