@@ -1,9 +1,14 @@
 <?php if($crumbs && is_array($crumbs)): ?>
 <div class="breadcrumbs">
     <ul>
+        <?php $i = count($crumbs); $j=0;?>
         <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
 
-            <li class="<?php echo $_crumbName ?> <?php if($_crumbInfo['last']){ echo 'last';} ?>">
+            <li class="<?php echo $_crumbName ?> <?php if($_crumbInfo['last']){ echo 'last';} ?>" 
+                style="
+                z-index:<?php echo $i; $i--;?>;
+                left:<?php echo (-8*$j);$j++;?>px;
+                ">
 
             <?php if($_crumbInfo['link']): ?>
 
@@ -19,7 +24,6 @@
 
             <?php endif; ?>
 
-            
 
             </li>
 

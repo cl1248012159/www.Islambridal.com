@@ -21,14 +21,10 @@
                 height: 30px;
                 line-height: 30px;
                 padding:0 15px;
-                z-index:3;
 
                 &.last{
                     background: url(../images/commont/bread_bg_3.png) no-repeat center right;
                     color:#fff;
-                    left:-7px;
-                    z-index:2;
-                    padding-left:22px;
                 }
             }
 
@@ -52,4 +48,81 @@
             }
         }
     }
+
+    .product_sort{
+        display: block;
+        height: 42px;
+        border:1px solid #ddd;
+
+        &>span{
+            display: block;
+            float: left;
+            border-right: 1px solid #ddd;
+            padding: 0 15px;
+            text-transform: capitalize;
+            height: 42px;
+            line-height:42px;
+
+            em{
+                margin: 13px 3px 17px 0;
+                vertical-align: middle;
+                width:13px;
+                height:13px;
+                background-image:url(../images/commont/);
+            }
+        }
+    }
+
+    .pagination{
+        margin: 0 0 20px;
+        ol{
+            padding-top: 5px;
+            height: 37px;font-size: 14px;text-align: center;
+
+            li{
+                display: inline-block;
+                vertical-align: middle;
+                float: left;
+
+                a{
+                    display: block;
+                    float: left;
+                    border: 1px solid #b1b1b1;
+                    height: 32px;
+                    line-height: 32px;
+                    margin: 0 5px;
+                    padding: 0 12px;
+                    border-radius: 3px;
+                    vertical-align: top;
+                    background-color: #f7f7f7;
+                    background-image: linear-gradient(to bottom,#fff,#ececec);
+                    background-repeat: repeat-x;
+                }
+
+                .previous a , .next a{
+                    padding: 0 20px;
+                }
+            }
+
+            .current{
+                float: left;
+                display: block;
+                height: 32px;
+                line-height: 32px;
+                margin: 0 5px;
+                padding: 0 12px;
+                border: 1px solid #333;
+                background-color: #333;
+                background-image: linear-gradient(to bottom,#333,#333);
+                background-repeat: repeat-x;
+                border-radius: 3px;
+                color: #fff;
+                cursor: default;
+            }
+        }
+    }
+
+
+
+    
 }

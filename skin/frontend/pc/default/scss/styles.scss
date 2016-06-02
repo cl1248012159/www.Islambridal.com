@@ -38,6 +38,8 @@
 
 @import "_category.scss";
 
-header{
-    opacity: 0.1;
+@import "_time.scss";
+
+header , .products-grid , footer{
+    //opacity: 0;
 }

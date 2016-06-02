@@ -158,7 +158,9 @@
     }
     .header_menu{
         height:45px;
+        width:100%;
         background:#eee;
+        overflow:hidden;
         ul{
             display: block;
             li{

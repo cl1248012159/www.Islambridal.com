@@ -1,0 +1,20 @@
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<?php
+    $_category  = $this->getCurrentCategory();
+?>
+
+
+<div class="category_name">
+    <span><?php echo $_category->getName() ?></span>
+
+
+
+
+<?php echo $this->getProductListHtml() ?>
+
+
+<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+    <div class="category-description std">
+        <?php echo $_description ?>
+    </div>
+<?php endif; ?>

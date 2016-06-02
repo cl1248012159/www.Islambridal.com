@@ -73,15 +73,20 @@ ul,ol         { list-style:none; }
 .page-popup { background:#fff; padding:25px 30px; text-align:left; }
 
 /* Base Columns */
-.col-left { float:left; width:195px; padding:0 0 1px; }
-.col-main { float:left; width:685px; padding:0 0 1px; }
-.col-right { float:right; width:195px; padding:0 0 1px; }
+.col-left { float:left; padding:0 0 1px; }
+.col-main { float:left;  padding:0 0 1px; }
+.col-right { float:right;  padding:0 0 1px; }
 
 /* 1 Column Layout */
 .col1-layout .col-main { float:none; width:auto; }
 
 /* 2 Columns Layout */
-.col2-left-layout .col-main { float:right; }
+.col2-left-layout{
+    .col-left{
+        width: 18%;
+    }
+    .col-main { float:right; width:81%; padding-right:15px;}
+    } 
 .col2-right-layout .col-main {}
 
 /* 3 Columns Layout */
@@ -122,7 +127,7 @@ input.qty { width:2.5em !important; }
 button.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
 button.button { -webkit-border-fit:lines; } /* <- Safari & Google Chrome Fix */
 button.button { overflow:visible; width:auto; border:0; padding:0; margin:0; background:transparent; cursor:pointer; }
-button.button span { display:block; height:19px; border:1px solid #de5400; background:#f18200; padding:0 8px; font:bold 12px/19px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; }
+button.button span { display:block; height:19px; background:#f39; padding:0 8px; font:bold 12px/19px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; }
 button.button span span { border:0; padding:0; }
 button.disabled span { border-color:#bbb !important; background:#bbb !important; }
 
@@ -576,7 +581,7 @@ tr.summary-details-excluded { font-style:italic; }
 .block .block-title strong span {}
 .block .block-title a { text-decoration:none !important; }
 .block .block-subtitle { margin:0; padding:5px 9px; font-size:1em; font-weight:bold; color:#0a263c; }
-.block .block-content { background:#f8f7f5; }
+.block .block-content { }
 .block .block-content li.item { padding:7px 9px; }
 .block .block-content .product-name { color:#1e7ec8; }
 .block .btn-remove,
@@ -623,13 +628,13 @@ tr.summary-details-excluded { font-style:italic; }
 
 /* Block: Account */
 .block-account { border-color:#bbb; }
-.block-account .block-title { background:#fc9d36 url(../images/bkg_block-title-account.gif) 0 100% repeat-x; border:0; padding:3px 10px; }
+.block-account .block-title { background:#f39; border:0; padding:3px 10px; }
 .block-account .block-title strong { font-size:13px; color:#fff; }
-.block-account .block-content { background:#fbfaf6; padding:7px 10px 7px; }
+.block-account .block-content { padding:7px 10px 7px; }
 .block-account .block-content li a { display:block; border-bottom:1px solid #ddd; padding:3px 0; color:#5f5d5c; text-decoration:none !important; }
 .block-account .block-content li a:hover { color:#ea7900; }
 .block-account .block-content li.last a { border-bottom:0; }
-.block-account .block-content li.current { border-bottom:1px solid #ddd; padding:3px 0; color:#ea7900; }
+.block-account .block-content li.current { border-bottom:1px solid #ddd; padding:3px 0; color:#f39; }
 .block-account .block-content li.current.last { border-bottom:0; }
 
 /* Block: Currency Switcher */
