@@ -2657,13 +2657,12 @@ tr.summary-details-excluded { font-style: italic; }
 .page .dress_list .products-grid li.item .price-box .price-label { display: none; }
 .page .dress_list .products-grid li.item .price-box .old-price .price { text-decoration: line-through; font-size: 12px; line-height: 12px; height: 13px; color: #999; font-weight: normal; }
 .page .dress_list .products-grid li.item .price-box .special-price .price { font-size: 14px; color: #333; line-height: 18px; height: 18px; display: inline-block; }
-.page .pagination { margin: 0 0 20px; }
 .page .pagination ol { padding-top: 5px; height: 37px; font-size: 14px; text-align: center; }
 .page .pagination ol li { display: inline-block; vertical-align: middle; }
 .page .pagination ol li a { display: block; border: 1px solid #b1b1b1; height: 32px; line-height: 32px; padding: 0 12px; border-radius: 3px; vertical-align: top; background-color: #f7f7f7; background-image: -webkit-linear-gradient(top, #fff, #ececec); background-image: linear-gradient(to bottom, #fff, #ececec); background-repeat: repeat-x; }
 .page .pagination ol li .previous a, .page .pagination ol li .next a { padding: 0 20px; }
 .page .pagination ol .current { display: inline-block; height: 32px; line-height: 32px; padding: 0 12px; border: 1px solid #333; background-color: #333; background-image: -webkit-linear-gradient(top, #333, #333); background-image: linear-gradient(to bottom, #333, #333); background-repeat: repeat-x; border-radius: 3px; color: #fff; cursor: default; }
-.page .box_shadow { box-shadow: 0 0 30px #ccc; padding: 10px; border-radius: 5px; margin-bottom: 15px; }
+.page .box_shadow { box-shadow: 0 0 30px #ccc; padding: 10px; border-radius: 5px; margin: 15px 0; }
 .page .box_shadow .category_name_bottom { border-bottom: 1px solid #e4e4e4; }
 .page .category_name_bottom span { color: #4c5253; font-size: 17px; height: 25px; margin-top: 8px; font-weight: normal; }
 .page .cur_category_description { color: #4c5253; font-size: 12px; line-height: 20px; max-height: 100px; overflow: hidden; position: relative; margin-bottom: 5px; }

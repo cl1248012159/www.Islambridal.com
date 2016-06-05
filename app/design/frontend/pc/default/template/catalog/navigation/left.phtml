@@ -1,29 +1,40 @@
-
 <?php if (!Mage::registry('current_category')) return ?>
-<?php $_categories = $this->getCurrentChildCategories() ?>
-<?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
+
 <?php
-    if($_count):
-        if($_count>8){
-            $count_i = 0;
-        }
+    $_categories = $this->getCurrentChildCategories();
+    $_count = is_array($_categories)?count($_categories):$_categories->count();
+
+    if(empty($_count)){
+        $_categories =  Mage::getModel('catalog/category')
+            ->setStoreId(Mage::app()->getStore()->getId())
+            ->load( Mage::registry('current_category')->getParentId() )
+            ->getChildrenCategories();
+        $_count = is_array($_categories)?count($_categories):$_categories->count();
+    }
+
+    if($_count>8){
+        $rand_cat = array_rand($_categories->toArray(),8);
+    }
 ?>
-    <ol>
-        <?php foreach ($_categories as $_category): ?>
-            <?php
-            if($_count>8){
-                if($count_i<8){
-                    $count_i++;
-                }else{
-                    break;
-                }
-            }
-            ?>
-            <?php if($_category->getIsActive()): ?>
-                <li>
-                    <a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $this->escapeHtml($_category->getName()) ?></a>
-                </li>
-            <?php endif; ?>
-        <?php endforeach ?>
-    </ol>
+
+
+<?php if($_count):?>
+    <div class="box_shadow">
+        <div class="category_name_bottom">
+            <span><?php echo $cur_cat_name ?> Related Categories</span>
+        </div>
+        <div class="catalog_children">
+            <ol>
+                <?php foreach ($_categories as $_category): ?>
+                    <?php if($_category->getIsActive() && in_array($_category->getId(),$rand_cat)  ): ?>
+                        <li>
+                            <a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $this->escapeHtml($_category->getName()) ?></a>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach ?>
+            </ol>
+        </div>
+    </div>
+
+
 <?php endif; ?>
