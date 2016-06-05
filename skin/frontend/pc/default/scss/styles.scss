@@ -18,13 +18,10 @@
 .page{
     max-width: $style_width; 
     margin: 0 auto;
-
     
-    border-left:1px solid #000;
-    border-right:1px solid #000;
-    box-sizing: content-box;
 }
 
+.M5{margin:5px;}
 .MT10{margin-top:10px;}
 .MB10{margin-bottom:10px;}
 
@@ -40,6 +37,3 @@
 
 @import "_time.scss";
 
-header , .products-grid , footer{
-    //opacity: 0;
-}

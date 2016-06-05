@@ -1,5 +1,5 @@
 <?php
-    $Hot_Selling_Products = Mage::getModel('catalog/category')->load(4)
+    $Hot_Selling_Products = Mage::getModel('catalog/category')->load(110)
                             ->getProductCollection()
                             ->addAttributeToSelect('*')
                             ->addAttributeToFilter('status', 1)

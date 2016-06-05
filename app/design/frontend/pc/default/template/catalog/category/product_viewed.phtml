@@ -1,51 +1,48 @@
 <?php if ($_products = $this->getRecentlyViewedProducts()): ?>
-<div class="block block-list block-viewed">
-    <div class="block-title">
-        <strong><span><?php echo $this->__('Recently Viewed Products') ?></span></strong>
-    </div>
-    <div class="block-content">
-        <ol id="recently-viewed-items" class="owl-carousel">
 
 
+    <div class="home_product owl-carousel">
 
-        <?php foreach ($_products as $_item): ?>
-            <li class="item">
+         <?php foreach($_products as $_product):?>
 
-                <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_item, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_item, 'small_image'), null, true) ?>" /></a>
+            <dl class="item">
+                <dt>
+                    <a href="<?php echo $_product->getProductUrl() ?>">
+                        <img width="180" height="240" alt="<?php echo $_product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(240,320); ?>">
+                    </a>
+                </dt>
+                <dd>
+                    <p>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName()?>">
+                            <?php echo $_product->getName()?>
+                        </a>
+                    </p>
+                    <div class="home_price">
+                        <span><?php echo Mage::app()->getStore()->getCurrentCurrency()->getCode();?></span>
+                        <?php echo $this->getPriceHtml($_product, true) ?>
+                    </div>
+                </dd>
+            </dl>
 
-                <p class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName() , 'name') ?></a></p>
-
-                <?php if($_item->getRatingSummary()): ?>
-                    <?php echo $this->getReviewsSummaryHtml($_item, 'short') ?>
-                <?php endif; ?>
-
-
-                <?php echo $this->getPriceHtml($_item, true) ?>
-
-            </li>
         <?php endforeach; ?>
 
+    </div>
 
-
-        </ol>
-        <script type="text/javascript">
-            decorateList('recently-viewed-items');
-
+        <script>
             jQuery(document).ready(function(){
-                jQuery('#recently-viewed-items').each(function() {
+                jQuery('.home_product').each(function() {
                     if(jQuery('.item', this).length > 1) {
                         jQuery(this).owlCarousel({
                             loop: true,
-                            nav: false,
-                            dots: false,
-                            items: 6,
+                            nav: true,
+                            dots:false,
+                            autoWidth:true,
+                            margin:15,
                             autoplay: false
                         });
                     }
                 });
             });
-
         </script>
-    </div>
-</div>
+
 <?php endif; ?>

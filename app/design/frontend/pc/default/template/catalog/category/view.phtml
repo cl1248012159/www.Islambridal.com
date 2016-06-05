@@ -1,21 +1,58 @@
 <?php echo $this->getMessagesBlock()->toHtml() ?>
 
+<?php
+$cur_cat_name = $this->getCurrentCategory()->getName();
+$cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()->getSize();
+?>
 
-<?php echo $this->getChildHtml('catalog_layer') ?>
+
+<div class="category_name_top">
+    <span><?php echo $cur_cat_name ?></span>
+    <span>(<?php echo $cur_cat_pro_size;?>)</span>
+</div>
+
+
+<?php echo $this->getChildHtml('mana.catalog.leftnav') ?>
 
 
 <?php echo $this->getProductListHtml() ?>
 
 
-<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
-    <div class="category-description std">
-        <?php echo $_description ?>
+<div class="box_shadow">
+    <div class="category_name_bottom">
+        <span><?php echo $cur_cat_name ?></span>
+        <span>(<?php echo $cur_cat_pro_size;?>)</span>
     </div>
-<?php endif; ?>
+    <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+        <div class="cur_category_description">
+            <?php echo $_description ?>
+            <div class="see" style="display:none;">
+                <span id="see_con" class="see_more">See more</span>
+                <span>&gt;&gt;</span>
+            </div>
+        </div>
+        <script>
+            jQuery(document).ready(function(){
+                if(jQuery(".cur_category_description")[0].clientHeight == 100){
+                    jQuery(".see").show();
+                }
+                jQuery('.cur_category_description').on('click','.see',function(){
+                    if(jQuery("#see_con").hasClass('see_more')){
+                        jQuery(".cur_category_description").css('max-height',"none");
+                        jQuery("#see_con").removeClass('see_more').addClass('see_less').html('See less');
+                    }else{
+                        jQuery(".cur_category_description").css('max-height',"100px");
+                        jQuery("#see_con").removeClass('see_less').addClass('see_more').html('See more');
+                    }
+                });
+            });
+        </script>
+    <?php endif; ?>
+</div>
 
 
-
-<?php
+<div class="box_shadow">
+    <?php
     $_reviewsCollection = Mage::getModel('review/review')->getCollection()
         ->addStoreFilter(Mage::app()->getStore()->getId())
         ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
@@ -36,36 +73,69 @@
             )
         )
         ->setDateOrder();
-
     $_reviews_items =  $_reviewsCollection->getItems();
-?>
-<div class="MT10 category_review owl-carousel">
-
-    <?php foreach($_reviews_items as $review): ?>
-        <a class="item" href="">
-            <?php if(  $review->getReviewimage1()  ):?>
-                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();?>);"></span>
-            <?php elseif(  $review->getReviewimage2()  ): ?>
-                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2();?>);"></span>
-            <?php elseif(  $review->getReviewimage3()  ): ?>
-                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3();?>);"></span>
-            <?php elseif(  $review->getReviewimage4()  ): ?>
-                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4();?>);"></span>
-            <?php elseif(  $review->getReviewimage5()  ): ?>
-                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5();?>);"></span>
-            <?php endif;?>
-        </a>
-    <?php endforeach; ?>
-
+    ?>
+    <?php if(count($_reviews_items) > 0): ?>
+        <div class="category_name_bottom">
+            <span><?php echo $cur_cat_name ?> reviews </span>
+            <span>(<?php echo count($_reviews_items);?>)</span>
+        </div>
+        <div class="user_photos">
+            <div class="photos_title">User Photos</div>
+            <div class="home_review owl-carousel">
+                <?php foreach($_reviews_items as $review): ?>
+                    <a class="item" href="">
+                        <?php if(  $review->getReviewimage1()  ):?>
+                            <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();?>);"></span>
+                        <?php elseif(  $review->getReviewimage2()  ): ?>
+                            <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2();?>);"></span>
+                        <?php elseif(  $review->getReviewimage3()  ): ?>
+                            <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3();?>);"></span>
+                        <?php elseif(  $review->getReviewimage4()  ): ?>
+                            <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4();?>);"></span>
+                        <?php elseif(  $review->getReviewimage5()  ): ?>
+                            <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5();?>);"></span>
+                        <?php endif;?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+            <script>
+                jQuery(document).ready(function(){
+                    jQuery('.home_review').each(function() {
+                        if(jQuery('.item', this).length > 1) {
+                            jQuery(this).owlCarousel({
+                                loop: true,
+                                nav: true,
+                                dots: false,
+                                autoWidth:true,
+                                margin:10,
+                                autoplay: false
+                            });
+                        }
+                    });
+                });
+            </script>
+        </div>
+    <?php endif; ?>
 </div>
 
 
+<div class="box_shadow">
+    <div class="category_name_bottom">
+        <span><?php echo $cur_cat_name ?> Related Categories</span>
+    </div>
+    <div class="catalog_children">
+        <?php echo $this->getChildHtml('catalog_children') ?>
+    </div>
+</div>
 
-<?php echo $this->getChildHtml('catalog_children') ?>
 
-
-
-<?php echo $this->getChildHtml('product_viewed') ?>
+<div class="box_shadow">
+    <div class="category_name_bottom">
+        <span>Recently Viewed</span>
+    </div>
+    <?php echo $this->getChildHtml('product_viewed') ?>
+</div>
 
 
 

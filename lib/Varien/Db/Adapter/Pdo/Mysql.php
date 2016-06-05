@@ -108,7 +108,7 @@ class Varien_Db_Adapter_Pdo_Mysql extends Zend_Db_Adapter_Pdo_Mysql implements V
      *
      * @var bool
      */
-    protected $_debug               = false;//amy-sql
+    protected $_debug               = false;//amychen
 
     /**
      * Minimum query duration time to be logged
@@ -122,7 +122,7 @@ class Varien_Db_Adapter_Pdo_Mysql extends Zend_Db_Adapter_Pdo_Mysql implements V
      *
      * @var bool
      */
-    protected $_logAllQueries       = false;//amy-sql
+    protected $_logAllQueries       = false;//amychen
 
     /**
      * Add to log call stack data (backtrace)

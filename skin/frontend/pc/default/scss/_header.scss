@@ -157,10 +157,12 @@
 
     }
     .header_menu{
-        height:45px;
         width:100%;
-        background:#eee;
-        overflow:hidden;
+        border-bottom: 1px solid #eee;
+        *zoom:1;
+        &:after{
+            display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;
+        }
         ul{
             display: block;
             li{
@@ -170,13 +172,13 @@
                 line-height: 43px;
                 border-bottom:2px solid #fff;
                 &:first-child{
-                    padding-right:10px;
+                    
                 }
                 &:not(:first-child){
                     background-image:url(../images/commont/menu_li_bg.png) ;
                     background-repeat: no-repeat;
                     background-position: 0px 20px;
-                    padding:0 15px;
+                    padding:0 10px;
 
                     &:hover{
                         background-image:url(../images/commont/menu_li_hover_bg.png);

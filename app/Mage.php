@@ -845,7 +845,7 @@ final class Mage
         }
     }
 
-    public static function amy($message, $level = null, $file = '', $forceLog = false)
+    public static function amychen($message, $level = null, $file = '', $forceLog = false)
     {
         if (!self::getConfig()) {
             return;
