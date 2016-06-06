@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout version="0.1.0">
-
+    <catalog_category_default>
+        <reference name="category.products">
+            <block type="mana_filters/view" name="mana.catalog.leftnav"  template="catalog/layer/view.phtml"/>
+        </reference>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/mana_filters.css</stylesheet></action>
+        </reference>
+        <reference name="mana.catalog.leftnav">
+            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled"><template>manapro/filteradvanced/view.phtml</template></action>
+        </reference>
+    </catalog_category_default>
 
 	<catalog_category_layered>
 		<reference name="category.products">

@@ -21,10 +21,24 @@
                 height: 30px;
                 line-height: 30px;
                 padding:0 15px;
+                max-width: 600px;
 
                 &.last{
                     background: url(../images/commont/bread_bg_3.png) no-repeat center right;
                     color:#fff;
+                }
+
+                strong{
+                    display: inline-block;
+                    float: left;
+                    background:#333333;
+                    position:relative;
+                    padding-left:30px;
+                    height:30px;
+                    text-overflow:ellipsis;
+                    white-space:nowrap;
+                    overflow:hidden;
+                    width: 100%;
                 }
             }
 
