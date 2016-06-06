@@ -1,14 +1,14 @@
-.estorm-zoom { width:400px; float:left; clear:both; background:#ffffff; }
+.estorm-zoom { width:405px; float:left; clear:both; background:#ffffff; }
 
 .estorm-zoom-stage { width:300px; height:400px;float:right; position:relative; cursor:all-scroll; }
-.estorm-zoom .arrow { width:30px; height:47px; display:block; text-indent:-9999px; overflow:hidden; position:absolute; background-image:url(../images/commont/arrow.png); background-repeat:no-repeat; top:50px; }
-.estorm-zoom .arrow-prev { left:0; background-position:0 0; }
-.estorm-zoom .arrow-prev:hover { background-position:0 -47px; }
-.estorm-zoom .arrow-next { right:0; background-position:-30px 0; }
-.estorm-zoom .arrow-next:hover { background-position:-30px -47px; }
+
+.estorm-zoom .arrow { width:100%; height:10px; display:block; text-indent:-9999px; overflow:hidden; position:absolute;  background-repeat:no-repeat;background-position:center center; background-color:#fff;}
+.estorm-zoom .arrow-prev {background-image:url(../images/commont/guan.jpg);top:0;}
+.estorm-zoom .arrow-next {background-image:url(../images/commont/kai.jpg); bottom:0}
+
 
 .estorm-zoom-gallery { width:100px; height:400px; float:left; position:relative; overflow:hidden; }
 .estorm-zoom-gallery ul { position:absolute; top:0;margin:0; padding:0; list-style:none; } 
 .estorm-zoom-gallery li { float:left; margin:0; list-style:none; padding:0; border:4px #ffffff solid; }
-.estorm-zoom-gallery li.current { border-color:#ffcc00; }
+.estorm-zoom-gallery li.current { border-color:#f39; }
 .estorm-zoom-gallery li img { border:1px #eeeeee solid; display:block; }
