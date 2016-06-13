@@ -178,7 +178,7 @@
                     outline.css({
                         "width": cWidth,
                         "height": cHeight,
-                        "left": me.width()+20,
+                        "left": me.width()+10,
                         "top": 0,
                         "background": "url("+img.src+") no-repeat 0 0"
                     }).show().data('scale', r);
@@ -243,6 +243,10 @@
                         bottom:10
                     }, 100);
                     ul.data('old', index);
+                }else{
+                    ul.animate({
+                        top:10
+                    }, 100);
                 }
             },
             btn: function(){

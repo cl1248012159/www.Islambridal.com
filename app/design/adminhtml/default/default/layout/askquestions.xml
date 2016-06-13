@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <askquestions_adminhtml_askquestionsbackend_index>
+	<reference name="content">
+	  <block type="askquestions/adminhtml_askquestionsbackend" name="askquestionsbackend" template="askquestions/askquestionsbackend.phtml"/>
+	</reference>
+  </askquestions_adminhtml_askquestionsbackend_index>
+  <askquestions_adminhtml_askquestions_index>
+	<reference name="content">
+	  <block type="askquestions/adminhtml_askquestions" name="askquestions" />
+	</reference>
+  </askquestions_adminhtml_askquestions_index>
+    <askquestions_adminhtml_askquestions_edit> 
+	<reference name="content">
+		<block type="askquestions/adminhtml_askquestions_edit" name="admin_askquestionss" />
+	</reference>
+  </askquestions_adminhtml_askquestions_edit>
+</layout>

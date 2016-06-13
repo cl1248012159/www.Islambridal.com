@@ -7,12 +7,11 @@
  -->
 <config>
     <menu>
-        <mana>
-            <title>MANAdev</title>
-            <sort_order>79</sort_order>
+        <new_dev>
+
             <children>
                 <system_configuration translate="title" module="mana_core">
-                    <title>Global Configuration</title>
+                    <title>MANAdev</title>
                     <sort_order>20000</sort_order>
                     <children>
                         <mana translate="title" module="mana_core">
@@ -23,7 +22,7 @@
                     </children>
                 </system_configuration>
             </children>
-        </mana>
+        </new_dev>
     </menu>
     <acl>
         <resources>

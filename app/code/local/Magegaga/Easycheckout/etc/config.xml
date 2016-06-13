@@ -59,9 +59,7 @@
     </admin>
      <adminhtml>
 	<menu>
-	    <magegaga_extensions>
-		<title>Magegaga Extensions</title>
-		<sort_order>71</sort_order>
+	    <new_dev>
 		<children>
 		    <easycheckout module="easycheckout">
 			<title>Easycheckout</title>
@@ -75,7 +73,7 @@
 			</children>
 		    </easycheckout>
 		</children>
-	     </magegaga_extensions>
+	     </new_dev>
 	</menu>
 	<acl>
 	    <resources>

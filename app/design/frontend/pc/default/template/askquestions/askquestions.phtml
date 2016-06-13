@@ -1,0 +1,176 @@
+<?php 
+	$productid = Mage::registry('current_product')->getId();
+	$customer = Mage::getSingleton('customer/session')->getCustomer(); 
+	$sku =  Mage::registry('current_product')->getSku();
+	$customerid = '';
+	$email = '';
+	$name = '';
+	if($customer){
+		$customerid = $customer->getId();
+		$email = $customer->getEmail();
+		$name = $customer->getName();
+	}
+	$storeid =  Mage::app()->getStore()->getStoreId(); 
+	$questions = $this->getQuestions();
+	$types = array();
+	foreach($questions as $q){
+		$type = $q->getType();
+		if(!in_array($type,$types)){
+			$types[] = $type;
+		}
+	}
+	sort($types);
+?>
+<?php if(count($questions)>0):?>
+<div class="askquestion-list">
+	
+	<div class="questions-types"> 
+	<h4 class="qa">Q & A</h4>
+		<ul class="questions-tabs">
+			<?php foreach($types as $i=>$t):?>
+			<?php if($t==1):?>
+				<li class="<?php if(!$i){echo 'on';}?>">Product Description</li>
+			<?php elseif($t==2):?>
+				<li class="<?php if(!$i){echo 'on';}?>">Shipping or Payment</li>
+			<?php elseif($t==3):?>
+				<li class="<?php if(!$i){echo 'on';}?>">Processing Time Consultation</li>
+			<?php elseif($t==4):?>
+				<li class="<?php if(!$i){echo 'on';}?>">Others</li>
+			<?php endif;?>
+			<?php endforeach; ?>
+		</ul>
+		<div class="questions-panls">
+			<?php foreach($types as $j=>$type):?>
+			<?php 
+				$typequestions = $this->getQuestions($type);
+			?>
+			<?php if(count($typequestions)>0):?>
+
+			<div class="questions-panl <?php if(!$j){echo 'active' ;}?>">
+				<ul> 
+					<?php foreach($typequestions as $typyquestion): ?>
+					<li>
+						<h4><?php echo  'Q: '.$typyquestion->getTitle() ;?> 
+							<span><?php $time = $typyquestion->getCreatedAt();
+							echo Mage::helper('core')->formatDate($time,'medium',false); ?></span>
+						</h4>
+						<p><?php echo $typyquestion->getContent() ; ?></p>
+						<p><?php echo 'By '.$typyquestion->getName(); ?></p>
+						<?php if($typyquestion->getReply()):?>
+						<div class="questions-reply"> 
+						<div class="stroked-arrow"><em></em><i></i></div>
+							<div class="questions-reply-q"> 
+								<strong>A: </strong>
+							</div>
+							<div class="questions-reply-cntent"> 
+								<p class="reply"><?php echo $typyquestion->getReply(); ?></p>
+								<p>By <span><img src="http://www.wishesbridal.com/media/favicon/default/favicon.ico.jpeg" alt="" /></span> Wishesbridal</p>
+							</div>
+							<div class="right"> 
+								<?php $replytime = $typyquestion->getReplyAt();
+									echo Mage::helper('core')->formatDate($replytime,'medium',false);?>
+							
+							</div>
+						</div>
+						<?php endif; ?>
+					</li>
+					<?php endforeach;?>
+				</ul>
+			</div>
+			<?php endif; ?>
+			<?php endforeach;?>
+		</div>
+	</div>
+	<?php  ?>
+</div>
+<?php endif; ?>
+<a name="askaquestion" id="askaquestion" ></a>
+<script type="text/javascript"> 
+	//<![CDATA[
+	jQuery(function($){
+		$(".questions-tabs li").click(function(){
+			$(this).siblings().removeClass('on');
+			$(this).addClass("on");
+			var index = $(this).index();
+			$(".questions-panls .questions-panl").removeClass("active");
+			$(".questions-panls .questions-panl").eq(index).addClass("active");
+		});
+		$(".ask-questions h4").click(function(){
+			$(".category-product-view-askquestion").toggle();
+		});
+		$(".ask-a-question a").click(function(){
+			$(".category-product-view-askquestion").show();
+		});
+	});
+	//]]>
+</script>
+<div class="ask-questions">
+	<h4 >Ask For Questions</h4>
+</div>
+<div class="category-product-view-askquestion" style=""> 
+	
+	<form id="product-askquestion" action="<?php echo $this->getUrl().'index.php/askquestions/index/add' ?>"  method="post" enctype="multipart/form-data">
+		<input type="hidden" name="productid" value="<?php echo $productid; ?>" />
+		<input type="hidden" name="sku" value="<?php echo $sku; ?>" />
+		<input type="hidden" name="customerid" value="<?php echo $customerid; ?>" />
+		<input type="hidden" name="storeid" value="<?php echo $storeid; ?>" />
+		<?php echo $this->getBlockHtml('formkey') ?>
+		<ul> 
+			<li>
+				<label for="askquestionname">Your Name:</label>
+				<input class="input-text required-entry" type="text" id="askquestionname" name="askquestionname" value="<?php echo $name;?>" />
+			</li>
+			<li>
+				<label for="askquestionemail">Your Email:</label>
+				<input class="input-text validate-email required-entry" type="text" id="askquestionemail" name="askquestionemail" value="<?php echo $email;?>" />
+			</li>
+			<li>
+				<label> What would you like to ask about?: <em>*</em></label>
+				<div class="askquestion-type">
+					<label ><input class="validate-one-required-by-name" type="radio" name="askquestiontype[]" value="1" />Product Description</label>
+					<label ><input class="validate-one-required-by-name" type="radio" name="askquestiontype[]" value="2" />Shipping or Payment</label>
+					<label ><input class="validate-one-required-by-name" type="radio" name="askquestiontype[]" value="3" />Processing Time Consultation</label>
+					<label ><input class="validate-one-required-by-name" type="radio" name="askquestiontype[]" value="4" />Others</label>
+				</div>
+			</li>
+			<li>
+				<label for="askquestiontitle">Question Title:</label>
+				<input class="input-text required-entry" type="text" id="askquestiontitle" name="askquestiontitle" />
+			</li>
+			<li>
+				<label for="askquestioncontent">Question Details</label>
+				<textarea class="required-entry" name="askquestioncontent" id="askquestioncontent" cols="78" rows="4"></textarea>
+			</li>
+			<li><input class="submit" type="submit" value="Add Question" onclick="addAskquestionForm.submit(this)" name="product-askquestion" /></li>
+		</ul>
+	</form>	
+</div>
+  <script type="text/javascript">
+//< ![CDATA[
+  var addAskquestionForm= new VarienForm('product-askquestion');
+  addAskquestionForm.submit = function(button, url) { 
+      if (this.validator.validate()) {
+          var form = this.form;
+          var oldUrl = form.action;
+
+          if (url) {
+              form.action = url;
+          }
+          var e = null;
+          try {
+              this.form.submit();
+          } catch (e) {
+          }
+          this.form.action = oldUrl;
+          if (e) {
+              throw e;
+          }
+
+          if (button && button != 'undefined') {
+              button.disabled = true;
+          }
+      }
+  }.bind(addAskquestionForm);
+  
+//]]>
+</script>

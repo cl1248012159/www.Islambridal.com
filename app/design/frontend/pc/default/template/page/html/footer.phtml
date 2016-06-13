@@ -27,4 +27,27 @@
         </div>
         <div class="copyright"><address><?php echo $this->getCopyright() ?></address></div>
     </div>
-</footer> 
+</footer>
+
+<div id="gotopbtn" style="display:none;"><a href="#"><span></span>Back To Top</a></div>
+<script type="text/javascript">
+    jQuery(function($){
+        $("#gotopbtn").hide();
+        $(function () {
+            $(window).scroll(function(){
+                if ($(window).scrollTop()>100){
+                    $("#gotopbtn").show();
+                }
+                else
+                {
+                    $("#gotopbtn").hide();
+                }
+            });
+            //back to top
+            $("#gotopbtn").click(function(){
+                $('body,html').animate({scrollTop:0},1000);
+                return false;
+            });
+        });
+    });
+</script>

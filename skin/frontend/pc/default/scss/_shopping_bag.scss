@@ -1,0 +1,145 @@
+.shopping_bag{
+
+    .scart_step1{
+      background: url("../images/commont/scart_step.gif") no-repeat center top;
+      height:48px;
+      overflow:hidden;
+      margin:30px 0;
+    }
+
+    .shopping_bag_title{
+        border-bottom: 1px solid #51423A;
+        font-size: 16px;
+        text-transform: capitalize;
+        color: #000;
+        padding-bottom: 10px
+    }
+
+    .shopping_bag_list{
+        .data-table{
+            border:0;
+
+            thead{
+                th{
+                  background:none;
+                  border-right:0;
+                  height:35px;
+                  border-bottom: 1px solid #d2d2d2;
+                  color: #5D4C43;
+                  font-size: 14px;
+                  font-weight: normal;
+                }
+            }
+            tbody td{
+                a.product-image{
+                  display: block;
+                  padding:5px;
+                  border:1px solid #ccc;
+                  image{
+                    max-width:100%;
+
+                  }
+                }
+                .product-name a{
+                    text-decoration: underline;
+                    color: #000000;
+                    font-weight: normal;
+                    &:hover {
+                        color: #f39;
+                    }
+                }
+            }
+            .item-options{
+                @include float_clear;
+                color:#775E51;
+
+                dt{
+                    font-style: normal;
+                    font-weight: normal;
+                    float:left;
+                    clear:left;
+                }
+                dd{
+                    float:left;
+                    padding:0;
+                    margin:0;
+                    clear:right;
+                }
+            }
+        }
+        .data-table tbody th, .data-table tbody td{
+            border-right:0;
+        }
+        .paynow{
+            display:inline-block;
+            background:#f39;
+            border-radius:3px;
+            padding: 2px 5px;
+            color: #fff;
+        }
+        .remove{
+            display:block;
+            color: #999999;
+            padding-top: 4px;
+            text-decoration: underline;
+        }
+    }
+
+    .shopping_bag_coupon{
+        float:left;
+
+        &>span{
+            font-size: 12px;
+            color: #333333;
+            &.arrow {
+               padding-right: 15px;
+               background: url(http://s.dresswe.com/images/arrow1216.jpg) no-repeat scroll right center;
+             }
+            &.arrow1 {
+              padding-right: 15px;
+              background: url(http://s.dresswe.com/images/arrow1217.jpg) no-repeat scroll right center;
+            }
+        }
+
+        #discount-coupon-form{
+            display:none;
+            .discount{
+                padding:10px 50px 10px 10px;
+                border:1px solid #ccc;
+            }
+        }
+    }
+    .shopping_bag_totals{
+      float:right;
+
+      #shopping-cart-totals-table{
+          tr td{
+            line-height:40px;
+
+            &:first-child{
+              text-align:left !important;
+              min-width:200px;
+            }
+            &:last-child{
+              color:#f39;
+            }
+          }
+
+          tbody tr td{
+            border-bottom:1px dashed #999;
+            font-size: 13px;
+            &:first-child{
+              color:#5D4C43;
+            }
+          }
+          tfoot tr{
+            font-size: 18px;
+            td:first-child{
+
+              font-weight: bolder;
+              color: #000;
+            }
+          }
+      }
+    }
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
 	<menu>
-		<dotsquares_core>
+		<new_dev>
 			<children>
 				<export translate="title" module="dotsquares_export">
 					<title>Export Categories</title>
@@ -9,7 +9,7 @@
 					<sort_order>10</sort_order>
 				</export>
 			</children>
-		</dotsquares_core>
+		</new_dev>
 	</menu>
 
 	<acl>

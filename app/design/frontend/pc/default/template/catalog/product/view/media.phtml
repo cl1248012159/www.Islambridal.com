@@ -9,6 +9,13 @@
              data-bigurl="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600,800);?>"
              src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(300,400) ;?>">
     </div>
+
+    <?php Mage::log($this->getGalleryImages())?>
+
+
+    <?php if(  $GalleryImages = $this->getGalleryImages()  ):?>
+
+    <?php endif; ?>
     <div class="estorm-zoom-gallery">
         <ul>
             <?php $img_i=0; foreach ($this->getGalleryImages() as $_image): ?>

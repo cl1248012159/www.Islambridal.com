@@ -292,7 +292,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .messages,
 .messages ul { list-style:none !important; margin:0 !important; padding:0 !important; }
 .messages { width:100%; overflow:hidden; }
-.messages li { margin:0 0 10px !important; }
+.messages li { margin:10px 0 10px !important; }
 .messages li li { margin:0 0 3px !important; }
 .error-msg,
 .success-msg,
@@ -997,7 +997,7 @@ tr.summary-details-excluded { font-style:italic; }
 .product-image-popup .image-label { font-size:13px; font-weight:bold; margin:0 0 10px; color:#2f2f2f; }
 
 /* Product Shop */
-.product-view .product-shop { float:right; width:330px; }
+.product-view .product-shop {  }
 .col1-layout .product-view .product-shop { float:right; width:545px; }
 .col3-layout .product-view .product-shop { float:none; width:auto; }
 .product-view .product-shop .product-name { margin:0 0 5px; }

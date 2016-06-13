@@ -25,6 +25,27 @@
 .MT10{margin-top:10px;}
 .MB10{margin-bottom:10px;}
 
+.W10{width:10%;}
+.W15{width:15%;}
+.W20{width:20%;}
+.W25{width:25%;}
+.W30{width:30%;}
+.W35{width:35%;}
+.W40{width:40%;}
+.W45{width:45%;}
+.W50{width:50%;}
+.W55{width:55%;}
+.W60{width:60%;}
+.W65{width:65%;}
+.W70{width:70%;}
+.W75{width:75%;}
+.W80{width:80%;}
+.W85{width:85%;}
+.W90{width:90%;}
+.W95{width:95%;}
+.W100{width:100%;}
+
+
 @import "_header.scss";
 @import "_footer.scss";
 
@@ -39,8 +60,11 @@
 
 @import "_product.scss";
 
-header,
-.product-shop
+@import "_shopping_bag.scss";
+
+header
+//, .col-main
+  ,footer
 {
-    opacity: 0;
+    //opacity: 0.02;
 }

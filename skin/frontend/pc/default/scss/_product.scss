@@ -12,3 +12,42 @@
 .estorm-zoom-gallery li { float:left; margin:0; list-style:none; padding:0; border:4px #ffffff solid; }
 .estorm-zoom-gallery li.current { border-color:#f39; }
 .estorm-zoom-gallery li img { border:1px #eeeeee solid; display:block; }
+
+
+.page{
+    .product-view{
+        .product-essential{
+            position:relative;
+
+            .product-img-box{
+                position: relative;
+                z-index: 1;
+            }
+        }
+        .product-shop{
+            position:relative;
+            padding-left: 420px;
+            float: none;
+            width: auto;
+
+            .product-name{
+                h1{
+                    text-transform:Capitalize;
+                }
+            }
+
+            .commont{
+                display: inline-block;
+
+                .ratings{
+                    float: left;
+                    margin: 0;
+                }
+                .ask-a-question{
+                    float: left;
+                }
+            }
+        }
+    }      
+}
+

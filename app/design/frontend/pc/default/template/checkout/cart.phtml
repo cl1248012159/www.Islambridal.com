@@ -1,0 +1,98 @@
+<div class="shopping_bag">
+
+    <div class="scart_step1"></div>
+
+    <div class="shopping_bag_title">Shopping Bag</div>
+
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+
+    <div class="shopping_bag_list">
+
+        <?php echo $this->getChildHtml('form_before') ?>
+
+        <form action="<?php echo $this->getFormActionUrl() ?>" method="post">
+            <?php echo $this->getBlockHtml('formkey'); ?>
+            <fieldset>
+                <table id="shopping-cart-table" class="data-table cart-table">
+                    <col style="width:10%;" />
+                    <col style="width:40%;"/>
+                    <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                        <col width="1" />
+                    <?php endif ?>
+                    <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                        <col width="1" />
+                    <?php endif; ?>
+                    <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                        <col width="1" />
+                    <?php endif; ?>
+                    <col width="1" />
+                    <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                        <col width="1" />
+                    <?php endif; ?>
+                    <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                        <col width="1" />
+                    <?php endif; ?>
+                    <col width="1" />
+
+                    <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+                    <thead>
+                    <tr>
+                        <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
+                        <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr">Item Price</span></th>
+                        <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                            <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
+                        <?php endif ?>
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr">Item Price</span></th>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center">Quantity</th>
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>">Amount</th>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center">Operation</th>
+                    </tr>
+                    <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                        <tr>
+                            <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                            <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                            <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                            <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                        </tr>
+                    <?php endif; ?>
+                    </thead>
+
+                    <tbody>
+                    <?php foreach($this->getItems() as $_item): ?>
+                        <?php echo $this->getItemHtml($_item) ?>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+            </fieldset>
+        </form>
+
+        <div class="shopping_bag_coupon">
+            <span id="showcoupon" class="arrow" style="cursor:pointer;">Have a Coupon Code?Click here</span>
+            <div class="shopping_bag_coupon_form">
+                <?php echo $this->getChildHtml('coupon') ?>
+            </div>
+            <script>
+                jQuery(document).ready(function(){
+                    jQuery(".shopping_bag_coupon").on('click','#showcoupon',function(){
+                        if(jQuery(".shopping_bag_coupon #showcoupon").hasClass('arrow')){
+                            jQuery(".shopping_bag_coupon #showcoupon")[0].className='arrow1';
+                            jQuery('#discount-coupon-form').show();
+                        }else{
+                            jQuery(".shopping_bag_coupon #showcoupon")[0].className='arrow';
+                            jQuery('#discount-coupon-form').hide();
+                        }
+                    });
+                });
+            </script>
+        </div>
+
+        <div class="shopping_bag_totals">
+            <?php echo $this->getChildHtml('totals'); ?>
+        </div>
+
+
+
+
+    </div>
+
+</div>

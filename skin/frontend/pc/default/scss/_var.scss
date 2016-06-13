@@ -2,3 +2,10 @@ $style_width:1365px;
 $top_height:33px;
 $header_content_height:112px;
 $style_corlor :#f39;
+
+@mixin float_clear {
+  *zoom:1;
+  &:after{
+    display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;
+  }
+}

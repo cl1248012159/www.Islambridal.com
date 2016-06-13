@@ -13,18 +13,23 @@
             <input type="hidden" name="related_product" id="related-products-field" value="" />
         </div>
 
+        <div class="product-img-box">
+            <?php echo $this->getChildHtml('media') ?>
+        </div>
+
         <div class="product-shop">
             <div class="product-name">
                 <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
             </div>
 
-            <?php if ($this->canEmailToFriend()): ?>
-                <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
-            <?php endif; ?>
+            <div class="commont">
+                <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                <div class="ask-a-question"> <a href="#askaquestion">Ask a question</a></div>
+            </div>
 
-            <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+
             <?php echo $this->getChildHtml('alert_urls') ?>
-            <?php echo $this->getChildHtml('product_type_data') ?>
+            <?php //echo $this->getChildHtml('product_type_data') ?>
             <?php echo $this->getTierPriceHtml() ?>
             <?php echo $this->getChildHtml('extrahint') ?>
 
@@ -60,9 +65,7 @@
 
         </div>
 
-        <div class="product-img-box">
-            <?php echo $this->getChildHtml('media') ?>
-        </div>
+
 
         <div class="clearer"></div>
         <?php if ($_product->isSaleable() && $this->hasOptions()):?>
@@ -139,3 +142,5 @@
 
 <?php echo $this->getChildHtml('catalog.product.related') ?>
 <?php echo $this->getChildHtml('product_viewed') ?>
+
+<?php echo $this->getChildHtml('askquestions');?>

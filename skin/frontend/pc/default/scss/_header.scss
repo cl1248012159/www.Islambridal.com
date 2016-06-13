@@ -159,10 +159,7 @@
     .header_menu{
         width:100%;
         border-bottom: 1px solid #eee;
-        *zoom:1;
-        &:after{
-            display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;
-        }
+        @include float_clear;
         ul{
             display: block;
             li{

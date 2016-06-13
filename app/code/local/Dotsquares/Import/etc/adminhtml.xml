@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
 	<menu>
-		<dotsquares_core>
+		<new_dev>
 			<children>
 				<Import translate="title" module="dotsquares_import">
 					<title>Import Categories</title>
@@ -9,7 +9,7 @@
 					<sort_order>20</sort_order>
 				</Import>
 			</children>
-		</dotsquares_core>
+		</new_dev>
 	</menu>
 
 	<acl>

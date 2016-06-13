@@ -169,3 +169,24 @@
     font: 14px/34px Helvetica,Arial,sans-serif;
     color: #333;
 }
+
+#gotopbtn{
+    float: right;
+    margin-right: -20px;
+
+    a {
+        background-image: url("../images/commont/back.png");
+        background-repeat:no-repeat;
+        background-color:#f39;
+        background-position:center center;
+        bottom: 200px;
+        cursor: pointer;
+        height: 52px;
+        position: fixed;
+        text-indent: -999em;
+        width: 51px;
+        right: 20px;
+        z-index: 10000;
+        border-radius:10px;
+    }
+}

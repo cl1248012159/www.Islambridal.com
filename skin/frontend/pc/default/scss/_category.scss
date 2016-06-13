@@ -23,6 +23,14 @@
                 padding:0 15px;
                 max-width: 600px;
 
+                a{
+                  display:inline-block;
+                  max-width:250px;
+                  text-overflow:ellipsis;
+                  white-space:nowrap;
+                  overflow:hidden;
+                }
+
                 &.last{
                     background: url(../images/commont/bread_bg_3.png) no-repeat center right;
                     color:#fff;
@@ -71,11 +79,8 @@
 
 
     .currently{
+        @include float_clear;
         padding:5px;
-        *zoom:1;
-        &:after{
-            display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;
-        }
 
         h4{
             padding: 3px 5px 2px 0;
@@ -112,13 +117,10 @@
     }
 
     .filter-nav{
+        @include float_clear;
         border:1px solid #ddd;
         background:#fff;
 
-        *zoom:1;
-        &:after{
-            display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;
-        }
 
         dl{
             border-bottom: 1px solid rgba(223,223,223,0.5);
@@ -131,7 +133,7 @@
             }
 
             dt{
-                width: 180px;
+                min-width:15%;
                 float: left;
                 text-align: right;
                 padding-right:15px;
@@ -148,7 +150,7 @@
                 padding-left:15px;
                 float: left;
                 border-left:1px solid rgba(223,223,223,0.5);
-                max-width: 1175px;
+                max-width:85%;
                 ol{
                     li{
                         float: left;
@@ -378,10 +380,7 @@
 
 
     .catalog_children{
-        *zoom:1;
-        &:after{
-            display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;
-        }
+        @include float_clear;
 
         li{
             width: 25%;

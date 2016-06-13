@@ -2,7 +2,7 @@
 <config>
 	<menu>
 		<new_dev translate="title" module="catalog">
-			<title>new_dev</title>
+			<title>开发</title>
 			<sort_order>100</sort_order>
 			<children>
 				<ibanners>

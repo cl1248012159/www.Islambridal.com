@@ -1,11 +1,5 @@
 <?xml version="1.0"?>
 <config>
-	<menu>
-		<dotsquares_core translate="title" module="dotsquares_core">
-			<title>Dotsquares</title>
-			<sort_order>71</sort_order>
-		</dotsquares_core>
-	</menu>
 
 	<acl>
 		<resources>
