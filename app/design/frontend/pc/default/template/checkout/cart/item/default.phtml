@@ -179,11 +179,6 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                 <option value="<?php echo $i;?>" <?php echo $this->getQty()==$i?'selected':'' ?>><?php echo $i;?></option>
             <?php }?>
         </select>
-        <!--
-        <input name="cart[<?php echo $_item->getId() ?>][qty]"
-               data-cart-item-id="<?php echo $this->jsQuoteEscape($_item->getSku()) ?>"
-               value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
-        -->
     </td>
 
     <!--Sub total starts here -->
