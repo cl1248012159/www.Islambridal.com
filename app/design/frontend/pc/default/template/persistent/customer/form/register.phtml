@@ -1,5 +1,4 @@
 <div class="account_before register">
-    <?php echo $this->getMessagesBlock()->toHtml() ?>
     <?php echo $this->getChildHtml('form_fields_before')?>
     <?php echo $this->getChildHtml('customer.form.register.extra')?>
     <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
@@ -25,7 +24,9 @@
         </div>
         <div class="form_row">
             <em class="require">*</em>
-            <input type="checkbox" id="agree"> I agree to D-daydress.com <a href="">Terms and Conditions</a>.
+            <input type="checkbox" class="required-entry" id="agree" checked />
+            I agree to <?php echo Mage::getStoreConfig('general/store_information/name') ?>
+            <a href="">Terms and Conditions</a>.
         </div>
         <div class="form_row"><label></label><button type="submit" class="button" id="send22"></button></div>
         <?php echo $this->getChildHtml('form.additional.info'); ?>

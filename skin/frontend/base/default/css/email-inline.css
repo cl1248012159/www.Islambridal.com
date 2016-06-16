@@ -104,7 +104,6 @@ td.logo img {
 
 td.email-heading {
   padding: 0 1%;
-  background: #e1f0f8;
   border-right: 1px dashed #c3ced4;
   text-align: center;
   width: 58%;
@@ -125,7 +124,6 @@ td.email-heading p {
 
 td.store-info {
   padding: 2%;
-  background: #e1f0f8;
   width: 40%;
 }
 
@@ -741,6 +739,7 @@ p.sku {
   float:left;padding:0 5px;list-style: none;
 }
 .top_border li{
+  line-height: 18px;
   border-right:1px solid #333;
 }
 
@@ -779,4 +778,7 @@ p.sku {
 
 .customer_email a{
   color:#444;text-decoration: none;  
+}
+.BB{
+  border-bottom:1px dashed #333;
 }
