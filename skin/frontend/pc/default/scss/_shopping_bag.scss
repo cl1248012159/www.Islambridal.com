@@ -16,6 +16,7 @@
     }
 
     .shopping_bag_list{
+        @include float_clear;
         .data-table{
             border:0;
 
@@ -109,6 +110,7 @@
             }
         }
     }
+
     .shopping_bag_totals{
       float:right;
 
@@ -142,4 +144,67 @@
           }
       }
     }
+
+    .shopping_bag_pay{
+      float: right;
+      clear: both;
+      margin: 45px 0px 20px 0;
+      a{
+        text-decoration: underline;
+        margin-right: 15px;
+      }
+      .paypal_topay{
+          cursor: pointer;
+          background: url(../images/commont/paypaltopay.jpg) no-repeat 0 0;
+          width: 170px;
+          height: 32px;
+          border: medium none;
+          outline: none;
+      }
+      .cor {
+          padding: 0 15px;
+      }
+      .btn_ptp{
+          outline: none;
+          background: url(../images/commont/jxs.png) no-repeat 15px 6px #f39;
+          padding: 0 25px 0 40px;
+          text-align: center;
+          font-size: 15px;
+          color: #fff;
+          height: 30px;
+          line-height: 30px;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+      }
+    }
+
+    .empty_cart_div {
+        width: 100%;
+        text-align: center;
+        vertical-align: middle;
+        margin:50px auto;
+
+        .bt-1-new{
+          background:#f39;
+          padding:2px 10px;
+          display: inline-block;
+          color:#fff;
+          border-radius:5px;
+        }
+    }
+
+    .empty_cart_div .empty_cart_msg {
+        height: 100px;
+        text-align: left;
+        display: inline-block;
+        color: #4c5253;
+    }
+
+    .empty_cart_div h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+
 }

@@ -90,8 +90,12 @@
             <?php echo $this->getChildHtml('totals'); ?>
         </div>
 
-
-
+        <div class="shopping_bag_pay">
+            <a href="javascript:history.go(-1);">&laquo;&nbsp;Continue shopping</a>
+            <input type="button" class="paypal_topay"  onclick="window.location.href='<?php echo $this->getUrl('checkout/onepage')?>'" />
+            <span class="cor">-OR-</span>
+            <input type="button" class="btn_ptp" value="Proceed to Pay" onclick="window.location.href='<?php echo $this->getUrl('checkout/onepage')?>'" />
+        </div>
 
     </div>
 
