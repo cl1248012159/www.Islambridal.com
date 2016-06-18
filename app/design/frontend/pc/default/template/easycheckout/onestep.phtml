@@ -3,10 +3,9 @@ $checkUseForShipping = Mage::getSingleton('core/session')->getData('use_for_ship
 <script type="text/javascript">
 countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?>
 </script>
-<div class="easycheout_main v-fix f-fix">
+<div class="easycheout_main v-fix f-fix MT10">
     <div class="easycheout_main_header">
-        <h1><?php echo Mage::helper('easycheckout')->getEasycheckoutTitle(); ?></h1>
-        <h2><?php echo Mage::helper('easycheckout')->getEasycheckoutContent() ?></h2>
+
         <?php if(!$this->isCustomerLoggedIn() && Mage::helper('easycheckout')->getEasycheckoutConfig('general/enable_login')): ?>
            
                     <?php echo $this->getChildHtml('osc-login'); ?>

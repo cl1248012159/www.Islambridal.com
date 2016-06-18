@@ -13,7 +13,7 @@
     <?php if(Mage::helper('easycheckout')->getEasycheckoutConfig('general/enable_comments')): ?>
        <div style="padding-bottom:10px;"><div class="easycheckout-comments-left"> <p class="easycheckout-agreement-p">
             <label for="comments"><?php echo Mage::helper('easycheckout')->getEasycheckoutConfig('general/label_comments'); ?></label><br />
-            <textarea cols="46" rows="6" name="easycheckout_comment" value="" title="<?php echo $this->__('Enter Special Comments'); ?>"  id="comments" ></textarea>
+            <textarea name="easycheckout_comment" value="" title="<?php echo $this->__('Enter Special Comments'); ?>"  id="comments" ></textarea>
         </p>
 		</div>
     <?php endif; ?>
