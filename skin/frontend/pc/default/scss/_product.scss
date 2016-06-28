@@ -51,6 +51,13 @@
                     margin: 0;
                     line-height: 30px;
                 }
+                .ratings .rating-box {
+                    margin-right: 5px;
+                    margin-top: 8px;
+                }
+                .ratings .rating-links{
+                    float: left;
+                }
                 .ask-a-question{
                     float: left;
 
@@ -98,6 +105,8 @@
             .new-product-options{
                 @include float_clear;
                 position: relative;
+                width:100%;
+                display:inline-block;
 
                 dl{
                     float: left;
@@ -207,6 +216,8 @@
 
             .new-product-options-bottom{
                 margin-top:15px;
+                width:100%;
+                display:inline-block;
                 .quty{
                     @include float_clear;
                     margin-bottom:10px;ß

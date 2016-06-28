@@ -9,7 +9,7 @@
             zoom: {
                 borderColor: '#888888',
                 borderWidth: 5,
-                scale: 0.4, //放大镜的比例
+                scale: 0.6, //放大镜的比例
                 opacity: 0.4
             }
         };

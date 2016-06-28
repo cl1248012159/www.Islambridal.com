@@ -182,7 +182,12 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
                 <div class="photos_title">User Photos</div>
                 <div class="home_review owl-carousel">
                     <?php foreach($_reviews_items as $review): ?>
-                        <a class="item" href="">
+                        <a class="item" href="<?php 
+                                                                echo Mage::getModel('catalog/product')
+                                                                ->setStoreId(Mage::app()->getStore()->getId())
+                                                                ->load($review->getEntityPkValue())
+                                                                ->getProductUrl();
+                                                                    ?>#review-form">
                             <?php if(  $review->getReviewimage1()  ):?>
                                 <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();?>);"></span>
                             <?php elseif(  $review->getReviewimage2()  ): ?>

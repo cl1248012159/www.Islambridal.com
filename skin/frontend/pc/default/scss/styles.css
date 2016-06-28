@@ -2751,6 +2751,8 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-shop .product-name h1 { text-transform: Capitalize; }
 .page .product-view .product-shop .commont { display: inline-block; width: 100%; line-height: 30px; margin-top: 10px; }
 .page .product-view .product-shop .commont .ratings, .page .product-view .product-shop .commont .no-rating { float: left; margin: 0; line-height: 30px; }
+.page .product-view .product-shop .commont .ratings .rating-box { margin-right: 5px; margin-top: 8px; }
+.page .product-view .product-shop .commont .ratings .rating-links { float: left; }
 .page .product-view .product-shop .commont .ask-a-question { float: left; }
 .page .product-view .product-shop .commont .ask-a-question a { font-family: cursive , Arial, Helvetica, sans-serif; font-size: 17px; font-weight: bold; margin-left: 30px; }
 .page .product-view .product-shop .product_price .old-price .price { color: #444; font-size: 12px; font-weight: normal; }
@@ -2759,7 +2761,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-shop .product_price .special-price .price:before { content: "Special Price: "; }
 .page .product-view .product-shop .short-description { display: inline-block; width: 100%; }
 .page .product-view .product-shop .short-description .product-options { margin: 0; }
-.page .product-view .product-shop .new-product-options { *zoom: 1; position: relative; }
+.page .product-view .product-shop .new-product-options { *zoom: 1; position: relative; width: 100%; display: inline-block; }
 .page .product-view .product-shop .new-product-options:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .page .product-view .product-shop .new-product-options dl { float: left; }
 .page .product-view .product-shop .new-product-options dl dt { color: #444; line-height: 15px; font-size: 14px; margin-top: 15px; }
@@ -2779,7 +2781,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-shop .new-product-options .compare li .title { width: 140px; }
 .page .product-view .product-shop .new-product-options .infomations2 { color: #f39; position: relative; height: 30px; line-height: 30px; max-width: 500px; }
 .page .product-view .product-shop .new-product-options .infomations2 .sizeimage { position: absolute; bottom: 0; right: -250px; background: url(../images/commont/imgsizes.png) no-repeat center center; width: 220px; height: 200px; }
-.page .product-view .product-shop .new-product-options-bottom { margin-top: 15px; }
+.page .product-view .product-shop .new-product-options-bottom { margin-top: 15px; width: 100%; display: inline-block; }
 .page .product-view .product-shop .new-product-options-bottom .quty { *zoom: 1; margin-bottom: 10px; }
 .page .product-view .product-shop .new-product-options-bottom .quty:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .page .product-view .product-shop .new-product-options-bottom .quty ß label { height: 25px; line-height: 25px; }
