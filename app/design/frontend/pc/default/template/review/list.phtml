@@ -1,0 +1,159 @@
+<?php $_items = $this->getReviewsCollection()->getItems();?>
+
+<div class="VIEW_GALLERY">
+
+    <div class="category_name_bottom">
+        <span>VIEW GALLERY</span>
+    </div>
+
+    <?php if (count($_items)):?>
+
+        <div class="review_list">
+        
+
+            
+            <?php foreach ($_items as $_review):?>
+
+                <div id="review_<?php echo $_review->getId();?>" data-product_url="<?php 
+                                                                echo Mage::getModel('catalog/product')
+                                                                ->setStoreId(Mage::app()->getStore()->getId())
+                                                                ->load($_review->getEntityPkValue())
+                                                                ->getProductUrl();
+                                                                    ?>">
+
+                    <div class="review_rating">
+                        <strong class="review_title"><?php echo $this->escapeHtml($_review->getTitle()) ?> </strong>
+                        <span>(By <?php echo $this->escapeHtml($_review->getNickname());?>, Posted on <?php echo $this->formatDate($_review->getCreatedAt());?>) </span>
+
+                        <?php $_votes = $_review->getRatingVotes(); ?>
+                        <?php if (count($_votes)): ?>
+                            <table class="ratings-table">
+                                <col width="1" />
+                                <col />
+                                <tbody>
+                                <?php foreach ($_votes as $_vote): ?>
+                                    <tr>
+                                        <th><?php echo $this->escapeHtml($_vote->getRatingCode()) ?></th>
+                                        <td>
+                                            <div class="rating-box">
+                                                <div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php endif; ?>  
+                    </div>
+
+                    <div class="reviewContent">
+                        <p class="content"><?php echo nl2br($this->escapeHtml($_review->getDetail())) ?></p>
+                        <div class="goods_comment_attach" data-review_id="<?php echo $_review->getId();?>">
+                            <?php if(Mage::helper("reviewimage")->getActive() == '1'):?>
+
+                                <?php if($_review->getReviewimage1()):?>
+                                    <span class="item" style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage1();?>);"></span>
+                                <?php endif;?>
+
+                                <?php if($_review->getReviewimage2()):?>
+                                    <span class="item" style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage2();?>);"></span>
+                                <?php endif;?>
+
+                                <?php if($_review->getReviewimage3()):?>
+                                    <span class="item" style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage3();?>);"></span>
+                                <?php endif;?>
+
+                                <?php if($_review->getReviewimage4()):?>
+                                    <span class="item" style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage4();?>);"></span>
+                                <?php endif;?>
+
+                                <?php if($_review->getReviewimage5()):?>
+                                    <span class="item" style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage5();?>);"></span>
+                                <?php endif;?>
+
+                            <?php endif;?>
+                        </div>
+                    </div>
+
+                </div>
+            <?php endforeach;?>
+        </div>
+
+        <?php echo $this->getChildHtml('toolbar') ?>
+        
+    <?php endif;?>
+
+    
+
+</div>
+
+    <script>
+        function toproduct(product_url){
+            jQuery('.review_detail_model').html('');
+            window.location.href = product_url+"#review-form"; 
+        }
+        jQuery(document).ready(function($){
+
+            function review_temp(review){
+                jQuery(".review_detail_model").html('');
+                var review_temp='';
+                
+                review_temp += '<div class="review_fixed">';
+                review_temp += '<div class="review_detail">';       
+                review_temp += '<div class="close_review">⊗</div>';            
+                review_temp += '<div class="review_detail_images">';            
+                review_temp += '<div class="review_images owl-carousel">';                
+                review_temp += review.images;                    
+                review_temp += '</div>';                
+                review_temp += '';
+                review_temp += '<div class="review_images_small">';                
+                review_temp += review.images; 
+                review_temp += '</div>';                
+                review_temp += '</div>';            
+                review_temp += '<div class="review_detail_content">';            
+                review_temp += '<div class="title">'+review.title+'</div>';                
+                review_temp += '<div class="content">'+review.content+'</div>';                
+                review_temp += '<div class="btn_to_review">';                
+                review_temp += '<input type="button" onclick="toproduct(\''+review.product_url+'\')" value="Write a review"/>';                    
+                review_temp += '</div>';                
+                review_temp += '</div>';            
+                review_temp += '</div>';        
+                review_temp += '</div>';
+
+                jQuery(".review_detail_model").html(review_temp);
+
+            }
+
+            $(".goods_comment_attach span").click(function(){
+                var review_id = $(this).parent().data('review_id');
+                var review = {
+                    'title':$("#review_"+review_id +" .review_rating .review_title").html(),
+                    'content':$("#review_"+review_id +" .reviewContent .content").html(),
+                    'images':$("#review_"+review_id +" .reviewContent .goods_comment_attach").html(),
+                    'product_url':$("#review_"+review_id).data('product_url')
+                }
+                review_temp(review);
+                $('.review_images').owlCarousel({
+                        loop:false,
+                        margin:0,
+                        nav:false,
+                        items: 1,
+                        dots: true,
+                        autoWidth:true,
+                        autoplay:false
+                });
+            });
+
+            
+
+            $(".review_detail_model").on('click','.close_review',function(){
+                $('.review_detail_model').html('');
+            });
+
+
+            
+
+        });
+    </script>
+    <div class="review_detail_model"></div>

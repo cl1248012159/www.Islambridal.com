@@ -1,20 +1,13 @@
 <footer>
     <div class="footer_contant">
         <div class="join_us">
-            <h2>Join our community</h2>
-            <ul>
-                <li class="mini-facebook"><a href=""></a></li>
-                <li class="mini-instagram"><a href=""></a></li>
-                <li class="mini-pinterest"><a href=""></a></li>
-                <li class="mini-youtube"><a href=""></a></li>
-                <li class="mini-twitter"><a href=""></a></li>
-                <li class="mini-tumbler"><a href=""></a></li>
-                <li class="mini-blog"><a href=""></a></li>
-                <li class="mini-vk"><a href=""></a></li>
-            </ul>
+            <?php echo Mage::getModel('core/variable')->loadByCode('Community_link')->getValue('html');?>
         </div>
         <div class="customer_help">
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_customer_help')->toHtml() ?>
+            <?php echo Mage::getModel('core/variable')->loadByCode('footer_customer_help_1')->getValue('html');?>
+            <?php echo Mage::getModel('core/variable')->loadByCode('footer_customer_help_2')->getValue('html');?>
+            <?php echo Mage::getModel('core/variable')->loadByCode('footer_customer_help_3')->getValue('html');?>
+            <?php echo Mage::getModel('core/variable')->loadByCode('footer_customer_help_4')->getValue('html');?>
         </div>
         <div class="payments">
             <span class="banks">visa, master card, maestro, carte blue</span>

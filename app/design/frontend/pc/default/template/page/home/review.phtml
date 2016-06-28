@@ -29,7 +29,7 @@
 <div class="MT10 home_review owl-carousel">
     
     <?php foreach($_items as $review): ?>
-        <a class="item" href="">
+        <a class="item" href="javascript:;">
             <?php if(  $review->getReviewimage1()  ):?>
                 <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();?>);"></span>
             <?php elseif(  $review->getReviewimage2()  ): ?>
@@ -40,17 +40,19 @@
                 <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4();?>);"></span>
             <?php elseif(  $review->getReviewimage5()  ): ?>
                 <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5();?>);"></span>
-            <?php endif;?> 
+            <?php endif;?>
         </a>
     <?php endforeach; ?>
 
 </div>
 <div class="review_btn">
-    <button class="up">
+
+    <button class="up" onclick="window.location.href='<?php echo $this->getUrl('upload-a-photo')?>'">
         <span></span>
         <span>UPLOAD A PHOTO</span>
     </button>
-    <button class="view">
+    
+    <button class="view" onclick="window.location.href='<?php echo $this->getUrl('customers-feedback-gallery')?>'">
         <span></span>
         <span>VIEW GALLERY</span>
     </button>
@@ -58,7 +60,7 @@
 <script>
     jQuery(document).ready(function(){
         jQuery('.home_review').each(function() {
-            if(jQuery('.item', this).length > 1) {
+            if(jQuery('.item', this).length > 0) {
                 jQuery(this).owlCarousel({
                     loop: true,
                     nav: true,

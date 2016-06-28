@@ -1,30 +1,3 @@
-<?php
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-/* @var $this Mage_Catalog_Block_Product_View_Options */
-?>
 
 <?php $_options = Mage::helper('core')->decorateArray($this->getOptions()) ?>
 <?php if (count($_options)):?>
@@ -185,9 +158,128 @@
     var opConfig = new Product.Options(<?php echo $this->getJsonConfig() ?>);
     //]]>
     </script>
+
+    
+
+    
+    
+
     <dl>
-    <?php foreach($_options as $_option): ?>
-        <?php echo $this->getOptionHtml($_option) ?>
-    <?php endforeach; ?>
+        <?php foreach($_options as $_option): ?>
+            <?php echo $this->getOptionHtml($_option) ?>
+        <?php endforeach; ?>
     </dl>
+
+    <div class="other-description" style="position: absolute;left: 200px;top: 0px;">
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('other-descript')->toHtml(); ?>
+    </div>
+
+
+
+    <div class="<?php if($this->htmlEscape($_option->getTitle()) == 'Enter Color Code') echo 'Color'; else echo 'Size';?> no-display" style="position: absolute;left: 220px;bottom: 20px;">
+        <img src="<?php echo $this->getSkinUrl('images/commont/measuring_guide_small.jpg');?>"/>
+    </div>
+
+
+
+
 <?php endif; ?>
+
+
+<script type="text/javascript">
+    jQuery("doucument").ready(function(){
+
+        var us_obj = {
+            'US2':{
+                'Bust':{'inch':33.5,'cm':85},
+                'Waist':{'inch':33.5,'cm':85},
+                'Hips':{'inch':33.5,'cm':85},
+                'Hollow to Floor <br> (Bare Foot)':{'inch':33.5,'cm':85}
+            },
+            'US4':{
+                'Bust':{'inch':33.5,'cm':85},
+                'Waist':{'inch':33.5,'cm':85},
+                'Hips':{'inch':33.5,'cm':85},
+                'Hollow to Floor <br> (Bare Foot)':{'inch':33.5,'cm':85}
+            },
+            'US6':{
+                'Bust':{'inch':33.5,'cm':85},
+                'Waist':{'inch':33.5,'cm':85},
+                'Hips':{'inch':33.5,'cm':85},
+                'Hollow to Floor <br> (Bare Foot)':{'inch':33.5,'cm':85}
+            }
+        };
+
+        jQuery('#color_A li').hover(function(){
+            jQuery('#cbla').empty().append(jQuerjQuery(this).html())   ;                       
+        })
+        jQuery('#color_B li').hover(function(){
+            jQuery('#cblb').empty().append(jQuery(this).html())   ;                       
+        })
+        jQuery('#color_C li').hover(function(){
+            jQuery('#cblc').empty().append(jQuery(this).html())   ;                       
+        })
+        jQuery('#color_D li').hover(function(){
+            jQuery('#cbld').empty().append(jQuery(this).html())   ;                       
+        })
+
+        jQuery(".product-custom-option").each(function(){
+            var id = jQuery(this).attr("id");
+
+            var maxIndex = jQuery("#"+id+" option:last").prop("index");
+            var id_arr = id.split('_');
+            var attribute = jQuery("#"+id_arr[1]).val();
+            var html = jQuery("."+attribute).html();
+
+            jQuery(this).change(function(){
+                var checkText = jQuery(this).find("option:selected").text();
+                var checkIndex=jQuery(this).get(0).selectedIndex;
+                if(checkIndex == maxIndex)
+                {
+                    if(jQuery(".insert_US")){
+                        jQuery(".insert_US").remove();
+                    }
+                    jQuery("."+attribute).show();
+                }
+                else
+                {
+                    jQuery("."+attribute).hide();
+
+                    if( jQuery(this).parent().data('title') == 'Size'){
+                        var us_value ;
+                        if( checkText.indexOf("+")>-1 ){
+                            us_value = checkText.substring( 0, checkText.indexOf("+") )
+                        }else{
+                            us_value = checkText;
+                        }
+                        us_value_key = jQuery.trim(us_value.replace(' ',''));
+                        jQuery(this).parent().append(us_template(us_value , us_obj[us_value_key] ));
+                    }
+                }
+            });
+        });
+
+        function us_template(us_value,us_obj){
+            if(jQuery(".insert_US")){
+                jQuery(".insert_US").remove();
+            }
+            var template = '<div class="insert_US">';
+                template += '<p class="infomation">Ddaydress of size <i class="num nomalnum"> '+us_value+' </i> will be made according to the</p>';
+                template += '<ul class="compare">';
+                jQuery.each(us_obj,function(n,value){
+                    template += '<li>';
+                    template += '<span class="title">'+n+'</span>';
+                    template += '<span class="value">='+value.inch+' inch ('+value.cm+'cm)</span>';
+                    template += '</li>';
+                });
+
+                template += '</ul>';
+                template += '<div class="infomations2">To fit heels,we\'ll add extra 8-13cm onto floor-length dresses.<div class="sizeimage"></div></div>'
+                template += '</div>';
+
+            return template;
+        }
+
+
+    });
+</script>

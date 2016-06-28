@@ -319,9 +319,14 @@
     font-size:16px;
 }
 .home_product{
+    @include float_clear;
     padding:10px;
     position:relative;
     width:100%;
+
+    &.owl-carousel{
+        overflow-y: hidden;
+    }
 
     &.owl-theme .owl-controls{
         margin:0;
@@ -352,7 +357,7 @@
 
     dl {
         float: left;
-        width: 180px;
+        width: 186px;
         height: 340px;
         background: #fff;
         padding-bottom: 5px;
@@ -504,7 +509,6 @@
     width: 100%;
     height:570px;
     overflow: hidden;
-    display: block;
 
     .item{
         width:100%;
@@ -541,5 +545,5 @@
     }
 }
 .std{
-    padding:10px;
+    padding:10px;width:100%;
 }

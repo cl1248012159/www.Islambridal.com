@@ -10,8 +10,6 @@
              src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(300,400) ;?>">
     </div>
 
-    <?php Mage::log($this->getGalleryImages())?>
-
 
     <?php if(  $GalleryImages = $this->getGalleryImages()  ):?>
 

@@ -1,89 +1,96 @@
-<?php 
-	$productid = Mage::registry('current_product')->getId();
-	$customer = Mage::getSingleton('customer/session')->getCustomer(); 
-	$sku =  Mage::registry('current_product')->getSku();
-	$customerid = '';
-	$email = '';
-	$name = '';
-	if($customer){
-		$customerid = $customer->getId();
-		$email = $customer->getEmail();
-		$name = $customer->getName();
-	}
-	$storeid =  Mage::app()->getStore()->getStoreId(); 
-	$questions = $this->getQuestions();
-	$types = array();
-	foreach($questions as $q){
-		$type = $q->getType();
-		if(!in_array($type,$types)){
-			$types[] = $type;
-		}
-	}
-	sort($types);
-?>
-<?php if(count($questions)>0):?>
-<div class="askquestion-list">
-	
-	<div class="questions-types"> 
-	<h4 class="qa">Q & A</h4>
-		<ul class="questions-tabs">
-			<?php foreach($types as $i=>$t):?>
-			<?php if($t==1):?>
-				<li class="<?php if(!$i){echo 'on';}?>">Product Description</li>
-			<?php elseif($t==2):?>
-				<li class="<?php if(!$i){echo 'on';}?>">Shipping or Payment</li>
-			<?php elseif($t==3):?>
-				<li class="<?php if(!$i){echo 'on';}?>">Processing Time Consultation</li>
-			<?php elseif($t==4):?>
-				<li class="<?php if(!$i){echo 'on';}?>">Others</li>
-			<?php endif;?>
-			<?php endforeach; ?>
-		</ul>
-		<div class="questions-panls">
-			<?php foreach($types as $j=>$type):?>
-			<?php 
-				$typequestions = $this->getQuestions($type);
-			?>
-			<?php if(count($typequestions)>0):?>
+<div class="box_shadow">
+    <div class="category_name_bottom">
+        <span>Q & A</span>
+    </div>
 
-			<div class="questions-panl <?php if(!$j){echo 'active' ;}?>">
-				<ul> 
-					<?php foreach($typequestions as $typyquestion): ?>
-					<li>
-						<h4><?php echo  'Q: '.$typyquestion->getTitle() ;?> 
-							<span><?php $time = $typyquestion->getCreatedAt();
-							echo Mage::helper('core')->formatDate($time,'medium',false); ?></span>
-						</h4>
-						<p><?php echo $typyquestion->getContent() ; ?></p>
-						<p><?php echo 'By '.$typyquestion->getName(); ?></p>
-						<?php if($typyquestion->getReply()):?>
-						<div class="questions-reply"> 
-						<div class="stroked-arrow"><em></em><i></i></div>
-							<div class="questions-reply-q"> 
-								<strong>A: </strong>
-							</div>
-							<div class="questions-reply-cntent"> 
-								<p class="reply"><?php echo $typyquestion->getReply(); ?></p>
-								<p>By <span><img src="http://www.wishesbridal.com/media/favicon/default/favicon.ico.jpeg" alt="" /></span> Wishesbridal</p>
-							</div>
-							<div class="right"> 
-								<?php $replytime = $typyquestion->getReplyAt();
-									echo Mage::helper('core')->formatDate($replytime,'medium',false);?>
-							
-							</div>
-						</div>
-						<?php endif; ?>
-					</li>
-					<?php endforeach;?>
-				</ul>
-			</div>
-			<?php endif; ?>
-			<?php endforeach;?>
-		</div>
-	</div>
-	<?php  ?>
-</div>
-<?php endif; ?>
+    <?php
+        $productid = Mage::registry('current_product')->getId();
+        $customer = Mage::getSingleton('customer/session')->getCustomer();
+        $sku =  Mage::registry('current_product')->getSku();
+        $customerid = '';
+        $email = '';
+        $name = '';
+        if($customer){
+            $customerid = $customer->getId();
+            $email = $customer->getEmail();
+            $name = $customer->getName();
+        }
+        $storeid =  Mage::app()->getStore()->getStoreId();
+        $questions = $this->getQuestions(0);
+        $types = array();
+        foreach($questions as $q){
+            $type = $q->getType();
+            if(!in_array($type,$types)){
+                $types[] = $type;
+            }
+        }
+        sort($types);
+    ?>
+    <?php if(count($questions)>0):?>
+    <div class="askquestion-list">
+
+        <div class="questions-types">
+            <ul class="questions-tabs">
+                <?php foreach($types as $i=>$t):?>
+                <?php if($t==1):?>
+                    <li class="<?php if(!$i){echo 'on';}?>">Product Description</li>
+                <?php elseif($t==2):?>
+                    <li class="<?php if(!$i){echo 'on';}?>">Shipping or Payment</li>
+                <?php elseif($t==3):?>
+                    <li class="<?php if(!$i){echo 'on';}?>">Processing Time Consultation</li>
+                <?php elseif($t==4):?>
+                    <li class="<?php if(!$i){echo 'on';}?>">Others</li>
+                <?php endif;?>
+                <?php endforeach; ?>
+            </ul>
+            <div class="questions-panls">
+                <?php foreach($types as $j=>$type):?>
+                <?php
+                    $typequestions = $this->getQuestions($type);
+                ?>
+                <?php if(count($typequestions)>0):?>
+
+                <div class="questions-panl <?php if(!$j){echo 'active' ;}?>">
+                    <ul>
+                        <?php foreach($typequestions as $typyquestion): ?>
+                        <li>
+                            <h4><?php echo  'Q: '.$typyquestion->getTitle() ;?>
+                                <span><?php $time = $typyquestion->getCreatedAt();
+                                echo Mage::helper('core')->formatDate($time,'medium',false); ?></span>
+                            </h4>
+                            <p><?php echo $typyquestion->getContent() ; ?></p>
+                            <p><?php echo 'By '.$typyquestion->getName(); ?></p>
+                            <?php if($typyquestion->getReply()):?>
+                            <div class="questions-reply">
+                            <div class="stroked-arrow"><em></em><i></i></div>
+                                <div class="questions-reply-q">
+                                    <strong>A: </strong>
+                                </div>
+                                <div class="questions-reply-cntent">
+                                    <p class="reply"><?php echo $typyquestion->getReply(); ?></p>
+                                    <p>By  <?php echo Mage::getModel('core/variable')->loadByCode('admin_name')->getValue('text');?></p>
+                                </div>
+                                <div class="right">
+                                    <?php $replytime = $typyquestion->getReplyAt();
+                                        echo Mage::helper('core')->formatDate($replytime,'medium',false);?>
+
+                                </div>
+                            </div>
+                            <?php endif; ?>
+                        </li>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
+                <?php endif; ?>
+                <?php endforeach;?>
+            </div>
+        </div>
+        <?php  ?>
+    </div>
+    <?php endif; ?>
+
+
+
 <a name="askaquestion" id="askaquestion" ></a>
 <script type="text/javascript"> 
 	//<![CDATA[
@@ -104,10 +111,10 @@
 	});
 	//]]>
 </script>
-<div class="ask-questions">
+<div class="form_product ask-questions">
 	<h4 >Ask For Questions</h4>
 </div>
-<div class="category-product-view-askquestion" style=""> 
+<div class="category-product-view-askquestion" style="<?php if(count($questions)>0){echo 'display:none;';}?>">
 	
 	<form id="product-askquestion" action="<?php echo $this->getUrl().'index.php/askquestions/index/add' ?>"  method="post" enctype="multipart/form-data">
 		<input type="hidden" name="productid" value="<?php echo $productid; ?>" />
@@ -115,7 +122,7 @@
 		<input type="hidden" name="customerid" value="<?php echo $customerid; ?>" />
 		<input type="hidden" name="storeid" value="<?php echo $storeid; ?>" />
 		<?php echo $this->getBlockHtml('formkey') ?>
-		<ul> 
+		<ul class="input_form">
 			<li>
 				<label for="askquestionname">Your Name:</label>
 				<input class="input-text required-entry" type="text" id="askquestionname" name="askquestionname" value="<?php echo $name;?>" />
@@ -174,3 +181,6 @@
   
 //]]>
 </script>
+
+
+</div>

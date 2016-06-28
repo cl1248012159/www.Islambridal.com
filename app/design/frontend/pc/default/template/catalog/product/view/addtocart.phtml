@@ -1,38 +1,62 @@
-<?php
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-?>
+<script>
+    function showMessageDiv(){
+        var li_list = '';
+        jQuery(".new-product-options dl .input-box .required-entry").each(function(){
+            if(!jQuery(this).val()){
+                li_list += '<li><em>♦</em>'+jQuery(this).parent().data('title')+'</li>';
+            }
+        });
+        if(li_list){
+            var show_content = '';
+            show_content += '<div class="va_box">';
+            show_content += '<div class="to">⟩</div>';
+            show_content += '<div class="va_title">Please Select</div>';
+            show_content += '<ul class="va_list">';
+            show_content += li_list;
+            show_content += '</ul>';
+            show_content += '</div>';
+            jQuery(".validation-message").html(show_content);
+        }
+    }
+    function hideMessageDivs(){
+        jQuery(".validation-message").html('');
+    }
+</script>
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
+
 <?php if($_product->isSaleable()): ?>
+
     <div class="add-to-cart">
+
+
         <?php if(!$_product->isGrouped()): ?>
-        <label for="qty"><?php echo $this->__('Qty:') ?></label>
-        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" />
+            <div class="quty">
+                <label for="qty"><?php echo $this->__('Qty:') ?></label>
+                <select name="qty" id="qty" class="qty">
+                    <?php for($i=1;$i<61;$i++){?>
+                        <option value="<?php echo $i; ?>" <?php if( ($this->getProductDefaultQty() * 1) == $i){echo 'selected';}  ?> ><?php echo $i; ?></option>
+                    <?php }?>
+                </select>
+            </div>
         <?php endif; ?>
-        <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
-        <?php echo $this->getChildHtml('', true, true) ?>
+
+
+
+        <div class="btns">
+            <div class="validation-message"></div>
+            <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart"
+                    onmouseout="hideMessageDivs()"
+                    onmouseover="showMessageDiv()"
+                    onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+            <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+                <a class="wishlist" href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><span>&hearts;</span></a>
+            <?php endif; ?>
+        </div>
+
     </div>
+
+
+
 <?php endif; ?>

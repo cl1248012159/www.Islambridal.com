@@ -1,186 +1,146 @@
-<?php
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-?>
-
+<a name="review-form" id="review-form"></a>
 <?php $_items = $this->getReviewsCollection()->getItems();?>
-<div class="box-collateral box-reviews" id="customer-reviews">
+
+<div class="box_shadow">
+
+    <div class="category_name_bottom">
+        <span>Product's Review</span>
+    </div>
+
     <?php if (count($_items)):?>
-        <h2><?php echo $this->__('Customer Reviews') ?></h2>
-        <?php echo $this->getChildHtml('toolbar') ?>
-        <dl>
-        <?php foreach ($_items as $_review):?>
+
+        <div class="review_list">
+            <?php foreach ($_items as $_review):?>
+                <div id="review_<?php echo $_review->getId();?>" >
+
+                    <div class="review_rating">
+                        <strong class="review_title"><?php echo $this->escapeHtml($_review->getTitle()) ?> </strong>
+                        <span>(By <?php echo $this->escapeHtml($_review->getNickname());?>, Posted on <?php echo $this->formatDate($_review->getCreatedAt());?>) </span>
+
+                        <?php $_votes = $_review->getRatingVotes(); ?>
+                        <?php if (count($_votes)): ?>
+                            <table class="ratings-table">
+                                <col width="1" />
+                                <col />
+                                <tbody>
+                                <?php foreach ($_votes as $_vote): ?>
+                                    <tr>
+                                        <th><?php echo $this->escapeHtml($_vote->getRatingCode()) ?></th>
+                                        <td>
+                                            <div class="rating-box">
+                                                <div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php endif; ?>  
+                    </div>
+
+                    <div class="reviewContent">
+                        <p class="content"><?php echo nl2br($this->escapeHtml($_review->getDetail())) ?></p>
+                        <div class="goods_comment_attach" data-review_id="<?php echo $_review->getId();?>">
+                            <?php if(Mage::helper("reviewimage")->getActive() == '1'):?>
+
+                                <?php if($_review->getReviewimage1()):?>
+                                    <span class="item" style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage1();?>);"></span>
+                                <?php endif;?>
+
+                                <?php if($_review->getReviewimage2()):?>
+                                    <span class="item" style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage2();?>);"></span>
+                                <?php endif;?>
+
+                                <?php if($_review->getReviewimage3()):?>
+                                    <span class="item" style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage3();?>);"></span>
+                                <?php endif;?>
+
+                                <?php if($_review->getReviewimage4()):?>
+                                    <span class="item" style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage4();?>);"></span>
+                                <?php endif;?>
+
+                                <?php if($_review->getReviewimage5()):?>
+                                    <span class="item" style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage5();?>);"></span>
+                                <?php endif;?>
+
+                            <?php endif;?>
+                        </div>
+                    </div>
+
+                </div>
+            <?php endforeach;?>
+        </div>
+        
+    <?php endif;?>
+
+    <?php echo $this->getChildHtml('review_form') ?>
+
+</div>
+
+    <script>
+        jQuery(document).ready(function($){
+
+            function review_temp(review){
+                jQuery(".review_detail_model").html('');
+                var review_temp='';
+                
+                review_temp += '<div class="review_fixed">';
+                review_temp += '<div class="review_detail">';       
+                review_temp += '<div class="close_review">⊗</div>';            
+                review_temp += '<div class="review_detail_images">';            
+                review_temp += '<div class="review_images owl-carousel">';                
+                review_temp += review.images;                    
+                review_temp += '</div>';                
+                review_temp += '';
+                review_temp += '<div class="review_images_small">';                
+                review_temp += review.images; 
+                review_temp += '</div>';                
+                review_temp += '</div>';            
+                review_temp += '<div class="review_detail_content">';            
+                review_temp += '<div class="title">'+review.title+'</div>';                
+                review_temp += '<div class="content">'+review.content+'</div>';                
+                review_temp += '<div class="btn_to_review">';                
+                review_temp += '<input type="button" value="Write a review"/>';                    
+                review_temp += '</div>';                
+                review_temp += '</div>';            
+                review_temp += '</div>';        
+                review_temp += '</div>';
+
+                jQuery(".review_detail_model").html(review_temp);
+
+            }
+
+            $(".goods_comment_attach span").click(function(){
+                var review_id = $(this).parent().data('review_id');
+                var review = {
+                    'title':$("#review_"+review_id +" .review_rating .review_title").html(),
+                    'content':$("#review_"+review_id +" .reviewContent .content").html(),
+                    'images':$("#review_"+review_id +" .reviewContent .goods_comment_attach").html()
+                }
+                review_temp(review);
+                $('.review_images').owlCarousel({
+                        loop:false,
+                        margin:0,
+                        nav:false,
+                        items: 1,
+                        dots: true,
+                        autoWidth:true,
+                        autoplay:false
+                });
+            });
 
             
-            <dt>
-                <a href="<?php echo $this->getReviewUrl($_review->getId()) ?>"><?php echo $this->escapeHtml($_review->getTitle()) ?></a> <?php echo $this->__('Review by <span>%s</span>', $this->escapeHtml($_review->getNickname())) ?>
-            </dt>
 
+            $(".review_detail_model").on('click','.close_review',function(){
+                $('.review_detail_model').html('');
+            });
 
-             <?php if(Mage::helper("reviewimage")->getActive() == '1'):?>
-                <?php if($_review->getReviewimage1()):?>
-                    <?php
-                    $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage1();
-                    $imageName = $_review->getReviewimage1();
-                    $imageResized = Mage::getBaseDir('media').DS."creviewimages".DS.$imageName;
-                    $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imageUrl,'/media'));
-                    if (!file_exists($imageResized)&&file_exists($dirImg)) :
-                        $imageObj = new Varien_Image($dirImg);
-                        $imageObj->constrainOnly(TRUE);
-                        $imageObj->keepAspectRatio(TRUE);
-                        $imageObj->keepFrame(FALSE);
-                        $Resolution = Mage::helper("reviewimage")->getResolution();
-                        $imageObj->resize($Resolution);
-                        $imageObj->save($imageResized);
-                    endif;
-                    $newImageUrl = Mage::getBaseUrl('media')."creviewimages/".$imageName;
-                    ?>
-                    <dt style="margin:5px 5px;"><image  src="<?php echo $newImageUrl;?>"/></dt>
-                <?php endif;?>
-            <?php endif;?>
+            $(".review_detail_model").on('click','.btn_to_review input',function(){
+                $('.review_detail_model').html('');
+                location.hash="#review-form"; 
+            });
 
-
-            <?php if(Mage::helper("reviewimage")->getActive() == '1'):?>
-                <?php if($_review->getReviewimage2()):?>
-                    <?php
-                    $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage2();
-                    $imageName = $_review->getReviewimage2();
-                    $imageResized = Mage::getBaseDir('media').DS."creviewimages".DS.$imageName;
-                    $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imageUrl,'/media'));
-                    if (!file_exists($imageResized)&&file_exists($dirImg)) :
-                        $imageObj = new Varien_Image($dirImg);
-                        $imageObj->constrainOnly(TRUE);
-                        $imageObj->keepAspectRatio(TRUE);
-                        $imageObj->keepFrame(FALSE);
-                        $Resolution = Mage::helper("reviewimage")->getResolution();
-                        $imageObj->resize($Resolution);
-                        $imageObj->save($imageResized);
-                    endif;
-                    $newImageUrl = Mage::getBaseUrl('media')."creviewimages/".$imageName;
-                    ?>
-                    <dt style="margin:5px 5px;"><image  src="<?php echo $newImageUrl;?>"/></dt>
-                <?php endif;?>
-            <?php endif;?>
-
-
-            <?php if(Mage::helper("reviewimage")->getActive() == '1'):?>
-                <?php if($_review->getReviewimage3()):?>
-                    <?php
-                    $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage3();
-                    $imageName = $_review->getReviewimage3();
-                    $imageResized = Mage::getBaseDir('media').DS."creviewimages".DS.$imageName;
-                    $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imageUrl,'/media'));
-                    if (!file_exists($imageResized)&&file_exists($dirImg)) :
-                        $imageObj = new Varien_Image($dirImg);
-                        $imageObj->constrainOnly(TRUE);
-                        $imageObj->keepAspectRatio(TRUE);
-                        $imageObj->keepFrame(FALSE);
-                        $Resolution = Mage::helper("reviewimage")->getResolution();
-                        $imageObj->resize($Resolution);
-                        $imageObj->save($imageResized);
-                    endif;
-                    $newImageUrl = Mage::getBaseUrl('media')."creviewimages/".$imageName;
-                    ?>
-                    <dt style="margin:5px 5px;"><image  src="<?php echo $newImageUrl;?>"/></dt>
-                <?php endif;?>
-            <?php endif;?>
-
-
-            <?php if(Mage::helper("reviewimage")->getActive() == '1'):?>
-                <?php if($_review->getReviewimage4()):?>
-                    <?php
-                    $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage4();
-                    $imageName = $_review->getReviewimage4();
-                    $imageResized = Mage::getBaseDir('media').DS."creviewimages".DS.$imageName;
-                    $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imageUrl,'/media'));
-                    if (!file_exists($imageResized)&&file_exists($dirImg)) :
-                        $imageObj = new Varien_Image($dirImg);
-                        $imageObj->constrainOnly(TRUE);
-                        $imageObj->keepAspectRatio(TRUE);
-                        $imageObj->keepFrame(FALSE);
-                        $Resolution = Mage::helper("reviewimage")->getResolution();
-                        $imageObj->resize($Resolution);
-                        $imageObj->save($imageResized);
-                    endif;
-                    $newImageUrl = Mage::getBaseUrl('media')."creviewimages/".$imageName;
-                    ?>
-                    <dt style="margin:5px 5px;"><image  src="<?php echo $newImageUrl;?>"/></dt>
-                <?php endif;?>
-            <?php endif;?>
-
-            <?php if(Mage::helper("reviewimage")->getActive() == '1'):?>
-                <?php if($_review->getReviewimage5()):?>
-                    <?php
-                    $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$_review->getReviewimage5();
-                    $imageName = $_review->getReviewimage5();
-                    $imageResized = Mage::getBaseDir('media').DS."creviewimages".DS.$imageName;
-                    $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imageUrl,'/media'));
-                    if (!file_exists($imageResized)&&file_exists($dirImg)) :
-                        $imageObj = new Varien_Image($dirImg);
-                        $imageObj->constrainOnly(TRUE);
-                        $imageObj->keepAspectRatio(TRUE);
-                        $imageObj->keepFrame(FALSE);
-                        $Resolution = Mage::helper("reviewimage")->getResolution();
-                        $imageObj->resize($Resolution);
-                        $imageObj->save($imageResized);
-                    endif;
-                    $newImageUrl = Mage::getBaseUrl('media')."creviewimages/".$imageName;
-                    ?>
-                    <dt style="margin:5px 5px;"><image  src="<?php echo $newImageUrl;?>"/></dt>
-                <?php endif;?>
-            <?php endif;?>
-
-
-
-            <dd>
-                <?php $_votes = $_review->getRatingVotes(); ?>
-                <?php if (count($_votes)): ?>
-                <table class="ratings-table">
-                    <col width="1" />
-                    <col />
-                    <tbody>
-                        <?php foreach ($_votes as $_vote): ?>
-                        <tr>
-                            <th><?php echo $this->escapeHtml($_vote->getRatingCode()) ?></th>
-                            <td>
-                                <div class="rating-box">
-                                    <div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
-                                </div>
-                            </td>
-                            
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-                <?php endif; ?>
-                <?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
-                <small class="date"><?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?></small>
-            </dd>
-        <?php endforeach; ?>
-        </dl>
-        <?php echo $this->getChildHtml('toolbar') ?>
-    <?php endif;?>
-    <?php echo $this->getChildHtml('review_form') ?>
-</div>
+        });
+    </script>
+    <div class="review_detail_model"></div>

@@ -29,11 +29,19 @@
                 </script>
             </div>
             <div class="top_nav">
-                <?php $links = Mage::getModel('ibanners/group')->loadByCode('top_right_link')->getBannerCollection();?>
-                <?php foreach($links as $link):?>
-                    <?php echo $link->getHtml();?>
-                <?php endforeach;?>
-                </ul>
+                <?php if(Mage::getSingleton('customer/session')->isLoggedIn()):?>
+                    <a href="<?php echo $this->getUrl('customer/account')?>">My Account</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="<?php echo $this->getUrl('customer/account/logout')?>">Log Out</a>
+                <?php else:?>
+                    <a href="<?php echo $this->getUrl('customer/account')?>">Join Free</a>
+                    or
+                    <a href="<?php echo $this->getUrl('customer/account')?>">Log in</a>
+                <?php endif;?>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="<?php echo $this->getUrl('help')?>">Help</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="<?php echo $this->getUrl('customer_service')?>">Customer Service</a>
             </div>
         </div>
         <div class="header_content">
@@ -42,9 +50,15 @@
             </div>
             <div class="header_logo">
                 <?php if ($this->getIsHomePage()):?>
-                    <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                    <h1 class="logo">
+                        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+                            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                        </a>
+                    </h1>
                 <?php else:?>
-                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+                        <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                    </a>
                 <?php endif?>
             </div>
             <div class="header_cart">

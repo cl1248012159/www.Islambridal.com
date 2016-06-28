@@ -4,7 +4,7 @@
         <span>Recently Viewed</span>
     </div>
 
-    <div class="home_product owl-carousel">
+    <div class="home_product recenty_viewed owl-carousel">
 
          <?php foreach($_products as $_product):?>
 
@@ -33,8 +33,8 @@
 
         <script>
             jQuery(document).ready(function(){
-                jQuery('.home_product').each(function() {
-                    if(jQuery('.item', this).length > 1) {
+                jQuery('.recenty_viewed').each(function() {
+                    if(jQuery('.item', this).length > 0) {
                         jQuery(this).owlCarousel({
                             loop: true,
                             nav: true,

@@ -42,12 +42,13 @@ class Kush_Reviewimage_ProductController extends Mage_Review_ProductController
      */
     public function postAction()
     {
+
         if (!$this->_validateFormKey()) {
             // returns to the product item page
             $this->_redirectReferer();
             return;
         }
-    if ($data = Mage::getSingleton('review/session')->getFormData(true)) {
+        if ($data = Mage::getSingleton('review/session')->getFormData(true)) {
             $rating = array();
             if (isset($data['ratings']) && is_array($data['ratings'])) {
                 $rating = $data['ratings'];
@@ -63,7 +64,7 @@ class Kush_Reviewimage_ProductController extends Mage_Review_ProductController
 	           		$uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
 					$uploader->setAllowRenameFiles(false);
 					$uploader->setFilesDispersion(false);
-					$path = Mage::getBaseDir('media').DS.reviewimages.DS;
+					$path = Mage::getBaseDir('media').DS.'reviewimages'.DS;
 					$uploader->save($path, $_FILES['reviewimage1']['name'] );
 					
 				} catch (Exception $e) {
@@ -77,7 +78,7 @@ class Kush_Reviewimage_ProductController extends Mage_Review_ProductController
                     $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
                     $uploader->setAllowRenameFiles(false);
                     $uploader->setFilesDispersion(false);
-                    $path = Mage::getBaseDir('media').DS.reviewimages.DS;
+                    $path = Mage::getBaseDir('media').DS.'reviewimages'.DS;
                     $uploader->save($path, $_FILES['reviewimage2']['name'] );
                     
                 } catch (Exception $e) {
@@ -91,7 +92,7 @@ class Kush_Reviewimage_ProductController extends Mage_Review_ProductController
                     $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
                     $uploader->setAllowRenameFiles(false);
                     $uploader->setFilesDispersion(false);
-                    $path = Mage::getBaseDir('media').DS.reviewimages.DS;
+                    $path = Mage::getBaseDir('media').DS.'reviewimages'.DS;
                     $uploader->save($path, $_FILES['reviewimage3']['name'] );
                     
                 } catch (Exception $e) {
@@ -105,7 +106,7 @@ class Kush_Reviewimage_ProductController extends Mage_Review_ProductController
                     $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
                     $uploader->setAllowRenameFiles(false);
                     $uploader->setFilesDispersion(false);
-                    $path = Mage::getBaseDir('media').DS.reviewimages.DS;
+                    $path = Mage::getBaseDir('media').DS.'reviewimages'.DS;
                     $uploader->save($path, $_FILES['reviewimage4']['name'] );
                     
                 } catch (Exception $e) {
@@ -119,7 +120,7 @@ class Kush_Reviewimage_ProductController extends Mage_Review_ProductController
                     $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
                     $uploader->setAllowRenameFiles(false);
                     $uploader->setFilesDispersion(false);
-                    $path = Mage::getBaseDir('media').DS.reviewimages.DS;
+                    $path = Mage::getBaseDir('media').DS.'reviewimages'.DS;
                     $uploader->save($path, $_FILES['reviewimage5']['name'] );
                     
                 } catch (Exception $e) {
@@ -132,14 +133,15 @@ class Kush_Reviewimage_ProductController extends Mage_Review_ProductController
 
 
 
+        $productku = $this->getRequest()->getParam('sku', false);
+        $productId = Mage::getModel('catalog/product')->getIdBySku($productku);
+        $this->getRequest()->setParam('id', $productId);
 
 
 
 
 
 
-                        
-    
         if (($product = $this->_initProduct()) && !empty($data)) {
             $session    = Mage::getSingleton('core/session');
             /* @var $session Mage_Core_Model_Session */

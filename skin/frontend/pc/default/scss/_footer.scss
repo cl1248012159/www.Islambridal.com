@@ -22,49 +22,49 @@
 
     li{
         float: left;
-        width: 60px;
-        background-image: url(../images/home-footer.png);
-        background-repeat: no-repeat;
-        margin-left: 6%;
+        width: 12.5%;
+        text-align: center;
 
         a{
             padding-left: 0;
-            display: block;
+            display: inline-block;
             text-decoration: none;
             border: 0;
             width: 60px;
             height: 60px;
+            background-image: url(../images/home-footer.png);
+            background-repeat: no-repeat;
         }
 
-        &.mini-facebook{
+        &.mini-facebook a{
             background-position: -152px -557px;
         }
 
-        &.mini-instagram{
+        &.mini-instagram a{
             background-position: -284px -427px;
         }
 
-        &.mini-pinterest{
+        &.mini-pinterest a{
             background-position: -377px -329px;
         }
 
-        &.mini-youtube{
+        &.mini-youtube a{
             background-position: -707px -5px;
         }
 
-        &.mini-twitter{
+        &.mini-twitter a{
             background-position: -577px -135px;
         }
 
-        &.mini-tumbler{
+        &.mini-tumbler a {
             background-position: -512px -200px;
         }
 
-        &.mini-blog{
+        &.mini-blog a{
             background-position: -52px -657px;
         }
 
-        &.mini-vk{
+        &.mini-vk a{
             background-position: -642px -70px;
         }
     }

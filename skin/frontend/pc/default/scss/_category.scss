@@ -57,6 +57,7 @@
 
         .share{
             float:right;
+            line-height: 30px;
 
             &>span{
                 float: left;
@@ -75,6 +76,27 @@
         font: normal 18px/31px Helvetica,Arial;
         border-bottom: 2px solid #666;
         height: 31px;
+
+        .countdow{
+            float: right;
+            &>div>*{
+                float: left;
+            }
+            span.PositionAbsolute{
+                span{
+                    display: inline-block;
+                    width: 22px;
+                    height: 19px;
+                    background-image:url(../images/commont/countdown.gif);
+                    background-repeat:no-repeat;
+                    color:#fff;
+                    font-size:15px;
+                    line-height: 19px;
+                    text-align: center;
+                    margin-right: 1px;
+                }
+            }
+        }
     }
 
 
@@ -224,6 +246,9 @@
                     margin: 3px;
                     border: 2px solid #e9e9e9;
                     border-radius:3px;
+                    &:hover{
+                        border: 2px solid #f39;
+                    }
                 }
                 
                 .product-image{
@@ -236,11 +261,11 @@
                 }
 
                 .product-name{
-                    padding:0 10px;
-                    line-height: 13px;
+                    padding:0 10px !important;
+                    line-height: 13px !important;
                     height: 26px;
                     overflow: hidden;
-                    font-size: 11px;
+                    font-size: 11px !important;
                     word-wrap: break-word;
                     text-overflow: ellipsis;
                     display: -webkit-box;
@@ -250,7 +275,13 @@
                     a{
                         color: #666;
                         font-weight: normal;
+                        &:hover{
+                            color:#f39;
+                        }
                     }
+                }
+                .ratings{
+                    padding:0 10px;
                 }
 
                 .price-box{

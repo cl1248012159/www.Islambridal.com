@@ -4,6 +4,7 @@
 
 .wrapper{
     position: relative;
+    // background: rgba(0, 0, 0, 0.1);
 }
 .top_bg{
     position: absolute;
@@ -17,8 +18,14 @@
 }
 .page{
     max-width: $style_width; 
+    min-width:900px;
     margin: 0 auto;
-    
+    box-shadow: 0px 0px 10px #eeeeee;
+}
+@media only screen and (max-width: $style_width){
+  .page{
+        padding:0 10px;
+    }
 }
 
 .M5{margin:5px;}
@@ -65,9 +72,3 @@
 @import "_one_step_checkout.scss";
 
 
-header
-//, .col-main
-  ,footer
-{
-    //opacity: 0.02;
-}

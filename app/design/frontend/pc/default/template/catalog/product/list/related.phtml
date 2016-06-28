@@ -1,69 +1,57 @@
-Related Products:
-<?php if($this->getItems()->getSize()): ?>
-<div class="block block-related">
-    <div class="block-title">
-        <strong><span><?php echo $this->__('Related Products') ?></span></strong>
-    </div>
-    <div class="block-content">
-        <p class="block-subtitle"><?php echo $this->__('Check items to add to the cart or') ?>&nbsp;<a href="#" onclick="selectAllRelated(this); return false;"><?php echo $this->__('select all') ?></a></p>
-        <ol class="mini-products-list" id="block-related">
-        <?php foreach($this->getItems() as $_item): ?>
-            <li class="item">
-                <?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
-                    <?php if (!$_item->getRequiredOptions()): ?>
-                        <input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
-                    <?php endif; ?>
+<?php
+$categoryId = (int) $this->getRequest()->getParam('category', false);
+$category = Mage::getModel('catalog/category')
+                ->setStoreId(Mage::app()->getStore()->getId())
+                ->load($categoryId);
+if($category->getLevel() > 2){
+    $category = $category->getParentCategory();
+}
+
+$productCollection = $category
+                        ->getProductCollection()
+                        ->addAttributeToSelect('*')
+                        ->addAttributeToFilter('status', 1)
+                        ->addAttributeToFilter('visibility', 4);
+foreach ($productCollection as $product) {
+    $result[] = $product->getId();
+}
+if(count($result) > 5){
+    $ourneed_key = array_rand($result,6);
+}else{
+    $ourneed_key = array_keys($result);
+}
+foreach($ourneed_key as $k){
+    $ourneed[] = $result[$k];
+}
+?>
+<?php if( count($ourneed) >0 ): ?>
+    <div class="box_shadow parent_cat_related">
+        <div class="category_name_bottom">
+            <span>CUSTOMERS WHO BOUGHT THIS ITEM ALSO LIKE</span>
+        </div>
+        <div class="home_product">
+            <?php foreach($productCollection as $_product):?>
+                <?php if( in_array($_product->getId(),$ourneed) ):?>
+                    <dl class="item">
+                        <dt>
+                            <a href="<?php echo $_product->getProductUrl() ?>">
+                                <img width="180" height="240" alt="<?php echo $_product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(240,320); ?>">
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName()?>">
+                                    <?php echo $_product->getName()?>
+                                </a>
+                            </p>
+                            <div class="home_price">
+                                <span><?php echo Mage::app()->getStore()->getCurrentCurrency()->getCode();?></span>
+                                <?php echo $this->getPriceHtml($_product, true) ?>
+                            </div>
+                        </dd>
+                    </dl>
                 <?php endif; ?>
-                <div class="product">
-                    <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(50) ?>" width="50" height="50" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
-                    <div class="product-details">
-                        <p class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></p>
-                        <?php echo $this->getPriceHtml($_item, true, '-related') ?>
-                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                            <a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </li>
-        <?php endforeach ?>
-        </ol>
-        <script type="text/javascript">decorateList('block-related', 'none-recursive')</script>
+            <?php endforeach; ?>
+        </div>
     </div>
-    <script type="text/javascript">
-    //<![CDATA[
-    $$('.related-checkbox').each(function(elem){
-        Event.observe(elem, 'click', addRelatedToProduct)
-    });
-
-    var relatedProductsCheckFlag = false;
-    function selectAllRelated(txt){
-        if (relatedProductsCheckFlag == false) {
-            $$('.related-checkbox').each(function(elem){
-                elem.checked = true;
-            });
-            relatedProductsCheckFlag = true;
-            txt.innerHTML="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('unselect all')) ?>";
-        } else {
-            $$('.related-checkbox').each(function(elem){
-                elem.checked = false;
-            });
-            relatedProductsCheckFlag = false;
-            txt.innerHTML="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('select all')) ?>";
-        }
-        addRelatedToProduct();
-    }
-
-    function addRelatedToProduct(){
-        var checkboxes = $$('.related-checkbox');
-        var values = [];
-        for(var i=0;i<checkboxes.length;i++){
-            if(checkboxes[i].checked) values.push(checkboxes[i].value);
-        }
-        if($('related-products-field')){
-            $('related-products-field').value = values.join(',');
-        }
-    }
-    //]]>
-    </script>
-</div>
 <?php endif ?>
