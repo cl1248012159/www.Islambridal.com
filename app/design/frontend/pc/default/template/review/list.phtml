@@ -1,3 +1,8 @@
+<!-- <style>-->
+<!--    .std{-->
+<!--        display: none;-->
+<!--    }-->
+<!--</style>-->
 <?php $_items = $this->getReviewsCollection()->getItems();?>
 
 <div class="VIEW_GALLERY">
@@ -20,35 +25,8 @@
                                                                 ->load($_review->getEntityPkValue())
                                                                 ->getProductUrl();
                                                                     ?>">
-
-                    <div class="review_rating">
-                        <strong class="review_title"><?php echo $this->escapeHtml($_review->getTitle()) ?> </strong>
-                        <span>(By <?php echo $this->escapeHtml($_review->getNickname());?>, Posted on <?php echo $this->formatDate($_review->getCreatedAt());?>) </span>
-
-                        <?php $_votes = $_review->getRatingVotes(); ?>
-                        <?php if (count($_votes)): ?>
-                            <table class="ratings-table">
-                                <col width="1" />
-                                <col />
-                                <tbody>
-                                <?php foreach ($_votes as $_vote): ?>
-                                    <tr>
-                                        <th><?php echo $this->escapeHtml($_vote->getRatingCode()) ?></th>
-                                        <td>
-                                            <div class="rating-box">
-                                                <div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
-                                            </div>
-                                        </td>
-
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        <?php endif; ?>  
-                    </div>
-
                     <div class="reviewContent">
-                        <p class="content"><?php echo nl2br($this->escapeHtml($_review->getDetail())) ?></p>
+                        
                         <div class="goods_comment_attach" data-review_id="<?php echo $_review->getId();?>">
                             <?php if(Mage::helper("reviewimage")->getActive() == '1'):?>
 
@@ -74,6 +52,34 @@
 
                             <?php endif;?>
                         </div>
+                        <p class="content"><?php echo nl2br($this->escapeHtml($_review->getDetail())) ?></p>
+                    </div>
+
+                    <div class="review_rating">
+
+                        <?php $_votes = $_review->getRatingVotes(); ?>
+                        <?php if (count($_votes)): ?>
+                            <table class="ratings-table">
+                                <col width="1" />
+                                <col />
+                                <tbody>
+                                <?php foreach ($_votes as $_vote): ?>
+                                    <tr>
+                                        <th><?php echo $this->escapeHtml($_vote->getRatingCode()) ?></th>
+                                        <td>
+                                            <div class="rating-box">
+                                                <div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php endif; ?> 
+                        <strong class="review_title"><?php echo $this->escapeHtml($_review->getTitle()) ?> </strong>
+                        <span>By <?php echo $this->escapeHtml($_review->getNickname());?>, Posted on <?php echo $this->formatDate($_review->getCreatedAt());?> </span>
+
                     </div>
 
                 </div>

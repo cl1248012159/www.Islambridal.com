@@ -38,6 +38,7 @@ class My_Askquestions_Block_Viewgallery extends Mage_Core_Block_Template
         parent::_prepareLayout();
 
         $toolbar = $this->getLayout()->createBlock('page/html_pager', 'customer_review_list.toolbar')
+            ->setLimit(36)
             ->setCollection($this->getReviewsCollection());
 
         $this->setChild('toolbar', $toolbar);
