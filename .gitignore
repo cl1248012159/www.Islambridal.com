@@ -7,3 +7,4 @@ downloader/
 .idea/
 .idea/*
 media/catalog/product/cache/
+app/etc/local.xml
