@@ -1,11 +1,26 @@
 <script>
     function showMessageDiv(){
         var li_list = '';
-        jQuery(".new-product-options dl .input-box .required-entry").each(function(){
-            if(!jQuery(this).val()){
-                li_list += '<li><em>♦</em>'+jQuery(this).parent().data('title')+'</li>';
-            }
-        });
+
+        if(jQuery(".new-product-options dl>.no-display").css('display')!='none'){
+            jQuery(".new-product-options dl .input-box .required-entry").each(function(){
+                if( jQuery(this).css('display') != 'none' ){
+                    if(!jQuery(this).val()){
+                        li_list += '<li><em>♦</em>'+jQuery(this).parent().data('title')+'</li>';
+                    }
+                }
+            });
+        }else{
+            jQuery(".new-product-options dl>dd .input-box .required-entry").each(function(){
+                if( jQuery(this).css('display') != 'none' ){
+                    if(!jQuery(this).val()){
+                        li_list += '<li><em>♦</em>'+jQuery(this).parent().data('title')+'</li>';
+                    }
+                }
+            });
+        }
+
+
         if(li_list){
             var show_content = '';
             show_content += '<div class="va_box">';
@@ -51,7 +66,7 @@
                     onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
             <?php if ($this->helper('wishlist')->isAllow()) : ?>
                 <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
-                <a class="wishlist" href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><span>&hearts;</span></a>
+                <a class="wishlist" href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><span>♥</span></a>
             <?php endif; ?>
         </div>
 

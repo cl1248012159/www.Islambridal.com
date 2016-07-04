@@ -2763,13 +2763,19 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-shop .short-description .product-options { margin: 0; }
 .page .product-view .product-shop .new-product-options { *zoom: 1; position: relative; width: 100%; display: inline-block; }
 .page .product-view .product-shop .new-product-options:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
-.page .product-view .product-shop .new-product-options dl { float: left; }
 .page .product-view .product-shop .new-product-options dl dt { color: #444; line-height: 15px; font-size: 14px; margin-top: 15px; }
 .page .product-view .product-shop .new-product-options dl dt .required em { color: #f39; vertical-align: sub; display: inline-block; width: 10px; }
+.page .product-view .product-shop .new-product-options dl .Custom_made { border-left: 1px solid #ddd; border-right: 1px solid #ddd; padding: 10px 25px; }
+.page .product-view .product-shop .new-product-options dl .Custom_made:first-of-type { margin-top: 15px; border-top: 1px solid #ddd; }
+.page .product-view .product-shop .new-product-options dl .Custom_made:last-of-type { border-bottom: 1px solid #ddd; }
+.page .product-view .product-shop .new-product-options dl .Custom_made dt { margin: 0; }
 .page .product-view .product-shop .new-product-options .other-description { float: left; margin-left: 10px; }
 .page .product-view .product-shop .new-product-options .other-description li { height: 25px; line-height: 25px; margin-top: 33px; }
 .page .product-view .product-shop .new-product-options .other-description li a { text-decoration: underline; color: #444; }
 .page .product-view .product-shop .new-product-options .other-description li a:hover { color: #f39; }
+.page .product-view .product-shop .new-product-options .measurements .co { font-size: 16px; color: #f39; display: block; font-weight: normal; }
+.page .product-view .product-shop .new-product-options .measurements .F39 { color: #f39; }
+.page .product-view .product-shop .new-product-options .measurements .BB { border-bottom: 1px solid #f39; }
 .page .product-view .product-shop .new-product-options p.required { float: right; clear: both; }
 .page .product-view .product-shop .new-product-options select.product-custom-option { background-image: url(../images/commont/kai.jpg); background-repeat: no-repeat; background-position: 180px center; }
 .page .product-view .product-shop .new-product-options .product-custom-option { appearance: none; -moz-appearance: none; -webkit-appearance: none; border: 1px solid #ccc; border-radius: 3px; width: 200px; height: 25px; line-height: 25px; padding: 0 10px; }
@@ -2787,7 +2793,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-shop .new-product-options-bottom .quty ß label { height: 25px; line-height: 25px; }
 .page .product-view .product-shop .new-product-options-bottom .quty .qty { appearance: none; -moz-appearance: none; -webkit-appearance: none; border: 1px solid #ccc; border-radius: 3px; width: 50px; height: 25px; line-height: 25px; padding: 0 10px; background: url(../images/commont/kai.jpg) no-repeat 30px center; }
 .page .product-view .product-shop .new-product-options-bottom .btns { position: relative; }
-.page .product-view .product-shop .new-product-options-bottom .btns .validation-message .va_box { position: absolute; top: -25px; left: -140px; width: 130px; height: 100px; border: 1px solid #f39; padding: 5px; background: #fff; }
+.page .product-view .product-shop .new-product-options-bottom .btns .validation-message .va_box { position: absolute; top: -25px; left: -165px; z-index: 10; width: 160px; border: 1px solid #f39; padding: 5px; background: #fff; }
 .page .product-view .product-shop .new-product-options-bottom .btns .validation-message .va_box .to { position: absolute; right: -6px; color: #f39; font-size: 18px; background: #fff; line-height: 13px; top: 35px; }
 .page .product-view .product-shop .new-product-options-bottom .btns .validation-message .va_box .va_title { color: #444; border-bottom: 1px dashed #f39; text-align: center; }
 .page .product-view .product-shop .new-product-options-bottom .btns .validation-message .va_box .va_list li { color: #444; height: 24px; line-height: 24px; }

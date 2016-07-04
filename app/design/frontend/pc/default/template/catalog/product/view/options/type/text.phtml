@@ -1,22 +1,190 @@
 <?php $_option = $this->getOption(); ?>
 
-<div class="<?php if($this->htmlEscape($_option->getTitle()) == 'Enter Color Code') echo 'Color'; else echo 'Size';?> no-display">
 
-<dt><label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->htmlEscape($_option->getTitle()) ?></label>
-    <?php echo $this->getFormatedPrice() ?></dt>
 
-<dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
-    <div class="input-box">
-    <?php if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_FIELD): ?>
-        <input type="text" onchange="opConfig.reloadPrice()" id="options_<?php echo $_option->getId() ?>_text" class="input-text<?php echo $_option->getIsRequire() ? ' required-entry' : '' ?> <?php echo $_option->getMaxCharacters() ? ' validate-length maximum-length-'.$_option->getMaxCharacters() : '' ?> product-custom-option" name="options[<?php echo $_option->getId() ?>]" value="<?php echo $this->escapeHtml($this->getDefaultValue()) ?>" />
-    <?php elseif ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_AREA): ?>
-        <textarea id="options_<?php echo $_option->getId() ?>_text" onchange="opConfig.reloadPrice()" class="<?php echo $_option->getIsRequire() ? ' required-entry' : '' ?> <?php echo $_option->getMaxCharacters() ? ' validate-length maximum-length-'.$_option->getMaxCharacters() : '' ?> product-custom-option" name="options[<?php echo $_option->getId() ?>]" rows="5" cols="25"><?php echo $this->escapeHtml($this->getDefaultValue()) ?></textarea>
-    <?php endif; ?>
-    <?php if ($_option->getMaxCharacters()): ?>
-        <p class="note"><?php echo Mage::helper('catalog')->__('Maximum number of characters:')?> <strong><?php echo $_option->getMaxCharacters() ?></strong></p>
-    <?php endif; ?>
-    <?php if($this->htmlEscape($_option->getTitle()) == 'Enter Color Code') echo '<p class="note">Formate: Fabric_Color code</p><p class="note">Example: Satin_01#Daffodil</p>'; ?>
-    </div>
-</dd>
+<?php if($this->htmlEscape($_option->getTitle()) == 'Bust'):?>
+<div class="Size Custom_made no-display">
+    <dt>
+        <label>
+            Please select:
+        </label>
+    </dt>
+    <dd>
+        <div class="input-box">
+            <select name="selInc" id="selInc" class="product-custom-option">
+                <option value="inch">in</option>
+                <option value="cm">cm</option>
+            </select>
+        </div>
+    </dd>
+</div>
+<?php endif;?>
+
+
+
+
+<div class="<?php if($this->htmlEscape($_option->getTitle()) == 'Enter Color Code') echo 'Color'; else echo 'Size Custom_made';?>  no-display">
+
+    <dt>
+        <label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>>
+            <?php if ($_option->getIsRequire()) echo '<em>*</em>' ?>
+            <?php echo  $this->htmlEscape($_option->getTitle()) ?>
+        </label>
+
+        <?php echo $this->getFormatedPrice() ?>
+    </dt>
+
+    <dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
+        <div class="input-box" data-title="<?php echo $this->htmlEscape($_option->getTitle());?>">
+        <?php if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_FIELD): ?>
+
+            <?php
+            switch(  $this->htmlEscape($_option->getTitle())  ){
+                case 'Bust':?>
+                    <select
+                           onchange="opConfig.reloadPrice()"
+                           id="options_<?php echo $_option->getId() ?>_text"
+                           class="required-entry product-custom-option size_inch"
+                           name="options[<?php echo $_option->getId() ?>]"
+                        >
+                        <option value="">Please select ...</option>
+                        <?php for( $size_inch=21; $size_inch<63; $size_inch=$size_inch+0.5){
+                            echo '<option value="'.$size_inch.'inch">'.$size_inch.' inch</option>';
+                        }?>
+                        </select>
+                    <select
+                            onchange="opConfig.reloadPrice()"
+                            id="options_<?php echo $_option->getId() ?>_text"
+                            class="required-entry product-custom-option size_cm"
+                            name="options[<?php echo $_option->getId() ?>]"
+                            disabled="disabled"
+                            style="display:none;"
+                        >
+                        <option value="">Please select ...</option>
+                        <?php for( $size_inch=53; $size_inch<160; $size_inch++){
+                            echo '<option value="'.$size_inch.'cm">'.$size_inch.' cm</option>';
+                        }?>
+
+                    </select>
+                    <?php break;?>
+             <?php case 'Waist':?>
+                    <select
+                        onchange="opConfig.reloadPrice()"
+                        id="options_<?php echo $_option->getId() ?>_text"
+                        class="required-entry product-custom-option size_inch"
+                        name="options[<?php echo $_option->getId() ?>]"
+                        >
+                        <option value="">Please select ...</option>
+                        <?php for( $size_inch=20; $size_inch<63; $size_inch=$size_inch+0.5){
+                            echo '<option value="'.$size_inch.'inch">'.$size_inch.' inch</option>';
+                        }?>
+                    </select>
+                    <select
+                            onchange="opConfig.reloadPrice()"
+                            id="options_<?php echo $_option->getId() ?>_text"
+                            class="required-entry product-custom-option size_cm"
+                            name="options[<?php echo $_option->getId() ?>]"
+                            disabled="disabled"
+                            style="display:none;"
+                        >
+                        <option value="">Please select ...</option>
+                        <?php for( $size_inch=51; $size_inch<160; $size_inch++){
+                            echo '<option value="'.$size_inch.'cm">'.$size_inch.' cm</option>';
+                        }?>
+
+                    </select>
+                    <?php break;?>
+
+             <?php case 'Hips':?>
+                    <select
+                        onchange="opConfig.reloadPrice()"
+                        id="options_<?php echo $_option->getId() ?>_text"
+                        class="required-entry product-custom-option size_inch"
+                        name="options[<?php echo $_option->getId() ?>]"
+                        >
+                        <option value="">Please select ...</option>
+                        <?php for( $size_inch=20; $size_inch<63; $size_inch=$size_inch+0.5){
+                            echo '<option value="'.$size_inch.'inch">'.$size_inch.' inch</option>';
+                        }?>
+                    </select>
+                    <select
+                            onchange="opConfig.reloadPrice()"
+                            id="options_<?php echo $_option->getId() ?>_text"
+                            class="required-entry product-custom-option size_cm"
+                            name="options[<?php echo $_option->getId() ?>]"
+                            disabled="disabled"
+                            style="display:none;"
+                        >
+                        <option value="">Please select ...</option>
+                        <?php for( $size_inch=51; $size_inch<160; $size_inch++){
+                            echo '<option value="'.$size_inch.'cm">'.$size_inch.' cm</option>';
+                        }?>
+
+                    </select>
+                    <?php break;?>
+
+             <?php case 'Hollow to Floor':?>
+                    <select
+                        onchange="opConfig.reloadPrice()"
+                        id="options_<?php echo $_option->getId() ?>_text"
+                        class="required-entry product-custom-option size_inch"
+                        name="options[<?php echo $_option->getId() ?>]"
+                        >
+                        <option value="">Please select ...</option>
+                        <?php for( $size_inch=22; $size_inch<75; $size_inch=$size_inch+0.5){
+                            echo '<option value="'.$size_inch.'inch">'.$size_inch.' inch</option>';
+                        }?>
+                    </select>
+                    <select
+                            onchange="opConfig.reloadPrice()"
+                            id="options_<?php echo $_option->getId() ?>_text"
+                            class="required-entry product-custom-option size_cm"
+                            name="options[<?php echo $_option->getId() ?>]"
+                            disabled="disabled"
+                            style="display:none;"
+                        >
+                        <option value="">Please select ...</option>
+                        <?php for( $size_inch=55; $size_inch<190; $size_inch++){
+                            echo '<option value="'.$size_inch.'cm">'.$size_inch.' cm</option>';
+                        }?>
+
+                    </select>
+                    <?php break;?>
+
+
+
+
+                <?php default:?>
+                    <input type="text"
+                       onchange="opConfig.reloadPrice()"
+                       id="options_<?php echo $_option->getId() ?>_text"
+                       class="input-text<?php echo $_option->getIsRequire() ? ' required-entry' : '' ?> <?php echo $_option->getMaxCharacters() ? ' validate-length maximum-length-'.$_option->getMaxCharacters() : '' ?> product-custom-option"
+                       name="options[<?php echo $_option->getId() ?>]"
+                       value="<?php echo $this->escapeHtml($this->getDefaultValue()) ?>"
+                       data-title="<?php echo $this->htmlEscape($_option->getTitle());?>"
+                    />
+            <?php } ?>
+
+
+
+        <?php elseif ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_AREA): ?>
+
+            <textarea id="options_<?php echo $_option->getId() ?>_text"
+                      onchange="opConfig.reloadPrice()"
+                      class="<?php echo $_option->getIsRequire() ? ' required-entry' : '' ?> <?php echo $_option->getMaxCharacters() ? ' validate-length maximum-length-'.$_option->getMaxCharacters() : '' ?> product-custom-option"
+                      name="options[<?php echo $_option->getId() ?>]"
+                      rows="5"
+                      cols="25"><?php echo $this->escapeHtml($this->getDefaultValue()) ?></textarea>
+
+        <?php endif; ?>
+
+        <?php if ($_option->getMaxCharacters()): ?>
+            <p class="note"><?php echo Mage::helper('catalog')->__('Maximum number of characters:')?> <strong><?php echo $_option->getMaxCharacters() ?></strong></p>
+        <?php endif; ?>
+
+        <?php if($this->htmlEscape($_option->getTitle()) == 'Enter Color Code') echo '<p class="note">Formate: Fabric_Color code</p><p class="note">Example: Satin_01#Daffodil</p>'; ?>
+
+        </div>
+    </dd>
 
 </div>

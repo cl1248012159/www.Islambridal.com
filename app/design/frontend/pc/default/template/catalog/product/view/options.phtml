@@ -175,9 +175,29 @@
     </div>
 
 
+<!--no-display-->
+    <div class="<?php if($this->htmlEscape($_option->getTitle()) == 'Enter Color Code') echo 'Color'; else echo 'Size';?>  measurements"
+         style="position: absolute;left: 240px;top:185px;bottom: 20px;">
+        <div class="cusbox customHide" id="oc_content" style="display: block;">
+            <dl class="ocdl br5p">
+                <dt><span class="co">Custom Options</span>
+                <div>
+                    Dreaming of perfect fitting?You just need to pay extra<span class="fuhao">USD $</span><span id="custom_Cprice_Top" data-price="0" class="F39 huobi">19.99</span> ,our professional tailors  will make the dress custom size according to your exact measurements.
+                </div>
+                </dt>
+                <dd class="co_main co_wedding">
+                    <img src="<?php echo $this->getUrl();?>/skin/frontend/pc/default/images/commont/measurements.png" width="400" height="400">
 
-    <div class="<?php if($this->htmlEscape($_option->getTitle()) == 'Enter Color Code') echo 'Color'; else echo 'Size';?> no-display" style="position: absolute;left: 220px;bottom: 20px;">
-        <img src="<?php echo $this->getSkinUrl('images/commont/measuring_guide_small.jpg');?>"/>
+                    <div class="F39 BB">To fit heels,we'll add extra 8-13cm onto floor-length dresses.</div>
+
+                </dd>
+                <dd class="oc_foot revcon">
+                    <div class="coadd">
+                        Total: <span class="erveynum">Item Price <span class="fuhao">USD $</span><span class="huobi" data-price="226.79" id="oc_customprice">226.79</span> + Custom fees <span class="fuhao">USD $</span><span id="custom_Cprice" class="huobi" data-price="19.99">19.99</span> =</span><span class="fuhao">USD $</span><span class="huobi" data-price="246.78" id="mytotalprice">246.78</span>
+                    </div>
+                </dd>
+            </dl>
+        </div>
     </div>
 
 
@@ -189,39 +209,18 @@
 <script type="text/javascript">
     jQuery("doucument").ready(function(){
 
-        var us_obj = {
-            'US2':{
-                'Bust':{'inch':33.5,'cm':85},
-                'Waist':{'inch':33.5,'cm':85},
-                'Hips':{'inch':33.5,'cm':85},
-                'Hollow to Floor <br> (Bare Foot)':{'inch':33.5,'cm':85}
-            },
-            'US4':{
-                'Bust':{'inch':33.5,'cm':85},
-                'Waist':{'inch':33.5,'cm':85},
-                'Hips':{'inch':33.5,'cm':85},
-                'Hollow to Floor <br> (Bare Foot)':{'inch':33.5,'cm':85}
-            },
-            'US6':{
-                'Bust':{'inch':33.5,'cm':85},
-                'Waist':{'inch':33.5,'cm':85},
-                'Hips':{'inch':33.5,'cm':85},
-                'Hollow to Floor <br> (Bare Foot)':{'inch':33.5,'cm':85}
-            }
-        };
-
         jQuery('#color_A li').hover(function(){
             jQuery('#cbla').empty().append(jQuerjQuery(this).html())   ;                       
-        })
+        });
         jQuery('#color_B li').hover(function(){
             jQuery('#cblb').empty().append(jQuery(this).html())   ;                       
-        })
+        });
         jQuery('#color_C li').hover(function(){
             jQuery('#cblc').empty().append(jQuery(this).html())   ;                       
-        })
+        });
         jQuery('#color_D li').hover(function(){
             jQuery('#cbld').empty().append(jQuery(this).html())   ;                       
-        })
+        });
 
         jQuery(".product-custom-option").each(function(){
             var id = jQuery(this).attr("id");
@@ -279,6 +278,12 @@
 
             return template;
         }
+
+        jQuery("#selInc").on('change',function(){
+            var unit = jQuery(this).val();
+            jQuery(".size_"+unit).prop('disabled',false).show();
+            jQuery(".size_"+unit).siblings("select").prop('disabled',true).hide();
+        });
 
 
     });

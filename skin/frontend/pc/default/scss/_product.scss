@@ -109,7 +109,6 @@
                 display:inline-block;
 
                 dl{
-                    float: left;
                     dt{
                         color:#444;
                         line-height: 15px;
@@ -123,6 +122,23 @@
                                 display: inline-block;
                                 width: 10px;
                             }
+                        }
+                    }
+                    .Custom_made{
+                        border-left:1px solid #ddd;
+                        border-right:1px solid #ddd;
+                        padding:10px 25px;
+
+                        &:first-of-type{
+                          margin-top: 15px;
+                          border-top:1px solid #ddd;
+                        }
+                        &:last-of-type{
+                          border-bottom:1px solid #ddd;
+                        }
+
+                        dt{
+                          margin:0;
                         }
                     }
                 }
@@ -141,6 +157,21 @@
                             }
                         }
                     }
+                }
+
+                .measurements{
+                  .co {
+                    font-size: 16px;
+                    color: #f39;
+                    display: block;
+                    font-weight: normal;
+                  }
+                  .F39{
+                    color:#f39;
+                  }
+                  .BB{
+                    border-bottom:1px solid #f39;
+                  }
                 }
 
                 p.required{
@@ -247,9 +278,9 @@
                         .va_box{
                             position:absolute;
                             top:-25px;
-                            left:-140px;
-                            width:130px;
-                            height:100px;
+                            left:-165px;
+                            z-index:10;
+                            width:160px;
                             border:1px solid #f39;
                             padding:5px;
                             background: #fff;
