@@ -2574,7 +2574,7 @@ tr.summary-details-excluded { font-style: italic; }
 
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span { background: #f39; }
 
-.home_banners_1 { background: #eeeeff; height: 488px; width: 100%; display: block; overflow: hidden; }
+.home_banners_1 { background: #eeeeff; height: 488px; width: 100%; overflow: hidden; }
 .home_banners_1 .owl-controls { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; }
 .home_banners_1 .owl-controls img { width: 100%; height: 100%; }
 
@@ -2776,6 +2776,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-shop .new-product-options .measurements .co { font-size: 16px; color: #f39; display: block; font-weight: normal; }
 .page .product-view .product-shop .new-product-options .measurements .F39 { color: #f39; }
 .page .product-view .product-shop .new-product-options .measurements .BB { border-bottom: 1px solid #f39; }
+.page .product-view .product-shop .new-product-options .measurements img { width: 99%; height: 99%; max-width: 310px; max-height: 310px; }
 .page .product-view .product-shop .new-product-options p.required { float: right; clear: both; }
 .page .product-view .product-shop .new-product-options select.product-custom-option { background-image: url(../images/commont/kai.jpg); background-repeat: no-repeat; background-position: 180px center; }
 .page .product-view .product-shop .new-product-options .product-custom-option { appearance: none; -moz-appearance: none; -webkit-appearance: none; border: 1px solid #ccc; border-radius: 3px; width: 200px; height: 25px; line-height: 25px; padding: 0 10px; }
@@ -2786,7 +2787,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-shop .new-product-options .compare li span { display: inline-block; color: #645B56; vertical-align: top; }
 .page .product-view .product-shop .new-product-options .compare li .title { width: 140px; }
 .page .product-view .product-shop .new-product-options .infomations2 { color: #f39; position: relative; height: 30px; line-height: 30px; max-width: 500px; }
-.page .product-view .product-shop .new-product-options .infomations2 .sizeimage { position: absolute; bottom: 0; right: -250px; background: url(../images/commont/imgsizes.png) no-repeat center center; width: 220px; height: 200px; }
+.page .product-view .product-shop .new-product-options .infomations2 .sizeimage { position: absolute; bottom: 23px; left: 284px; background: url(../images/commont/imgsizes.png) no-repeat center center; width: 220px; height: 200px; }
 .page .product-view .product-shop .new-product-options-bottom { margin-top: 15px; width: 100%; display: inline-block; }
 .page .product-view .product-shop .new-product-options-bottom .quty { *zoom: 1; margin-bottom: 10px; }
 .page .product-view .product-shop .new-product-options-bottom .quty:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }

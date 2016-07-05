@@ -172,6 +172,12 @@
                   .BB{
                     border-bottom:1px solid #f39;
                   }
+                  img{
+                    width:99%;
+                    height:99%;
+                    max-width:310px;
+                    max-height:310px;
+                  }
                 }
 
                 p.required{
@@ -236,8 +242,8 @@
                     max-width: 500px;
                     .sizeimage{
                         position: absolute;
-                        bottom: 0;
-                        right: -250px;
+                        bottom: 23px;
+                        left: 284px;
                         background:url(../images/commont/imgsizes.png) no-repeat center center;
                         width:220px;
                         height:200px;
