@@ -149,34 +149,43 @@
       float: right;
       clear: both;
       margin: 45px 0px 20px 0;
-      a{
-        text-decoration: underline;
-        margin-right: 15px;
+
+      .checkout-types{
+          @include float_clear;
+          li{
+              float:left;
+              margin:0 8px;
+              line-height: 32px;
+              a{
+                  text-decoration: underline;
+              }
+              .continue_shopping{
+                  display: block;
+                  height: 32px;
+                  line-height: 46px;
+              }
+              p{
+                margin:0;
+              }
+              .btn_ptp{
+                outline: none;
+                background: url(../images/commont/jxs.png) no-repeat 15px 6px #f39;
+                padding: 0 25px 0 40px;
+                text-align: center;
+                font-size: 15px;
+                color: #fff;
+                height: 30px;
+                line-height: 30px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+              }
+          }
       }
-      .paypal_topay{
-          cursor: pointer;
-          background: url(../images/commont/paypaltopay.jpg) no-repeat 0 0;
-          width: 170px;
-          height: 32px;
-          border: medium none;
-          outline: none;
-      }
-      .cor {
-          padding: 0 15px;
-      }
-      .btn_ptp{
-          outline: none;
-          background: url(../images/commont/jxs.png) no-repeat 15px 6px #f39;
-          padding: 0 25px 0 40px;
-          text-align: center;
-          font-size: 15px;
-          color: #fff;
-          height: 30px;
-          line-height: 30px;
-          border: none;
-          cursor: pointer;
-          border-radius: 5px;
-      }
+
+
+
+
     }
 
     .empty_cart_div {
@@ -205,6 +214,8 @@
       font-size: 18px;
       margin-bottom: 10px;
     }
+
+
 
 
 }
