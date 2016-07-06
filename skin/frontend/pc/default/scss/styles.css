@@ -2379,9 +2379,9 @@ tr.summary-details-excluded { font-style: italic; }
 
 .top_bg { position: absolute; top: 0; left: 0; right: 0; background: #4c5154; width: 100%; height: 33px; z-index: -1; }
 
-.page { max-width: 1365px; min-width: 900px; margin: 0 auto; box-shadow: 0px 0px 10px #eeeeee; }
+.page { max-width: 1365px; min-width: 900px; margin: 0 auto; }
 
-@media only screen and (max-width: 1365px) { .page { padding: 0 10px; } }
+@media only screen and (max-width: 1365px) { .page { padding: 0 60px; } }
 .M5 { margin: 5px; }
 
 .MT10 { margin-top: 10px; }
