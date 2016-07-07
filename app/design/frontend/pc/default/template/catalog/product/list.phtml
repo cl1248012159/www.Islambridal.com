@@ -162,11 +162,15 @@
     jQuery(document).ready(function($){
 
         $("a[data-getmediagalleryimages]").mouseover(function(){
-            $(this).css("background-image","url("+ $(this).data('getmediagalleryimages')+")");
+            if($(this).data('getmediagalleryimages')){
+                $(this).css("background-image","url("+ $(this).data('getmediagalleryimages')+")");
+            }
         });
 
         $("a[data-getmediagalleryimages]").mouseout(function(){
-            $(this).css("background-image","url("+ $(this).data('small_image')+")");
+            if($(this).data('getmediagalleryimages')){
+                $(this).css("background-image","url("+ $(this).data('small_image')+")");
+            }
         });
 
     });
