@@ -1,3 +1,33 @@
+.std{
+  @include float_clear;
+}
+.help_left{
+  float:left;
+  width:30%;
+  dl{
+    color:#666;
+    dt{
+      font-size:15px;
+      line-height:30px;
+    }
+    dd{
+      font-size:12px;
+      line-height:20px;
+      a:hover{
+        color:#f39;
+      }
+    }
+  }
+}
+.help_left+.std{
+  float:right;
+  width:69%;
+  .help_right{
+
+  }
+}
+
+
 .twbox-help-shadow-s {
   float: left;
   position: relative;
