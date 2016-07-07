@@ -1,6 +1,4 @@
-.std{
-  @include float_clear;
-}
+
 .help_left{
   float:left;
   width:30%;
@@ -22,8 +20,8 @@
 .help_left+.std{
   float:right;
   width:69%;
-  .help_right{
-
+  img{
+    max-width:100%;
   }
 }
 
