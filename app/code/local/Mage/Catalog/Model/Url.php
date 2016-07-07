@@ -714,14 +714,15 @@ class Mage_Catalog_Model_Url
         }
 
         $categoryUrlSuffix = $this->getCategoryUrlSuffix($category->getStoreId());
-        if (null === $parentPath) {
-            $parentPath = $this->getResource()->getCategoryParentPath($category);
-        }
-        elseif ($parentPath == '/') {
-            $parentPath = '';
-        }
-        $parentPath = Mage::helper('catalog/category')->getCategoryUrlPath($parentPath,
-                                                                           true, $category->getStoreId());
+//        if (null === $parentPath) {
+//            $parentPath = $this->getResource()->getCategoryParentPath($category);
+//        }
+//        elseif ($parentPath == '/') {
+//            $parentPath = '';
+//        }
+        //$parentPath = Mage::helper('catalog/category')->getCategoryUrlPath($parentPath,
+                                                                           //true, $category->getStoreId());
+        $parentPath = '';
 
         $requestPath = $parentPath . $urlKey . $categoryUrlSuffix;
         if (isset($existingRequestPath) && $existingRequestPath == $requestPath . $suffix) {
@@ -882,12 +883,12 @@ class Mage_Catalog_Model_Url
                 }
 
                 $categoryUrlSuffix = $this->getCategoryUrlSuffix($category->getStoreId());
-//                if (null === $parentPath) {
-//                    $parentPath = $this->getResource()->getCategoryParentPath($category);
-//                }
-//                elseif ($parentPath == '/') {
-//                    $parentPath = '';
-//                }
+                if (null === $parentPath) {
+                    $parentPath = $this->getResource()->getCategoryParentPath($category);
+                }
+                elseif ($parentPath == '/') {
+                    $parentPath = '';
+                }
                 $parentPath = Mage::helper('catalog/category')->getCategoryUrlPath($parentPath,
                     true, $category->getStoreId());
 
