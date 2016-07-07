@@ -112,15 +112,17 @@
                            class="product-image"
                            style="background-image:url(<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(333,444); ?>);"
                            data-small_image="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(333,444); ?>"
-                           data-getmediagalleryimages="<?php
-                           foreach($_product->getMediaGalleryImages() as $GMI){
-                               if( $_product->getSmallImage() != $GMI->getFile() ){
-                                   echo $this->helper('catalog/image')->init($_product, 'image',$GMI->getFile())->resize(333,444);
-                                   break;
-                               }
-                           }
-                           ?>"
                             >
+                            <?php
+                            foreach($_product->getMediaGalleryImages() as $GMI){
+                                if( $_product->getSmallImage() != $GMI->getFile() ){?>
+                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image',$GMI->getFile())->resize(333,444);?>"/>
+                            <?php
+                                    break;
+                                }
+                            }
+                            ?>
+
                         </a>
 
 
@@ -161,14 +163,14 @@
 <script>
     jQuery(document).ready(function($){
 
-        $("a[data-getmediagalleryimages]").mouseover(function(){
-            if($(this).data('getmediagalleryimages')){
-                $(this).css("background-image","url("+ $(this).data('getmediagalleryimages')+")");
+        $("a[data-small_image]").mouseover(function(){
+            if($(this).find("img").length>0){
+                $(this).css("background-image","url("+ $(this).find("img").prop("src") +")");
             }
         });
 
-        $("a[data-getmediagalleryimages]").mouseout(function(){
-            if($(this).data('getmediagalleryimages')){
+        $("a[data-small_image]").mouseout(function(){
+            if($(this).find("img").length>0){
                 $(this).css("background-image","url("+ $(this).data('small_image')+")");
             }
         });
