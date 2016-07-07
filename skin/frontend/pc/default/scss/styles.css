@@ -2751,11 +2751,11 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-shop { position: relative; padding-left: 420px; padding-bottom: 20px; float: none; width: auto; }
 .page .product-view .product-shop .product-name h1 { text-transform: Capitalize; }
 .page .product-view .product-shop .commont { display: inline-block; width: 100%; line-height: 30px; margin-top: 10px; }
+.page .product-view .product-shop .commont a { text-decoration: underline; }
 .page .product-view .product-shop .commont .ratings, .page .product-view .product-shop .commont .no-rating { float: left; margin: 0; line-height: 30px; }
 .page .product-view .product-shop .commont .ratings .rating-box { margin-right: 5px; margin-top: 8px; }
 .page .product-view .product-shop .commont .ratings .rating-links { float: left; }
-.page .product-view .product-shop .commont .ask-a-question { float: left; }
-.page .product-view .product-shop .commont .ask-a-question a { font-family: cursive , Arial, Helvetica, sans-serif; font-size: 17px; font-weight: bold; margin-left: 30px; }
+.page .product-view .product-shop .commont .ask-a-question { float: left; margin-left: 8px; }
 .page .product-view .product-shop .product_price .old-price .price { color: #444; font-size: 12px; font-weight: normal; }
 .page .product-view .product-shop .product_price .old-price .price:before { content: "Market Price: "; text-decoration: none; }
 .page .product-view .product-shop .product_price .special-price .price { color: #f39; font-size: 17px; }
