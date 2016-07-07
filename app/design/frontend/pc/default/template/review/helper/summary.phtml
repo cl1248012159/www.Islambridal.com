@@ -32,11 +32,11 @@
             </div>
         <?php endif;?>
         <p class="rating-links">
-            <a href="#review-form"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
+            <a href="#review"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
             <span class="separator">|</span>
-            <a href="#review-form"><?php echo $this->__('Make a review') ?></a>
+            <a href="#review"><?php echo $this->__('Make a review') ?></a>
         </p>
     </div>
 <?php elseif ($this->getDisplayIfEmpty()): ?>
-    <p class="no-rating"><a href="#review-form"><?php echo $this->__('Make a review') ?></a></p>
+    <p class="no-rating"><a href="#review"><?php echo $this->__('Make a review') ?></a></p>
 <?php endif; ?>

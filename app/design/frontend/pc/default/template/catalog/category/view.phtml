@@ -187,7 +187,7 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
                                                                 ->setStoreId(Mage::app()->getStore()->getId())
                                                                 ->load($review->getEntityPkValue())
                                                                 ->getProductUrl();
-                                                                    ?>#review-form">
+                                                                    ?>#review">
                             <?php if(  $review->getReviewimage1()  ):?>
                                 <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();?>);"></span>
                             <?php elseif(  $review->getReviewimage2()  ): ?>
