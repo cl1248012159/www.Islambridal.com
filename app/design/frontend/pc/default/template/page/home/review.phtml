@@ -51,16 +51,20 @@
 
 </div>
 <div class="review_btn">
+    <a href="<?php echo $this->getUrl('upload-a-photo')?>">
+        <button class="up">
+            <span></span>
+            <span>UPLOAD A PHOTO</span>
+        </button>
+    </a>
 
-    <button class="up" onclick="window.location.href='<?php echo $this->getUrl('upload-a-photo')?>'">
-        <span></span>
-        <span>UPLOAD A PHOTO</span>
-    </button>
-    
-    <button class="view" onclick="window.location.href='<?php echo $this->getUrl('customers-feedback-gallery')?>'">
-        <span></span>
-        <span>VIEW GALLERY</span>
-    </button>
+    <a href="<?php echo $this->getUrl('customers-feedback-gallery')?>">
+        <button class="view">
+            <span></span>
+            <span>VIEW GALLERY</span>
+        </button>
+    </a>
+
 </div>
 <script>
     jQuery(document).ready(function(){
