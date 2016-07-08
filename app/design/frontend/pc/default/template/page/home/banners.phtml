@@ -35,7 +35,7 @@
 </div>
 
 
-<div class="MT10 owl-carousel home_category_banners">
+<div class="MT10 MB10 home_category_banners">
     <?php $home_category_banners = Mage::getModel('ibanners/group')->loadByCode('home_category_banners')->getBannerCollection(); ?>
     <?php foreach($home_category_banners as $banner): ?>
         <a class="item" href="<?php echo $banner->getUrl(); ?>">
@@ -44,16 +44,16 @@
     <?php endforeach; ?>
 </div>
 <script type="text/javascript">
-    jQuery(document).ready(function(){
-        jQuery('.home_category_banners').owlCarousel({
-            loop:true,
-            margin:10,
-            nav:false,
-            dots: false,
-            autoWidth:true,
-            autoplay:false
-        });
-    });
+//    jQuery(document).ready(function(){
+//        jQuery('.home_category_banners').owlCarousel({
+//            loop:true,
+//            margin:10,
+//            nav:false,
+//            dots: false,
+//            autoWidth:true,
+//            autoplay:false
+//        });
+//    });
 </script>
 
 

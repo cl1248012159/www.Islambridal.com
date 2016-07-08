@@ -2624,9 +2624,12 @@ tr.summary-details-excluded { font-style: italic; }
 .home_review.owl-theme .owl-controls .owl-next { right: 0; background: url(../images/commont/index_slide_btn01.png) no-repeat 0 0; }
 .home_review.owl-theme .owl-controls .owl-next:hover { background: url(../images/commont/index_slide_btn.png) no-repeat 0 -55px; }
 
-.home_category_banners { width: 100%; height: 570px; overflow: hidden; }
+.home_category_banners { width: 100%; *zoom: 1; }
+.home_category_banners:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .home_category_banners .item { width: 100%; }
 .home_category_banners .item img { width: 100%; height: 100%; }
+.home_category_banners > .item { width: 19.2%; float: left; margin-right: 1%; }
+.home_category_banners > .item:nth-child(5n) { margin-right: 0; }
 
 .review_btn { text-align: center; display: block; height: 100px; line-height: 100px; width: 100%; }
 .review_btn button { height: 30px; line-height: 30px; padding: 0 15px; border: 1px solid #000; border-radius: 15px; margin: 0 8px; }
