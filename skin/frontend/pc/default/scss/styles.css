@@ -2574,11 +2574,11 @@ tr.summary-details-excluded { font-style: italic; }
 
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span { background: #f39; }
 
-.home_banners_1 { background: #eeeeff; height: 488px; width: 100%; display: block; overflow: hidden; }
+.home_banners_1 { background: #eeeeff; width: 100%; overflow: hidden; }
 .home_banners_1 .owl-controls { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; }
 .home_banners_1 .owl-controls img { width: 100%; height: 100%; }
 
-.home_banners_3 { display: block; width: 100%; height: 125px; }
+.home_banners_3 { display: block; width: 100%; }
 .home_banners_3 a { display: inline-block; float: left; width: 33.33%; }
 .home_banners_3 a img { width: 100%; }
 
