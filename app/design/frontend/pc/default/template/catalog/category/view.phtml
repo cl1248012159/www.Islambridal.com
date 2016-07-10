@@ -181,13 +181,36 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
             <div class="user_photos">
                 <div class="photos_title">User Photos</div>
                 <div class="home_review owl-carousel">
+                    <?php $review_30 = 0;?>
                     <?php foreach($_reviews_items as $review): ?>
-                        <a class="item" href="<?php
-                                                    echo $this->getUrl().Mage::getModel('catalog/product')
-                                                    ->setStoreId(Mage::app()->getStore()->getId())
-                                                    ->load($review->getEntityPkValue())
-                                                    ->getUrlPath();
-                                                        ?>#review">
+                        <?php
+                        $show = 0;
+                        if( $review_30 < 30 ){
+                            $show = 1;
+                        }else{
+                            break;
+                        }
+                        $getAllChildren = Mage::registry('current_category')->getAllChildren();
+                        $getAllChildren_arr = explode(',',$getAllChildren);
+
+                        $review_product = Mage::getModel('catalog/product')
+                            ->setStoreId(Mage::app()->getStore()->getId())
+                            ->load($review->getEntityPkValue());
+                        $getCategoryIds = $review_product->getCategoryIds();
+                        $show = false;
+                        foreach($getCategoryIds as $in_cat_id){
+                            if( in_array($in_cat_id , $getAllChildren_arr) ){
+                                $show = 1;
+                                $review_30++;
+                                break;
+                            }
+                        }
+                        if(!$show){
+                            break;
+                        }
+                        ?>
+                        <?php if($review->getEntityPkValue() )?>
+                            <a class="item" href="<?php echo $this->getUrl().$review_product->getUrlPath();?>#review">
                             <?php if(  $review->getReviewimage1()  ):?>
                                 <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();?>);"></span>
                             <?php elseif(  $review->getReviewimage2()  ): ?>
