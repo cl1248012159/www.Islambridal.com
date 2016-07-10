@@ -375,3 +375,77 @@ li.YT em{ background-position: -58px -456px;  }
 li.ZA em{ background-position: -58px -475px;  }
 li.ZM em{ background-position: -58px -494px;  }
 li.ZW em{ background-position: -58px -513px;  }
+
+
+.mainbox>dl {
+  clear: both;
+  position: relative;
+  margin-bottom: 10px;
+}
+.mainbox h3 {
+  font-size: 12px;
+  background: url(../images/commont/dehua.png) no-repeat 0 center;
+  padding-left: 12px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, sans-serif;
+  clear: both;
+  margin-bottom: 10px;
+}
+.co_main {
+  position: relative;
+  height: 450px;
+  background: url(../images/commont/weddngoc.jpg) no-repeat -10px 0;
+}
+.meatab .co_main {
+  width: 465px;
+  float: left;
+  margin-right: 25px;
+  margin-bottom: 20px;
+}
+.co_main.co_wedding_back {
+  background: url(../images/commont/weddinback.jpg) no-repeat 45px 0;
+}
+.posidiv {
+  width: 165px;
+  position: absolute;
+}
+.bust {
+  top: 11px;
+  left: 0;
+}
+.bwhh {
+  color: #ce3c8b;
+  display: block;
+}
+.waist {
+  top: 123px;
+  left: 0;
+}
+.hips {
+  top: 222px;
+  left: 0;
+}
+.hollow {
+  top: 250px;
+  left: 304px;
+  width: 120px;
+}
+.bwshould {
+  top: 13px;
+  left: 0;
+}
+.bwarm {
+  top: 153px;
+  left: 0;
+}
+.bwarmleng {
+  top: 123px;
+  left: 360px;
+}
+#zzjs_nav5{ width:960px; margin:0 auto; overflow:hidden; border-bottom: none;}
+.qh_tit{height: 52px;line-height: 62px;font-family: verdana;font-size: 14px;padding-left: 0;background: none; color:#000;}
+.sdl{float: left;font-size: 12px;padding: 5px 0;min-height: 180px;}
+.sdl dt img{float: left;border: none;padding-right: 10px;padding-bottom: 10px}
+img{vertical-align: middle}
+.sdl b{color:#000;}
+.sdl dd p{color: #333333;line-height: 20px;font-size: 12px}
