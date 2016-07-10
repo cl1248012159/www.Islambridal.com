@@ -2758,7 +2758,7 @@ tr.summary-details-excluded { font-style: italic; }
 
 .page .product-view .product-essential { position: relative; }
 .page .product-view .product-essential .product-img-box { position: relative; z-index: 1; }
-.page .product-view .product-shop { position: relative; padding-left: 420px; padding-bottom: 20px; float: none; width: auto; }
+.page .product-view .product-shop { position: relative; padding-left: 450px; padding-bottom: 20px; float: none; width: auto; }
 .page .product-view .product-shop .product-name h1 { text-transform: Capitalize; }
 .page .product-view .product-shop .commont { display: inline-block; width: 100%; line-height: 30px; margin-top: 10px; }
 .page .product-view .product-shop .commont a { text-decoration: underline; }
