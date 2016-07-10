@@ -2436,8 +2436,13 @@ tr.summary-details-excluded { font-style: italic; }
 .new_header .header_top .top_currency:hover .currency_list a:hover { text-decoration: underline; }
 .new_header .header_top .welcome_message { width: 40%; float: left; }
 .new_header .header_top .welcome_message #demo { overflow: hidden; height: 33px; text-align: center; }
-.new_header .header_top .top_nav { width: 40%; float: left; text-align: right; color: #fff; }
+.new_header .header_top .top_nav { width: 40%; float: left; text-align: right; color: #fff; position: relative; }
 .new_header .header_top .top_nav a { color: #fff; }
+.new_header .header_top .top_nav .CustomerService_a { display: inline-block; }
+.new_header .header_top .top_nav .CustomerService { display: none; position: absolute; right: 0; top: 41px; min-width: 200px; border: 1px solid #c7c7c7; padding: 5px 10px; color: #666; background: #fff; }
+.new_header .header_top .top_nav .CustomerService .and { position: absolute; top: -9px; right: 0; width: 100px; height: 8px; background: url(../images/commont/cus_sanjiao.png) no-repeat center center; }
+.new_header .header_top .top_nav .CustomerService span { display: inline-block; width: 16px; height: 10px; background-image: url(../images/commont/email.png); background-position: center center; background-repeat: no-repeat; }
+.new_header .header_top .top_nav .CustomerService a { color: #f39; }
 .new_header .header_content { height: 112px; text-align: left; }
 .new_header .header_content .header_search { float: left; height: 112px; width: 33.33%; }
 .new_header .header_content .header_search input { background: url(../images/commont/icon_search.png) no-repeat; background-position: 0px 5px; width: 165px; height: 32px; line-height: 32px; outline: none; font-size: 12px; color: #888; text-indent: 25px; border: 0; border-bottom: 2px solid #e2e2e2; margin: 50px 0 0 65px; padding: 0; }
@@ -2457,6 +2462,8 @@ tr.summary-details-excluded { font-style: italic; }
 .new_header .header_menu:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .new_header .header_menu ul { display: block; }
 .new_header .header_menu ul li { float: left; position: relative; height: 43px; line-height: 43px; border-bottom: 2px solid #fff; }
+.new_header .header_menu ul li > a { font-size: 13px; }
+.new_header .header_menu ul li:hover > a { color: #f39; }
 .new_header .header_menu ul li:not(:first-child) { background-image: url(../images/commont/menu_li_bg.png); background-repeat: no-repeat; background-position: 0px 20px; padding: 0 10px; }
 .new_header .header_menu ul li:not(:first-child):hover { background-image: url(../images/commont/menu_li_hover_bg.png); border-bottom: 2px solid #f39; }
 .new_header .header_menu ul li .level2 { position: absolute; border: 1px solid #eee; border-top-color: #f39; background: white; z-index: 1000000005; display: none; padding: 10px; left: 0; min-width: 300px; min-height: 100px; }
@@ -2582,7 +2589,7 @@ tr.summary-details-excluded { font-style: italic; }
 .home_banners_3 a { display: inline-block; float: left; width: 33.33%; }
 .home_banners_3 a img { width: 100%; }
 
-.home_product_title { display: block; height: 33px; line-height: 33px; background-color: #d3d4d4; color: #666666; line-height: 33px; padding-left: 10px; font-size: 16px; }
+.home_product_title { display: block; height: 33px; line-height: 33px; background-color: #d3d4d4; color: #333; line-height: 33px; padding-left: 10px; font-size: 16px; }
 
 .home_product { *zoom: 1; padding: 10px; position: relative; width: 100%; }
 .home_product:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
@@ -3794,5 +3801,47 @@ li.ZA em { background-position: -58px -475px; }
 li.ZM em { background-position: -58px -494px; }
 
 li.ZW em { background-position: -58px -513px; }
+
+.mainbox > dl { clear: both; position: relative; margin-bottom: 10px; }
+
+.mainbox h3 { font-size: 12px; background: url(../images/commont/dehua.png) no-repeat 0 center; padding-left: 12px; font-weight: bold; font-family: Verdana, Geneva, sans-serif; clear: both; margin-bottom: 10px; }
+
+.co_main { position: relative; height: 450px; background: url(../images/commont/weddngoc.jpg) no-repeat -10px 0; }
+
+.meatab .co_main { width: 465px; float: left; margin-right: 25px; margin-bottom: 20px; }
+
+.co_main.co_wedding_back { background: url(../images/commont/weddinback.jpg) no-repeat 45px 0; }
+
+.posidiv { width: 165px; position: absolute; }
+
+.bust { top: 11px; left: 0; }
+
+.bwhh { color: #ce3c8b; display: block; }
+
+.waist { top: 123px; left: 0; }
+
+.hips { top: 222px; left: 0; }
+
+.hollow { top: 250px; left: 304px; width: 120px; }
+
+.bwshould { top: 13px; left: 0; }
+
+.bwarm { top: 153px; left: 0; }
+
+.bwarmleng { top: 123px; left: 360px; }
+
+#zzjs_nav5 { width: 960px; margin: 0 auto; overflow: hidden; border-bottom: none; }
+
+.qh_tit { height: 52px; line-height: 62px; font-family: verdana; font-size: 14px; padding-left: 0; background: none; color: #000; }
+
+.sdl { float: left; font-size: 12px; padding: 5px 0; min-height: 180px; }
+
+.sdl dt img { float: left; border: none; padding-right: 10px; padding-bottom: 10px; }
+
+img { vertical-align: middle; }
+
+.sdl b { color: #000; }
+
+.sdl dd p { color: #333333; line-height: 20px; font-size: 12px; }
 
 /*# sourceMappingURL=styles.css.map */
