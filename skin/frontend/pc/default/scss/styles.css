@@ -3850,22 +3850,68 @@ img { vertical-align: middle; }
 
 .dressul li a { color: #000000; text-decoration: underline; }
 
-.clear { clear: both; font-size: 1px; width: 1px; visibility: hidden; margin-top: 0px !important; height: 0; line-height: 0; border: 0 none; margin: 0; padding: 0; }
-
 .svp { color: #000000; font-size: 12px; line-height: 50px; width: 794px; }
 
 .svp b { font-size: 21px; margin-right: 6px; }
 
+.cdl dt { background: url("http://s.Beformal.com.au/images/loading_img.gif") no-repeat scroll 50% 40% transparent; font-size: 12px; height: 180px; line-height: 24px; margin-right: 20px; text-align: center; width: 180px; }
+
 .cdl { width: 900px; margin-top: 10px; }
 
-.cdl dt { background: url("../images/commont/loading_img.gif") no-repeat scroll 50% 40% transparent; font-size: 12px; height: 180px; line-height: 24px; margin-right: 20px; text-align: center; width: 180px; }
-
 .cdl dt, .cdl dd { float: left; }
-
-#Satin_chiffon, #Composite_Silk, #Dchiffion, #satin, #chiffon, #taffeta, #organza, #matte_satin, #elastic_woven_satin, #silk_like_satin { position: relative; margin: 0; }
 
 .cdl dt img { border: 1px solid #DDDDDD; display: block; height: 157px; padding: 10px; width: 157px; }
 
 #Satin_chiffon div, #Composite_Silk div, #Dchiffion div, #satin div, #chiffon div, #taffeta div, #organza div, #matte_satin div, #elastic_woven_satin div, #silk_like_satin div { background: none repeat scroll 0 0 #FFFFFF; cursor: pointer; height: 36px; position: absolute; width: 36px; }
+
+#Satin_chiffon, #Composite_Silk, #Dchiffion, #satin, #chiffon, #taffeta, #organza, #matte_satin, #elastic_woven_satin, #silk_like_satin { position: relative; margin: 0; }
+
+.mainbox h3 { font-size: 12px; background: url(http://s.Beformal.com.au/images/dehua.png) no-repeat 0 center; padding-left: 12px; font-weight: bold; font-family: Verdana, Geneva, sans-serif; clear: both; margin-bottom: 10px; }
+
+.meatab .co_main { width: 465px; float: left; margin-right: 25px; margin-bottom: 20px; }
+
+.co_main { position: relative; height: 450px; background: url(http://s.Beformal.com.au/images/weddngoc.jpg) no-repeat -10px 0; }
+
+.co_main.co_wedding_back { background: url(http://s.Beformal.com.au/images/weddinback.jpg) no-repeat 45px 0; }
+
+.mainbox > dl { clear: both; position: relative; margin-bottom: 10px; }
+
+.posidiv { width: 165px; position: absolute; }
+
+.bust { top: 11px; left: 0; }
+
+.waist { top: 123px; left: 0; }
+
+.hips { top: 222px; left: 0; }
+
+.hollow { top: 250px; left: 304px; width: 120px; }
+
+.should { top: 15px; left: 0; }
+
+.arm { top: 108px; left: 0; }
+
+.jbust { top: 222px; left: 0; }
+
+.jarm { top: 233px; left: 312px; }
+
+.bwshould { top: 13px; left: 0; }
+
+.bwarm { top: 153px; left: 0; }
+
+.bwarmleng { top: 123px; left: 360px; }
+
+.bwkuang { top: 230px; left: 330px; border: 1px solid #dadada; padding: 10px; }
+
+.bwhh { color: #ce3c8b; display: block; }
+
+.comain_form { width: 338px; float: right; padding-top: 20px; }
+
+.formtit { width: 156px; *width: 154px; clear: both; float: left; text-align: right; margin-left: 88px; }
+
+.form_select.inch_form { width: 61px; height: 26px; float: left; line-height: 26px; padding-right: 4px; }
+
+.inch_form .showul { top: 22px; width: 61px; }
+
+#selInc { width: 68px; }
 
 /*# sourceMappingURL=styles.css.map */
