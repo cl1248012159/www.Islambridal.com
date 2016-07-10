@@ -133,9 +133,10 @@ class Kush_Reviewimage_ProductController extends Mage_Review_ProductController
 
 
 
-        $productku = $this->getRequest()->getParam('sku', false);
-        $productId = Mage::getModel('catalog/product')->getIdBySku($productku);
-        $this->getRequest()->setParam('id', $productId);
+        if( $productku = $this->getRequest()->getParam('sku', false) ){
+            $productId = Mage::getModel('catalog/product')->getIdBySku($productku);
+            $this->getRequest()->setParam('id', $productId);
+        }
 
 
 
