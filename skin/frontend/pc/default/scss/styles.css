@@ -3843,4 +3843,29 @@ img { vertical-align: middle; }
 .sdl b { color: #000; }
 
 .sdl dd p { color: #333333; line-height: 20px; font-size: 12px; }
+
+.dressul { border-bottom: 1px dashed #D8D8D8; height: 30px; line-height: 30px; margin-right: 20px; text-decoration: underline; }
+
+.dressul li { float: left; font-size: 12px; line-height: 30px; list-style: none outside none; padding: 0 10px 0 0; text-transform: uppercase; }
+
+.dressul li a { color: #000000; text-decoration: underline; }
+
+.clear { clear: both; font-size: 1px; width: 1px; visibility: hidden; margin-top: 0px !important; height: 0; line-height: 0; border: 0 none; margin: 0; padding: 0; }
+
+.svp { color: #000000; font-size: 12px; line-height: 50px; width: 794px; }
+
+.svp b { font-size: 21px; margin-right: 6px; }
+
+.cdl { width: 900px; margin-top: 10px; }
+
+.cdl dt { background: url("../images/commont/loading_img.gif") no-repeat scroll 50% 40% transparent; font-size: 12px; height: 180px; line-height: 24px; margin-right: 20px; text-align: center; width: 180px; }
+
+.cdl dt, .cdl dd { float: left; }
+
+#Satin_chiffon, #Composite_Silk, #Dchiffion, #satin, #chiffon, #taffeta, #organza, #matte_satin, #elastic_woven_satin, #silk_like_satin { position: relative; margin: 0; }
+
+.cdl dt img { border: 1px solid #DDDDDD; display: block; height: 157px; padding: 10px; width: 157px; }
+
+#Satin_chiffon div, #Composite_Silk div, #Dchiffion div, #satin div, #chiffon div, #taffeta div, #organza div, #matte_satin div, #elastic_woven_satin div, #silk_like_satin div { background: none repeat scroll 0 0 #FFFFFF; cursor: pointer; height: 36px; position: absolute; width: 36px; }
+
 /*# sourceMappingURL=styles.css.map */
