@@ -8,13 +8,55 @@
         <?php if($this->canShowOptions()): ?>
             <?php $_filters = $this->getFilters() ?>
 
+            <?php
+            $_current_category = Mage::registry('current_category');
+            if($_current_category){
+                $currid=$_current_category->getId();
+                $current=Mage::getModel('catalog/category')->load($currid);
+                $categories=array();
+                if($current->getChildren()){
+                    $categories= explode(',',$current->getChildren());
+                }else{
+                    $currparentcategoryid=$_current_category->getParentId();
+                    if($currparentcategoryid!==Mage::app()->getStore()->getRootCategoryId()){
+                        $parentcategory=Mage::getModel('catalog/category')->load($currparentcategoryid);
+                        $subCategories= explode(',',$parentcategory->getChildren());
+                        $currenid[]=$_current_category->getId();
+                        $categories=array_diff($subCategories,$currenid);
+                    }
+                }
+            }
+            ?>
+
+            <?php if($categories):?>
+                <dl id="narrow-by-list">
+                    <dt class="odd">Category</dt>
+                    <dd class="odd">
+                        <ol>
+                        <?php foreach($categories as $sub):?>
+                            <?php $cat = Mage::getModel('catalog/category')->load($sub);
+                                if($cat->getIsActive()):
+                            ?>
+                            <?php
+                            $products='';
+                            $products=$cat->getProductCollection()?>
+                            <li><a href="<?php echo $cat->getUrl() ?>"><?php echo $cat->getName().'('.count($products).')'; ?></a></li>
+                            <?php endif;?>
+                        <?php endforeach;?>
+                        </ol>
+                    </dd>
+                </dl>
+            <?php endif?>
+
+
                 <?php foreach ($_filters as $_filter): ?>
                     <?php if($_filter->getItemsCount()): ?>
-
+                        <?php if($_filter->getName()!='Category'):?>
                         <dl id="narrow-by-list">
                             <dt><?php echo $this->__($_filter->getName()) ?>:</dt>
                             <dd><?php echo $_filter->getHtml() ?></dd>
                         </dl>
+                        <?php endif; ?>
                     <?php endif;?>
 
 
