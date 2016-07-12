@@ -4,10 +4,9 @@
 
 <div class="estorm-zoom" data-config='{"colsnumber":"3", "zindex":"99"}'>
     <div class="estorm-zoom-stage">
-        <img width="300"
-             height="400"
+        <img class="m_image"
              data-bigurl="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600,800);?>"
-             src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(300,400) ;?>">
+             src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(375,500) ;?>">
     </div>
 
 
@@ -20,8 +19,8 @@
                 <?php if($img_i==0):?>
 
                     <li class="item current">
-                        <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile())->resize(600,800); ?>" data-middle="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(300,400); ?>">
-                            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(300,400); ?>" width="90" height="120">
+                        <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile())->resize(600,800); ?>" data-middle="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(375,500); ?>">
+                            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(375,500); ?>" width="90" height="120">
                         </a>
                     </li>
 
@@ -29,7 +28,7 @@
 
                     <li class="item">
                         <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail',$_image->getFile())->resize(600,800); ?>">
-                            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(300,400); ?>"  width="90" height="120">
+                            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(375,500); ?>"  width="90" height="120">
                         </a>
                     </li>
 
