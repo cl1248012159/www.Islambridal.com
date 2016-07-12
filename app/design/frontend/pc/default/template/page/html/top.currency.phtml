@@ -1,10 +1,21 @@
 <?php if($this->getCurrencyCount()>1): ?>
 <div class="top_currency">
     <label>Currency</label>
-    <span><?php echo $this->getCurrentCurrencyCode();?></span>
+    <?php
+        $skin_code_url = $this->getSkinUrl('images/current_code/');
+        $CurrentCurrencyCode = $this->getCurrentCurrencyCode();
+    ?>
+    <span style="background-image:url(<?php echo $skin_code_url.$CurrentCurrencyCode.'.png'?>);">
+        <?php echo $CurrentCurrencyCode;?>
+    </span>
     <div class="currency_list">
         <?php foreach ($this->getCurrencies() as $_code => $_name): ?>
-            <a href="<?php echo $this->getSwitchCurrencyUrl($_code) ?>"><?php echo $_code ?></a>
+            <?php if($CurrentCurrencyCode == $_code){continue;} ?>
+            <a
+                style="background-image:url(<?php echo $skin_code_url.$_code.'.png'?>);"
+                href="<?php echo $this->getSwitchCurrencyUrl($_code) ?>">
+                <?php echo $_code ?>
+            </a>
         <?php endforeach; ?>
     </div>
 </div>
