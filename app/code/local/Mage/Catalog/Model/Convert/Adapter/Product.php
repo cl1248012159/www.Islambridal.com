@@ -920,7 +920,7 @@ class Mage_Catalog_Model_Convert_Adapter_Product
 
         $product->save();
         foreach ($product->getOptions() as $o) {
-            $o->getValueInstance()->deletue($o->getId());
+            $o->getValueInstance()->deleteValues($o->getId());
             $o->deletePrices($o->getId());
             $o->deleteTitles($o->getId());
             $o->delete();
