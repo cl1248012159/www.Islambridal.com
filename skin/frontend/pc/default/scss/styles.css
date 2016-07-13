@@ -2964,10 +2964,10 @@ body dl[data-title="Time For Admin"] { position: absolute; opacity: 0; z-index: 
 .jCalMo .overDay { color: #FFF; /* must use rgb() syntax for jquery.color.js compliance */ background: #006699; }
 
 /* left month navigation button - no need to change */
-.jCal .left { background: url(../images/jCal/_left.gif) center center no-repeat; width: 16px; height: 16px; vertical-align: middle; cursor: pointer; float: left; }
+.jCal .left { background: url(../images/jCal/_left.gif) center center no-repeat; width: 16px; height: 16px; vertical-align: middle; cursor: pointer; float: left; display: none; }
 
 /* right month navigation button - no need to change */
-.jCal .right { background: url(../images/jCal/_right.gif) center center no-repeat; width: 16px; height: 16px; vertical-align: middle; cursor: pointer; float: right; }
+.jCal .right { background: url(../images/jCal/_right.gif) center center no-repeat; width: 16px; height: 16px; vertical-align: middle; cursor: pointer; float: right; display: none; }
 
 /* no need to change - this is for carousel opacity */
 .jCalMask, .jCalMove { position: absolute; overflow: hidden; }

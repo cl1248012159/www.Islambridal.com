@@ -989,6 +989,8 @@ body dl[data-title="Time For Admin"]{
   vertical-align:middle;
   cursor:pointer;
   float:left;
+  display:none;
+
 }
 /* right month navigation button - no need to change */
 .jCal .right {
@@ -998,6 +1000,7 @@ body dl[data-title="Time For Admin"]{
   vertical-align:middle;
   cursor:pointer;
   float:right;
+  display:none;
 }
 /* no need to change - this is for carousel opacity */
 .jCalMask, .jCalMove {
