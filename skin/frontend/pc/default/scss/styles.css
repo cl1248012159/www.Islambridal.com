@@ -1,4 +1,6 @@
 @charset "UTF-8";
+.F39 { color: #f39; }
+
 /* Reset ================================================================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -2430,7 +2432,9 @@ tr.summary-details-excluded { font-style: italic; }
 .new_header .header_top { height: 33px; line-height: 33px; }
 .new_header .header_top p { margin: 0; }
 .new_header .header_top .top_currency { width: 20%; text-align: left; position: relative; float: left; color: #fff; }
-.new_header .header_top .top_currency .currency_list { width: 50px; text-align: center; position: absolute; top: 33px; left: 40px; border-left: 1px solid #ccc; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; background: #fff; display: none; z-index: 1000; }
+.new_header .header_top .top_currency > span { background-repeat: no-repeat; padding-left: 20px; background-position: left center; }
+.new_header .header_top .top_currency .currency_list { width: 70px; text-align: center; position: absolute; top: 33px; left: 40px; border-left: 1px solid #ccc; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; background: #fff; display: none; z-index: 1000; }
+.new_header .header_top .top_currency .currency_list a { background-repeat: no-repeat; padding-left: 20px; background-position: left center; }
 .new_header .header_top .top_currency:hover .currency_list { display: block; }
 .new_header .header_top .top_currency:hover .currency_list a { color: #4c4c4c; display: block; line-height: 25px; }
 .new_header .header_top .top_currency:hover .currency_list a:hover { text-decoration: underline; }
@@ -2736,9 +2740,11 @@ tr.summary-details-excluded { font-style: italic; }
 
 .item-title .unit { background: none; line-height: 49px; font-size: 24px; padding: 0 10px; float: left; }
 
-.estorm-zoom { width: 405px; float: left; clear: both; background: #ffffff; }
+.estorm-zoom { width: 485px; float: left; clear: both; background: #ffffff; }
 
-.estorm-zoom-stage { width: 300px; height: 400px; float: right; position: relative; cursor: all-scroll; }
+.estorm-zoom-stage { width: 375px; height: 500px; float: right; position: relative; cursor: all-scroll; }
+
+.estorm-zoom-stage .m_image { width: 375px; height: 500px; }
 
 .estorm-zoom .arrow { width: 100%; height: 10px; display: block; text-indent: -9999px; overflow: hidden; position: absolute; background-repeat: no-repeat; background-position: center center; background-color: #fff; }
 
@@ -2758,7 +2764,7 @@ tr.summary-details-excluded { font-style: italic; }
 
 .page .product-view .product-essential { position: relative; }
 .page .product-view .product-essential .product-img-box { position: relative; z-index: 1; }
-.page .product-view .product-shop { position: relative; padding-left: 450px; padding-bottom: 20px; float: none; width: auto; }
+.page .product-view .product-shop { position: relative; padding-left: 500px; padding-bottom: 20px; float: none; width: auto; }
 .page .product-view .product-shop .product-name h1 { text-transform: Capitalize; }
 .page .product-view .product-shop .commont { display: inline-block; width: 100%; line-height: 30px; margin-top: 10px; }
 .page .product-view .product-shop .commont a { text-decoration: underline; }
@@ -2776,20 +2782,22 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-shop .new-product-options:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .page .product-view .product-shop .new-product-options dl dt { color: #444; line-height: 15px; font-size: 14px; margin-top: 15px; }
 .page .product-view .product-shop .new-product-options dl dt .required em { color: #f39; vertical-align: sub; display: inline-block; width: 10px; }
+.page .product-view .product-shop .new-product-options dl dd input[data-title="Time"] { position: relative; z-index: -1; }
+.page .product-view .product-shop .new-product-options dl dd select + a { text-decoration: underline; color: #444; padding-left: 5px; }
+.page .product-view .product-shop .new-product-options dl dd select + a:hover { color: #f39; }
+.page .product-view .product-shop .new-product-options dl dd select.product-custom-option { background-image: url(../images/commont/kai.jpg); background-repeat: no-repeat; background-position: 180px center; }
+.page .product-view .product-shop .new-product-options dl dd p.required { float: right; clear: both; }
+.page .product-view .product-shop .new-product-options dl .custom_size { border: 1px solid #ccc; padding: 0 15px 15px; position: relative; margin: 15px 0; }
 .page .product-view .product-shop .new-product-options dl .Custom_made { border-left: 1px solid #ddd; border-right: 1px solid #ddd; padding: 10px 25px; }
 .page .product-view .product-shop .new-product-options dl .Custom_made:first-of-type { margin-top: 15px; border-top: 1px solid #ddd; }
 .page .product-view .product-shop .new-product-options dl .Custom_made:last-of-type { border-bottom: 1px solid #ddd; }
 .page .product-view .product-shop .new-product-options dl .Custom_made dt { margin: 0; }
-.page .product-view .product-shop .new-product-options .other-description { float: left; margin-left: 10px; }
-.page .product-view .product-shop .new-product-options .other-description li { height: 25px; line-height: 25px; margin-top: 33px; }
-.page .product-view .product-shop .new-product-options .other-description li a { text-decoration: underline; color: #444; }
-.page .product-view .product-shop .new-product-options .other-description li a:hover { color: #f39; }
-.page .product-view .product-shop .new-product-options .measurements .co { font-size: 16px; color: #f39; display: block; font-weight: normal; }
+.page .product-view .product-shop .new-product-options .measurements { width: 410px; position: absolute; top: 0; right: 0; left: 225px; }
+.page .product-view .product-shop .new-product-options .measurements .co { font-size: 14px; color: #f39; display: block; font-weight: normal; }
+.page .product-view .product-shop .new-product-options .measurements .co + div { font-size: 12px; }
 .page .product-view .product-shop .new-product-options .measurements .F39 { color: #f39; }
 .page .product-view .product-shop .new-product-options .measurements .BB { border-bottom: 1px solid #f39; }
 .page .product-view .product-shop .new-product-options .measurements img { width: 99%; height: 99%; max-width: 310px; max-height: 310px; }
-.page .product-view .product-shop .new-product-options p.required { float: right; clear: both; }
-.page .product-view .product-shop .new-product-options select.product-custom-option { background-image: url(../images/commont/kai.jpg); background-repeat: no-repeat; background-position: 180px center; }
 .page .product-view .product-shop .new-product-options .product-custom-option { appearance: none; -moz-appearance: none; -webkit-appearance: none; border: 1px solid #ccc; border-radius: 3px; width: 200px; height: 25px; line-height: 25px; padding: 0 10px; }
 .page .product-view .product-shop .new-product-options .validation-advice { display: none; }
 .page .product-view .product-shop .new-product-options .infomation { margin: 15px 0; color: #645B56; }
@@ -2894,6 +2902,78 @@ tr.summary-details-excluded { font-style: italic; }
 .page .VIEW_GALLERY .review_list .reviewContent .content { width: 100%; line-height: 15px; height: 30px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .page .VIEW_GALLERY .review_list .review_rating .review_title { display: none; }
 .page .VIEW_GALLERY .review_list .review_rating span { display: block; text-align: right; }
+
+body dl[data-title="Time For Admin"] { position: absolute; opacity: 0; z-index: -10; }
+
+/* default dimensions and justification for each month including title */
+.jCal { /* each day width + border-left + border-right */ width: 100%; height: 21px; text-align: center; vertical-align: top; }
+
+/* default dimensions and justification for each month not including title */
+.jCalMo { width: 210px; /* each day width + border-left + border-right */ float: left; overflow: visible; height: 100%; white-space: nowrap; margin: 0 2px; }
+
+/* top month display block - i.e. January */
+.jCal .month, .jCal .monthSelect, .jCal .monthName, .jCal .monthYear { line-height: 16px; height: 16px; text-align: center; vertical-align: bottom; font-family: Tahoma; font-size: 8pt; color: #000000; cursor: pointer; float: left; }
+
+/* month name per calendar style - includes left/right padding and alignment */
+.jCal .monthName { padding-left: 2px; padding-right: 2px; text-align: right; }
+
+/* year per calendar style - includes left/right padding and alignment */
+.jCal .monthYear { float: right; padding-left: 2px; padding-right: 2px; text-align: left; }
+
+/* hilight style for new month combobox pulldown for hover */
+.jCal .monthSelect { background: #EEE url(../images/jCal/eeGrad2.gif) bottom repeat-x; }
+
+/* do not edit - this enables the new month combobox selector */
+.jCal .monthSelector { position: absolute; }
+
+/* do not edit - this enables the new month combobox selector "shadow" for capturing auto-hide */
+.jCal .monthSelectorShadow { position: absolute; background: #808080; padding: 0px; }
+
+/* this is the hover for the month name */
+.jCal .monthNameHover { background: #EDEDED url(../images/jCal/double-arrow-vert.gif) center left no-repeat; color: #808080; }
+
+/* this is the hover for the year */
+.jCal .monthYearHover { background: #EDEDED url(../images/jCal/double-arrow-vert.gif) center right no-repeat; color: #808080; }
+
+/* this is the hover for the new month or year hover in the new combobox selection */
+.jCal .monthSelectHover { background: #069; color: #FFF; }
+
+/* day block dimensions and style - for all day blocks */
+.jCalMo .dow, .jCalMo .day, .jCalMo .pday, .jCalMo .aday, .jCalMo .overDay, .jCalMo .invday, .jCalMo .selectedDay { width: 30px; font-family: Tahoma; font-size: 8pt; color: #000000; border-right: 1px solid #CCC; border-bottom: 1px solid #CCC; border-left: 1px solid #EEE; text-align: center; cursor: default; float: left; }
+
+/* day of week header specific style */
+.jCalMo .dow { background: #EEE url(../images/jCal/eeGrad.gif) bottom repeat-x; border-bottom: 0px; }
+
+/* actual calendar day default style */
+.jCalMo .day, .jCalMo .invday { height: 30px; text-align: center; }
+
+/* selectable calendar day specific style */
+.jCalMo .day { cursor: pointer; background: #FFF; }
+.jCalMo .day span { display: block; font-size: 10px; line-height: 10px; }
+
+/* blacked-out calendar day specific style */
+.jCalMo .invday { color: #808080; background: #eeeeee; text-decoration: line-through; }
+
+/* previous and subsequent months calendar day specific style */
+.jCalMo .pday, .jCalMo .aday { height: 30px; background: #e3e3e3; color: #CCC; }
+
+/* selected day */
+.jCalMo .selectedDay { color: #FFF; /* must use rgb() syntax for jquery.color.js compliance */ background: #008fd6; }
+
+/* mouseover hilighted selectable day */
+.jCalMo .overDay { color: #FFF; /* must use rgb() syntax for jquery.color.js compliance */ background: #006699; }
+
+/* left month navigation button - no need to change */
+.jCal .left { background: url(../images/jCal/_left.gif) center center no-repeat; width: 16px; height: 16px; vertical-align: middle; cursor: pointer; float: left; }
+
+/* right month navigation button - no need to change */
+.jCal .right { background: url(../images/jCal/_right.gif) center center no-repeat; width: 16px; height: 16px; vertical-align: middle; cursor: pointer; float: right; }
+
+/* no need to change - this is for carousel opacity */
+.jCalMask, .jCalMove { position: absolute; overflow: hidden; }
+
+.jCalcontainer { display: none; position: relative; }
+.jCalcontainer #container { position: absolute; z-index: 1; background: #E3E3E3; border-radius: 3px; padding: 5px; }
 
 .shopping_bag .scart_step1 { background: url("../images/commont/scart_step.gif") no-repeat center top; height: 48px; overflow: hidden; margin: 30px 0; }
 .shopping_bag .shopping_bag_title { border-bottom: 1px solid #51423A; font-size: 16px; text-transform: capitalize; color: #000; padding-bottom: 10px; }
@@ -3091,7 +3171,7 @@ div.c { clear: both; width: 100%; height: 0px; }
 
 .data-table tr.last th { border-bottom: 0 !important; border-right: none; }
 
-.data-table tr.last td { border-bottom: 0 !important; border-right: none; text-align: right; }
+.data-table tr.last td { border-bottom: 0 !important; border-right: none; }
 
 .data-table th { padding: 3px 8px; font-weight: bold; }
 
@@ -3806,8 +3886,6 @@ li.ZW em { background-position: -58px -513px; }
 
 .mainbox h3 { font-size: 12px; background: url(../images/commont/dehua.png) no-repeat 0 center; padding-left: 12px; font-weight: bold; font-family: Verdana, Geneva, sans-serif; clear: both; margin-bottom: 10px; }
 
-.co_main { position: relative; height: 450px; background: url(../images/commont/weddngoc.jpg) no-repeat -10px 0; }
-
 .meatab .co_main { width: 465px; float: left; margin-right: 25px; margin-bottom: 20px; }
 
 .co_main.co_wedding_back { background: url(../images/commont/weddinback.jpg) no-repeat 45px 0; }
@@ -3854,7 +3932,7 @@ img { vertical-align: middle; }
 
 .svp b { font-size: 21px; margin-right: 6px; }
 
-.cdl dt { background: url("http://s.Beformal.com.au/images/loading_img.gif") no-repeat scroll 50% 40% transparent; font-size: 12px; height: 180px; line-height: 24px; margin-right: 20px; text-align: center; width: 180px; }
+.cdl dt { background: url(../images/commont/loading_img.gif) no-repeat scroll 50% 40% transparent; font-size: 12px; height: 180px; line-height: 24px; margin-right: 20px; text-align: center; width: 180px; }
 
 .cdl { width: 900px; margin-top: 10px; }
 
@@ -3866,13 +3944,13 @@ img { vertical-align: middle; }
 
 #Satin_chiffon, #Composite_Silk, #Dchiffion, #satin, #chiffon, #taffeta, #organza, #matte_satin, #elastic_woven_satin, #silk_like_satin { position: relative; margin: 0; padding: 0; }
 
-.mainbox h3 { font-size: 12px; background: url(http://s.Beformal.com.au/images/dehua.png) no-repeat 0 center; padding-left: 12px; font-weight: bold; font-family: Verdana, Geneva, sans-serif; clear: both; margin-bottom: 10px; }
+.mainbox h3 { font-size: 12px; background: url(../images/commont/dehua.png) no-repeat 0 center; padding-left: 12px; font-weight: bold; font-family: Verdana, Geneva, sans-serif; clear: both; margin-bottom: 10px; }
 
 .meatab .co_main { width: 465px; float: left; margin-right: 25px; margin-bottom: 20px; }
 
-.co_main { position: relative; height: 450px; background: url(http://s.Beformal.com.au/images/weddngoc.jpg) no-repeat -10px 0; }
+.co_main { position: relative; height: 450px; background: url(../images/commont/weddngoc.jpg) no-repeat -10px 0; }
 
-.co_main.co_wedding_back { background: url(http://s.Beformal.com.au/images/weddinback.jpg) no-repeat 45px 0; }
+.co_main.co_wedding_back { background: url(../images/commont/weddinback.jpg) no-repeat 45px 0; }
 
 .mainbox > dl { clear: both; position: relative; margin-bottom: 10px; }
 

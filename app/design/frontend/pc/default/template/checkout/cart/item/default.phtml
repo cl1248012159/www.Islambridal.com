@@ -40,22 +40,22 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif; ?>
         </h2>
         <?php if ($_options = $this->getOptionList()):?>
-        <dl class="item-options">
             <?php foreach ($_options as $_option) : ?>
-            <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
-            <dt><?php echo $this->escapeHtml($_option['label']) ?>:</dt>
-            <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $_formatedOptionValue['value'] ?>
-                <?php if (isset($_formatedOptionValue['full_view'])): ?>
-                <div class="truncated_full_value">
-                    <dl class="item-options">
-                        <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
-                        <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
-                    </dl>
-                </div>
-                <?php endif; ?>
-            </dd>
+                <dl class="item-options" data-title="<?php echo $this->escapeHtml($_option['label']) ?>">
+                    <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
+                    <dt><?php echo $this->escapeHtml($_option['label']) ?>:</dt>
+                    <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $_formatedOptionValue['value'] ?>
+                        <?php if (isset($_formatedOptionValue['full_view'])): ?>
+                            <div class="truncated_full_value">
+                                <dl class="item-options">
+                                    <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
+                                    <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
+                                </dl>
+                            </div>
+                        <?php endif; ?>
+                    </dd>
+                </dl>
             <?php endforeach; ?>
-        </dl>
         <?php endif;?>
         <?php if ($messages = $this->getMessages()): ?>
         <?php foreach ($messages as $message): ?>

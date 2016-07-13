@@ -30,7 +30,7 @@
 
         .product-shop{
             position:relative;
-            padding-left: 520px;
+            padding-left: 500px;
             padding-bottom:20px;
             float: none;
             width: auto;
@@ -122,6 +122,37 @@
                             }
                         }
                     }
+
+                    dd{
+                        input[data-title="Time"]{
+                          position: relative;
+                          z-index: -1;
+                        }
+                        select+a{
+                            text-decoration: underline;
+                            color:#444;
+                            padding-left: 5px;
+                            &:hover{
+                              color:#f39;
+                            }
+                        }
+                        select.product-custom-option{
+                            background-image:url(../images/commont/kai.jpg);
+                            background-repeat:no-repeat;
+                            background-position: 180px center;
+                        }
+                        p.required{
+                            float: right;
+                            clear: both;
+                        }
+                    }
+
+                    .custom_size{
+                        border:1px solid #ccc;
+                        padding: 0 15px 15px;
+                        position: relative;
+                        margin: 15px 0;
+                    }
                     .Custom_made{
                         border-left:1px solid #ddd;
                         border-right:1px solid #ddd;
@@ -140,29 +171,25 @@
                         }
                     }
                 }
-                .other-description{
-                    float: left;
-                    margin-left: 10px;
-                    li{
-                        height:25px;
-                        line-height: 25px;
-                        margin-top:33px;
-                        a{
-                            text-decoration: underline;
-                            color:#444;
-                            &:hover{
-                                color:#f39;
-                            }
-                        }
-                    }
-                }
+
+
+
+
 
                 .measurements{
+                  width:410px;
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  left:225px;
                   .co {
-                    font-size: 16px;
+                    font-size: 14px;
                     color: #f39;
                     display: block;
                     font-weight: normal;
+                  }
+                  .co+div{
+                    font-size:12px;
                   }
                   .F39{
                     color:#f39;
@@ -178,17 +205,12 @@
                   }
                 }
 
-                p.required{
-                    float: right;
-                    clear: both;
-                }
-                
 
-                select.product-custom-option{
-                    background-image:url(../images/commont/kai.jpg);
-                    background-repeat:no-repeat;
-                    background-position: 180px center;
-                }
+
+
+
+
+
 
                 .product-custom-option{
                     appearance:none;
@@ -824,3 +846,173 @@
 
 }
 
+body dl[data-title="Time For Admin"]{
+  position: absolute;
+  opacity: 0;
+  z-index:-10;
+}
+
+
+/* default dimensions and justification for each month including title */
+.jCal {
+  /* each day width + border-left + border-right */
+  width:100%;
+  height:21px;
+  text-align:center;
+  vertical-align:top;
+}
+/* default dimensions and justification for each month not including title */
+.jCalMo {
+  width:210px;		/* each day width + border-left + border-right */
+  float:left;
+  overflow:visible;
+  height:100%;
+  white-space:nowrap;
+  margin: 0 2px;
+}
+/* top month display block - i.e. January */
+.jCal .month, .jCal .monthSelect, .jCal .monthName, .jCal .monthYear {
+  line-height:16px;
+  height:16px;
+  text-align:center;
+  vertical-align:bottom;
+  font-family:Tahoma;
+  font-size:8pt;
+  color:#000000;
+  cursor:pointer;
+  float:left;
+}
+/* month name per calendar style - includes left/right padding and alignment */
+.jCal .monthName {
+  padding-left:2px;
+  padding-right:2px;
+  text-align:right;
+}
+/* year per calendar style - includes left/right padding and alignment */
+.jCal .monthYear {
+  float:right;
+  padding-left:2px;
+  padding-right:2px;
+  text-align:left;
+}
+/* hilight style for new month combobox pulldown for hover */
+.jCal .monthSelect {
+  background:#EEE url(../images/jCal/eeGrad2.gif) bottom repeat-x;
+}
+/* do not edit - this enables the new month combobox selector */
+.jCal .monthSelector {
+  position:absolute;
+}
+/* do not edit - this enables the new month combobox selector "shadow" for capturing auto-hide */
+.jCal .monthSelectorShadow {
+  position:absolute;
+  background:#808080;
+  padding:0px;
+}
+/* this is the hover for the month name */
+.jCal .monthNameHover {
+  background:#EDEDED url(../images/jCal/double-arrow-vert.gif) center left no-repeat;
+  color:#808080;
+}
+/* this is the hover for the year */
+.jCal .monthYearHover {
+  background:#EDEDED url(../images/jCal/double-arrow-vert.gif) center right no-repeat;
+  color:#808080;
+}
+/* this is the hover for the new month or year hover in the new combobox selection */
+.jCal .monthSelectHover {
+  background:#069;
+  color:#FFF;
+}
+/* day block dimensions and style - for all day blocks */
+.jCalMo .dow, .jCalMo .day, .jCalMo .pday, .jCalMo .aday, .jCalMo .overDay, .jCalMo .invday, .jCalMo .selectedDay {
+  width:30px;
+  font-family:Tahoma;
+  font-size:8pt;
+  color:#000000;
+  border-right:1px solid #CCC;
+  border-bottom:1px solid #CCC;
+  border-left:1px solid #EEE;
+  text-align:center;
+  cursor:default;
+  float:left;
+}
+/* day of week header specific style */
+.jCalMo .dow {
+  background:#EEE url(../images/jCal/eeGrad.gif) bottom repeat-x;
+  border-bottom:0px;
+}
+/* actual calendar day default style */
+.jCalMo .day, .jCalMo .invday {
+  height:30px;
+  text-align:center;
+}
+/* selectable calendar day specific style */
+.jCalMo .day {
+  cursor:pointer;
+  background:#FFF;
+  span{
+    display: block;
+    font-size: 10px;
+    line-height: 10px;
+  }
+}
+/* blacked-out calendar day specific style */
+.jCalMo .invday {
+  color:#808080;
+  background:#eeeeee;
+  text-decoration:line-through;
+}
+/* previous and subsequent months calendar day specific style */
+.jCalMo .pday, .jCalMo .aday {
+  height:30px;
+  background:#e3e3e3;
+  color:#CCC;
+}
+/* selected day */
+.jCalMo .selectedDay {
+  color:#FFF;
+  /* must use rgb() syntax for jquery.color.js compliance */
+  background:rgb(0, 143, 214);
+}
+/* mouseover hilighted selectable day */
+.jCalMo .overDay {
+  color:#FFF;
+  /* must use rgb() syntax for jquery.color.js compliance */
+  background:rgb(0, 102, 153);
+}
+/* left month navigation button - no need to change */
+.jCal .left {
+  background:url(../images/jCal/_left.gif) center center no-repeat;
+  width:16px;
+  height:16px;
+  vertical-align:middle;
+  cursor:pointer;
+  float:left;
+}
+/* right month navigation button - no need to change */
+.jCal .right {
+  background:url(../images/jCal/_right.gif) center center no-repeat;
+  width:16px;
+  height:16px;
+  vertical-align:middle;
+  cursor:pointer;
+  float:right;
+}
+/* no need to change - this is for carousel opacity */
+.jCalMask, .jCalMove {
+  position:absolute;
+  overflow:hidden;
+}
+
+.jCalcontainer{
+    display:none;
+    position: relative;
+    #container{
+      position: absolute;
+      z-index:1;
+      background: #E3E3E3;
+      border-radius: 3px;
+      padding:5px;
+    }
+}

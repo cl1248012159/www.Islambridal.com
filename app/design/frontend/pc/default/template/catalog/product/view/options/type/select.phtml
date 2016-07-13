@@ -1,16 +1,29 @@
 <?php $_option = $this->getOption() ?>
 
 <input type="hidden" id="<?php echo $_option->getId(); ?>" value="<?php echo  $this->htmlEscape($_option->getTitle()) ?>" />
+<dt>
+    <label <?php if ($_option->getIsRequire()) echo ' class="required"' ?>>
+        <?php if ($_option->getIsRequire()) echo '<em>*</em>' ?>
+        <?php echo  $this->htmlEscape($_option->getTitle()) ?>
+    </label>
+</dt>
 
-<dt><label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->htmlEscape($_option->getTitle()) ?></label></dt>
-
-<dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
-    <div class="input-box" data-title="<?php echo $this->htmlEscape($_option->getTitle());?>">
+<dd>
+    <div class="input-box" data-title="<?php echo  $this->htmlEscape($_option->getTitle()) ?>">
         <?php echo $this->getValuesHtml() ?>
         <?php if ($_option->getIsRequire()): ?>
             <?php if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_RADIO || $_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_CHECKBOX): ?>
                 <span id="options-<?php echo $_option->getId() ?>-container"></span>
             <?php endif; ?>
         <?php endif;?>
+
+        <?php if( $this->htmlEscape($_option->getTitle()) == 'Color'):?>
+            <a href="<?php echo $this->getUrl('color-chart');?>">Color Chart</a>
+        <?php endif;?>
+
+        <?php if( $this->htmlEscape($_option->getTitle()) == 'Size'):?>
+            <a href="<?php echo $this->getUrl('size-chart');?>">Size Chart</a>
+        <?php endif;?>
+
     </div>
 </dd>

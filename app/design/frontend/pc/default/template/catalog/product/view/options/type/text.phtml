@@ -1,9 +1,7 @@
 <?php $_option = $this->getOption(); ?>
 
-
-
 <?php if($this->htmlEscape($_option->getTitle()) == 'Bust'):?>
-<div class="Size Custom_made no-display">
+
     <dt>
         <label>
             Please select:
@@ -11,19 +9,14 @@
     </dt>
     <dd>
         <div class="input-box">
-            <select name="selInc" id="selInc" class="product-custom-option">
+            <select name="setunit" id="setunit" class="product-custom-option">
                 <option value="inch">in</option>
                 <option value="cm">cm</option>
             </select>
         </div>
     </dd>
-</div>
+
 <?php endif;?>
-
-
-
-
-<div class="<?php if($this->htmlEscape($_option->getTitle()) == 'Enter Color Code') echo 'Color'; else echo 'Size Custom_made';?>  no-display">
 
     <dt>
         <label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>>
@@ -169,7 +162,8 @@
 
         <?php elseif ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_AREA): ?>
 
-            <textarea id="options_<?php echo $_option->getId() ?>_text"
+            <textarea  style="height:160px;"
+                       id="options_<?php echo $_option->getId() ?>_text"
                       onchange="opConfig.reloadPrice()"
                       class="<?php echo $_option->getIsRequire() ? ' required-entry' : '' ?> <?php echo $_option->getMaxCharacters() ? ' validate-length maximum-length-'.$_option->getMaxCharacters() : '' ?> product-custom-option"
                       name="options[<?php echo $_option->getId() ?>]"
@@ -182,9 +176,5 @@
             <p class="note"><?php echo Mage::helper('catalog')->__('Maximum number of characters:')?> <strong><?php echo $_option->getMaxCharacters() ?></strong></p>
         <?php endif; ?>
 
-        <?php if($this->htmlEscape($_option->getTitle()) == 'Enter Color Code') echo '<p class="note">Formate: Fabric_Color code</p><p class="note">Example: Satin_01#Daffodil</p>'; ?>
-
         </div>
     </dd>
-
-</div>

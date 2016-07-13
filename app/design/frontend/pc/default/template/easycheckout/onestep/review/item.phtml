@@ -6,18 +6,21 @@
         <a href="javascript:void(0)" id="option-clo-<?php echo $_item->getId();?>" title="<?php echo $this->__('Hide Option(s)');?>" class="close-options-link" onclick="easycheckout.showOptionsList(this,'option-<?php echo $_item->getId();?>-list'); return false;"><?php echo $this->__('Hide Option(s)');?></a>
         <dl class="item-options" id="option-<?php echo $_item->getId();?>-list">
             <?php foreach ($_options as $_option) : ?>
-            <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
-            <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
-            <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $_formatedOptionValue['value'] ?>
-                <?php if (isset($_formatedOptionValue['full_view'])): ?>
-                <div class="truncated_full_value">
-                    <dl class="item-options">
-                        <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
-                        <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
-                    </dl>
-                </div>
-                <?php endif; ?>
-            </dd>
+                <dl data-title="<?php echo $this->htmlEscape($_option['label']) ?>">
+                    <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
+                    <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
+                    <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $_formatedOptionValue['value'] ?>
+                        <?php if (isset($_formatedOptionValue['full_view'])): ?>
+                            <div class="truncated_full_value">
+                                <dl class="item-options">
+                                    <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
+                                    <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
+                                </dl>
+                            </div>
+                        <?php endif; ?>
+                    </dd>
+                </dl>
+
             <?php endforeach; ?>
         </dl>
         <?php endif;?>

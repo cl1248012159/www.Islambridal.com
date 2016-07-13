@@ -159,42 +159,85 @@
     //]]>
     </script>
 
-    
 
-    
-    
 
-    <dl>
+
+
+
+    <div class="product_customer_options">
+        <script src="<?php echo $this->getUrl()?>js/jQuery/jquery.jCal.min.js"></script>
+        <?php
+            $size_custom = '';
+            foreach($_options as $_option_size){
+                switch($this->htmlEscape($_option_size->getTitle())){
+                    case 'Bust':
+                    case 'Waist':
+                    case 'Hips':
+                    case 'Hollow to Floor':
+                    case 'Height':
+                    case 'Item Remarks':
+                        $size_custom .= $this->getOptionHtml($_option_size);
+                        break;
+                }
+            }
+            $size_custom .= '<div class="measurements">
+                    <div class="cusbox customHide" id="oc_content">
+                        <dl class="ocdl br5p">
+                            <dt><span class="co">Custom Options</span>
+                            <div>
+                                Dreaming of perfect fitting?You just need to pay extra<span class="fuhao">USD $</span><span id="custom_Cprice_Top" data-price="0" class="F39 huobi">19.99</span> ,our professional tailors  will make the dress custom size according to your exact measurements.
+                            </div>
+                            </dt>
+                            <dd class="co_main co_wedding">
+                                <div class="posidiv bust"><span class="bwhh">Bust</span>Measure across the back and fullest part of the bust (not under the bust).</div>
+                                <div class="posidiv waist"><span class="bwhh">Waist</span>Bend to one side to find the crease or natural waist. Measure across the narrowest part.</div>
+                                <div class="posidiv hips"><span class="bwhh">Hips</span>Standing with feet together, measure at the fullest part of the hips.</div>
+                                <div class="posidiv hollow"><span class="bwhh">Hollow to Floor</span>Measure from the center of the collarbone (Hollow) to the floor.<br>Note: Stand straight with feet together, and measure in bare feet.</div>
+                            </dd>
+
+                        </dl>
+                    </div>
+                </div>';
+        ?>
         <?php foreach($_options as $_option): ?>
-            <?php echo $this->getOptionHtml($_option) ?>
+            <?php
+                $data_title = $this->htmlEscape($_option->getTitle());
+
+                switch($this->htmlEscape($_option->getTitle())){
+                    case 'Time':
+                        echo '<dl data-title="'.$data_title.'">';
+                        echo $this->getOptionHtml($_option);
+                        echo '<div class="jCalcontainer">
+                                    <div id="container">
+                                        <div id="calendar"></div>
+                                    </div>
+                                </div>';
+                        echo '</dl>';
+                        break;
+                    case 'Time For Admin':
+                    case 'Color':
+                        echo '<dl data-title="'.$data_title.'">';
+                        echo $this->getOptionHtml($_option);
+                        echo '</dl>';
+                        break;
+                    case 'Size':
+                        echo '<dl data-title="'.$data_title.'">';
+                        echo $this->getOptionHtml($_option);
+                        echo '<div class="custom_size Size no-display">';
+                        echo $size_custom;
+                        echo '</div>';
+                        echo '</dl>';
+                        break;
+
+                }
+            ?>
         <?php endforeach; ?>
-    </dl>
-
-    <div class="other-description" style="position: absolute;left: 200px;top: 0px;">
-        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('other-descript')->toHtml(); ?>
     </div>
 
 
 
-    <div class="<?php if($this->htmlEscape($_option->getTitle()) == 'Enter Color Code') echo 'Color'; else echo 'Size';?>  measurements no-display"
-         style="position: absolute;left: 240px;top:185px;bottom: 20px;">
-        <div class="cusbox customHide" id="oc_content" style="display: block;">
-            <dl class="ocdl br5p">
-                <dt><span class="co">Custom Options</span>
-                <div>
-                    Dreaming of perfect fitting?You just need to pay extra<span class="fuhao">USD $</span><span id="custom_Cprice_Top" data-price="0" class="F39 huobi">19.99</span> ,our professional tailors  will make the dress custom size according to your exact measurements.
-                </div>
-                </dt>
-                <dd class="co_main co_wedding">
-                    <img src="<?php echo $this->getUrl();?>/skin/frontend/pc/default/images/commont/measurements.png" >
 
-                    <div class="F39">To fit heels,we'll add extra 8-13cm onto floor-length dresses.</div>
 
-                </dd>
-
-            </dl>
-        </div>
-    </div>
 
 
 
@@ -203,20 +246,49 @@
 
 
 <script type="text/javascript">
+    jQuery('input[data-title="Time"]').prop('readonly',true);
+
+
+
     jQuery("doucument").ready(function(){
 
-        jQuery('#color_A li').hover(function(){
-            jQuery('#cbla').empty().append(jQuerjQuery(this).html())   ;                       
+
+        jQuery('div[data-title="Time For Admin"] select option').each(function(){
+            if(jQuery(this).attr('value')){
+                var discount = {};
+                discount.input_date_arr = jQuery(this).attr('title').replace(/ Days/,'').split("-");
+                discount.input_pricetype = jQuery(this).attr('pricetype');
+                discount.priceinput = jQuery(this).attr('priceinput');
+                discount.timeforadmin_value = jQuery(this).attr('value');
+                //console.log(discount);
+                if(discount.input_date_arr.length>1){
+                    var start = discount.input_date_arr[0]-6;
+                    var end = discount.input_date_arr[1]-6;
+                    var price_formart = '';
+                    if(parseInt(discount.priceinput)){
+                        price_formart = (discount.input_pricetype=='fixed'?'$':'')+parseInt(discount.priceinput)+(discount.input_pricetype=='percent'?'%':'');
+                    }
+                    for(var i= start; i<=end; i++ ){
+                        jQuery(".day").eq(i-1).append("<span class='F39' data-timeforadmin_value='"+discount.timeforadmin_value+"'>"+price_formart+"</span>");
+                    }
+                }else{
+                    var start = discount.input_date_arr[0]-6;
+                    var price_formart = '';
+                    if(parseInt(discount.priceinput)){
+                        price_formart = (discount.input_pricetype=='fixed'?'$':'')+parseInt(discount.priceinput)+(discount.input_pricetype=='percent'?'%':'');
+                    }
+                    jQuery(".day").eq(start-1).append("<span class='F39' data-timeforadmin_value='"+discount.timeforadmin_value+"'>"+price_formart+"</span>");
+                }
+
+            }
         });
-        jQuery('#color_B li').hover(function(){
-            jQuery('#cblb').empty().append(jQuery(this).html())   ;                       
-        });
-        jQuery('#color_C li').hover(function(){
-            jQuery('#cblc').empty().append(jQuery(this).html())   ;                       
-        });
-        jQuery('#color_D li').hover(function(){
-            jQuery('#cbld').empty().append(jQuery(this).html())   ;                       
-        });
+
+
+
+
+
+
+
 
         jQuery(".product-custom-option").each(function(){
             var id = jQuery(this).attr("id");
@@ -224,7 +296,7 @@
             var maxIndex = jQuery("#"+id+" option:last").prop("index");
             var id_arr = id.split('_');
             var attribute = jQuery("#"+id_arr[1]).val();
-            var html = jQuery("."+attribute).html();
+
 
             jQuery(this).change(function(){
                 var checkText = jQuery(this).find("option:selected").text();
@@ -275,10 +347,25 @@
             return template;
         }
 
-        jQuery("#selInc").on('change',function(){
+        jQuery("#setunit").on('change',function(){
             var unit = jQuery(this).val();
             jQuery(".size_"+unit).prop('disabled',false).show();
             jQuery(".size_"+unit).siblings("select").prop('disabled',true).hide();
+        });
+
+        jQuery('.input-box[data-title="Time"]').click(function(){
+            jQuery('.jCalcontainer').show();
+        });
+
+        jQuery("#container").on('click','.day',function(e){
+            var e_target = jQuery(e.target);
+            if( e_target.hasClass('day') ){
+                var timeforadmin_value = e_target.find('span').data('timeforadmin_value');
+            }else if( e_target.hasClass('F39') ){
+                var timeforadmin_value = e_target.data('timeforadmin_value');
+            }
+            jQuery('.input-box[data-title="Time For Admin"] select').find('option[value="'+timeforadmin_value+'"]').prop('selected',true);
+            jQuery('.input-box[data-title="Time For Admin"] select').trigger("change");
         });
 
 

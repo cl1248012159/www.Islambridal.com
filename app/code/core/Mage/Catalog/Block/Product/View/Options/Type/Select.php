@@ -70,7 +70,12 @@ class Mage_Catalog_Block_Product_View_Options_Type_Select
                 $select->addOption(
                     $_value->getOptionTypeId(),
                     $_value->getTitle() . ' ' . $priceStr . '',
-                    array('price' => $this->helper('core')->currencyByStore($_value->getPrice(true), $store, false))
+                    array(
+                        'price' => $this->helper('core')->currencyByStore($_value->getPrice(true), $store, false),
+                        'priceType'=>$_value->getPriceType(),
+                        'priceInput'=>$_value->getPrice(),
+                        'title'=>$_value->getTitle()
+                        )
                 );
             }
             if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_MULTIPLE) {
