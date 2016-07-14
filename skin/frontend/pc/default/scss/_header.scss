@@ -238,13 +238,14 @@
 
         .level2{
           position: absolute;
+          left:0;
+          top:43px;
           border: 1px solid #eee;
           border-top-color: #f39;
           background: white;
           z-index: 1000000005;
           display: none;
           padding:10px;
-          left:0;
           min-width: 300px;
           min-height: 100px;
         }
