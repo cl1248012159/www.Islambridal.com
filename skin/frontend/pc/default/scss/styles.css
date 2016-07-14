@@ -2470,7 +2470,7 @@ tr.summary-details-excluded { font-style: italic; }
 .new_header .header_menu ul li:hover > a { color: #f39; }
 .new_header .header_menu ul li:not(:first-child) { background-image: url(../images/commont/menu_li_bg.png); background-repeat: no-repeat; background-position: 0px 20px; padding: 0 10px; }
 .new_header .header_menu ul li:not(:first-child):hover { background-image: url(../images/commont/menu_li_hover_bg.png); border-bottom: 2px solid #f39; }
-.new_header .header_menu ul li .level2 { position: absolute; border: 1px solid #eee; border-top-color: #f39; background: white; z-index: 1000000005; display: none; padding: 10px; left: 0; min-width: 300px; min-height: 100px; }
+.new_header .header_menu ul li .level2 { position: absolute; left: 0; top: 43px; border: 1px solid #eee; border-top-color: #f39; background: white; z-index: 1000000005; display: none; padding: 10px; min-width: 300px; min-height: 100px; }
 .new_header .header_menu ul .home { background: url(../images/commont/menu_home.png) no-repeat; background-position: 0px 14px; }
 .new_header .header_menu ul .home a { text-indent: -9999px; display: inline-block; width: 20px; }
 .new_header .header_menu ul a { color: #4c5253; text-transform: capitalize; }
@@ -2719,6 +2719,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .dress_list .products-grid li.item .price-box .price-label { display: none; }
 .page .dress_list .products-grid li.item .price-box .old-price .price { text-decoration: line-through; font-size: 12px; line-height: 12px; height: 13px; color: #999; font-weight: normal; }
 .page .dress_list .products-grid li.item .price-box .special-price .price { font-size: 14px; color: #333; line-height: 18px; height: 18px; display: inline-block; }
+.page .dress_list .products-grid li.item .price-box .minimal-price-link .label, .page .dress_list .products-grid li.item .price-box .minimal-price-link .price { color: #f39; }
 .page .pagination ol { padding-top: 5px; height: 37px; font-size: 14px; text-align: center; }
 .page .pagination ol li { display: inline-block; vertical-align: middle; }
 .page .pagination ol li a { display: block; border: 1px solid #b1b1b1; height: 32px; line-height: 32px; padding: 0 12px; border-radius: 3px; vertical-align: top; background-color: #f7f7f7; background-image: -webkit-linear-gradient(top, #fff, #ececec); background-image: linear-gradient(to bottom, #fff, #ececec); background-repeat: repeat-x; }
