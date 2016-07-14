@@ -2806,7 +2806,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-shop .new-product-options .compare li span { display: inline-block; color: #645B56; vertical-align: top; }
 .page .product-view .product-shop .new-product-options .compare li .title { width: 140px; }
 .page .product-view .product-shop .new-product-options .infomations2 { color: #f39; position: relative; height: 30px; line-height: 30px; max-width: 500px; }
-.page .product-view .product-shop .new-product-options .infomations2 .sizeimage { position: absolute; bottom: 23px; left: 284px; background: url(../images/commont/imgsizes.png) no-repeat center center; width: 220px; height: 200px; }
+.page .product-view .product-shop .new-product-options .infomations2 .sizeimage { position: absolute; bottom: 0; left: 330px; background: url(../images/commont/imgsizes.png) no-repeat center center; width: 220px; height: 200px; }
 .page .product-view .product-shop .new-product-options-bottom { margin-top: 15px; width: 100%; display: inline-block; }
 .page .product-view .product-shop .new-product-options-bottom .quty { *zoom: 1; margin-bottom: 10px; }
 .page .product-view .product-shop .new-product-options-bottom .quty:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
