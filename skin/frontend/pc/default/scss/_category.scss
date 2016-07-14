@@ -312,6 +312,11 @@
                             display: inline-block;
                         }
                     }
+                    .minimal-price-link{
+                        .label,.price{
+                            color:#f39;
+                        }
+                    }
                 }
             }
         }
