@@ -2718,7 +2718,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .dress_list .products-grid li.item .price-box { padding: 0 10px; }
 .page .dress_list .products-grid li.item .price-box .price-label { display: none; }
 .page .dress_list .products-grid li.item .price-box .old-price .price { text-decoration: line-through; font-size: 12px; line-height: 12px; height: 13px; color: #999; font-weight: normal; }
-.page .dress_list .products-grid li.item .price-box .special-price .price { font-size: 14px; color: #333; line-height: 18px; height: 18px; display: inline-block; }
+.page .dress_list .products-grid li.item .price-box .special-price .price { font-size: 14px; color: #f39; line-height: 18px; height: 18px; display: inline-block; }
 .page .dress_list .products-grid li.item .price-box .minimal-price-link .label, .page .dress_list .products-grid li.item .price-box .minimal-price-link .price { color: #f39; }
 .page .pagination ol { padding-top: 5px; height: 37px; font-size: 14px; text-align: center; }
 .page .pagination ol li { display: inline-block; vertical-align: middle; }
