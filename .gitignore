@@ -6,5 +6,5 @@ downloader/
 .sass-cache/*
 .idea/
 .idea/*
-media/catalog/product/cache/
+media/
 app/etc/local.xml
