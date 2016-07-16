@@ -1,13 +1,45 @@
 <footer>
     <div class="footer_contant">
         <div class="join_us">
-            <?php echo Mage::getModel('core/variable')->loadByCode('Community_link')->getValue('html');?>
+            <h2>Join our community</h2>
+            <ul>
+                <li class="mini-facebook"><a href=""></a></li>
+                <li class="mini-instagram"><a href=""></a></li>
+                <li class="mini-pinterest"><a href=""></a></li>
+                <li class="mini-youtube"><a href=""></a></li>
+                <li class="mini-twitter"><a href=""></a></li>
+                <li class="mini-tumbler"><a href=""></a></li>
+                <li class="mini-blog"><a href=""></a></li>
+                <li class="mini-vk"><a href=""></a></li>
+            </ul>
         </div>
         <div class="customer_help">
-            <?php echo Mage::getModel('core/variable')->loadByCode('footer_customer_help_1')->getValue('html');?>
-            <?php echo Mage::getModel('core/variable')->loadByCode('footer_customer_help_2')->getValue('html');?>
-            <?php echo Mage::getModel('core/variable')->loadByCode('footer_customer_help_3')->getValue('html');?>
-            <?php echo Mage::getModel('core/variable')->loadByCode('footer_customer_help_4')->getValue('html');?>
+            <dl>
+                <dt>CUSTOMER GUIDANCE</dt>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('login-problems')?>">Login Problems</a></dd>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('trace-your-order')?>">Trace Your Order</a></dd>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('payment-methods')?>">Payment Methods</a></dd>
+            </dl>
+            <dl>
+                <dt>PRODUCT INFO</dt>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('size-chart')?>">Size Chart</a></dd>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('color-chart')?>">Color Chart</a></dd>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('measurement')?>">Measurement</a></dd>
+            </dl>
+            <dl>
+                <dt>SHIPPING & DELIVERY</dt>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('processing-shipping-time')?>">Processing & Shipping Time</a></dd>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('shipping-methods')?>">Shipping Methods</a></dd>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('customs-and-import-tax')?>">Customs and Import Tax</a></dd>
+            </dl>
+            <dl>
+                <dt>Refund & return</dt>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('return-and-exchange-policy')?>">Return and Exchange Policy</a></dd>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('cancel-order')?>">Cancel Order</a></dd>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('contact-us')?>">Contact US</a></dd>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('faq')?>">FAQ</a></dd>
+                <dd><a rel="nofollow" href="<?php echo $this->getUrl('where-we-ship-to')?>">Where we ship to</a></dd>
+            </dl>
         </div>
         <div class="payments">
             <span class="banks">visa, master card, maestro, carte blue</span>

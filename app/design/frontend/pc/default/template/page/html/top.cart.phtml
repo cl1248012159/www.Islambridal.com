@@ -4,7 +4,7 @@ if(empty($_cartQty)) {
     $_cartQty = 0;
 }
 ?>
-<a href="<?php echo $this->getUrl('checkout/cart')?>" class="bag">
+<a rel="nofollow" href="<?php echo $this->getUrl('checkout/cart')?>" class="bag">
     <em>bag</em>
     <span>Bag</span>
     <span> ( <span class="count"><?php echo $_cartQty; ?></span> ) </span>

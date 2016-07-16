@@ -30,23 +30,23 @@
             </div>
             <div class="top_nav">
                 <?php if(Mage::getSingleton('customer/session')->isLoggedIn()):?>
-                    <a href="<?php echo $this->getUrl('customer/account')?>">My Account</a>
+                    <a rel="nofollow" href="<?php echo $this->getUrl('customer/account')?>">My Account</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a href="<?php echo $this->getUrl('customer/account/logout')?>">Log Out</a>
+                    <a rel="nofollow" href="<?php echo $this->getUrl('customer/account/logout')?>">Log Out</a>
                 <?php else:?>
-                    <a href="<?php echo $this->getUrl('customer/account')?>">Join Free</a>
+                    <a rel="nofollow" href="<?php echo $this->getUrl('customer/account')?>">Join Free</a>
                     or
-                    <a href="<?php echo $this->getUrl('customer/account')?>">Log in</a>
+                    <a rel="nofollow" href="<?php echo $this->getUrl('customer/account')?>">Log in</a>
                 <?php endif;?>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="<?php echo $this->getUrl('help')?>">Help</a>
+                <a rel="nofollow" href="<?php echo $this->getUrl('help')?>">Help</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a class="CustomerService_a" href="<?php echo $this->getUrl('customer_service')?>">Customer Service</a>
                 <div class="CustomerService">
                     <div class="and"></div>
                     <p>
                         <span></span>
-                        <a href="mailto:<?php echo Mage::getStoreConfig('trans_email/ident_general/email');?>">
+                        <a rel="nofollow" href="mailto:<?php echo Mage::getStoreConfig('trans_email/ident_general/email');?>">
                             Email: <?php echo Mage::getStoreConfig('trans_email/ident_general/email');?>
                         </a>
                     </p>
