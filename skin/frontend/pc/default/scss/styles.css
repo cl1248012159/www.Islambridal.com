@@ -2769,7 +2769,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-essential { position: relative; }
 .page .product-view .product-essential .product-img-box { position: relative; z-index: 1; }
 .page .product-view .product-shop { position: relative; padding-left: 500px; padding-bottom: 20px; float: none; width: auto; }
-.page .product-view .product-shop .product-name h2 { text-transform: Capitalize; }
+.page .product-view .product-shop .product-name h2 { text-transform: Capitalize; font-size: 15px; }
 .page .product-view .product-shop .commont { display: inline-block; width: 100%; line-height: 30px; margin-top: 10px; }
 .page .product-view .product-shop .commont a { text-decoration: underline; }
 .page .product-view .product-shop .commont .ratings, .page .product-view .product-shop .commont .no-rating { float: left; margin: 0; line-height: 30px; }
