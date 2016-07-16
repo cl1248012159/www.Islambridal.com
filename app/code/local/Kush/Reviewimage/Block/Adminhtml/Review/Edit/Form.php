@@ -78,120 +78,49 @@ class Kush_Reviewimage_Block_Adminhtml_Review_Edit_Form extends Mage_Adminhtml_B
          * 
          */
        if(Mage::helper("reviewimage")->getActive() == '1'):
-        $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();
-        $imageName = $review->getReviewimage1();
-        $imageResized = Mage::getBaseDir('media').DS."creviewimages".DS.$imageName;
-        $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imageUrl,'/media'));
-        if (!file_exists($imageResized)&&file_exists($dirImg)) :
-        $imageObj = new Varien_Image($dirImg);
-        $imageObj->constrainOnly(TRUE);
-        $imageObj->keepAspectRatio(TRUE);
-        $imageObj->keepFrame(FALSE);
-        $Resolution = Mage::helper("reviewimage")->getResolution();
-        $imageObj->resize($Resolution);
-        $imageObj->save($imageResized);
-        endif;
-        $newImageUrl = Mage::getBaseUrl('media')."creviewimages/".$imageName;
-        $image= "<image src='".$newImageUrl."'>";
-        $fieldset->addField('reviewimage1', 'note', array(
-            'label'     => Mage::helper('review')->__('Posted Review Image'),
-            'text'      => $image,
-        ));
-       endif;
-       if(Mage::helper("reviewimage")->getActive() == '1'):
-        $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2();
-        $imageName = $review->getReviewimage2();
-        $imageResized = Mage::getBaseDir('media').DS."creviewimages".DS.$imageName;
-        $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imageUrl,'/media'));
-        if (!file_exists($imageResized)&&file_exists($dirImg)) :
-        $imageObj = new Varien_Image($dirImg);
-        $imageObj->constrainOnly(TRUE);
-        $imageObj->keepAspectRatio(TRUE);
-        $imageObj->keepFrame(FALSE);
-        $Resolution = Mage::helper("reviewimage")->getResolution();
-        $imageObj->resize($Resolution);
-        $imageObj->save($imageResized);
-        endif;
-        $newImageUrl = Mage::getBaseUrl('media')."creviewimages/".$imageName;
-        $image= "<image src='".$newImageUrl."'>";
-        $fieldset->addField('reviewimage2', 'note', array(
-            'label'     => Mage::helper('review')->__('Posted Review Image'),
-            'text'      => $image,
-        ));
-       endif;
-       if(Mage::helper("reviewimage")->getActive() == '1'):
-        $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3();
-        $imageName = $review->getReviewimage3();
-        $imageResized = Mage::getBaseDir('media').DS."creviewimages".DS.$imageName;
-        $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imageUrl,'/media'));
-        if (!file_exists($imageResized)&&file_exists($dirImg)) :
-        $imageObj = new Varien_Image($dirImg);
-        $imageObj->constrainOnly(TRUE);
-        $imageObj->keepAspectRatio(TRUE);
-        $imageObj->keepFrame(FALSE);
-        $Resolution = Mage::helper("reviewimage")->getResolution();
-        $imageObj->resize($Resolution);
-        $imageObj->save($imageResized);
-        endif;
-        $newImageUrl = Mage::getBaseUrl('media')."creviewimages/".$imageName;
-        $image= "<image src='".$newImageUrl."'>";
-        $fieldset->addField('reviewimage3', 'note', array(
-            'label'     => Mage::helper('review')->__('Posted Review Image'),
-            'text'      => $image,
-        ));
-       endif;
-       if(Mage::helper("reviewimage")->getActive() == '1'):
-        $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4();
-        $imageName = $review->getReviewimage4();
-        $imageResized = Mage::getBaseDir('media').DS."creviewimages".DS.$imageName;
-        $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imageUrl,'/media'));
-        if (!file_exists($imageResized)&&file_exists($dirImg)) :
-        $imageObj = new Varien_Image($dirImg);
-        $imageObj->constrainOnly(TRUE);
-        $imageObj->keepAspectRatio(TRUE);
-        $imageObj->keepFrame(FALSE);
-        $Resolution = Mage::helper("reviewimage")->getResolution();
-        $imageObj->resize($Resolution);
-        $imageObj->save($imageResized);
-        endif;
-        $newImageUrl = Mage::getBaseUrl('media')."creviewimages/".$imageName;
-        $image= "<image src='".$newImageUrl."'>";
-        $fieldset->addField('reviewimage4', 'note', array(
-            'label'     => Mage::helper('review')->__('Posted Review Image'),
-            'text'      => $image,
-        ));
-       endif;
-       if(Mage::helper("reviewimage")->getActive() == '1'):
-        $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5();
-        $imageName = $review->getReviewimage5();
-        $imageResized = Mage::getBaseDir('media').DS."creviewimages".DS.$imageName;
-        $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imageUrl,'/media'));
-        if (!file_exists($imageResized)&&file_exists($dirImg)) :
-        $imageObj = new Varien_Image($dirImg);
-        $imageObj->constrainOnly(TRUE);
-        $imageObj->keepAspectRatio(TRUE);
-        $imageObj->keepFrame(FALSE);
-        $Resolution = Mage::helper("reviewimage")->getResolution();
-        $imageObj->resize($Resolution);
-        $imageObj->save($imageResized);
-        endif;
-        $newImageUrl = Mage::getBaseUrl('media')."creviewimages/".$imageName;
-        $image= "<image src='".$newImageUrl."'>";
-        $fieldset->addField('reviewimage5', 'note', array(
-            'label'     => Mage::helper('review')->__('Posted Review Image'),
-            'text'      => $image,
-        ));
+           if($review->getReviewimage1()){
+               $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();
+               $image= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
+               $fieldset->addField('reviewimage1', 'note', array(
+                   'label'     => Mage::helper('review')->__('Posted Review Image'),
+                   'text'      => $image,
+               ));
+           }
+           if($review->getReviewimage2()){
+               $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2();
+               $image= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
+               $fieldset->addField('reviewimage1', 'note', array(
+                   'label'     => Mage::helper('review')->__('Posted Review Image'),
+                   'text'      => $image,
+               ));
+           }
+           if($review->getReviewimage3()){
+               $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3();
+               $image= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
+               $fieldset->addField('reviewimage1', 'note', array(
+                   'label'     => Mage::helper('review')->__('Posted Review Image'),
+                   'text'      => $image,
+               ));
+           }
+           if($review->getReviewimage4()){
+               $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4();
+               $image= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
+               $fieldset->addField('reviewimage1', 'note', array(
+                   'label'     => Mage::helper('review')->__('Posted Review Image'),
+                   'text'      => $image,
+               ));
+           }
+           if($review->getReviewimage5()){
+               $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5();
+               $image= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
+               $fieldset->addField('reviewimage1', 'note', array(
+                   'label'     => Mage::helper('review')->__('Posted Review Image'),
+                   'text'      => $image,
+               ));
+           }
        endif;
 
-       
-
-
-       
-
-
-       
-
-            /* 
+        /*
          * added new image custom field 
          * 
          */
@@ -249,6 +178,16 @@ class Kush_Reviewimage_Block_Adminhtml_Review_Edit_Form extends Mage_Adminhtml_B
             'label'     => Mage::helper('review')->__('Summary of Review'),
             'required'  => true,
             'name'      => 'title',
+        ));
+
+        $dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
+        $fieldset->addField('created_at', 'date', array(
+            'name'   => 'created_at',
+            'label'  => Mage::helper('salesrule')->__('创建时间'),
+            'title'  => Mage::helper('salesrule')->__('创建时间'),
+            'image'  => $this->getSkinUrl('images/grid-cal.gif'),
+            'input_format' => Varien_Date::DATE_INTERNAL_FORMAT,
+            'format'       => $dateFormatIso
         ));
 
         $fieldset->addField('detail', 'textarea', array(
