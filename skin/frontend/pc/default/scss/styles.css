@@ -3373,7 +3373,7 @@ input.checkbox { margin: -3px 3px 0 0 !important; }
 
 .tr { text-align: right; }
 
-.twbox-help-shadow-s i.i, .twbox-help-shadow-s em.i { display: inline-block; position: absolute; width: 125px; height: 82px; background-image: url(/skin/frontend/pc/default/images/commont/help-s.gif); z-index: -1; }
+.twbox-help-shadow-s i.i, .twbox-help-shadow-s em.i { display: inline-block; position: absolute; width: 125px; height: 82px; background-image: url(../images/commont/help-s.gif); z-index: -1; }
 
 .twbox-help-shadow-s i.tl, .twbox-help-shadow-s em.tl { top: -10px; left: -6px; background-position: -250px 0; }
 
@@ -3393,13 +3393,13 @@ input.checkbox { margin: -3px 3px 0 0 !important; }
 
 .nation-container li { float: left; margin-bottom: 15px; width: 196px; height: 22px; list-style: none outside none; }
 
-.nation-container li em { background: url(/skin/frontend/pc/default/images/commont/flags_adjusted.jpg) no-repeat 0 0; display: block; position: relative; width: 28px; height: 18px; float: left; clear: left; margin-right: 10px; border: 1px solid #ededed; }
+.nation-container li em { background: url(../images/commont/flags_adjusted.jpg) no-repeat 0 0; display: block; position: relative; width: 28px; height: 18px; float: left; clear: left; margin-right: 10px; border: 1px solid #ededed; }
 
 .nation-container ul { width: 100%; }
 
-.grid-head h2 { width: 100%; height: 45px; font-family: Georgia; font-size: 16px; text-transform: uppercase; color: #1985a9; background: url(/skin/frontend/pc/default/images/commont/line.gif) no-repeat center 28px; text-align: center; font-weight: normal; margin: 20px 0; letter-spacing: 1px; }
+.grid-head h2 { width: 100%; height: 45px; font-family: Georgia; font-size: 16px; text-transform: uppercase; color: #1985a9; background: url(../images/commont/line.gif) no-repeat center 28px; text-align: center; font-weight: normal; margin: 20px 0; letter-spacing: 1px; }
 
-.grid-head h3 { width: 100%; height: 45px; font-family: Georgia; font-size: 14px; text-transform: uppercase; color: #1985a9; background: url(/skin/frontend/pc/default/images/commont/line_f.jpg) no-repeat center 28px; text-align: center; font-weight: normal; margin: 20px 0; letter-spacing: 1px; }
+.grid-head h3 { width: 100%; height: 45px; font-family: Georgia; font-size: 14px; text-transform: uppercase; color: #1985a9; background: url(../images/commont/line_f.jpg) no-repeat center 28px; text-align: center; font-weight: normal; margin: 20px 0; letter-spacing: 1px; }
 
 .grid-wra { overflow: hidden; width: 978px; }
 
@@ -3995,5 +3995,19 @@ img { vertical-align: middle; }
 
 .helpcenter { *zoom: 1; }
 .helpcenter:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
+
+.sub2 { *zoom: 1; display: none; padding: 20px 80px; }
+.sub2:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
+
+#content_body { *zoom: 1; margin: 25px auto; padding: 25px 0; width: 100%; background: #fff; box-shadow: 0 0 6px #f39; }
+#content_body:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
+#content_body #center_wrapper { padding: 0 25px; position: relative; }
+#content_body #center_wrapper #top_box #help_logo { width: 100%; border-bottom: 1px solid #CCCCCC; color: #000000 !important; margin-bottom: 20px; padding: 0 0 10px; position: relative; text-align: center !important; height: 55px; }
+#content_body .HelpTabBox .title { clear: both; }
+#content_body .HelpTabBox .title .subsection_tabs { clear: both; margin: 0 0 0 160px; height: 30px; }
+#content_body .HelpTabBox .title .subsection_tabs li.tab { float: left; margin-right: 10px; text-align: center; height: 30px; line-height: 30px; font: bold 14px/30px Arial; position: relative; }
+#content_body .HelpTabBox .title .subsection_tabs li.tab a { background: none repeat scroll 0 0 #f39; color: #fff; display: block; font-size: 100%; height: 31px; line-height: 30px; padding: 0px 15px; text-decoration: none; border: 1px solid #f39; border-bottom: none; position: relative; }
+#content_body .HelpTabBox .title .subsection_tabs li.tab a.active { background: none repeat scroll 0 0 #fff; color: #000; }
+#content_body .HelpTabBox .box { clear: both; background-color: white; border-top: 1px solid #f39; }
 
 /*# sourceMappingURL=styles.css.map */

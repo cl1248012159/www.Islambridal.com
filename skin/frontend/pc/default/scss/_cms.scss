@@ -49,7 +49,7 @@
   position: absolute;
   width: 125px;
   height: 82px;
-  background-image: url(/skin/frontend/pc/default/images/commont/help-s.gif);
+  background-image: url(../images/commont/help-s.gif);
   z-index: -1;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .nation-container li em{
-  background:url(/skin/frontend/pc/default/images/commont/flags_adjusted.jpg) no-repeat 0 0;
+  background:url(../images/commont/flags_adjusted.jpg) no-repeat 0 0;
   display:block;
   position:relative;
   width:28px;
@@ -126,11 +126,11 @@
 }
 
 .grid-head h2{
-  width:100%;height:45px;font-family:Georgia;font-size:16px;text-transform: uppercase;color: #1985a9;background: url(/skin/frontend/pc/default/images/commont/line.gif) no-repeat center 28px;text-align: center;font-weight:normal;
+  width:100%;height:45px;font-family:Georgia;font-size:16px;text-transform: uppercase;color: #1985a9;background: url(../images/commont/line.gif) no-repeat center 28px;text-align: center;font-weight:normal;
   margin:20px 0; letter-spacing:1px;
 }
 .grid-head h3{
-  width:100%;height:45px;font-family:Georgia;font-size:14px;text-transform: uppercase;color: #1985a9;background: url(/skin/frontend/pc/default/images/commont/line_f.jpg) no-repeat center 28px;text-align: center;font-weight:normal;
+  width:100%;height:45px;font-family:Georgia;font-size:14px;text-transform: uppercase;color: #1985a9;background: url(../images/commont/line_f.jpg) no-repeat center 28px;text-align: center;font-weight:normal;
   margin:20px 0; letter-spacing:1px;
 }
 
@@ -485,4 +485,74 @@ img{vertical-align: middle}
 
 .helpcenter{
   @include float_clear;
+}
+
+.sub2{
+  @include float_clear;
+  display:none;padding:20px 80px;}
+
+#content_body {
+  @include float_clear;
+    margin: 25px auto;
+    padding: 25px 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0 6px #f39;
+    #center_wrapper {
+        padding: 0 25px;
+        position: relative;
+        #top_box #help_logo {
+            width: 100%;
+            border-bottom: 1px solid #CCCCCC;
+            color: #000000 !important;
+            margin-bottom: 20px;
+            padding: 0 0 10px;
+            position: relative;
+            text-align: center !important;
+            height: 55px;
+        }
+    }
+  .HelpTabBox .title {
+    clear: both;
+
+    .subsection_tabs {
+      clear: both;
+      margin: 0 0 0 160px;
+      height: 30px;
+      li.tab {
+        float: left;
+        margin-right: 10px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        font: bold 14px/30px Arial;
+        position: relative;
+
+        a {
+          background: none repeat scroll 0 0 #f39;
+          color: #fff;
+          display: block;
+          font-size: 100%;
+          height: 31px;
+          line-height: 30px;
+          padding: 0px 15px;
+          text-decoration: none;
+          border: 1px solid #f39;
+          border-bottom: none;
+          position: relative;
+        }
+
+        a.active {
+          background: none repeat scroll 0 0 #fff;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  .HelpTabBox .box {
+    clear: both;
+    background-color: white;
+    border-top: 1px solid #f39;
+  }
 }

@@ -1,0 +1,59 @@
+<div id="content_body">
+    <div id="center_wrapper">
+        <div id="top_box">
+            <div id="help_logo" class="clear">
+                <h2 style="border:none; right:0; bottom:10px;margin:10px 0 0 0; font:bold 25px/100% Georgia!important; padding:0;">All You Need To Know </h2>
+            </div>
+            <div class="HelpTabBox" id="NeedKnowTabBox">
+
+
+                <div class="title">
+                    <ul id="tabs-detail-ul" class="subsection_tabs">
+                        <li class="tab"><a href="#tabs-1" >Size Chart</a></li>
+                        <li class="tab"><a href="#tabs-2" >Color Chart</a></li>
+                        <li class="tab"><a href="#tabs-3" >Measurement</a></li>
+                        <li class="tab"><a href="#tabs-4" >Processing & Shipping Time</a></li>
+                        <li class="tab"><a href="#tabs-5" >Return and Exchange Policy</a></li>
+                        <li class="tab"><a href="#tabs-6" >Where we ship to</a></li>
+                    </ul>
+                </div>
+
+                <div class="box"></div>
+
+
+                <div class="table_content">
+                    <div class="sub2" id="#tabs-1"><?php echo $this->getChildHtml('size-chart')?></div>
+                    <div class="sub2" id="#tabs-2"><?php echo $this->getChildHtml('color-chart')?></div>
+                    <div class="sub2" id="#tabs-3"><?php echo $this->getChildHtml('measurement')?></div>
+                    <div class="sub2" id="#tabs-4"><?php echo $this->getChildHtml('processing-shipping-time')?></div>
+                    <div class="sub2" id="#tabs-5"><?php echo $this->getChildHtml('return-and-exchange-policy')?></div>
+                    <div class="sub2" id="#tabs-6"><?php echo $this->getChildHtml('where-we-ship-to')?></div>
+                </div>
+
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+
+        var hash = window.location.hash;
+        if(hash){
+            $('a[href="'+hash+'"]').addClass('active');
+            $('div[id="'+hash+'"]').show();
+        }else{
+            $("#tabs-detail-ul li:first-child a").addClass('active');
+            $(".table_content div:first-child").show();
+        }
+
+
+        $(".tab").on('click',function(){
+            $(".tab a").removeClass('active');
+            $(".sub2").hide();
+            $(this).find("a").addClass('active');
+            $( 'div[id="'+$(this).find("a").attr("href")+'"]'  ).show();
+        });
+    });
+</script>
