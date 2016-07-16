@@ -316,6 +316,7 @@ SEO Site Map
         <update handle="catalog_seo_sitemap" />
         <reference name="seo.sitemap.container">
             <action method="setTitle" translate="title" module="catalog"><title>Categories</title></action>
+            <block type="core/template" name="help_left" template="helpcenter/left.phtml" />
             <block type="catalog/seo_sitemap_category" name="seo.sitemap.sitemap" as="sitemap" after="pager_top" template="catalog/seo/sitemap.phtml">
                 <action method="bindPager"><pager>seo.sitemap.pager.top</pager></action>
                 <action method="bindPager"><pager>seo.sitemap.pager.bottom</pager></action>

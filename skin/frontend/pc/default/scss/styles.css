@@ -1556,7 +1556,7 @@ tr.summary-details-excluded { font-style: italic; }
 
 .page-sitemap .sitemap li.level-0 { margin: 10px 0 0; font-weight: bold; }
 
-.page-sitemap .sitemap li.level-0 a { color: #1e7ec8; }
+.page-sitemap .sitemap li.level-0 a { color: #f39; }
 
 /* RSS */
 .rss-title h1 { background: url(../images/i_rss-big.png) 0 4px no-repeat; padding-left: 27px; }
