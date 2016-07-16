@@ -311,10 +311,12 @@
     height: 33px;
     line-height: 33px;
     background-color: #d3d4d4;
-    color: #333;
-    line-height: 33px;
     padding-left: 10px;
     font-size:16px;
+    h3{
+      font-weight: normal;
+      line-height: 33px;
+    }
 }
 .home_product{
     @include float_clear;

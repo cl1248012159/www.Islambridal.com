@@ -2593,7 +2593,8 @@ tr.summary-details-excluded { font-style: italic; }
 .home_banners_3 a { display: inline-block; float: left; width: 33.33%; }
 .home_banners_3 a img { width: 100%; }
 
-.home_product_title { display: block; height: 33px; line-height: 33px; background-color: #d3d4d4; color: #333; line-height: 33px; padding-left: 10px; font-size: 16px; }
+.home_product_title { display: block; height: 33px; line-height: 33px; background-color: #d3d4d4; padding-left: 10px; font-size: 16px; }
+.home_product_title h3 { font-weight: normal; line-height: 33px; }
 
 .home_product { *zoom: 1; padding: 10px; position: relative; width: 100%; }
 .home_product:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
@@ -2683,6 +2684,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .breadcrumbs .share > span { float: left; }
 .page .breadcrumbs .share .addthis_sharing_toolbox { float: right; height: 30px; overflow: hidden; padding: 2px 0 0 5px; }
 .page .category_name_top { font: normal 18px/31px Helvetica,Arial; border-bottom: 2px solid #666; height: 31px; }
+.page .category_name_top h2 { display: inline; }
 .page .category_name_top .countdow { float: right; }
 .page .category_name_top .countdow > div > * { float: left; }
 .page .category_name_top .countdow span.PositionAbsolute span { display: inline-block; width: 22px; height: 19px; background-image: url(../images/commont/countdown.gif); background-repeat: no-repeat; color: #fff; font-size: 15px; line-height: 19px; text-align: center; margin-right: 1px; }
@@ -2727,6 +2729,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .pagination ol .current { display: inline-block; height: 32px; line-height: 32px; padding: 0 12px; border: 1px solid #333; background-color: #333; background-image: -webkit-linear-gradient(top, #333, #333); background-image: linear-gradient(to bottom, #333, #333); background-repeat: repeat-x; border-radius: 3px; color: #fff; cursor: default; }
 .page .box_shadow { box-shadow: 0 0 30px #ccc; padding: 10px; border-radius: 5px; margin: 15px 0; }
 .page .box_shadow .category_name_bottom { border-bottom: 1px solid #e4e4e4; }
+.page .category_name_bottom h3 { display: inline; color: #4c5253; font-size: 17px; height: 25px; margin-top: 8px; font-weight: normal; }
 .page .category_name_bottom span { color: #4c5253; font-size: 17px; height: 25px; margin-top: 8px; font-weight: normal; }
 .page .cur_category_description { color: #4c5253; font-size: 12px; line-height: 20px; max-height: 100px; overflow: hidden; position: relative; margin-bottom: 5px; }
 .page .cur_category_description .see { position: absolute; right: 0; bottom: 0px; background-color: #fff; padding: 0 10px; font-weight: bold; }
@@ -2766,7 +2769,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .product-essential { position: relative; }
 .page .product-view .product-essential .product-img-box { position: relative; z-index: 1; }
 .page .product-view .product-shop { position: relative; padding-left: 500px; padding-bottom: 20px; float: none; width: auto; }
-.page .product-view .product-shop .product-name h1 { text-transform: Capitalize; }
+.page .product-view .product-shop .product-name h2 { text-transform: Capitalize; }
 .page .product-view .product-shop .commont { display: inline-block; width: 100%; line-height: 30px; margin-top: 10px; }
 .page .product-view .product-shop .commont a { text-decoration: underline; }
 .page .product-view .product-shop .commont .ratings, .page .product-view .product-shop .commont .no-rating { float: left; margin: 0; line-height: 30px; }

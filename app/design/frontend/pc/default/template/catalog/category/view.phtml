@@ -7,7 +7,7 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
 
 
 <div class="category_name_top">
-    <span><?php echo $cur_cat_name ?></span>
+    <h2><?php echo $cur_cat_name ?></h2>
     <span>(<?php echo $cur_cat_pro_size;?>)</span>
 
 
@@ -175,7 +175,7 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
     <?php if(count($_reviews_items) > 0): ?>
         <div class="box_shadow">
             <div class="category_name_bottom">
-                <span><?php echo $cur_cat_name ?> reviews </span>
+                <h3><?php echo $cur_cat_name ?> reviews </h3>
                 <span>(<?php echo count($_reviews_items);?>)</span>
             </div>
             <div class="user_photos">

@@ -77,6 +77,10 @@
         border-bottom: 2px solid #666;
         height: 31px;
 
+        h2{
+            display:inline;
+        }
+
         .countdow{
             float: right;
             &>div>*{
@@ -380,6 +384,14 @@
     }
 
     .category_name_bottom{
+        h3{
+          display:inline;
+          color: #4c5253;
+          font-size: 17px;
+          height: 25px;
+          margin-top: 8px;
+          font-weight: normal;
+        }
         span{
             color: #4c5253;
             font-size: 17px;
