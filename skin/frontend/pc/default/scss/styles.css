@@ -3134,7 +3134,7 @@ div.c { clear: both; width: 100%; height: 0px; }
 
 .place_order_btn { padding: 6px 14px 7px; border: 0px; cursor: pointer; clear: both; border-radius: 4px; color: #fff; font: bold 13px/18px Tahoma; clear: both; height: auto; }
 
-.place_order_btn:hover { opacity: 0.85; color: #130e00; }
+.place_order_btn:hover { opacity: 0.85; color: #fff; }
 
 /*===============  Tooltip  ==================*/
 #screenshot { position: absolute; border-radius: 6px; background: #6E6E6E; display: none; color: #fff; }
