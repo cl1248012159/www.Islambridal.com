@@ -3993,4 +3993,7 @@ img { vertical-align: middle; }
 
 #selInc { width: 68px; }
 
+.helpcenter { *zoom: 1; }
+.helpcenter:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
+
 /*# sourceMappingURL=styles.css.map */

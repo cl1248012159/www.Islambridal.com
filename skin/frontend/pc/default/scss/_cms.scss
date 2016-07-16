@@ -481,3 +481,8 @@ img{vertical-align: middle}
 .form_select.inch_form{width:61px;height:26px;float:left;line-height:26px;padding-right:4px}
 .inch_form .showul{top:22px;width:61px}
 #selInc{width:68px}
+
+
+.helpcenter{
+  @include float_clear;
+}
