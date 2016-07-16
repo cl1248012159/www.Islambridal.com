@@ -78,46 +78,34 @@ class Kush_Reviewimage_Block_Adminhtml_Review_Edit_Form extends Mage_Adminhtml_B
          * 
          */
        if(Mage::helper("reviewimage")->getActive() == '1'):
+           $image = '';
            if($review->getReviewimage1()){
                $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();
-               $image= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
-               $fieldset->addField('reviewimage1', 'note', array(
-                   'label'     => Mage::helper('review')->__('Posted Review Image'),
-                   'text'      => $image,
-               ));
+               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
            }
            if($review->getReviewimage2()){
                $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2();
-               $image= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
-               $fieldset->addField('reviewimage2', 'note', array(
-                   'label'     => Mage::helper('review')->__('Posted Review Image'),
-                   'text'      => $image,
-               ));
+               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
+
            }
            if($review->getReviewimage3()){
                $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3();
-               $image= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
-               $fieldset->addField('reviewimage3', 'note', array(
-                   'label'     => Mage::helper('review')->__('Posted Review Image'),
-                   'text'      => $image,
-               ));
+               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
+
            }
            if($review->getReviewimage4()){
                $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4();
-               $image= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
-               $fieldset->addField('reviewimage4', 'note', array(
-                   'label'     => Mage::helper('review')->__('Posted Review Image'),
-                   'text'      => $image,
-               ));
+               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
+
            }
            if($review->getReviewimage5()){
                $imageUrl = Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5();
-               $image= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
-               $fieldset->addField('reviewimage5', 'note', array(
-                   'label'     => Mage::helper('review')->__('Posted Review Image'),
-                   'text'      => $image,
-               ));
+               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;'>";
            }
+           $fieldset->addField('reviewimages', 'note', array(
+               'label'     => Mage::helper('review')->__('Posted Review Image'),
+               'text'      => $image,
+           ));
        endif;
 
         /*
