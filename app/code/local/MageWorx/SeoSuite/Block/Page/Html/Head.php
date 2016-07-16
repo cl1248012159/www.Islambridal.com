@@ -385,7 +385,7 @@ if($_filtersCount>0){
 			$title = implode(' ',$url_att).' '.$category_name;
 			$keywords = implode(' ',$url_att).' '.$category_name;
 			$keywords=strtolower($keywords);
-			$description =  'Choose a stylish '.$keywords.' from Wishesbridal.com, buy the latest '.$keywords.' at amazingly affordable prices! ';
+			$description =  'We offer a wide range of '.$keywords.'. '.Mage::getModel('core/variable')->loadByCode('web_url_1')->getValue('text').' is one of online stores, you can find high quality '.$keywords.' at irresistible price here.';
 
 		}
 		if($data['page']>0){
