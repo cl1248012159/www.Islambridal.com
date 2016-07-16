@@ -214,6 +214,7 @@
         height:43px;
         line-height: 43px;
         border-bottom:2px solid #fff;
+        overflow: hidden;
 
         &>a{
           font-size:13px;
@@ -228,7 +229,7 @@
           background-image:url(../images/commont/menu_li_bg.png) ;
           background-repeat: no-repeat;
           background-position: 0px 20px;
-          padding:0 10px;
+          padding:0 20px;
 
           &:hover{
             background-image:url(../images/commont/menu_li_hover_bg.png);
