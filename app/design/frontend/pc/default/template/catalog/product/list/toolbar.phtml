@@ -52,8 +52,8 @@
         }
         foreach ($matches[1] as $k => $v) {
             if ($matches[2][$k] == 1) continue;
-            $tempurl = $preurl . '/' . $matches[2][$k] . '.html';
-            $pagehtml = str_replace($v, $tempurl, $pagehtml);
+            $tempurl = $preurl . '/' . $matches[2][$k] . '.html'.$exturl;
+            $pagehtml = str_replace($v,$tempurl , $pagehtml);
         }
         echo $pagehtml;
     }
