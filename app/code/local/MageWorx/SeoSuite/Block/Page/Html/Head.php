@@ -31,6 +31,7 @@
 
 class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Page_Html_Head_Abstract {
     protected $_seoData = array();
+
     public function getContentType()
     {
         $this->_data['content_type'] = $this->getMediaType().'; charset='.$this->getCharset();
@@ -312,92 +313,85 @@ if($_filtersCount>0){
         }
         return trim(htmlspecialchars(html_entity_decode($this->_data['keywords'], ENT_QUOTES, 'UTF-8')));
     }
-//add by xiaozhu
-	public function _getSeoData($name){
-		//$seoData = array('title'=>'','keywords'=>'','description'=>'');
 
-		//$category_name = $categoryData['name'];
-		//$category_url_path = $categoryData['url_path'];
-		$request_uri = $_SERVER['REQUEST_URI'];
-		//$tempstr = end(explode('_',$request_uri));
-		$request_uri = str_replace(array('/narrow/','/ns/'),'#',$request_uri);
+    public function _getSeoData($name){
+
+        $request_uri = $_SERVER['REQUEST_URI'];
+
+        $request_uri = str_replace(array('/narrow/','/ns/'),'#',$request_uri);
 
         $_new_arr = explode('#',$request_uri);
         $request_uri = end($_new_arr);
 
-        $pagestr = end($_new_arr);
+        $pagearr = explode('/',$request_uri);
+        $pagestr = end($pagearr);
 
-//		$request_uri = end(explode('#',$request_uri));
-//		$pagestr = end(explode('/',$request_uri));
-		$data['page'] = 0;
-		if(strpos($request_uri,'.html') !== false){
-			$data['page'] = intval(str_replace('.html','',$pagestr));
-		}
-		
-		$url_para = explode('_',$request_uri);
+        $data['page'] = 0;
+        if(strpos($pagestr,'.html') !== false){
+            $data['page'] = intval(str_replace('.html','',$pagestr));
+        }
 
-		if(strpos($request_uri,'?')!== false){
-			list($request_uri) = explode('?',$request_uri);
-		}
-		
-		if(strpos($request_uri,'.html')!== false){
-			$temparr = explode('/',$request_uri);
-			if($data['page']>0){
-				$tempname = $temparr[count($temparr)-2];
-				$category_name = end(explode('_',$tempname));
-			}else{
-				$category_name = str_replace('.html','',$pagestr);
-			}
-		}else{
+        $url_para = explode('_',$request_uri);
+
+        if(strpos($request_uri,'?')!== false){
+            list($request_uri) = explode('?',$request_uri);
+        }
+
+        if(strpos($request_uri,'.html')!== false){
+            $temparr = explode('/',$request_uri);
+            if($data['page']>0){
+                $tempname = $temparr[count($temparr)-2];
+                $category_name = end(explode('_',$tempname));
+            }else{
+                $category_name = str_replace('.html','',$pagestr);
+            }
+        }else{
             $request_uri_arr = explode('_',$request_uri);
-			$category_name = end($request_uri_arr);
-			
-			
-		}
-		
-		$category_name = trim($category_name,'/');
+            $category_name = end($request_uri_arr);
 
-		$category_name = ucwords($category_name);
-		$category_name = str_replace('-',' ',$category_name);
 
-		//$category_name = substr($category_name,0,strrpos($category_name,'?'));
+        }
 
-		array_pop($url_para);
-		$url_para = array_map("ucwords",$url_para);
-		
-		if(!$url_para){
-			//分类
-			$title = $category_name.', '.$category_name.','.$category_name;
-			$keywords = $category_name.', '.$category_name.', '.$category_name;
-		}else{
-			//$domain = ucfirst(str_replace('www.','',$_SERVER['SERVER_NAME']));
-			//$title = implode(',',$url_para).','.$category_name.' - '.$domain;
-			$url_att=array();
-			foreach($url_para as $u){
-				if(strpos($u,'Price-')!==false){
-					$u=str_replace('Price-0','Price:',$u);
-					$u=str_replace('Price-','Price:',$u);
-					$url_att[]=$u;
-				}else{
-					$url_att[]=str_replace('-',' ',$u);
-				}
-			}
-			$title = implode(' ',$url_att).' '.$category_name;
-			$keywords = implode(' ',$url_att).' '.$category_name;
-			$keywords=strtolower($keywords);
-			$description =  'We offer a wide range of '.$keywords.'. '.Mage::getModel('core/variable')->loadByCode('web_url_1')->getValue('text').' is one of online stores, you can find high quality '.$keywords.' at irresistible price here.';
+        $category_name = trim($category_name,'/');
 
-		}
-		if($data['page']>0){
-			$title .= ' - Page '.$data['page'];
-		}
-		$this->_seoData['title'] = $title;
-		$this->_seoData['keywords'] = $keywords;
-		$this->_seoData['description'] = $description;
+        $category_name = ucwords($category_name);
+        $category_name = str_replace('-',' ',$category_name);
 
-		return $this->_seoData[$name];
-		//return true;
-	}
+        array_pop($url_para);
+        $url_para = array_map("ucwords",$url_para);
+
+        if(!$url_para){
+            //分类
+            $title = $category_name.', '.$category_name.','.$category_name;
+            $keywords = $category_name.', '.$category_name.', '.$category_name;
+        }else{
+
+            $url_att=array();
+            foreach($url_para as $u){
+                if(strpos($u,'Price-')!==false){
+                    $u=str_replace('Price-0','Price:',$u);
+                    $u=str_replace('Price-','Price:',$u);
+                    $url_att[]=$u;
+                }else{
+                    $url_att[]=str_replace('-',' ',$u);
+                }
+            }
+            $title = implode(' ',$url_att).' '.$category_name;
+            $keywords = implode(' ',$url_att).' '.$category_name;
+            $keywords=strtolower($keywords);
+            $description =  'We offer a wide range of '.$keywords.'. '.Mage::getModel('core/variable')->loadByCode('web_url_1')->getValue('text').' is one of online stores, you can find high quality '.$keywords.' at irresistible price here.';
+
+        }
+        if($data['page']>0){
+            $title .= '-Page'.$data['page'];
+        }
+        $this->_seoData['title'] = $title;
+        $this->_seoData['keywords'] = $keywords;
+        $this->_seoData['description'] = $description;
+
+        return $this->_seoData[$name];
+    }
+
     public function getTitle() {
 
 

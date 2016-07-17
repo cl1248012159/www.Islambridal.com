@@ -114,11 +114,14 @@
                            data-small_image="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(333,444); ?>"
                             >
                             <?php
-                            foreach($_product->getMediaGalleryImages() as $GMI){
-                                if( $_product->getSmallImage() != $GMI->getFile() ){?>
-                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image',$GMI->getFile())->resize(333,444);?>"/>
+                            if($_product->getMediaGalleryImages()){
+                                foreach($_product->getMediaGalleryImages() as $GMI){
+                                    if( $_product->getSmallImage() != $GMI->getFile() ){
+                            ?>
+                                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image',$GMI->getFile())->resize(333,444);?>"/>
                             <?php
-                                    break;
+                                        break;
+                                    }
                                 }
                             }
                             ?>
