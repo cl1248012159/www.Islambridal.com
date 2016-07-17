@@ -213,7 +213,7 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
         return true;
     }
 
-	protected function convertUrlQuery($query)
+    protected function convertUrlQuery($query)
 	{
 		$queryParts = explode('&', $query);
 		$params = array();
@@ -226,7 +226,7 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
 	}
 
     protected function _matchCategoryPager($request) {
-        
+
         $pagerUrlFormat = Mage::helper('seosuite')->getPagerUrlFormat();
 
         if (!$pagerUrlFormat) return false;
@@ -239,6 +239,7 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
             $pagerUrlFormatRegEx[$key] = preg_quote($part, '/');
         }
         $pagerUrlFormatRegEx = implode('([0-9]+)', $pagerUrlFormatRegEx);
+
         if (preg_match('/' . $pagerUrlFormatRegEx . preg_quote($suffix, '/') . '/', $url, $match)) {
             
             $url = str_replace($match[0], $suffix, $url);
@@ -247,39 +248,29 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
             $path = $request->getPathInfo();
             $path = str_replace($match[0], $suffix, $path);
             $request->setPathInfo($path);
-            //$request->setParam('p', $match[1]);
-			$request->setParam('p', $match[1]);
+            $request->setParam('p', $match[1]);
         } 
-		
-		
-		if(strpos($url,'.html') !== false){			
-			if(strpos($url,'?') !== false){
-				list($url,$paramstr) = explode('?',$url);
-				$qparams = $this->convertUrlQuery($paramstr);
-				foreach($qparams as $k=>$v){
-					$request->setParam($k, $v);
-				}
-			}
-			
-			
-			$temparr = explode('/',$url);			
-			$pagestr = end($temparr);			
-			$page = str_replace('.html','',$pagestr);				
-			$request->setParam('p', $page);
-			
-            //return false;
-        }else{	
-				
-		}
-        
+
+        if(strpos($url,'.html') !== false){
+            if(strpos($url,'?') !== false){
+                list($url,$paramstr) = explode('?',$url);
+                $qparams = $this->convertUrlQuery($paramstr);
+                foreach($qparams as $k=>$v){
+                    $request->setParam($k, $v);
+                }
+            }
+
+            $temparr = explode('/',$url);
+            $pagestr = end($temparr);
+            $page = str_replace('.html','',$pagestr);
+            $request->setParam('p', $page);
+        }
+
         $identifier = trim(($suffix && substr($request->getPathInfo(), -(strlen($suffix)))==$suffix?substr($request->getPathInfo(), 0, -(strlen($suffix))):$request->getPathInfo()), '/');
-       $identifier = str_replace('/'.$page.'.html','',$identifier);
-        //$urlSplit = explode('/l/', $identifier, 2);
-        //if (isset($urlSplit[1])) {
-           // return false;
-        //}
-       
-        //Varien_Autoload::registerScope('catalog');
+        if(isset($page)){
+            $identifier = str_replace('/'.$page.'.html','',$identifier.'.html');
+        }
+
         $productUrl = Mage::getModel('catalog/product_url');
         $cat = $identifier;
         $_params = array();
@@ -338,7 +329,6 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
         list($catPath, $layerParams) = $this->_getUrlData();
         if (!isset($layerParams) || !isset($catPath)) return false;        
 
-     //   Varien_Autoload::registerScope('catalog');
         $urlRewrite = $this->_getCategoryUrlRewrite($catPath);
         if ($urlRewrite && $urlRewrite->getId()) {
             $this->_prepareRequestForUrlRewrite($urlRewrite, $catPath);
@@ -391,16 +381,49 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
     }
 
     protected function _getUrlData() {
-
-
-        if (!is_null($this->_urlData)) {return $this->_urlData;}
-
+        if (!is_null($this->_urlData)) {
+            return $this->_urlData;
+        }
         $suffix = Mage::getStoreConfig('catalog/seo/category_url_suffix');
         $request = $this->_getRequest();
 
+        $pagerUrlFormat = Mage::helper('seosuite')->getPagerUrlFormat();
+        if ($pagerUrlFormat){
+            $url = $request->getRequestUri();
+            $pagerUrlFormatRegEx = explode('[page_number]', $pagerUrlFormat);
+            foreach ($pagerUrlFormatRegEx as $key=>$part) {
+                $pagerUrlFormatRegEx[$key] = preg_quote($part, '/');
+            }
+            $pagerUrlFormatRegEx = implode('([0-9]+)', $pagerUrlFormatRegEx);
+            if (preg_match('/' . $pagerUrlFormatRegEx . preg_quote($suffix, '/') . '/', $url, $match)) {
+
+                $url = str_replace($match[0], $suffix, $url);
+                $request->setRequestUri($url);
+
+                $path = $request->getPathInfo();
+                $path = str_replace($match[0], $suffix, $path);
+                $request->setPathInfo($path);
+                $request->setParam('p', $match[1]);
+            }
+            if(strpos($url,'.html') !== false){
+                if(strpos($url,'?') !== false){
+                    list($url,$paramstr) = explode('?',$url);
+                    $qparams = $this->convertUrlQuery($paramstr);
+                    foreach($qparams as $k=>$v){
+                        $request->setParam($k, $v);
+                    }
+                }
+                $temparr = explode('/',$url);
+                $pagestr = end($temparr);
+                $page = str_replace('.html','',$pagestr);
+                $request->setParam('p', $page);
+            }
+        }
 
         $identifier = trim(($suffix && substr($request->getPathInfo(), -(strlen($suffix)))==$suffix?substr($request->getPathInfo(), 0, -(strlen($suffix))):$request->getPathInfo()), '/');
-
+        if(isset($page)){
+            $identifier = str_replace('/'.$page.'.html','',$identifier.'.html');
+        }
 
 		if(strpos($identifier,'price-')!==false){
 			$identifier=str_replace('price-0','price:',$identifier);
@@ -420,18 +443,18 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
 		$identifier = str_replace(array('narrow/','ns/'),'',$identifier);
 		$urlSplit[1] = str_replace(array('narrow/','ns/'),'',$urlSplit[1]);
 
-		if( strpos($identifier,'?') !== false){			
+		if( strpos($identifier,'?') !== false){
 			list($identifier) = explode('?',$identifier);
 		}
-		if( strpos($identifier,'.html') !== false){			
+		if( strpos($identifier,'.html') !== false){
 			$temparr = explode('/',$identifier,2);
-			$urlSplit[1] = str_replace(end($temparr),'',$identifier);		
-		}				
+			$urlSplit[1] = str_replace(end($temparr),'',$identifier);
+		}
 
 		$temparr = explode('_',$urlSplit[1]);
 		$urlSplit[0] = trim(end($temparr),'/');
-		array_pop($temparr);		
-		$urlSplit[1] = $temparr;		
+		array_pop($temparr);
+		$urlSplit[1] = $temparr;
         $urlSplit[0] .= $suffix;
 
         $this->_urlData = $urlSplit;
