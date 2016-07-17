@@ -11,5 +11,13 @@
 </style>
 
 <div class="MT10 MB10 helpcenter">
-    <?php echo $this->getChildHtml('',true,true);?>
+    <div class="help_left">
+        <?php echo $this->getChildHtml('help_left');?>
+        <script>
+            var pathname =  window.location.pathname;
+            jQuery("a[href*='"+pathname+"']").css("color","#f39");
+        </script>
+    </div>
+
+    <?php echo $this->getChildHtml('help_right');?>
 </div>
