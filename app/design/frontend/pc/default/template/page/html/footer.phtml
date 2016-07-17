@@ -14,32 +14,7 @@
             </ul>
         </div>
         <div class="customer_help">
-            <dl>
-                <dt>CUSTOMER GUIDANCE</dt>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('login-problems')?>">Login Problems</a></dd>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('trace-your-order')?>">Trace Your Order</a></dd>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('payment-methods')?>">Payment Methods</a></dd>
-            </dl>
-            <dl>
-                <dt>PRODUCT INFO</dt>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('size-chart')?>">Size Chart</a></dd>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('color-chart')?>">Color Chart</a></dd>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('measurement')?>">Measurement</a></dd>
-            </dl>
-            <dl>
-                <dt>SHIPPING & DELIVERY</dt>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('processing-shipping-time')?>">Processing & Shipping Time</a></dd>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('shipping-methods')?>">Shipping Methods</a></dd>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('customs-and-import-tax')?>">Customs and Import Tax</a></dd>
-            </dl>
-            <dl>
-                <dt>Refund & return</dt>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('return-and-exchange-policy')?>">Return and Exchange Policy</a></dd>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('cancel-order')?>">Cancel Order</a></dd>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('contact-us')?>">Contact US</a></dd>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('faq')?>">FAQ</a></dd>
-                <dd><a rel="nofollow" href="<?php echo $this->getUrl('where-we-ship-to')?>">Where we ship to</a></dd>
-            </dl>
+            <?php echo $this->getChildHtml('help_left');?>
         </div>
         <div class="payments">
             <span class="banks">visa, master card, maestro, carte blue</span>

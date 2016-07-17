@@ -90,6 +90,7 @@ Default layout, loads most of the pages
             </block>
 
             <block type="page/html_footer" name="footer" as="footer" template="page/html/footer.phtml">
+                <block type="core/template" name="help_left" template="helpcenter/left.phtml" />
                 <block type="page/html_wrapper" name="bottom.container" as="bottomContainer" translate="label">
                     <label>Page Footer</label>
                     <action method="setElementClass"><value>bottom-container</value></action>
