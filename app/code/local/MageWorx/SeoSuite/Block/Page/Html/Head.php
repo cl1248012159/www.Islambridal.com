@@ -341,7 +341,8 @@ if($_filtersCount>0){
             $temparr = explode('/',$request_uri);
             if($data['page']>0){
                 $tempname = $temparr[count($temparr)-2];
-                $category_name = end(explode('_',$tempname));
+                $category_name_arr = explode('_',$tempname);
+                $category_name = end($category_name_arr);
             }else{
                 $category_name = str_replace('.html','',$pagestr);
             }
