@@ -603,8 +603,61 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
             $storeId = $this->_getWebsiteStoreId($this->getSendemailStoreId());
         }
 
+        $_menu = '';
+        $menu_tops = Mage::getModel('catalog/category')
+            ->setStoreId(Mage::app()->getStore()->getId())
+            ->load(2)
+            ->getChildrenCategories();
+        if($menu_tops){
+            $_menu .= '<p class="email_menu_ddaydress">';
+            $_menu .= '<style>
+                    .email_menu_ddaydress a{color: #000;text-decoration: none !important;line-height: 60px;}
+                    .email_menu_ddaydress a:hover{color: #f39 !important;text-decoration: none !important;}
+                    .email_menu_ddaydress a span{font-size: 20px;font-family: monospace;}
+                    .email_menu_ddaydress a span{font-size: 20px;font-family: monospace;padding:0 10px;}
+                </style>';
+            $cur = count($menu_tops);
+            foreach($menu_tops as $menu){
+                $cur--;
+                $dian = '';
+                if($cur!=0){
+                    $dian .= '<span>&middot;</span>';
+                }
+                $_menu .= '<a href="'.$menu->getUrl().'" >'.$menu->getName().$dian.'</a>';
+            }
+            $_menu .= '</p>';
+        }
+
+
+        $hot_categories = '';
+        $home_category_banners = Mage::getModel('ibanners/group')->loadByCode('home_category_banners')->getBannerCollection();
+        if($home_category_banners){
+            $hot_categories .= '<p class="hot_categories_ddaydress">';
+            $hot_categories .= '<style>
+    .hot_categories_ddaydress{width:100%;*zoom:1;
+    }
+  .hot_categories_ddaydress:after{
+        display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;
+    }
+        .hot_categories_ddaydress a{display:block;float:left;max-width:19.2%;margin-right:1%;}
+        .hot_categories_ddaydress a:last-child{margin-right:0;}
+        .hot_categories_ddaydress a img{max-width: 100%;}
+    </style>';
+            foreach($home_category_banners as $banner){
+                $hot_categories .= '<a href="'.$banner->getUrl().'">';
+                $hot_categories .= '<img src="'.$banner->getImageUrl().'" title="'.$banner->getTitle().'" alt="'.$banner->getAlt().'"/>';
+                $hot_categories .= '</a>';
+            }
+            $hot_categories .= '</p>';
+        }
+
+
+
+
+
+
         $this->_sendEmailTemplate($types[$type], self::XML_PATH_REGISTER_EMAIL_IDENTITY,
-            array('customer' => $this, 'back_url' => $backUrl), $storeId);
+            array('customer' => $this,'menu'=>$_menu,'hot_categories'=>$hot_categories ,'back_url' => $backUrl), $storeId);
 
         return $this;
     }
