@@ -2465,7 +2465,7 @@ tr.summary-details-excluded { font-style: italic; }
 .new_header .header_menu { width: 100%; border-bottom: 1px solid #eee; *zoom: 1; }
 .new_header .header_menu:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .new_header .header_menu ul { display: block; }
-.new_header .header_menu ul li { float: left; position: relative; height: 43px; line-height: 43px; border-bottom: 2px solid #fff; overflow: hidden; }
+.new_header .header_menu ul li { float: left; position: relative; height: 43px; line-height: 43px; border-bottom: 2px solid #fff; }
 .new_header .header_menu ul li > a { font-size: 13px; }
 .new_header .header_menu ul li:hover > a { color: #f39; }
 .new_header .header_menu ul li:not(:first-child) { background-image: url(../images/commont/menu_li_bg.png); background-repeat: no-repeat; background-position: 0px 20px; padding: 0 20px; }
