@@ -4,9 +4,9 @@
 		<new_dev>
 			<children>
 				<Import translate="title" module="dotsquares_import">
-					<title>Import Categories</title>
+					<title>3.Import Categories</title>
 					<action>adminhtml/import</action>
-					<sort_order>20</sort_order>
+					<sort_order>3</sort_order>
 				</Import>
 			</children>
 		</new_dev>

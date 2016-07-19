@@ -4,9 +4,9 @@
 		<new_dev>
 			<children>
 				<export translate="title" module="dotsquares_export">
-					<title>Export Categories</title>
+					<title>4.Export Categories</title>
 					<action>adminhtml/export</action>
-					<sort_order>10</sort_order>
+					<sort_order>4</sort_order>
 				</export>
 			</children>
 		</new_dev>
