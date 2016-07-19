@@ -19,17 +19,19 @@
 @-->
 
 {{template config_path="design/email/header"}}
-{{inlinecss file="email-inline.css"}}
 
-<table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+
+<table cellpadding="0" cellspacing="0" border="0" style="width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; padding: 0; margin: 0;">
+
+
     <tr>
-        <td>
-            <table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+        <td style="font-family: Verdana, Arial; font-weight: normal; border-collapse: collapse; vertical-align: top; padding: 0; margin: 0;">
+            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; padding: 0; margin: 0;">
                 <tr>
-                    <td style="font-family: Verdana, Arial; font-weight: normal; border-collapse: collapse; vertical-align: top; padding: 0 1%; margin: 0; background: #e1f0f8; border-right: 1px dashed #c3ced4; text-align: center; width: 100%;">
-                        {{menu}}
+                    <td style="font-family: Verdana, Arial;font-weight: normal;border-collapse: collapse;vertical-align: top;margin: 0;width: 100%;">
+                        {{var menu}}
                         <p>
-                            Dear 姓名（下单时留下的姓名）
+                            Dear {{var order.getCustomerFirstname()}} {{var order.getCustomerMiddlename()}} {{var order.getCustomerLastname()}}
                         </p>
                         <p>
                             Thank you for shopping on <a style="color:#f39;text-decoration: none;" href='{{store url=""}}'>{{var store.getFrontendName()}}</a>.We have received your order.
@@ -40,8 +42,43 @@
             </table>
         </td>
     </tr>
+
+
+
+
+
     <tr class="order-information">
-        <td>
+        <td style="font-family: Verdana, Arial; font-weight: normal; border-collapse: collapse; vertical-align: top; padding: 0; margin: 0;">
+
+            <table cellpadding="0" cellspacing="0" border="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; padding: 0; margin: 0; width: 100%;">
+                <tr>
+                    <td style="font-family: Verdana, Arial; font-weight: normal; border-collapse: collapse; vertical-align: top; padding: 10px 15px 0; margin: 0; padding-top: 10px; text-align: left;">
+                        <h6 style="font-family: Verdana, Arial; font-weight: 700; font-size: 12px; margin-bottom: 0px; margin-top: 5px; text-transform: uppercase;">Billing Information:</h6>
+                        <p><span class="no-link">{{var order.getBillingAddress().format('html')}}</span></p>
+                    </td>
+                    {{depend order.getIsNotVirtual()}}
+                    <td style="font-family: Verdana, Arial; font-weight: normal; border-collapse: collapse; vertical-align: top; padding: 10px 15px 0; margin: 0; padding-top: 10px; text-align: left;">
+                        <h6 style="font-family: Verdana, Arial; font-weight: 700; font-size: 12px; margin-bottom: 0px; margin-top: 5px; text-transform: uppercase;">Shipping Information:</h6>
+                        <p><span class="no-link">{{var order.getShippingAddress().format('html')}}</span></p>
+                    </td>
+                    {{/depend}}
+                </tr>
+                <tr>
+                    {{depend order.getIsNotVirtual()}}
+                    <td style="font-family: Verdana, Arial; font-weight: normal; border-collapse: collapse; vertical-align: top; padding: 10px 15px 0; margin: 0; text-align: left; padding-bottom: 10px;">
+                        <h6 style="font-family: Verdana, Arial; font-weight: 700; text-align: left; font-size: 12px; margin-bottom: 0px; margin-top: 5px; text-transform: uppercase;">Shipping Methods:</h6>
+                        <p>{{var order.shipping_description}}</p>
+                    </td>
+                    {{/depend}}
+                    <td style="font-family: Verdana, Arial; font-weight: normal; border-collapse: collapse; vertical-align: top; padding: 10px 15px 0; margin: 0; text-align: left; padding-bottom: 10px;">
+                        <h6 style="font-family: Verdana, Arial; font-weight: 700; text-align: left; font-size: 12px; margin-bottom: 0px; margin-top: 5px; text-transform: uppercase;">Payment method:</h6>
+                        {{var payment_html}}
+                    </td>
+                </tr>
+            </table>
+
+            {{layout handle="sales_email_order_items" order=$order}}
+
             {{if order.getEmailCustomerNote()}}
             <table cellspacing="0" cellpadding="0" class="message-container">
                 <tr>
@@ -50,58 +87,25 @@
             </table>
             {{/if}}
 
-            <table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                    <td class="address-details">
-                        <h6>Bill to:</h6>
-                        <p><span class="no-link">{{var order.getBillingAddress().format('html')}}</span></p>
-                    </td>
-                    {{depend order.getIsNotVirtual()}}
-                    <td class="address-details">
-                        <h6>Ship to:</h6>
-                        <p><span class="no-link">{{var order.getShippingAddress().format('html')}}</span></p>
-                    </td>
-                    {{/depend}}
-                </tr>
-                <tr>
-                    {{depend order.getIsNotVirtual()}}
-                    <td class="method-info">
-                        <h6>Shipping method:</h6>
-                        <p>{{var order.shipping_description}}</p>
-                    </td>
-                    {{/depend}}
-                    <td class="method-info">
-                        <h6>Payment method:</h6>
-                        {{var payment_html}}
-                    </td>
-                </tr>
-            </table>
-
-            {{layout handle="sales_email_order_items" order=$order}}
-
 
         </td>
     </tr>
     <tr>
         <td class="order-details">
-
-
-            <h4>Order Questions?</h4>
             <p>
-                {{depend store_phone}}
-                <b>Call Us:</b>
-                <a href="tel:{{var phone}}">{{var store_phone}}</a><br>
-                {{/depend}}
-                {{depend store_hours}}
-                <span class="no-link">{{var store_hours}}</span><br>
-                {{/depend}}
-                {{depend store_email}}
-                <b>Email:</b> <a href="mailto:{{var store_email}}">{{var store_email}}</a>
-                {{/depend}}
+                Thanks again for the order at our site.Any question pls email us:<a style="color:#f39;text-decoration: none;" href="mailto:{{var store_email}}">{{var store_email}}</a>.
             </p>
-
-            <h3>Your order <span class="no-link">#{{var order.increment_id}}</span></h3>
-            <p>Placed on {{var order.getCreatedAtFormated('long')}}</p>
+            <p>
+                Thanks and best regards.
+            </p>
+            <p>
+                <a style="color:#f39;text-decoration: none;" href='{{store url=""}}'>{{var store.getFrontendName()}}</a> customer service center
+            </p>
+            <p>
+                Email:<a style="color:#f39;text-decoration: none;" href="mailto:{{var store_email}}">{{var store_email}}</a>
+                <br>
+                Website:<a style="color:#f39;text-decoration: none;" href="{{store url=""}}">{{store url=""}}</a>
+            </p>
         </td>
     </tr>
 </table>

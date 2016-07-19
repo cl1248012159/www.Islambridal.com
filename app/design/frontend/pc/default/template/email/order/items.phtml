@@ -26,13 +26,15 @@
 ?>
 <?php $_order = $this->getOrder() ?>
 <?php if ($_order): ?>
-<table cellspacing="0" cellpadding="0" border="0" width="650" style="border:1px solid #EAEAEA;">
+<table cellspacing="0" cellpadding="0" border="0" style="border:1px solid #EAEAEA;width:100%;">
+    <caption>Item In Your Order</caption>
     <thead>
         <tr>
-            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $this->__('Item') ?></th>
-            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $this->__('Sku') ?></th>
-            <th align="center" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $this->__('Qty') ?></th>
-            <th align="right" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $this->__('Subtotal') ?></th>
+            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px">Order No.</th>
+            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px">Title</th>
+            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px">Price </th>
+            <th align="center" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px">amount</th>
+            <th align="right" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px">Subtotal</th>
         </tr>
     </thead>
 
@@ -46,6 +48,7 @@
     <tbody>
         <?php echo $this->getChildHtml('order_totals') ?>
     </tbody>
+
 </table>
 <?php if ($this->helper('giftmessage/message')->isMessagesAvailable('order', $_order, $_order->getStore()) && $_order->getGiftMessageId()): ?>
     <?php $_giftMessage = $this->helper('giftmessage/message')->getGiftMessage($_order->getGiftMessageId()); ?>
