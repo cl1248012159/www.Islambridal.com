@@ -27,7 +27,7 @@
 <?php $_item = $this->getItem() ?>
 <?php $_order = $this->getItem()->getOrder() ?>
 <tr>
-    <td align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $_order->getIncrementId();?></td>
+    <td align="left" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php echo $_order->getIncrementId();?></td>
     <td align="left" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">
         <strong style="font-size:11px;"><?php echo $this->escapeHtml($_item->getName()) ?></strong>
         <?php if ($this->getItemOptions()): ?>
