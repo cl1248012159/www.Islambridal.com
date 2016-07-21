@@ -5,7 +5,7 @@ body          { font:12px/1.55 Arial, Helvetica, sans-serif; color:#000000; text
 
 img           { border:0; vertical-align:top; }
 
-a             { color:#000; text-decoration:none; }
+a             { color:#000; text-decoration:none;    cursor: pointer; }
 a:hover       { text-decoration:none; }
 :focus        { outline:0; }
 
