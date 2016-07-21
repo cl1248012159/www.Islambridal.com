@@ -439,7 +439,18 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
     public function getDescription() {
         $metaDescription = Mage::getModel('seosuite/template')->loadDescription();
         $oldDescription = empty($this->_data['description']) ? Mage::getStoreConfig('design/head/default_description') : $this->_data['description'];
+        $Description = '';
+        $this->_product = Mage::registry('current_product');
+        $this->_convertLayerMeta();
 
+        if (empty($Description)) {
+            $this->_category = Mage::registry('current_category');
+            if ($this->_category && Mage::registry('current_product')==null) {
+                $Description = $this->_category->getMetaDescription() ? $this->_category->getMetaDescription() : $oldDescription;
+            } else {
+                $Description = $oldDescription;
+            }
+        }
 
 
         $name = $this->getAction()->getFullActionName();
@@ -451,7 +462,7 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
             }
             if(!$this->_data['description']){
                 if(Mage::app()->getRequest()->getParam('p')){
-                    $this->_data['description'] = $oldDescription.'-Page'.Mage::app()->getRequest()->getParam('p');
+                    $this->_data['description'] = $Description.'-Page'.Mage::app()->getRequest()->getParam('p');
                 }
             }
             return trim(htmlspecialchars(html_entity_decode($this->_data['description'], ENT_QUOTES, 'UTF-8')));
@@ -459,17 +470,11 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
         if (Mage::app()->getRequest()->getModuleName()=='splash') return parent::getDescription();
 
 
-        $this->_data['description'] = '';
-        $this->_product = Mage::registry('current_product');
-        $this->_convertLayerMeta();
-        if (empty($this->_data['description'])) {
-            $this->_category = Mage::registry('current_category');
-            if ($this->_category && Mage::registry('current_product')==null) {                
-                $this->_data['description'] = $this->_category->getMetaDescription() ? $this->_category->getMetaDescription() : $oldDescription;
-            } else {
-                $this->_data['description'] = $oldDescription;
-            }
-        }
+        $this->_data['description'] = $Description;
+
+
+
+
         if (Mage::app()->getRequest()->getModuleName()=='cms') {
             $description = Mage::getSingleton('cms/page')->getMetaDescription();
             if ($description) $this->_data['description'] = $description;
