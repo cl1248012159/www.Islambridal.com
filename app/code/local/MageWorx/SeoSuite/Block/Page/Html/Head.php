@@ -364,9 +364,9 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
                 $description =  'We offer a wide range of '.$keywords.'. '.Mage::getModel('core/variable')->loadByCode('web_url_1')->getValue('text').' is one of online stores, you can find high quality '.$keywords.' at irresistible price here.';
             }
             if($data['page']>0){
-                $title .= '-Page'.$data['page'];
-                $keywords .= '-Page'.$data['page'];
-                $description .= '-Page'.$data['page'];
+                $title = $title?$title.'-Page'.$data['page']:'';
+                $keywords = $keywords?$keywords.'-Page'.$data['page']:'';
+                $description .= $description?$description.'-Page'.$data['page']:'';
             }
             $this->_seoData['title'] = $title;
             $this->_seoData['keywords'] = $keywords;
@@ -444,8 +444,9 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
             }else{
                 $this->_data['description'] = $this->_getSeoData('description');
             }
-            if($this->_data['description'])
+            if($this->_data['description']){
                 return trim(htmlspecialchars(html_entity_decode($this->_data['description'], ENT_QUOTES, 'UTF-8')));
+            }
         }
         if (Mage::app()->getRequest()->getModuleName()=='splash') return parent::getDescription();
         $metaDescription = Mage::getModel('seosuite/template')->loadDescription();
