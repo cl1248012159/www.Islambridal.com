@@ -357,16 +357,16 @@
 
     dl {
         float: left;
-        width: 186px;
-        height: 340px;
+        width: 216px;
+        height: 380px;
         background: #fff;
         padding-bottom: 5px;
 
         dt {
             border: 1px solid #ccc;
             padding: 2px;
-            height: 240px;
-            width: 186px;
+            width: 216px;
+            height: 280px;
             margin-bottom: 5px;
             display: table;
             a {
@@ -375,7 +375,8 @@
             }
             img {
                 border: none;
-                max-width: 180px;
+                max-width: 210px;
+                max-height:280px;
             }
         }
 
