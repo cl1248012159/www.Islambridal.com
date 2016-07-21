@@ -275,7 +275,9 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
                     $this->_data['keywords'] = $this->_getSeoData('keywords');
                 }
             }else{
-                $this->_data['keywords'] =$origKeywords.'-Page'.Mage::app()->getRequest()->getParam('p');
+                if(Mage::app()->getRequest()->getParam('p')){
+                    $this->_data['keywords'] =$origKeywords.'-Page'.Mage::app()->getRequest()->getParam('p');
+                }
             }
             if($this->_data['keywords']){
                 return trim(htmlspecialchars(html_entity_decode($this->_data['keywords'], ENT_QUOTES, 'UTF-8')));
@@ -389,7 +391,9 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
                     $this->_data['title'] = $this->_getSeoData('title');
                 }
             }else{
-                $this->_data['title'] = $origTitle.'-Page'.Mage::app()->getRequest()->getParam('p');
+                if(Mage::app()->getRequest()->getParam('p')){
+                    $this->_data['title'] = $origTitle.'-Page'.Mage::app()->getRequest()->getParam('p');
+                }
             }
             return trim(htmlspecialchars(html_entity_decode($this->_data['title'], ENT_QUOTES, 'UTF-8')));
         }
