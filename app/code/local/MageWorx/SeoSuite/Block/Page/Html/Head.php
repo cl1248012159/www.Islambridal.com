@@ -437,6 +437,11 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
     }
 
     public function getDescription() {
+        $metaDescription = Mage::getModel('seosuite/template')->loadDescription();
+        $oldDescription = empty($this->_data['description']) ? Mage::getStoreConfig('design/head/default_description') : $this->_data['description'];
+
+
+
         $name = $this->getAction()->getFullActionName();
         if($name == 'catalog_category_view'){
             if(isset($this->_seoData['description']) && $this->_seoData['description']){
@@ -444,13 +449,16 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
             }else{
                 $this->_data['description'] = $this->_getSeoData('description');
             }
-            if($this->_data['description']){
-                return trim(htmlspecialchars(html_entity_decode($this->_data['description'], ENT_QUOTES, 'UTF-8')));
+            if(!$this->_data['description']){
+                if(Mage::app()->getRequest()->getParam('p')){
+                    $this->_data['description'] = $oldDescription.'-Page'.Mage::app()->getRequest()->getParam('p');
+                }
             }
+            return trim(htmlspecialchars(html_entity_decode($this->_data['description'], ENT_QUOTES, 'UTF-8')));
         }
         if (Mage::app()->getRequest()->getModuleName()=='splash') return parent::getDescription();
-        $metaDescription = Mage::getModel('seosuite/template')->loadDescription();
-        $oldDescription = empty($this->_data['description']) ? Mage::getStoreConfig('design/head/default_description') : $this->_data['description'];                        
+
+
         $this->_data['description'] = '';
         $this->_product = Mage::registry('current_product');
         $this->_convertLayerMeta();
