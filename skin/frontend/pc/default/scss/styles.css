@@ -2605,10 +2605,10 @@ tr.summary-details-excluded { font-style: italic; }
 .home_product.owl-theme .owl-controls .owl-prev:hover { background: url(../images/commont/index_slide_btn.png) no-repeat 0 0; }
 .home_product.owl-theme .owl-controls .owl-next { right: 0; background: url(../images/commont/index_slide_btn01.png) no-repeat 0 0; }
 .home_product.owl-theme .owl-controls .owl-next:hover { background: url(../images/commont/index_slide_btn.png) no-repeat 0 -55px; }
-.home_product dl { float: left; width: 186px; height: 340px; background: #fff; padding-bottom: 5px; }
-.home_product dl dt { border: 1px solid #ccc; padding: 2px; height: 240px; width: 186px; margin-bottom: 5px; display: table; }
+.home_product dl { float: left; width: 216px; height: 380px; background: #fff; padding-bottom: 5px; }
+.home_product dl dt { border: 1px solid #ccc; padding: 2px; width: 216px; height: 280px; margin-bottom: 5px; display: table; }
 .home_product dl dt a { display: table-cell; vertical-align: middle; }
-.home_product dl dt img { border: none; max-width: 180px; }
+.home_product dl dt img { border: none; max-width: 210px; max-height: 280px; }
 .home_product dl dd { text-align: center; font-family: verdana; font-size: 12px; }
 .home_product dl dd p { width: 100%; line-height: 15px; height: 30px; overflow: hidden; }
 .home_product dl dd p a { color: #666666; display: block; }

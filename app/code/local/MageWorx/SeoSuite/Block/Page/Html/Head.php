@@ -126,8 +126,6 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
                     }
                 }
             }
-//            if ($linkPrev) echo '<link rel="prev" href="' . $prevUrl . '" />';
-//            if ($linkNext) echo '<link rel="next" href="' . $nextUrl . '" />';
             if ($linkPrev) $this->addLinkRel('prev', $prevUrl);
             if ($linkNext) $this->addLinkRel('next', $nextUrl);
             
@@ -232,7 +230,7 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
     }
 
     public function getRobots() {
-    	if (substr(Mage::helper('core/url')->getCurrentUrl(), 0, 8)=='https://') $this->_data['robots'] = Mage::getStoreConfig('mageworx_seo/seosuite/https_robots');
+        if (substr(Mage::helper('core/url')->getCurrentUrl(), 0, 8)=='https://') $this->_data['robots'] = Mage::getStoreConfig('mageworx_seo/seosuite/https_robots');
         
         $noindexPatterns = explode(',', Mage::getStoreConfig('mageworx_seo/seosuite/noindex_pages'));
         foreach ($noindexPatterns as $pattern) {
@@ -264,36 +262,30 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
     
     
     public function getKeywords()
-    {  $name = $this->getAction()->getFullActionName();
-
-
-
-$_filters = Mage::getSingleton('Mage_Catalog_Block_Layer_State')->getActiveFilters();
-	$_filtersCount = count($_filters);
-if($_filtersCount>0){
-
-
-		if($name == 'catalog_category_view'){
-			if(isset($this->_seoData['keywords']) && $this->_seoData['keywords']){
-				$this->_data['keywords'] = $this->_seoData['keywords'];
-			}else{
-				$this->_data['keywords'] = $this->_getSeoData('keywords');
-			}
-			if($this->_data['keywords'])
-				return trim(htmlspecialchars(html_entity_decode($this->_data['keywords'], ENT_QUOTES, 'UTF-8')));
-			}
-}else{
-
-}
-
-	
+    {
+        $origKeywords = (isset($this->_data['keywords'])?$this->_data['keywords']:'');
+        $name = $this->getAction()->getFullActionName();
+        if($name == 'catalog_category_view'){
+            $_filters = Mage::getSingleton('Mage_Catalog_Block_Layer_State')->getActiveFilters();
+            $_filtersCount = count($_filters);
+            if($_filtersCount>0){
+                if(isset($this->_seoData['keywords']) && $this->_seoData['keywords']){
+                    $this->_data['keywords'] = $this->_seoData['keywords'];
+                }else{
+                    $this->_data['keywords'] = $this->_getSeoData('keywords');
+                }
+            }else{
+                $this->_data['keywords'] =$origKeywords.'-Page'.Mage::app()->getRequest()->getParam('p');
+            }
+            if($this->_data['keywords']){
+                return trim(htmlspecialchars(html_entity_decode($this->_data['keywords'], ENT_QUOTES, 'UTF-8')));
+            }
+        }
 
         if (Mage::app()->getRequest()->getModuleName()=='splash') return parent::getKeywords();
         
         $keywordsTemplate = Mage::getModel('seosuite/template')->loadKeywords();
 
-        $origKeywords = (isset($this->_data['keywords'])?$this->_data['keywords']:'');  
-        
         $this->_convertLayerMeta();
         
         if (empty($this->_data['keywords'])) {
@@ -315,109 +307,92 @@ if($_filtersCount>0){
     }
 
     public function _getSeoData($name){
-
         $request_uri = $_SERVER['REQUEST_URI'];
-
         $request_uri = str_replace(array('/narrow/','/ns/'),'#',$request_uri);
 
         $_new_arr = explode('#',$request_uri);
-        $request_uri = end($_new_arr);
+        if(count($_new_arr)){
+            $request_uri = end($_new_arr);
 
-        $pagearr = explode('/',$request_uri);
-        $pagestr = end($pagearr);
-
-        $data['page'] = 0;
-        if(strpos($pagestr,'.html') !== false){
-            $data['page'] = intval(str_replace('.html','',$pagestr));
-        }
-
-        $url_para = explode('_',$request_uri);
-
-        if(strpos($request_uri,'?')!== false){
-            list($request_uri) = explode('?',$request_uri);
-        }
-
-        if(strpos($request_uri,'.html')!== false){
-            $temparr = explode('/',$request_uri);
-            if($data['page']>0){
-                $tempname = $temparr[count($temparr)-2];
-                $category_name_arr = explode('_',$tempname);
-                $category_name = end($category_name_arr);
-            }else{
-                $category_name = str_replace('.html','',$pagestr);
+            $pagearr = explode('/',$request_uri);
+            $pagestr = end($pagearr);
+            $data['page'] = 0;
+            if(strpos($pagestr,'.html') !== false){
+                $data['page'] = intval(str_replace('.html','',$pagestr));
             }
-        }else{
-            $request_uri_arr = explode('_',$request_uri);
-            $category_name = end($request_uri_arr);
-
-
-        }
-
-        $category_name = trim($category_name,'/');
-
-        $category_name = ucwords($category_name);
-        $category_name = str_replace('-',' ',$category_name);
-
-        array_pop($url_para);
-        $url_para = array_map("ucwords",$url_para);
-
-        if(!$url_para){
-            //分类
-            $title = $category_name.', '.$category_name.','.$category_name;
-            $keywords = $category_name.', '.$category_name.', '.$category_name;
-        }else{
-
-            $url_att=array();
-            foreach($url_para as $u){
-                if(strpos($u,'Price-')!==false){
-                    $u=str_replace('Price-0','Price:',$u);
-                    $u=str_replace('Price-','Price:',$u);
-                    $url_att[]=$u;
+            $url_para = explode('_',$request_uri);
+            if(strpos($request_uri,'?')!== false){
+                list($request_uri) = explode('?',$request_uri);
+            }
+            if(strpos($request_uri,'.html')!== false){
+                $temparr = explode('/',$request_uri);
+                if($data['page']>0){
+                    $tempname = $temparr[count($temparr)-2];
+                    $category_name_arr = explode('_',$tempname);
+                    $category_name = end($category_name_arr);
                 }else{
-                    $url_att[]=str_replace('-',' ',$u);
+                    $category_name = str_replace('.html','',$pagestr);
                 }
+            }else{
+                $request_uri_arr = explode('_',$request_uri);
+                $category_name = end($request_uri_arr);
             }
-            $title = implode(' ',$url_att).' '.$category_name;
-            $keywords = implode(' ',$url_att).' '.$category_name;
-            $keywords=strtolower($keywords);
-            $description =  'We offer a wide range of '.$keywords.'. '.Mage::getModel('core/variable')->loadByCode('web_url_1')->getValue('text').' is one of online stores, you can find high quality '.$keywords.' at irresistible price here.';
-
+            $category_name = trim($category_name,'/');
+            $category_name = ucwords($category_name);
+            $category_name = str_replace('-',' ',$category_name);
+            array_pop($url_para);
+            $url_para = array_map("ucwords",$url_para);
+            if(!$url_para){
+                $title = $category_name.', '.$category_name.','.$category_name;
+                $keywords = $category_name.', '.$category_name.', '.$category_name;
+            }else{
+                $url_att=array();
+                foreach($url_para as $u){
+                    if(strpos($u,'Price-')!==false){
+                        $u=str_replace('Price-0','Price:',$u);
+                        $u=str_replace('Price-','Price:',$u);
+                        $url_att[]=$u;
+                    }else{
+                        $url_att[]=str_replace('-',' ',$u);
+                    }
+                }
+                $title = implode(' ',$url_att).' '.$category_name;
+                $keywords = implode(' ',$url_att).' '.$category_name;
+                $keywords=strtolower($keywords);
+                $description =  'We offer a wide range of '.$keywords.'. '.Mage::getModel('core/variable')->loadByCode('web_url_1')->getValue('text').' is one of online stores, you can find high quality '.$keywords.' at irresistible price here.';
+            }
+            if($data['page']>0){
+                $title .= '-Page'.$data['page'];
+                $keywords .= '-Page'.$data['page'];
+                $description .= '-Page'.$data['page'];
+            }
+            $this->_seoData['title'] = $title;
+            $this->_seoData['keywords'] = $keywords;
+            $this->_seoData['description'] = $description;
+            return $this->_seoData[$name];
         }
-        if($data['page']>0){
-            $title .= '-Page'.$data['page'];
-        }
-        $this->_seoData['title'] = $title;
-        $this->_seoData['keywords'] = $keywords;
-        $this->_seoData['description'] = $description;
-
-        return $this->_seoData[$name];
     }
 
-    public function getTitle() {
+    public function getTitle()
+    {
+        $origTitle = (isset($this->_data['title'])?$this->_data['title']:'');
 
+        $name = $this->getAction()->getFullActionName();
+        if($name == 'catalog_category_view'){
+            $_filters = Mage::getSingleton('Mage_Catalog_Block_Layer_State')->getActiveFilters();
+            $_filtersCount = count($_filters);
 
-
-		$name = $this->getAction()->getFullActionName();
-
-$_filters = Mage::getSingleton('Mage_Catalog_Block_Layer_State')->getActiveFilters();
-	$_filtersCount = count($_filters);
-if($_filtersCount>0){           // 当选属性时，标题，关键词按上面来改
-
-
-		if($name == 'catalog_category_view'){
-			if(isset($this->_seoData['title']) && $this->_seoData['title']){
-				$this->_data['title'] = $this->_seoData['title'];
-			}else{
-				$this->_data['title'] = $this->_getSeoData('title');
-			}
-
-			return trim(htmlspecialchars(html_entity_decode($this->_data['title'], ENT_QUOTES, 'UTF-8')));
-		}
-}else{
-
-}
-
-	
+            if($_filtersCount>0){
+                if(isset($this->_seoData['title']) && $this->_seoData['title']){
+                    $this->_data['title'] = $this->_seoData['title'];
+                }else{
+                    $this->_data['title'] = $this->_getSeoData('title');
+                }
+            }else{
+                $this->_data['title'] = $origTitle.'-Page'.Mage::app()->getRequest()->getParam('p');
+            }
+            return trim(htmlspecialchars(html_entity_decode($this->_data['title'], ENT_QUOTES, 'UTF-8')));
+        }
 
 
         if (Mage::app()->getRequest()->getModuleName()=='splash') return parent::getTitle();
@@ -426,10 +401,9 @@ if($_filtersCount>0){           // 当选属性时，标题，关键词按上面
             $this->_data['title'] = '';    
         }
         
-        $origTitle = (isset($this->_data['title'])?$this->_data['title']:''); 
+
         
         if ($this->_product || Mage::registry('current_product')) {
-
             $this->_product = Mage::registry('current_product');
             if (!isset($this->_data['title']) || empty($this->_data['title'])) {
                 $this->_data['title'] = $this->getDefaultTitle();
@@ -441,7 +415,6 @@ if($_filtersCount>0){           // 当选属性时，标题，关键词按上面
         $this->_convertLayerMeta();
         
         if (Mage::app()->getRequest()->getModuleName()=='cms') {
-         //   echo "<pre>"; print_r(Mage::getSingleton('cms/page')->getData()); exit;
             $title = Mage::getSingleton('cms/page')->getTitle();
             if ($title) $this->_data['title'] = $title;
         }
@@ -460,27 +433,22 @@ if($_filtersCount>0){           // 当选属性时，标题，关键词按上面
     }
 
     public function getDescription() {
-	 $name = $this->getAction()->getFullActionName();
-		if($name == 'catalog_category_view'){
-			if(isset($this->_seoData['description']) && $this->_seoData['description']){
-				$this->_data['description'] = $this->_seoData['description'];
-			}else{
-				$this->_data['description'] = $this->_getSeoData('description');
-			}
-			if($this->_data['description'])
-				return trim(htmlspecialchars(html_entity_decode($this->_data['description'], ENT_QUOTES, 'UTF-8')));
-		}
+        $name = $this->getAction()->getFullActionName();
+        if($name == 'catalog_category_view'){
+            if(isset($this->_seoData['description']) && $this->_seoData['description']){
+                $this->_data['description'] = $this->_seoData['description'];
+            }else{
+                $this->_data['description'] = $this->_getSeoData('description');
+            }
+            if($this->_data['description'])
+                return trim(htmlspecialchars(html_entity_decode($this->_data['description'], ENT_QUOTES, 'UTF-8')));
+        }
         if (Mage::app()->getRequest()->getModuleName()=='splash') return parent::getDescription();
-        
         $metaDescription = Mage::getModel('seosuite/template')->loadDescription();
-        
         $oldDescription = empty($this->_data['description']) ? Mage::getStoreConfig('design/head/default_description') : $this->_data['description'];                        
         $this->_data['description'] = '';
-        
         $this->_product = Mage::registry('current_product');
-        
         $this->_convertLayerMeta();
-        
         if (empty($this->_data['description'])) {
             $this->_category = Mage::registry('current_category');
             if ($this->_category && Mage::registry('current_product')==null) {                
@@ -517,7 +485,7 @@ if($_filtersCount>0){           // 当选属性时，标题，关键词按上面
         $metaTemplate = '';
         $params = Mage::app()->getRequest()->getParams();
         
-// get meta title
+        // get meta title
         
         if (Mage::getStoreConfigFlag('mageworx_seo/seosuite/enable_dynamic_meta_title')) {
             $type = '';
@@ -536,7 +504,7 @@ if($_filtersCount>0){           // 当选属性时，标题，关键词按上面
             $this->_data['title'] = $metaTitle;
         }    
         
-// get meta description enable_dynamic_meta_desc
+        // get meta description enable_dynamic_meta_desc
         if (Mage::getStoreConfigFlag('mageworx_seo/seosuite/enable_dynamic_meta_desc')) {
             $type = '';
             $object = '';
@@ -554,7 +522,7 @@ if($_filtersCount>0){           // 当选属性时，标题，关键词按上面
             $this->_data['description'] = $metaDescr;
         }  
         
-// get meta keywords enable_dynamic_meta_keywords
+        // get meta keywords enable_dynamic_meta_keywords
         if (Mage::getStoreConfigFlag('mageworx_seo/seosuite/enable_dynamic_meta_keywords')) {
             $type = '';
             $object = '';

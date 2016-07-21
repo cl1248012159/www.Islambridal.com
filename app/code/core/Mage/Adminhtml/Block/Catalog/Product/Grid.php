@@ -57,6 +57,7 @@ class Mage_Adminhtml_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_Wid
         $store = $this->_getStore();
         $collection = Mage::getModel('catalog/product')->getCollection()
             ->addAttributeToSelect('sku')
+            ->addAttributeToSelect('thumbnail')
             ->addAttributeToSelect('name')
             ->addAttributeToSelect('attribute_set_id')
             ->addAttributeToSelect('type_id');
@@ -151,6 +152,12 @@ class Mage_Adminhtml_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_Wid
                 'type'  => 'number',
                 'index' => 'entity_id',
         ));
+        $this->addColumn( 'thumbnail', array(
+            'header' => Mage::helper( 'catalog' )->__( 'Thumbnail' ),
+            'type' => 'image',
+            'width' => '55px',
+            'index' => 'thumbnail'
+        ) );
         $this->addColumn('name',
             array(
                 'header'=> Mage::helper('catalog')->__('Name'),
