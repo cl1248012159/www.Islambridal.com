@@ -346,7 +346,7 @@
                     button.button{
                         height:35px;
                         width:170px;
-                        border-radius:3px 0 0 3px;
+                        border-radius:3px;
                         background-color:#f39;
                         span span{
                             font-size:18px;
@@ -356,15 +356,17 @@
                     .wishlist{
                         display: inline-block;
                         height:35px;
-                        width:40px;
-                        border-left:2px solid #fff;
-                        border-radius:0 3px 3px 0 ;
-                        background-color:#f39;
-                        color: #fff;
+                        line-height:35px;
                         text-align: center;
+                        padding:0 15px;
+                        color: #666;
+                        font-size:15px;
+
                         span{
                             font-size: 30px;
-                            line-height: 35px;
+                            line-height: 30px;
+                            color:#f39;
+                            padding:0 5px;
                         }
                     }
                 }
