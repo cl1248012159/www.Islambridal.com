@@ -441,7 +441,9 @@
                             border: 1px solid #ccc;
                             padding:10px;
                             display: block;
-                            margin: 0 auto; 
+                            margin: 0 auto;
+                            max-width:600px;
+                            max-height:800px;
                         }
                     }
                 }
