@@ -35,7 +35,7 @@ foreach($ourneed_key as $k){
                     <dl class="item">
                         <dt>
                             <a href="<?php echo $_product->getProductUrl() ?>">
-                                <img width="180" height="240" alt="<?php echo $_product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(240,320); ?>">
+                                <img alt="<?php echo $_product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(240,320); ?>">
                             </a>
                         </dt>
                         <dd>
