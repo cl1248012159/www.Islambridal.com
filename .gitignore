@@ -8,3 +8,8 @@ downloader/
 .idea/*
 media/
 app/etc/local.xml
+app/code/community/Magneto/
+app/design/frontend/base/default/layout/debug.xml
+app/design/frontend/base/default/template/debug/
+app/etc/modules/Magneto_Debug.xml
+skin/frontend/base/default/debug/

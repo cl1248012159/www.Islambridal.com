@@ -50,12 +50,12 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
     }
 
     public function match(Zend_Controller_Request_Http $request) {
-        $this->_beforeModuleMatch();
 
+        $this->_beforeModuleMatch();
         $this->_setRequest($request);                
         
         if ($this->_matchCategoryLayer() && !Mage::getStoreConfig('mageworx_seo/seosuite/disable_layered_rewrites')) {
-         //   $request->setDispatched(TRUE);
+            //$request->setDispatched(TRUE);
             return true;
         }
 
@@ -66,7 +66,6 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
         
         
         $identifier = trim($request->getPathInfo(), '/');
-        
         
         $d = explode('/', $identifier);
 
@@ -83,11 +82,11 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
                 $keyArr = explode('-', $d[0]);
                 $productId = end($keyArr);
                 if (!is_numeric($productId)){
-                	$urlRewrite = Mage::getModel('core/url_rewrite')->setStoreId(Mage::app()->getStore()->getId())->loadByRequestPath($d[0]);
-					$productId = $urlRewrite->getProductId();
-					if (!is_numeric($productId)){
-						return false;
-					}
+                        $urlRewrite = Mage::getModel('core/url_rewrite')->setStoreId(Mage::app()->getStore()->getId())->loadByRequestPath($d[0]);
+                        $productId = $urlRewrite->getProductId();
+                        if (!is_numeric($productId)){
+                            return false;
+                        }
                 }
                 $product = Mage::getModel('catalog/product')->load($productId);
                 if (!$product || !$product->getId()) return false;               
@@ -125,6 +124,12 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
         }
         
         switch ($d[0]) {
+            case 'catalogsearch':
+                $request->setModuleName('catalogsearch')
+                    ->setControllerName('result')
+                    ->setActionName('index')
+                    ->setParam('q',  $this->_getRequest()->getParam('q'));
+                break;
             case 'tag':
                 if (!isset($d[1])) {
                     return false;
@@ -182,7 +187,7 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
                         ->setControllerName('catalog');
                 break;
             default:
-                
+
                 $seoCode = 301;
                 if(!Mage::getStoreConfig('catalog/seo/save_rewrites_history')) {
                     $seoCode = 302;
@@ -207,7 +212,7 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
                 
                 return false;
         }
-        
+
         $request->setAlias(Mage_Core_Model_Url_Rewrite::REWRITE_REQUEST_PATH_ALIAS, $identifier);
         
         return true;
