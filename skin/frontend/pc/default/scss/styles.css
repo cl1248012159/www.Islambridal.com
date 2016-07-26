@@ -2837,9 +2837,11 @@ tr.summary-details-excluded { font-style: italic; }
 .page .product-view .new-product-collateral .box-collateral ul { *zoom: 1; margin-top: 10px; }
 .page .product-view .new-product-collateral .box-collateral ul:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .page .product-view .new-product-collateral .box-collateral ul li { float: left; padding: 10px; }
-.page .product-view .new-product-collateral .box-collateral ul li img { border: 1px solid #ccc; padding: 10px; display: block; margin: 0 auto; }
-.page .parent_cat_related .home_product dl { width: 16.6%; }
-.page .parent_cat_related .home_product dl dt { margin: 0 auto 5px; }
+.page .product-view .new-product-collateral .box-collateral ul li img { border: 1px solid #ccc; padding: 10px; display: block; margin: 0 auto; max-width: 600px; max-height: 800px; }
+.page .parent_cat_related .home_product dl { width: 16.6%; height: auto; padding: 0 3px; }
+.page .parent_cat_related .home_product dl dt { margin: 0 auto 5px; width: 100%; height: auto; }
+.page .parent_cat_related .home_product dl dt a { width: 100%; }
+.page .parent_cat_related .home_product dl dt a img { max-width: 100%; max-height: none; }
 .page .askquestion-list { width: 100%; display: inline-block; }
 .page .askquestion-list .questions-types ul.questions-tabs { width: 100%; float: left; border-top: 2px solid #f39; background-color: #f8f8f8; }
 .page .askquestion-list .questions-types ul.questions-tabs li { padding: 2px 10px; float: left; cursor: pointer; text-align: center; line-height: 2em; font-size: 14px; border-right: 1px solid #ffffff; border-left: 1px solid #fff; }
