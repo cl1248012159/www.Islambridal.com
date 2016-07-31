@@ -140,4 +140,4 @@ User-Agent: mozDex
 Disallow: /
 User-Agent: Sosospider
 Disallow: /
-Sitemap: http://www.ddaydress.com/sitemap.xml
+Sitemap: http://www.d-daydress.com/sitemap.xml
