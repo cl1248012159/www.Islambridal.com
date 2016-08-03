@@ -176,43 +176,34 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
     $reviews_list='';
     if(count($_reviews_items) > 0){
         foreach($_reviews_items as $review){
-            $show = false;
             if( $review_30 < 30 ){
-                $show = true;
-            }else{
-                break;
-            }
-
-            $CurrentCategoryId = $this->getCurrentCategory()->getId();
-            $review_product = Mage::getModel('catalog/product')
-                ->setStoreId(Mage::app()->getStore()->getId())
-                ->load($review->getEntityPkValue());
-            $getCategoryIds = $review_product->getCategoryIds();
-            foreach($getCategoryIds as $in_cat_id){
-                if( $in_cat_id == $CurrentCategoryId ){
-                    $show = true;
-                    $review_30++;
-                    break;
+                $CurrentCategoryId = $this->getCurrentCategory()->getId();
+                $review_product = Mage::getModel('catalog/product')
+                    ->setStoreId(Mage::app()->getStore()->getId())
+                    ->load($review->getEntityPkValue());
+                $getCategoryIds = $review_product->getCategoryIds();
+                foreach($getCategoryIds as $in_cat_id){
+                    if( $in_cat_id == $CurrentCategoryId ){
+                        if($review->getEntityPkValue() ){
+                            $reviews_list .= '<a class="item" href="'.$this->getUrl().$review_product->getUrlPath().'#review">';
+                            if(  $review->getReviewimage1()  ){
+                                $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1().');"></span>';
+                            }elseif(  $review->getReviewimage2()  ){
+                                $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2().');"></span>';
+                            }elseif(  $review->getReviewimage3()  ){
+                                $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3().');"></span>';
+                            }elseif(  $review->getReviewimage4()  ){
+                                $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4().');"></span>';
+                            }elseif(  $review->getReviewimage5()  ){
+                                $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5().');"></span>';
+                            }
+                            $reviews_list .= '</a>';
+                        }
+                        $review_30++;
+                        break;
+                    }
                 }
             }
-            if(!$show){break;}
-
-            if($review->getEntityPkValue() ){
-                $reviews_list .= '<a class="item" href="'.$this->getUrl().$review_product->getUrlPath().'#review">';
-                if(  $review->getReviewimage1()  ){
-                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1().');"></span>';
-                }elseif(  $review->getReviewimage2()  ){
-                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2().');"></span>';
-                }elseif(  $review->getReviewimage3()  ){
-                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3().');"></span>';
-                }elseif(  $review->getReviewimage4()  ){
-                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4().');"></span>';
-                }elseif(  $review->getReviewimage5()  ){
-                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5().');"></span>';
-                }
-                $reviews_list .= '</a>';
-            }
-
         }
     }
 ?>
