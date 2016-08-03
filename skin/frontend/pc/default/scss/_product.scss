@@ -146,6 +146,10 @@
                             float: right;
                             clear: both;
                         }
+
+                        .input-box[data-title="Time"]{
+                            display:inline-block;
+                        }
                     }
 
                     .custom_size{
