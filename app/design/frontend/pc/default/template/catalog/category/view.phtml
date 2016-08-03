@@ -221,7 +221,7 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
             <script>
                 jQuery(document).ready(function(){
                     jQuery('.home_review').each(function() {
-                        if(jQuery('.item', this).length > 1) {
+                        if(jQuery('.item', this).length > 0) {
                             jQuery(this).owlCarousel({
                                 loop: true,
                                 nav: true,
