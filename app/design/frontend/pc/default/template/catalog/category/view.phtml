@@ -211,7 +211,9 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
     <div class="box_shadow">
         <div class="category_name_bottom">
             <h3><?php echo $cur_cat_name ?> reviews </h3>
-            <span>(<?php echo count($_reviews_items);?>)</span>
+            <span>(<?php echo Mage::getModel('review/review')->getCollection()
+                    ->addStoreFilter(Mage::app()->getStore()->getId())
+                    ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)->count();?>)</span>
         </div>
         <div class="user_photos">
             <div class="photos_title">User Photos</div>
