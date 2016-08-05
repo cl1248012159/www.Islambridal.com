@@ -173,37 +173,44 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
     $_reviews_items =  $_reviewsCollection->getItems();
 
     $review_30 = 0;
+    $review_all = 0;
     $reviews_list='';
     if(count($_reviews_items) > 0){
         foreach($_reviews_items as $review){
-            if( $review_30 < 30 ){
+
                 $CurrentCategoryId = $this->getCurrentCategory()->getId();
                 $review_product = Mage::getModel('catalog/product')
                     ->setStoreId(Mage::app()->getStore()->getId())
                     ->load($review->getEntityPkValue());
                 $getCategoryIds = $review_product->getCategoryIds();
                 foreach($getCategoryIds as $in_cat_id){
+                    
                     if( $in_cat_id == $CurrentCategoryId ){
-                        if($review->getEntityPkValue() ){
-                            $reviews_list .= '<a class="item" href="'.$this->getUrl().$review_product->getUrlPath().'#review">';
-                            if(  $review->getReviewimage1()  ){
-                                $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1().');"></span>';
-                            }elseif(  $review->getReviewimage2()  ){
-                                $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2().');"></span>';
-                            }elseif(  $review->getReviewimage3()  ){
-                                $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3().');"></span>';
-                            }elseif(  $review->getReviewimage4()  ){
-                                $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4().');"></span>';
-                            }elseif(  $review->getReviewimage5()  ){
-                                $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5().');"></span>';
+
+                        if( $review_30 < 30 ){
+                            if($review->getEntityPkValue() ){
+                                $reviews_list .= '<a class="item" href="'.$this->getUrl().$review_product->getUrlPath().'#review">';
+                                if(  $review->getReviewimage1()  ){
+                                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1().');"></span>';
+                                }elseif(  $review->getReviewimage2()  ){
+                                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2().');"></span>';
+                                }elseif(  $review->getReviewimage3()  ){
+                                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3().');"></span>';
+                                }elseif(  $review->getReviewimage4()  ){
+                                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4().');"></span>';
+                                }elseif(  $review->getReviewimage5()  ){
+                                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5().');"></span>';
+                                }
+                                $reviews_list .= '</a>';
                             }
-                            $reviews_list .= '</a>';
+                            $review_30++;
                         }
-                        $review_30++;
-                        break;
+
+                        $review_all++;
                     }
+                    
                 }
-            }
+
         }
     }
 ?>
@@ -211,7 +218,7 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
     <div class="box_shadow">
         <div class="category_name_bottom">
             <h3><?php echo $cur_cat_name ?> reviews </h3>
-            <span>(<?php echo count($_reviews_items);?>)</span>
+            <span>(<?php echo $review_all;?>)</span>
         </div>
         <div class="user_photos">
             <div class="photos_title">User Photos</div>
