@@ -36,15 +36,15 @@
                                     ->getProductUrl();
                                         ?>#review">
             <?php if(  $review->getReviewimage1()  ):?>
-                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1();?>);"></span>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages'.$review->getReviewimage1();?>);"></span>
             <?php elseif(  $review->getReviewimage2()  ): ?>
-                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2();?>);"></span>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages'.$review->getReviewimage2();?>);"></span>
             <?php elseif(  $review->getReviewimage3()  ): ?>
-                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3();?>);"></span>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages'.$review->getReviewimage3();?>);"></span>
             <?php elseif(  $review->getReviewimage4()  ): ?>
-                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4();?>);"></span>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages'.$review->getReviewimage4();?>);"></span>
             <?php elseif(  $review->getReviewimage5()  ): ?>
-                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5();?>);"></span>
+                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages'.$review->getReviewimage5();?>);"></span>
             <?php endif;?>
         </a>
     <?php endforeach; ?>
