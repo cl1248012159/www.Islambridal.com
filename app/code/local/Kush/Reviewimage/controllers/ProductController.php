@@ -58,79 +58,23 @@ class Kush_Reviewimage_ProductController extends Mage_Review_ProductController
             $rating = $this->getRequest()->getParam('ratings', array());
         }
 
-        if(isset($_FILES['reviewimage1']['name']) && $_FILES['reviewimage1']['name'] != '') {
-				try {	
-					$uploader = new Varien_File_Uploader('reviewimage1');
-	           		$uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
-					$uploader->setAllowRenameFiles(false);
-					$uploader->setFilesDispersion(false);
-					$path = Mage::getBaseDir('media').DS.'reviewimages'.DS;
-					$uploader->save($path, $_FILES['reviewimage1']['name'] );
-					
-				} catch (Exception $e) {
-		      
-		        }
-	  			$data['reviewimage1'] = $_FILES['reviewimage1']['name'];
-		}
-        if(isset($_FILES['reviewimage2']['name']) && $_FILES['reviewimage2']['name'] != '') {
-                try {   
-                    $uploader = new Varien_File_Uploader('reviewimage2');
-                    $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
-                    $uploader->setAllowRenameFiles(false);
-                    $uploader->setFilesDispersion(false);
-                    $path = Mage::getBaseDir('media').DS.'reviewimages'.DS;
-                    $uploader->save($path, $_FILES['reviewimage2']['name'] );
-                    
-                } catch (Exception $e) {
-              
+        if( isset($_FILES) ){
+            $path = Mage::getBaseDir('media').DS.'reviewimages';
+            for($i=1;$i<6;$i++){
+                if(isset($_FILES['reviewimage'.$i]['name']) && $_FILES['reviewimage'.$i]['name'] != '') {
+                    try {
+                        $uploader = new Varien_File_Uploader('reviewimage'.$i);
+                        $result = $uploader
+                            ->setAllowedExtensions(array('jpg','jpeg','gif','png'))
+                            ->setAllowRenameFiles(true)
+                            ->setFilesDispersion(true)
+                            ->setAllowCreateFolders(true)
+                            ->save($path,$_FILES['reviewimage'.$i]['name'] );
+                        $data['reviewimage'.$i] = $result['file'];
+                    } catch (Exception $e) {}
                 }
-                $data['reviewimage2'] = $_FILES['reviewimage2']['name'];
+            }
         }
-        if(isset($_FILES['reviewimage3']['name']) && $_FILES['reviewimage3']['name'] != '') {
-                try {   
-                    $uploader = new Varien_File_Uploader('reviewimage3');
-                    $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
-                    $uploader->setAllowRenameFiles(false);
-                    $uploader->setFilesDispersion(false);
-                    $path = Mage::getBaseDir('media').DS.'reviewimages'.DS;
-                    $uploader->save($path, $_FILES['reviewimage3']['name'] );
-                    
-                } catch (Exception $e) {
-              
-                }
-                $data['reviewimage3'] = $_FILES['reviewimage3']['name'];
-        }
-        if(isset($_FILES['reviewimage4']['name']) && $_FILES['reviewimage4']['name'] != '') {
-                try {   
-                    $uploader = new Varien_File_Uploader('reviewimage4');
-                    $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
-                    $uploader->setAllowRenameFiles(false);
-                    $uploader->setFilesDispersion(false);
-                    $path = Mage::getBaseDir('media').DS.'reviewimages'.DS;
-                    $uploader->save($path, $_FILES['reviewimage4']['name'] );
-                    
-                } catch (Exception $e) {
-              
-                }
-                $data['reviewimage4'] = $_FILES['reviewimage4']['name'];
-        }
-        if(isset($_FILES['reviewimage5']['name']) && $_FILES['reviewimage5']['name'] != '') {
-                try {   
-                    $uploader = new Varien_File_Uploader('reviewimage5');
-                    $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
-                    $uploader->setAllowRenameFiles(false);
-                    $uploader->setFilesDispersion(false);
-                    $path = Mage::getBaseDir('media').DS.'reviewimages'.DS;
-                    $uploader->save($path, $_FILES['reviewimage5']['name'] );
-                    
-                } catch (Exception $e) {
-              
-                }
-                $data['reviewimage5'] = $_FILES['reviewimage5']['name'];
-        }
-
-
-
 
 
         if( $productku = $this->getRequest()->getParam('sku', false) ){
