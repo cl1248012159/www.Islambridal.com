@@ -36,6 +36,15 @@ class My_Askquestions_Block_Adminhtml_Askquestions_Edit_Form extends Mage_Adminh
 					'value'     => $model->getStatus(),
 					'values'    => array('1'=>Mage::helper('askquestions')->__('Enable'),'0'=>Mage::helper('askquestions')->__('Disable')),
 				));
+            $dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
+            $fieldset->addField('created_at', 'date', array(
+                'name'   => 'created_at',
+                'label'  => Mage::helper('salesrule')->__('创建时间'),
+                'title'  => Mage::helper('salesrule')->__('创建时间'),
+                'image'  => $this->getSkinUrl('images/grid-cal.gif'),
+                'input_format' => Varien_Date::DATE_INTERNAL_FORMAT,
+                'format'       => $dateFormatIso
+            ));
 				$fieldset->addField('reply','textarea',array(
 					'name'      => 'reply',
 					'label'     => Mage::helper('askquestions')->__('Reply'),
