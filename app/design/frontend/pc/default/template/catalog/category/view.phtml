@@ -169,61 +169,57 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
                 array(  array('notnull' => true) ),
             )
         )
-        ->setDateOrder();
-    $_reviews_items =  $_reviewsCollection->getItems();
+        ->getSelect()
+        ->joinleft( array('cp'=> 'catalog_category_product'), 'cp.product_id = main_table.entity_pk_value')
+        ->where("main_table.status_id=1  and cp.`category_id`='".$this->getCurrentCategory()->getId()."'")
+        ->limit(30);
 
-    $review_30 = 0;
-    $review_all = 0;
-    $reviews_list='';
-    if(count($_reviews_items) > 0){
-        foreach($_reviews_items as $review){
-
-                $CurrentCategoryId = $this->getCurrentCategory()->getId();
-                $review_product = Mage::getModel('catalog/product')
-                    ->setStoreId(Mage::app()->getStore()->getId())
-                    ->load($review->getEntityPkValue());
-                $getCategoryIds = $review_product->getCategoryIds();
-                foreach($getCategoryIds as $in_cat_id){
-                    
-                    if( $in_cat_id == $CurrentCategoryId ){
-
-                        if( $review_30 < 30 ){
-                            if($review->getEntityPkValue() ){
-                                $reviews_list .= '<a class="item" href="'.$this->getUrl().$review_product->getUrlPath().'#review">';
-                                if(  $review->getReviewimage1()  ){
-                                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage1().');"></span>';
-                                }elseif(  $review->getReviewimage2()  ){
-                                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage2().');"></span>';
-                                }elseif(  $review->getReviewimage3()  ){
-                                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage3().');"></span>';
-                                }elseif(  $review->getReviewimage4()  ){
-                                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage4().');"></span>';
-                                }elseif(  $review->getReviewimage5()  ){
-                                    $reviews_list .= '<span style="background-image:url('.Mage::getBaseUrl("media").'reviewimages/'.$review->getReviewimage5().');"></span>';
-                                }
-                                $reviews_list .= '</a>';
-                            }
-                            $review_30++;
-                        }
-
-                        $review_all++;
-                    }
-                    
-                }
-
-        }
-    }
+    $results = Mage::getSingleton('core/resource')->getConnection('core_read')->fetchAll($_reviewsCollection);
 ?>
-<?php if($review_30):?>
+<?php if(count($results)):?>
     <div class="box_shadow">
         <div class="category_name_bottom">
             <h3><?php echo $cur_cat_name ?> reviews </h3>
-            <span>(<?php echo $review_all;?>)</span>
+            <span>(
+                <?php
+                $review_count_sql = Mage::getModel('review/review')->getCollection()
+                    ->getSelect()
+                    ->columns(array(
+                            'review_count' => 'count(cp.category_id)')
+                    )
+                    ->joinleft( array('cp'=> 'catalog_category_product'), 'cp.product_id = main_table.entity_pk_value')
+                    ->where("main_table.status_id=1  and cp.`category_id`='".$this->getCurrentCategory()->getId()."'");
+
+                $review_count = Mage::getSingleton('core/resource')->getConnection('core_read')->fetchAll($review_count_sql);
+                foreach ($review_count as $row){echo $row['review_count'];break;}
+                ?>)</span>
+
         </div>
         <div class="user_photos">
             <div class="photos_title">User Photos</div>
             <div class="home_review owl-carousel">
-                <?php echo $reviews_list;?>
+                <?php foreach ($results as $review):?>
+                    <?php if( $review['entity_pk_value'] ):?>
+                        <?php
+                        $review_product = Mage::getModel('catalog/product')
+                            ->setStoreId(Mage::app()->getStore()->getId())
+                            ->load($review['entity_pk_value']);
+                        ?>
+                        <a class="item" href="<?php echo $this->getUrl().$review_product->getUrlPath();?>#review">
+                            <?php if(  $review['reviewimage1']  ):?>
+                                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review['reviewimage1'];?>);"></span>
+                            <?php elseif(  $review['reviewimage2']  ): ?>
+                                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review['reviewimage2'];?>);"></span>
+                            <?php elseif(  $review['reviewimage3']  ): ?>
+                                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review['reviewimage3'];?>);"></span>
+                            <?php elseif(  $review['reviewimage4']  ): ?>
+                                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review['reviewimage4'];?>);"></span>
+                            <?php elseif(  $review['reviewimage5']  ): ?>
+                                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages/'.$review['reviewimage5'];?>);"></span>
+                            <?php endif;?>
+                        </a>
+                    <?php endif;?>
+                <?php endforeach;?>
             </div>
             <script>
                 jQuery(document).ready(function(){
@@ -243,7 +239,19 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
             </script>
         </div>
     </div>
-<?php endif?>
+
+<?php endif;?>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
