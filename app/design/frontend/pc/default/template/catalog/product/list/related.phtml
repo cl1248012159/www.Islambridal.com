@@ -7,31 +7,28 @@ if($category->getLevel() > 2){
     $category = $category->getParentCategory();
 }
 
+$count_cat_p = $category
+    ->getProductCollection()
+    ->addAttributeToSelect('*')
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToFilter('visibility', 4)
+    ->count();
 $productCollection = $category
                         ->getProductCollection()
                         ->addAttributeToSelect('*')
                         ->addAttributeToFilter('status', 1)
-                        ->addAttributeToFilter('visibility', 4);
-foreach ($productCollection as $product) {
-    $result[] = $product->getId();
-}
-if(count($result) > 5){
-    $ourneed_key = array_rand($result,6);
-}else{
-    $ourneed_key = array_keys($result);
-}
-foreach($ourneed_key as $k){
-    $ourneed[] = $result[$k];
-}
+                        ->addAttributeToFilter('visibility', 4)
+                        ->setPage(rand(1,$count_cat_p/32), 6);
+
 ?>
-<?php if( count($ourneed) >0 ): ?>
+
+<?php if( count($productCollection) >0 ): ?>
     <div class="box_shadow parent_cat_related">
         <div class="category_name_bottom">
             <span>CUSTOMERS WHO BOUGHT THIS ITEM ALSO LIKE</span>
         </div>
         <div class="home_product">
             <?php foreach($productCollection as $_product):?>
-                <?php if( in_array($_product->getId(),$ourneed) ):?>
                     <dl class="item">
                         <dt>
                             <a href="<?php echo $_product->getProductUrl() ?>">
@@ -50,7 +47,6 @@ foreach($ourneed_key as $k){
                             </div>
                         </dd>
                     </dl>
-                <?php endif; ?>
             <?php endforeach; ?>
         </div>
     </div>
