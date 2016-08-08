@@ -439,28 +439,32 @@ class CapacityWebSolutions_ImportProduct_Model_Convert_Adapter_Product extends M
 		 * Simply add a 'gallery' column to the import file, and separate
 		 * each image with a semi-colon.
 		 */
-	        try {
-	                $galleryData = explode(';',$importData["gallery"]);
-	                foreach($galleryData as $gallery_img)
-					/**
-					 * @param directory where import image resides
-					 * @param leave 'null' so that it isn't imported as thumbnail, base, or small
-					 * @param false = the image is copied, not moved from the import directory to it's new location
-					 * @param false = not excluded from the front end gallery
-					 */
-	                {
-	                        $product->addImageToMediaGallery(Mage::getBaseDir('media') . DS . 'import' . $gallery_img, null, false, false);
-	                }
-	            }
-	        catch (Exception $e) {}        
+        if(isset($importData["gallery"]) && $importData["gallery"]){
+            try {
+                $galleryData = explode(';',$importData["gallery"]);
+                foreach($galleryData as $gallery_img)
+                {
+                    $product->addImageToMediaGallery(Mage::getBaseDir('media') . DS . 'import' . $gallery_img, null, false, false);
+                }
+            }
+            catch (Exception $e) {}
+        }
+
 		/* End Modification */
  
         $product->setIsMassupdate(true);
         $product->setExcludeUrlRewrite(true);
- 
+
         $product->save();
 		 /* Add the custom options specified in the CSV import file 	*/
-		
+
+        foreach ($product->getOptions() as $o) {
+            $o->getValueInstance()->deleteValues($o->getId());
+            $o->deletePrices($o->getId());
+            $o->deleteTitles($o->getId());
+            $o->delete();
+        }
+
 		if(isset($custom_options)){
 		if(count($custom_options)) {
 		   foreach($custom_options as $option) {
