@@ -39,8 +39,8 @@ class My_Askquestions_Block_Adminhtml_Askquestions_Edit_Form extends Mage_Adminh
             $dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
             $fieldset->addField('created_at', 'date', array(
                 'name'   => 'created_at',
-                'label'  => Mage::helper('salesrule')->__('创建时间'),
-                'title'  => Mage::helper('salesrule')->__('创建时间'),
+                'label'  => Mage::helper('askquestions')->__('创建时间'),
+                'title'  => Mage::helper('askquestions')->__('创建时间'),
                 'image'  => $this->getSkinUrl('images/grid-cal.gif'),
                 'input_format' => Varien_Date::DATE_INTERNAL_FORMAT,
                 'format'       => $dateFormatIso
@@ -52,6 +52,14 @@ class My_Askquestions_Block_Adminhtml_Askquestions_Edit_Form extends Mage_Adminh
 					'required'  => false,
 					'value'     => $model->getReply(),
 				));
+            $fieldset->addField('reply_at', 'date', array(
+                'name'   => 'reply_at',
+                'label'  => Mage::helper('askquestions')->__('管理员回复时间'),
+                'title'  => Mage::helper('askquestions')->__('管理员回复时间'),
+                'image'  => $this->getSkinUrl('images/grid-cal.gif'),
+                'input_format' => Varien_Date::DATE_INTERNAL_FORMAT,
+                'format'       => $dateFormatIso
+            ));
 				$this->setForm($form);
 				return parent::_prepareForm();
 		}

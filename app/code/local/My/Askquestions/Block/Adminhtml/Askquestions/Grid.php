@@ -106,6 +106,13 @@ class My_Askquestions_Block_Adminhtml_Askquestions_Grid extends Mage_Adminhtml_B
 			    "type" => "varcher",
 				"index" => "created_at",
 				));
+            $this->addColumn("reply_at", array(
+                "header" => Mage::helper("askquestions")->__("Reply At"),
+                "align" =>"right",
+                "width" => "150px",
+                "type" => "varcher",
+                "index" => "reply_at",
+            ));
 			$this->addExportType('*/*/exportCsv', Mage::helper('sales')->__('CSV')); 
 			$this->addExportType('*/*/exportExcel', Mage::helper('sales')->__('Excel'));
 
