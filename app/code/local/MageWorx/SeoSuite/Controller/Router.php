@@ -128,7 +128,7 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
                 $request->setModuleName('catalogsearch')
                     ->setControllerName('result')
                     ->setActionName('index')
-                    ->setParam('q',  $this->_getRequest()->getParam('q'));
+                    ->setParam('q',  str_replace("+"," ",$this->_getRequest()->getParam('q')) );
                 break;
             case 'tag':
                 if (!isset($d[1])) {
