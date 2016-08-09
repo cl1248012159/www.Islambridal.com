@@ -310,6 +310,10 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
     }
 
     public function _getSeoData($name){
+        $title = '';
+        $keywords = '';
+        $description = '';
+
         $request_uri = $_SERVER['REQUEST_URI'];
         $request_uri = str_replace(array('/narrow/','/ns/'),'#',$request_uri);
 
@@ -367,7 +371,7 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
             if($data['page']>0){
                 $title = $title?$title.'-Page'.$data['page']:'';
                 $keywords = $keywords?$keywords.'-Page'.$data['page']:'';
-                $description .= $description?$description.'-Page'.$data['page']:'';
+                $description = $description?$description.'-Page'.$data['page']:'';
             }
             $this->_seoData['title'] = $title;
             $this->_seoData['keywords'] = $keywords;
