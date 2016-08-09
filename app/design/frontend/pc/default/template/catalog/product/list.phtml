@@ -1,5 +1,10 @@
 <?php
     $_productCollection=$this->getLoadedProductCollection();
+
+//$this->_getProductCollection()->addAttributeToSort('entity_id', 'desc');
+Mage::log( $_productCollection->getSelectSql(true) );
+
+
     $_helper = $this->helper('catalog/output');
 ?>
 
