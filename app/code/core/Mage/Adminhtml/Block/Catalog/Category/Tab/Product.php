@@ -76,6 +76,8 @@ class Mage_Adminhtml_Block_Catalog_Category_Tab_Product extends Mage_Adminhtml_B
         $collection = Mage::getModel('catalog/product')->getCollection()
             ->addAttributeToSelect('name')
             ->addAttributeToSelect('sku')
+            ->addAttributeToSelect('hot_sale')
+            ->addAttributeToSelect('news_from_date')
             ->addAttributeToSelect('price')
             ->addStoreFilter($this->getRequest()->getParam('store'))
             ->joinField('position',
@@ -123,6 +125,16 @@ class Mage_Adminhtml_Block_Catalog_Category_Tab_Product extends Mage_Adminhtml_B
             'header'    => Mage::helper('catalog')->__('SKU'),
             'width'     => '80',
             'index'     => 'sku'
+        ));
+        $this->addColumn('hot_sale', array(
+            'header'    => Mage::helper('catalog')->__('hot_sale'),
+            'width'     => '80',
+            'index'     => 'hot_sale'
+        ));
+        $this->addColumn('news_from_date', array(
+            'header'    => Mage::helper('catalog')->__('news_from_date'),
+            'width'     => '80',
+            'index'     => 'news_from_date'
         ));
         $this->addColumn('price', array(
             'header'    => Mage::helper('catalog')->__('Price'),
