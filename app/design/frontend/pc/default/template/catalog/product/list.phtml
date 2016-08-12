@@ -100,7 +100,7 @@
 
         <?php
             $i=0;
-            Mage::log( $_productCollection->getSelectSql(true) );
+            Mage::log( $_productCollection->getSelectSql(true) ,null,"amy.log" );
             foreach ($_productCollection as $_product):?>
             <?php if ($i++%$_columnCount==0): ?>
             <ul class="products-grid">
