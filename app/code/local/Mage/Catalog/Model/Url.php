@@ -766,6 +766,9 @@ class Mage_Catalog_Model_Url
      */
     public function getProductRequestPath($product, $category)
     {
+        $category = Mage::getModel('catalog/category')
+            ->setStoreId(Mage::app()->getStore()->getId())
+            ->load( 2 );
         if ($product->getUrlKey() == '') {
             $urlKey = $this->getProductModel()->formatUrlKey($product->getName());
         } else {
@@ -774,6 +777,7 @@ class Mage_Catalog_Model_Url
         $storeId = $category->getStoreId();
         $suffix  = $this->getProductUrlSuffix($storeId);
         $idPath  = $this->generatePath('id', $product, $category);
+
         /**
          * Prepare product base request path
          */
