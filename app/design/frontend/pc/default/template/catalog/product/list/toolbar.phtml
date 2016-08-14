@@ -42,7 +42,7 @@
     $preurl = 'http://'.$_SERVER['SERVER_NAME'].$preurl;
     $preurl = trim($preurl,'/');
 
-    if(preg_match_all('/<a href="(.*?)">(\d+)<\/a>/is',$pagehtml,$matches)) {
+    if(preg_match_all('/<a href="(.*?)">(...|\d+)<\/a>/is',$pagehtml,$matches)) {
         $urllist = array();
         $urlsp = 'narrow/';
         $rooturl = Mage::getBaseUrl('web');
@@ -50,9 +50,19 @@
         if (count($matches[1]) == 0) {
             $urlsp = '';
         }
+
         foreach ($matches[1] as $k => $v) {
             if ($matches[2][$k] == 1) continue;
-            $tempurl = $preurl . '/' . $matches[2][$k] . '.html'.$exturl;
+            if($matches[2][$k] == '...'){
+                if($k == 1){
+                    $tempurl = $preurl . '/' . ($matches[2][$k+1]-1) . '.html'.$exturl;
+                }else{
+                    $tempurl = $preurl . '/' . ($matches[2][$k-1]+1) . '.html'.$exturl;
+                }
+            }else{
+                $tempurl = $preurl . '/' . $matches[2][$k] . '.html'.$exturl;
+            }
+
             $pagehtml = str_replace($v,$tempurl , $pagehtml);
         }
         echo $pagehtml;
