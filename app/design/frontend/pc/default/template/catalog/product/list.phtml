@@ -101,13 +101,13 @@
         <?php
             $i=0;
 
-        if(isset($_GET['test']) && $_GET['test']){
-            Mage::log( $_productCollection->getSelectSql(true) ,null,"amy.log" );
-        }
+            if(isset($_GET['test']) && $_GET['test']){
+                Mage::log( $_productCollection->getSelectSql(true) ,null,"amy.log" );
+            }
 
             foreach ($_productCollection as $_product):
                 if(isset($_GET['test']) && $_GET['test']){
-                    Mage::log( $_product->getId() ,null,"amy.log" );
+                    Mage::log( $_product->getId().'  ***  '.$_product->getSku() ,null,"amy.log" );
                 }
                 ?>
             <?php if ($i++%$_columnCount==0): ?>
