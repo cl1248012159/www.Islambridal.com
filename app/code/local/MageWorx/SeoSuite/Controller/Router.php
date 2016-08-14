@@ -228,10 +228,10 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
 	}
 
     protected function _matchCategoryPager($request) {
-        if(  !is_int( $request->getParam('p')  )  ){
+
+        if(  !is_numeric(  $request->getParam('p')  )  ){
             return false;
         }
-
 
         $pagerUrlFormat = Mage::helper('seosuite')->getPagerUrlFormat();
 
@@ -246,7 +246,7 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
         }
         $pagerUrlFormatRegEx = implode('([0-9]+)', $pagerUrlFormatRegEx);
         if (preg_match('/' . $pagerUrlFormatRegEx . preg_quote($suffix, '/') . '/', $url, $match)) {
-            if(  !is_int($match[1])  ){
+            if(  !is_numeric($match[1])  ){
                 return false;
             }
             $url = str_replace($match[0], $suffix, $url);
