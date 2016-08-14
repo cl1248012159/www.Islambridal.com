@@ -44,7 +44,6 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
     
     public function initControllerRouters($observer) {
         $front = $observer->getEvent()->getFront();
-      //  Varien_Autoload::registerScope('catalog');
         $router = new MageWorx_SeoSuite_Controller_Router();
         $front->addRouter('szeosuite', $router);
     }
@@ -52,14 +51,12 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
     public function match(Zend_Controller_Request_Http $request) {
 
         $this->_beforeModuleMatch();
-        $this->_setRequest($request);                
-        
+        $this->_setRequest($request);
+
         if ($this->_matchCategoryLayer() && !Mage::getStoreConfig('mageworx_seo/seosuite/disable_layered_rewrites')) {
-            //$request->setDispatched(TRUE);
             return true;
         }
 
-        
         if ($this->_matchCategoryPager($request)) {
             return true;
     	}
@@ -231,6 +228,10 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
 	}
 
     protected function _matchCategoryPager($request) {
+        if(  !is_int( $request->getParam('p')  )  ){
+            return false;
+        }
+
 
         $pagerUrlFormat = Mage::helper('seosuite')->getPagerUrlFormat();
 
@@ -244,17 +245,18 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
             $pagerUrlFormatRegEx[$key] = preg_quote($part, '/');
         }
         $pagerUrlFormatRegEx = implode('([0-9]+)', $pagerUrlFormatRegEx);
-
         if (preg_match('/' . $pagerUrlFormatRegEx . preg_quote($suffix, '/') . '/', $url, $match)) {
-            
+            if(  !is_int($match[1])  ){
+                return false;
+            }
             $url = str_replace($match[0], $suffix, $url);
             $request->setRequestUri($url);
-
             $path = $request->getPathInfo();
             $path = str_replace($match[0], $suffix, $path);
             $request->setPathInfo($path);
             $request->setParam('p', $match[1]);
-        } 
+        }
+
 
         if(strpos($url,'.html') !== false){
             if(strpos($url,'?') !== false){
@@ -330,10 +332,8 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
     
     
     protected function _matchCategoryLayer() {
-
         list($catPath, $layerParams) = $this->_getUrlData();
-        if (!isset($layerParams) || !isset($catPath)) return false;        
-
+        if ( !isset($layerParams) || !isset($catPath) ){ return false; }
         $urlRewrite = $this->_getCategoryUrlRewrite($catPath);
         if ($urlRewrite && $urlRewrite->getId()) {
             $this->_prepareRequestForUrlRewrite($urlRewrite, $catPath);
