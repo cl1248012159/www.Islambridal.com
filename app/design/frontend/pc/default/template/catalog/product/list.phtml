@@ -106,9 +106,7 @@
             }
 
             foreach ($_productCollection as $_product):
-                if(isset($_GET['test']) && $_GET['test']){
-                    Mage::log( $_product->getId().'  ***  '.$_product->getSku() ,null,"amy.log" );
-                }
+
                 ?>
             <?php if ($i++%$_columnCount==0): ?>
             <ul class="products-grid">

@@ -139,11 +139,7 @@ class Mage_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_Abstrac
         $toolbar = $this->getToolbarBlock();
 
         // called prepare sortable parameters
-        $collection = $this->_getProductCollection()
-            ->addAttributeToSort('updated_at', 'desc')
-            ->addAttributeToSort('entity_id', 'desc');
-
-
+        $collection = $this->_getProductCollection();
         // use sortable parameters
         if ($orders = $this->getAvailableOrders()) {
             $toolbar->setAvailableOrders($orders);
@@ -164,8 +160,9 @@ class Mage_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_Abstrac
         $this->setChild('toolbar', $toolbar);
         Mage::dispatchEvent('catalog_block_product_list_collection', array(
             'collection' => $this->_getProductCollection()
+                                ->setOrder('updated_at',"DESC")
+                                ->setOrder('entity_id',"DESC")
         ));
-
         $this->_getProductCollection()->load();
 
 
