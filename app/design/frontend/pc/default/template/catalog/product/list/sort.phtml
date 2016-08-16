@@ -1,0 +1,37 @@
+
+<div class="product_sort">
+
+
+
+    <a id="HOTSALE"
+          href="<?php echo $this->getOrderUrl('hot_sale', 'desc') ?>"
+          class="<?php if($this->isOrderCurrent('hot_sale')): ?>on<?php endif; ?>">
+        <em></em>
+        <span>Hot Sale</span>
+    </a>
+
+
+
+    <a id="NEW"
+          href="<?php echo $this->getOrderUrl('news_from_date', 'desc') ?>"
+          class="<?php if($this->isOrderCurrent('news_from_date')): ?>on<?php endif; ?>">
+        <em></em>
+        <span>New Arrival</span>
+    </a>
+
+    <a id="LOW_PRICE"
+          href="<?php echo $this->getOrderUrl('price', 'asc') ?>"
+          class="<?php if($this->isOrderCurrent('price') && $this->getCurrentDirection() == 'asc'): ?>on<?php endif; ?>">
+        <em></em>
+        <span>Low Price</span>
+    </a>
+
+    <a id="HIGH_PRICE"
+          href="<?php echo $this->getOrderUrl('price', 'desc') ?>"
+          class="<?php if($this->isOrderCurrent('price') && $this->getCurrentDirection() == 'desc'): ?>on<?php endif; ?>">
+        <em></em>
+        <span>High Price</span>
+    </a>
+
+
+</div>

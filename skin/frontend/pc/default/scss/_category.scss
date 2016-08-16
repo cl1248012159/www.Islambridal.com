@@ -216,7 +216,7 @@
         border: 1px solid #b1b1b1;
         height: 42px;
 
-        &>span{
+        &>a,&>span{
             display: block;
             float: left;
             border-right: 1px solid #ddd;

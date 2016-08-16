@@ -5,83 +5,10 @@
 
 
 
-
-
-<div class="product_sort">
-    <?php
-        $sortType = $this->getRequest()->getParam('order');
-        $dir = $this->getRequest()->getParam('dir');
-    ?>
-    <script>
-        jQuery(document).ready(function(){
-            function updateQueryStringParameter(uri, key, value) {
-                var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-                var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-                if (uri.match(re)) {
-                    return uri.replace(re, '$1' + key + "=" + value + '$2');
-                }
-                else {
-                    return uri + separator + key + "=" + value;
-                }
-            }
-
-            jQuery('#HOTSALE').on('click',function(){
-                var url = updateQueryStringParameter(window.location.toString(), 'order', 'hot_sale');
-                url = updateQueryStringParameter(url, 'dir', 'desc');
-                window.location.href = url;
-                return false;
-            });
-
-            jQuery('#NEW').on('click',function(){
-                var url = updateQueryStringParameter(window.location.toString(), 'order', 'news_from_date');
-                url = updateQueryStringParameter(url, 'dir', 'desc');
-                window.location.href = url;
-            });
-
-            jQuery('#LOW_PRICE').on('click',function(){
-                var url = updateQueryStringParameter(window.location.toString(), 'order', 'price');
-                url = updateQueryStringParameter(url, 'dir', 'asc');
-                window.location.href = url;
-            });
-
-            jQuery('#HIGH_PRICE').on('click',function(){
-                var url = updateQueryStringParameter(window.location.toString(), 'order', 'price');
-                url = updateQueryStringParameter(url, 'dir', 'desc');
-                window.location.href = url;
-            });
-
-        });
-    </script>
-
-
-    <span id="HOTSALE" class="<?php if(empty($sortType) || $sortType == 'hot_sale') {echo 'on';}?>">
-        <em></em>
-        <span>Hot Sale</span>
-    </span>
-
-
-
-    <span id="NEW" class="<?php if($sortType == 'news_from_date') {echo 'on';}?>">
-        <em></em>
-        <span>New Arrival</span>
-    </span>
-
-    <span id="LOW_PRICE" class="<?php if($sortType == 'price' && $dir == 'asc') {echo 'on';}?>">
-        <em></em>
-        <span>Low Price</span>
-    </span>
-
-    <span id="HIGH_PRICE" class="<?php if($sortType == 'price' && $dir == 'desc') {echo 'on';}?>">
-        <em></em>
-        <span>High Price</span>
-    </span>
-
-
-</div>
-
-
-
-
+<?php echo $this->getLayout()->createBlock('catalog/product_list_toolbar')
+    ->setTemplate('catalog/product/list/sort.phtml')
+    ->setName('sort')
+    ->toHtml(); ?>
 
 
 <?php if(!$_productCollection->count()): ?>

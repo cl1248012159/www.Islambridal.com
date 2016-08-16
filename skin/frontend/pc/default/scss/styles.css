@@ -2704,8 +2704,8 @@ tr.summary-details-excluded { font-style: italic; }
 .page .filter-nav dl dd ol li .m-selected-filter-item { background: url(../images/commont/checked.png) no-repeat left; padding-left: 15px; color: #333; }
 .page .filter-nav dl dd ol li a { background: url(../images/commont/no_checked.png) no-repeat left; padding-left: 15px; color: #666; }
 .page .product_sort { display: block; height: 42px; border: 1px solid #ddd; margin-top: 10px; background-color: #f7f7f7; background-image: -webkit-linear-gradient(top, #fff, #ececec); background-image: linear-gradient(to bottom, #fff, #ececec); background-repeat: repeat-x; border-radius: 3px; overflow: hidden; border: 1px solid #b1b1b1; height: 42px; }
-.page .product_sort > span { display: block; float: left; border-right: 1px solid #ddd; padding: 0 15px; text-transform: capitalize; height: 42px; line-height: 42px; }
-.page .product_sort > span:hover { background: #fff; color: #000; }
+.page .product_sort > a, .page .product_sort > span { display: block; float: left; border-right: 1px solid #ddd; padding: 0 15px; text-transform: capitalize; height: 42px; line-height: 42px; }
+.page .product_sort > a:hover, .page .product_sort > span:hover { background: #fff; color: #000; }
 .page .product_sort .on { background-color: #F39; color: #fff; font-weight: bold; }
 .page .dress_list .products-grid { width: 100%; background: none; border: 0; }
 .page .dress_list .products-grid li.item { padding: 0; }

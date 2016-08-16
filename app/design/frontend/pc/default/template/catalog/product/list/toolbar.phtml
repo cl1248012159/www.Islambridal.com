@@ -55,12 +55,12 @@
             if ($matches[2][$k] == 1) continue;
             if($matches[2][$k] == '...'){
                 if($k == 1){
-                    $tempurl = $preurl . '/' . ($matches[2][$k+1]-1) . '.html'.$exturl;
+                    $tempurl = $preurl . '/' . ($matches[2][$k+1]-1) . '.html';
                 }else{
-                    $tempurl = $preurl . '/' . ($matches[2][$k-1]+1) . '.html'.$exturl;
+                    $tempurl = $preurl . '/' . ($matches[2][$k-1]+1) . '.html';
                 }
             }else{
-                $tempurl = $preurl . '/' . $matches[2][$k] . '.html'.$exturl;
+                $tempurl = $preurl . '/' . $matches[2][$k] . '.html';
             }
 
             $pagehtml = str_replace($v,$tempurl , $pagehtml);
