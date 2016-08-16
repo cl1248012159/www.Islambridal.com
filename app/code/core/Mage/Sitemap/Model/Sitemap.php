@@ -142,9 +142,21 @@ class Mage_Sitemap_Model_Sitemap extends Mage_Core_Model_Abstract
         $io->streamWrite('<?xml version="1.0" encoding="UTF-8"?>' . "\n");
         $io->streamWrite('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
 
+
+
+
         $storeId = $this->getStoreId();
         $date    = Mage::getSingleton('core/date')->gmtDate('Y-m-d');
         $baseUrl = Mage::app()->getStore($storeId)->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
+
+        $homexml = sprintf(
+            '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
+            htmlspecialchars($baseUrl),
+            $date,
+            "daily",
+            '1.0'
+        );
+        $io->streamWrite($homexml);
 
         /**
          * Generate categories sitemap
