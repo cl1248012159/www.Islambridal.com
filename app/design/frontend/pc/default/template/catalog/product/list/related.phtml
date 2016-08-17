@@ -1,34 +1,36 @@
 <?php
+$productId = (int) $this->getRequest()->getParam('id', false);
+$product = Mage::getModel('catalog/product')->load($productId);
+
 $categoryId = (int) $this->getRequest()->getParam('category', false);
-$category = Mage::getModel('catalog/category')
-                ->setStoreId(Mage::app()->getStore()->getId())
-                ->load($categoryId);
-if($category->getLevel() > 2){
-    $category = $category->getParentCategory();
+$categoryId = $categoryId ? $categoryId : $product->getCategoryId();
+if(!$categoryId){
+    $categoryIds = $product->getCategoryIds();
+    $categoryId = $categoryIds[0];
 }
 
-$count_cat_p = $category
-    ->getProductCollection()
-    ->addAttributeToSelect('*')
+$_productCollection = Mage::getModel('catalog/product')->getCollection()->addUrlRewrite()
+    ->addStoreFilter(Mage::app()->getStore()->getId())
     ->addAttributeToFilter('status', 1)
     ->addAttributeToFilter('visibility', 4)
-    ->count();
-$productCollection = $category
-                        ->getProductCollection()
-                        ->addAttributeToSelect('*')
-                        ->addAttributeToFilter('status', 1)
-                        ->addAttributeToFilter('visibility', 4)
-                        ->setPage(rand(1,$count_cat_p/32), 6);
-
+    ->getSelect()
+    ->joinleft( array('cp'=> 'catalog_category_product'), 'cp.product_id = e.entity_id')
+    ->where("cp.category_id='".$categoryId."'")
+    ->order(new Zend_Db_Expr('RAND()'))
+    ->limit(6);
+ $results = Mage::getSingleton('core/resource')->getConnection('core_read')->fetchAll($_productCollection);
 ?>
 
-<?php if( count($productCollection) >0 ): ?>
+<?php if( count($results) >0 ): ?>
     <div class="box_shadow parent_cat_related">
         <div class="category_name_bottom">
             <span>CUSTOMERS WHO BOUGHT THIS ITEM ALSO LIKE</span>
         </div>
         <div class="home_product">
-            <?php foreach($productCollection as $_product):?>
+            <?php
+                foreach($results as $_sql_product):
+                $_product = Mage::getModel('catalog/product')->load($_sql_product['entity_id']);
+            ?>
                     <dl class="item">
                         <dt>
                             <a href="<?php echo $_product->getProductUrl() ?>">
