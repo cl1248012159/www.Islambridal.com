@@ -370,7 +370,7 @@
 
 
 
-        jQuery("#container").on('click','.day',function(e){
+        jQuery("#container").on('click touchstart','.day',function(e){
             var e_target = jQuery(e.target);
             if( e_target.hasClass('day') ){
                 var timeforadmin_value = e_target.find('span').data('timeforadmin_value');
