@@ -360,6 +360,12 @@
         jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').mouseout(function(){
             jQuery('.jCalcontainer').hide();
         });
+        jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').touchstart(function(){
+            jQuery('.jCalcontainer').show();
+        });
+        jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').touchend(function(){
+            jQuery('.jCalcontainer').hide();
+        });
 
 
         jQuery("#container").on('click','.day',function(e){
