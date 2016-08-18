@@ -121,13 +121,22 @@ class Mage_Adminhtml_Catalog_Product_ReviewController extends Mage_Adminhtml_Con
     public function saveAction()
     {
         if (($data = $this->getRequest()->getPost()) && ($reviewId = $this->getRequest()->getParam('id'))) {
-            $review = Mage::getModel('review/review')->load($reviewId);
+            $review = Mage::getModel('review/review')
+                ->setData($data)
+                ->setId($reviewId);
             $session = Mage::getSingleton('adminhtml/session');
             if (! $review->getId()) {
                 $session->addError(Mage::helper('catalog')->__('The review was removed by another user or does not exist.'));
             } else {
                 try {
-                    $review->addData($data)->save();
+
+                    $this->_handleImageUpload($review,"reviewimage1");
+                    $this->_handleImageUpload($review,"reviewimage2");
+                    $this->_handleImageUpload($review,"reviewimage3");
+                    $this->_handleImageUpload($review,"reviewimage4");
+                    $this->_handleImageUpload($review,"reviewimage5");
+
+                    $review->save();
 
                     $arrRatingId = $this->getRequest()->getParam('ratings', array());
                     $votes = Mage::getModel('rating/rating_option_vote')
@@ -159,10 +168,36 @@ class Mage_Adminhtml_Catalog_Product_ReviewController extends Mage_Adminhtml_Con
                     $session->addException($e, Mage::helper('catalog')->__('An error occurred while saving this review.'));
                 }
             }
-
             return $this->getResponse()->setRedirect($this->getUrl($this->getRequest()->getParam('ret') == 'pending' ? '*/*/pending' : '*/*/'));
         }
         $this->_redirect('*/*/');
+    }
+
+    protected function _handleImageUpload(Kush_Reviewimage_Model_Review $review, $field = 'reviewimage1')
+    {
+
+        $data = $review->getData($field);
+
+        if (isset($data['value'])) {
+            $review->setData($field, $data['value']);
+        }
+
+        if (isset($data['delete']) && $data['delete'] == '1') {
+            $review->setData($field, '');
+        }
+
+        try {
+            $path = Mage::getBaseDir('media').DS.'reviewimages';
+
+            $uploader = new Varien_File_Uploader($field);
+            $result = $uploader
+                ->setAllowedExtensions(array('jpg','jpeg','gif','png'))
+                ->setAllowRenameFiles(true)
+                ->setFilesDispersion(true)
+                ->setAllowCreateFolders(true)
+                ->save($path);
+            $review->setData($field, $result['file']);
+        } catch (Exception $e) {}
     }
 
     public function deleteAction()

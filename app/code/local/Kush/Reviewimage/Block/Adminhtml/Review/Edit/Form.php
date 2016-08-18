@@ -34,9 +34,12 @@
 
 class Kush_Reviewimage_Block_Adminhtml_Review_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
+
+
+
     protected function _prepareForm()
     {
-        
+
         $review = Mage::registry('review_data');
         $product = Mage::getModel('catalog/product')->load($review->getEntityPkValue());
         $customer = Mage::getModel('customer/customer')->load($review->getCustomerId());
@@ -44,13 +47,15 @@ class Kush_Reviewimage_Block_Adminhtml_Review_Edit_Form extends Mage_Adminhtml_B
         $form = new Varien_Data_Form(array(
             'id'        => 'edit_form',
             'action'    => $this->getUrl('*/*/save', array('id' => $this->getRequest()->getParam('id'), 'ret' => Mage::registry('ret'))),
-            'method'    => 'post'
+            'method'    => 'post',
+            'enctype' => 'multipart/form-data'
         ));
 
-        
+
         $fieldset = $form->addFieldset('review_details', array('legend' => Mage::helper('review')->__('Review Details'), 'class' => 'fieldset-wide'));
 
-        
+        $this->_addElementTypes($fieldset);
+
         $fieldset->addField('product_name', 'note', array(
             'label'     => Mage::helper('review')->__('Product'),
             'text'      => '<a href="' . $this->getUrl('*/catalog_product/edit', array('id' => $product->getId())) . '" onclick="this.target=\'blank\'">' . $product->getName() . '</a>'
@@ -66,54 +71,88 @@ class Kush_Reviewimage_Block_Adminhtml_Review_Edit_Form extends Mage_Adminhtml_B
             }
         }
 
-        
-        
+
+
         $fieldset->addField('customer', 'note', array(
             'label'     => Mage::helper('review')->__('Posted By'),
             'text'      => $customerText,
         ));
-        
-        /* 
-         * added new image custom field 
-         * 
-         */
-       if(Mage::helper("reviewimage")->getActive() == '1'):
-           $image = '';
-           $path_reviewimages = Mage::getBaseUrl("media").'reviewimages';
-           if($review->getReviewimage1()){
-               $imageUrl = $path_reviewimages.$review->getReviewimage1();
-               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;margin: 0 5px;'>";
-           }
-           if($review->getReviewimage2()){
-               $imageUrl = $path_reviewimages.$review->getReviewimage2();
-               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;margin: 0 5px;'>";
-
-           }
-           if($review->getReviewimage3()){
-               $imageUrl = $path_reviewimages.$review->getReviewimage3();
-               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;margin: 0 5px;'>";
-
-           }
-           if($review->getReviewimage4()){
-               $imageUrl = $path_reviewimages.$review->getReviewimage4();
-               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;margin: 0 5px;'>";
-
-           }
-           if($review->getReviewimage5()){
-               $imageUrl = $path_reviewimages.$review->getReviewimage5();
-               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;margin: 0 5px;'>";
-           }
-           $fieldset->addField('reviewimages', 'note', array(
-               'label'     => Mage::helper('review')->__('Posted Review Image'),
-               'text'      => $image,
-           ));
-       endif;
 
         /*
-         * added new image custom field 
-         * 
+         * added new image custom field
+         *
          */
-         
+//       if(Mage::helper("reviewimage")->getActive() == '1'):
+//           $image = '';
+//           $path_reviewimages = Mage::getBaseUrl("media").'reviewimages';
+//           if($review->getReviewimage1()){
+//               $imageUrl = $path_reviewimages.$review->getReviewimage1();
+//               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;margin: 0 5px;'>";
+//           }
+//           if($review->getReviewimage2()){
+//               $imageUrl = $path_reviewimages.$review->getReviewimage2();
+//               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;margin: 0 5px;'>";
+//
+//           }
+//           if($review->getReviewimage3()){
+//               $imageUrl = $path_reviewimages.$review->getReviewimage3();
+//               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;margin: 0 5px;'>";
+//
+//           }
+//           if($review->getReviewimage4()){
+//               $imageUrl = $path_reviewimages.$review->getReviewimage4();
+//               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;margin: 0 5px;'>";
+//
+//           }
+//           if($review->getReviewimage5()){
+//               $imageUrl = $path_reviewimages.$review->getReviewimage5();
+//               $image .= "<image src='".$imageUrl."' style='max-width:200px;max-height:200px;margin: 0 5px;'>";
+//           }
+//           $fieldset->addField('reviewimages', 'note', array(
+//               'label'     => Mage::helper('review')->__('Posted Review Image'),
+//               'text'      => $image,
+//           ));
+//       endif;
+
+
+        $fieldset->addField('reviewimage1', 'image', array(
+            'name' 		=> 'reviewimage1',
+            'label' 	=> $this->__('reviewimage1'),
+            'title' 	=> $this->__('reviewimage1'),
+            'required'	=> true,
+            'class'		=> 'required-entry',
+        ));
+        $fieldset->addField('reviewimage2', 'image', array(
+            'name' 		=> 'reviewimage2',
+            'label' 	=> $this->__('reviewimage2'),
+            'title' 	=> $this->__('reviewimage2'),
+            'required'	=> false,
+        ));
+        $fieldset->addField('reviewimage3', 'image', array(
+            'name' 		=> 'reviewimage3',
+            'label' 	=> $this->__('reviewimage3'),
+            'title' 	=> $this->__('reviewimage3'),
+            'required'	=> false,
+        ));
+        $fieldset->addField('reviewimage4', 'image', array(
+            'name' 		=> 'reviewimage4',
+            'label' 	=> $this->__('reviewimage4'),
+            'title' 	=> $this->__('reviewimage4'),
+            'required'	=> false,
+        ));
+        $fieldset->addField('reviewimage5', 'image', array(
+            'name' 		=> 'reviewimage5',
+            'label' 	=> $this->__('reviewimage5'),
+            'title' 	=> $this->__('reviewimage5'),
+            'required'	=> false,
+        ));
+
+
+        /*
+         * added new image custom field
+         *
+         */
+
         $fieldset->addField('summary_rating', 'note', array(
             'label'     => Mage::helper('review')->__('Summary Rating'),
             'text'      => $this->getLayout()->createBlock('adminhtml/review_rating_summary')->toHtml(),
@@ -126,15 +165,15 @@ class Kush_Reviewimage_Block_Adminhtml_Review_Edit_Form extends Mage_Adminhtml_B
                            . $this->getLayout()->createBlock('adminhtml/review_rating_detailed')->toHtml()
                            . '</div>',
         ));
-                
-     
+
+
         $fieldset->addField('status_id', 'select', array(
             'label'     => Mage::helper('review')->__('Status'),
             'required'  => true,
             'name'      => 'status_id',
             'values'    => Mage::helper('review')->getReviewStatusesOptionArray(),
         ));
-  
+
         /**
          * Check is single store mode
          */
@@ -191,4 +230,13 @@ class Kush_Reviewimage_Block_Adminhtml_Review_Edit_Form extends Mage_Adminhtml_B
         $this->setForm($form);
         return parent::_prepareForm();
     }
+
+
+    protected function _getAdditionalElementTypes()
+    {
+        return array(
+            'image' => Mage::getConfig()->getBlockClassName('reviewimage/adminhtml_review_helper_image')
+        );
+    }
+
 }
