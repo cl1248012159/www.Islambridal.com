@@ -360,12 +360,15 @@
         jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').mouseout(function(){
             jQuery('.jCalcontainer').hide();
         });
-        jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').touchstart(function(){
-            jQuery('.jCalcontainer').show();
-        });
-        jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').touchend(function(){
-            jQuery('.jCalcontainer').hide();
-        });
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').touchstart(function(){
+                jQuery('.jCalcontainer').show();
+            });
+            jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').touchend(function(){
+                jQuery('.jCalcontainer').hide();
+            });
+        }
+
 
 
         jQuery("#container").on('click','.day',function(e){
