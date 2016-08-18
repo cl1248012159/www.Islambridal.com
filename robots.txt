@@ -27,7 +27,7 @@ Disallow: /directory/currency/switch/currency/
 Disallow: /*.php
 Disallow: /*?*
 Disallow: /ns/
-
+Disallow: /reviews/
 User-Agent: almaden
 Disallow: /
 User-Agent: ASPSeek
