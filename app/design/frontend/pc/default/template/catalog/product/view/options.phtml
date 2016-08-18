@@ -355,8 +355,8 @@
 
         if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
             //手机端
-            jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').bind("click",function(){
-                jQuery('.jCalcontainer').toggle();
+            jQuery('dl[data-title="Time"] .input-box').bind("click",function(){
+                jQuery('.jCalcontainer').show();
             });
         }else{
             //pc端
@@ -379,6 +379,7 @@
             }
             jQuery('.input-box[data-title="Time For Admin"] select').find('option[value="'+timeforadmin_value+'"]').prop('selected',true);
             jQuery('.input-box[data-title="Time For Admin"] select').trigger("change");
+            jQuery('.jCalcontainer').hide();
         });
 
 
