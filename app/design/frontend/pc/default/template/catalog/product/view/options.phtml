@@ -353,19 +353,18 @@
             jQuery(".size_"+unit).siblings("select").prop('disabled',true).hide();
         });
 
-
-        //pc端
-        jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').mouseover(function(){
-            jQuery('.jCalcontainer').show();
-        });
-        jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').mouseout(function(){
-            jQuery('.jCalcontainer').hide();
-        });
-
-        //手机端
         if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            //手机端
             jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').bind("click",function(){
                 jQuery('.jCalcontainer').toggle();
+            });
+        }else{
+            //pc端
+            jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').mouseover(function(){
+                jQuery('.jCalcontainer').show();
+            });
+            jQuery('dl[data-title="Time"] .input-box , .jCalcontainer').mouseout(function(){
+                jQuery('.jCalcontainer').hide();
             });
         }
 
