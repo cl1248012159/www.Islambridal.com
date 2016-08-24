@@ -5,7 +5,7 @@
             <p style="clear:both;"></p>
  <?php echo $this->getChildHtml('agreements') ?>
     <?php if($news=Mage::helper('easycheckout')->getEasycheckoutConfig('general/enable_newsletter')): ?>
-        <p class="easycheckout-agreement-p">  <input <?php if($news =='1'){echo "checked='checked'";}?> type="checkbox" name="is_subscribed" value="1" title="<?php echo $this->__('Sign Up for Newsletter'); ?>" class="checkbox"  id="newsletter" /><label for="newsletter"><?php echo $this->__('Sign Up for Newsletter'); ?></label></p>
+        <p class="easycheckout-agreement-p">  <input type="checkbox" name="is_subscribed" value="1" title="<?php echo $this->__('Sign Up for Newsletter'); ?>" class="checkbox"  id="newsletter" /><label for="newsletter"><?php echo $this->__('Sign Up for Newsletter'); ?></label></p>
     <?php endif; ?> 
    <?php if(Mage::helper('easycheckout')->getEasycheckoutConfig('quickheared/enable_quickheared')): ?>
        <?php echo $this->getChildHtml('quickheard'); ?>
