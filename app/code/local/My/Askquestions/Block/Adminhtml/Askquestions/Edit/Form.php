@@ -43,6 +43,7 @@ class My_Askquestions_Block_Adminhtml_Askquestions_Edit_Form extends Mage_Adminh
                 'title'  => Mage::helper('askquestions')->__('创建时间'),
                 'image'  => $this->getSkinUrl('images/grid-cal.gif'),
                 'input_format' => Varien_Date::DATE_INTERNAL_FORMAT,
+                'value'     => $model->getCreatedAt(),
                 'format'       => $dateFormatIso
             ));
 				$fieldset->addField('reply','textarea',array(
@@ -58,6 +59,7 @@ class My_Askquestions_Block_Adminhtml_Askquestions_Edit_Form extends Mage_Adminh
                 'title'  => Mage::helper('askquestions')->__('管理员回复时间'),
                 'image'  => $this->getSkinUrl('images/grid-cal.gif'),
                 'input_format' => Varien_Date::DATE_INTERNAL_FORMAT,
+                'value'     => $model->getReplyAt(),
                 'format'       => $dateFormatIso
             ));
 				$this->setForm($form);
