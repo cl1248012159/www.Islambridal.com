@@ -2682,7 +2682,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .breadcrumbs ul .home { margin-left: 0; }
 .page .breadcrumbs .share { float: right; line-height: 30px; }
 .page .breadcrumbs .share > span { float: left; }
-.page .breadcrumbs .share .addthis_sharing_toolbox { float: right; height: 30px; overflow: hidden; padding: 2px 0 0 5px; }
+.page .breadcrumbs .share .addthis_sharing_toolbox { clear: none !important; float: right; height: 30px; overflow: hidden; padding: 2px 0 0 5px; }
 .page .category_name_top { font: normal 18px/31px Helvetica,Arial; border-bottom: 2px solid #666; height: 31px; }
 .page .category_name_top h2 { display: inline; }
 .page .category_name_top .countdow { float: right; }
@@ -4015,5 +4015,48 @@ img { vertical-align: middle; }
 #content_body .HelpTabBox .title .subsection_tabs li.tab a { background: none repeat scroll 0 0 #f39; color: #fff; display: block; font-size: 100%; height: 31px; line-height: 30px; padding: 0px 15px; text-decoration: none; border: 1px solid #f39; border-bottom: none; position: relative; }
 #content_body .HelpTabBox .title .subsection_tabs li.tab a.active { background: none repeat scroll 0 0 #fff; color: #000; }
 #content_body .HelpTabBox .box { clear: both; background-color: white; border-top: 1px solid #f39; }
+
+.aw_blog { box-shadow: 0px 0px 5px #ccc; margin-bottom: 20px; }
+.aw_blog .postWrapper { clear: both; padding-bottom: 25px; padding-left: 10px; padding-right: 10px; }
+.aw_blog .postTitle { margin-bottom: 15px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #DDD; }
+.aw_blog .postTitle h2 { margin: 0; padding: 0; font-weight: 400; font-size: 20px; }
+.aw_blog .postTitle h2 a:hover { color: #f39; }
+.aw_blog .postTitle h3 { margin: 0; padding-top: 2px; padding-right: 0; padding-bottom: 2px; padding-left: 0; font-size: 10px; }
+.aw_blog .postContent { padding-bottom: 10px; word-wrap: break-word; }
+.aw_blog .postBookmarks { padding-bottom: 10px; }
+.aw_blog .postBookmarks h4 { font-weight: 700; font-size: 12px; }
+.aw_blog .commentWrapper { padding-bottom: 15px; }
+.aw_blog .commentContent { padding-bottom: 0; }
+.aw_blog .commentDetails { margin-bottom: 5px; padding: 0; }
+.aw_blog .commentDetails h4.username { display: inline; }
+.aw_blog .postError { font-size: 16px; }
+.aw_blog .tags { padding-bottom: 10px; font-weight: 700; }
+.aw_blog .tags UL { display: inline; }
+.aw_blog .tags UL LI { display: inline; padding-right: 6px; font-weight: 400; }
+.aw_blog .tags h4 { font-weight: 700; font-size: 12px; }
+.aw_blog .menu-categories, .aw_blog .menu-recent, .aw_blog .menu-tags { margin: 5px 9px; }
+.aw_blog .menu-categories h5, .aw_blog .menu-recent h5, .aw_blog .menu-tags h5 { font-size: 11px; }
+.aw_blog .block-blog .menu-tags UL LI { display: inline; margin-left: 10px; padding: 2px; }
+.aw_blog .block-blog .menu-categories UL LI { margin-left: 10px; }
+.aw_blog .block-blog .menu-recent UL LI { margin-left: 10px; }
+.aw_blog .block-blog .menu-categories UL LI a, .aw_blog .block-blog .menu-recent UL LI a, .aw_blog .block-blog .menu-tags UL LI a { font-size: 11px; }
+.aw_blog .tag-count-1 { font-size: 1em !important; }
+.aw_blog .tag-count-2 { font-size: 1.2em !important; }
+.aw_blog .tag-count-3 { font-size: 1.4em !important; }
+.aw_blog .tag-count-4 { font-size: 1.6em !important; }
+.aw_blog .tag-count-5 { font-size: 1.8em !important; }
+.aw_blog .tag-count-6 { font-size: 2em !important; }
+.aw_blog .tag-count-7 { font-size: 2em !important; }
+.aw_blog .tag-count-8 { font-size: 2em !important; }
+.aw_blog .tag-count-9 { font-size: 2em !important; }
+.aw_blog .tag-count-10 { font-size: 2em !important; }
+.aw_blog .block-blog .head h4 { padding-left: 20px; }
+.aw_blog .block-blog .block-title strong { padding-left: 21px; background-image: url(../images/icon_blog.png); background-repeat: no-repeat; text-align: left; }
+.aw_blog .postWrapper .poster { display: inline; }
+.aw_blog .input-box.aw-blog-comment-area { width: 100%; }
+.aw_blog .widget-latest li { padding: 5px 10px; font-size: 12px; }
+.aw_blog .block-blog .menu-categories { margin: 0; padding: 5px 9px; }
+.aw_blog A.awblog_current_comment { text-decoration: none !important; font-weight: 700 !important; }
+.aw_blog .pager .amount, .aw_blog .pager .limiter { margin-top: 10px; }
 
 /*# sourceMappingURL=styles.css.map */
