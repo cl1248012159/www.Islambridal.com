@@ -12,7 +12,7 @@
       font-size:12px;
       line-height:20px;
       a:hover{
-        color:#f39;
+        color:#ab7505;
       }
     }
   }
@@ -497,7 +497,7 @@ img{vertical-align: middle}
     padding: 25px 0;
     width: 100%;
     background: #fff;
-    box-shadow: 0 0 6px #f39;
+    box-shadow: 0 0 6px #ab7505;
     #center_wrapper {
         padding: 0 25px;
         position: relative;
@@ -529,7 +529,7 @@ img{vertical-align: middle}
         position: relative;
 
         a {
-          background: none repeat scroll 0 0 #f39;
+          background: none repeat scroll 0 0 #ab7505;
           color: #fff;
           display: block;
           font-size: 100%;
@@ -537,7 +537,7 @@ img{vertical-align: middle}
           line-height: 30px;
           padding: 0px 15px;
           text-decoration: none;
-          border: 1px solid #f39;
+          border: 1px solid #ab7505;
           border-bottom: none;
           position: relative;
         }
@@ -553,6 +553,17 @@ img{vertical-align: middle}
   .HelpTabBox .box {
     clear: both;
     background-color: white;
-    border-top: 1px solid #f39;
+    border-top: 1px solid #ab7505;
   }
+}
+
+.size_info{
+  list-style-type: disc;padding-left:40px;
+  p{margin:0;}
+}
+.size_tab{
+  width:100%;border-collapse: collapse;border-color:#555;
+  caption,th,td{text-align:center;vertical-align: middle;height:40px;}
+  caption{font-size:13px;}
+  th{  background:#ab7505;height:40px;  color:#fff;font-weight:bold;}
 }

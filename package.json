@@ -1,9 +1,26 @@
 {
-  "name": "zhangfan",
-  "file": "zhangfan",
-  "version": "1.0",
-  "description": "test",
-  "license": "dd",
+  "name": "www.islambridal.com",
+  "version": "1.0.0",
+  "description": "www.islambridal.com",
+  "main": "www.islambridal.com",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "www.islambridal.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cl1248012159/www.islambridal.com.git"
+  },
+  "keywords": [
+    "www.islambridal.com"
+  ],
+  "author": "www.islambridal.com",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/cl1248012159/www.islambridal.com/issues"
+  },
+  "homepage": "https://github.com/cl1248012159/www.islambridal.com#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-autoprefixer": "^3.0.4",

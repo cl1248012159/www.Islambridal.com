@@ -1,11 +1,9 @@
-$style_width:1365px;
+$style_width:1366px;
 $top_height:33px;
 $header_content_height:112px;
-$style_corlor :#f39;
+$style_corlor :#ab7505;
 
-.F39{
-  color:$style_corlor;
-}
+.F39{color:$style_corlor;}
 //@include float_clear;
 @mixin float_clear {
   *zoom:1;

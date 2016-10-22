@@ -34,65 +34,10 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
                 <span id="countdownie" class="PositionAbsolute"></span>
             </div>
             <script type="text/javascript">
-                function countdown(id,theyear,themonth,theday,thehour,themin,thesec){
-                    id=id;
-                    yr=theyear;
-                    mo=themonth;
-                    da=theday;
-                    ho=thehour;
-                    mi=themin;
-                    se=thesec;
-                    var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
-                    var today=new Date();
-                    var todayy=today.getYear();
-                    if (todayy < 1000)
-                        todayy+=1900;
-                    var todaym=today.getMonth();
-                    var todayd=today.getDate();
-                    var todayh=today.getHours();
-                    var todaymin=today.getMinutes();
-                    var todaysec=today.getSeconds();
-                    var todaystring=montharray[todaym]+" "+todayd+", "+todayy+" "+todayh+":"+todaymin+":"+todaysec;
-                    futurestring=montharray[mo-1]+" "+da+", "+yr+" "+ho+":"+mi+":"+se;
-                    dd=Date.parse(futurestring)-Date.parse(todaystring);
-                    dday=Math.floor(dd/(60*60*1000*24)*1);
-                    dhour=Math.floor((dd%(60*60*1000*24))/(60*60*1000)*1);
-
-                    if(0<dhour && dhour<10){dhour="0"+dhour;}
-                    dmin=Math.floor(((dd%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
-                    if(0<dmin && dmin<10){dmin="0"+dmin;}
-                    dsec=Math.floor((((dd%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
-                    if(0<dsec && dsec<10){dsec = "0"+dsec;}
-
-
-
-                    if(dday<=0 && dhour<=0&&dmin<=0&&dsec<=1&&todayd==da){
-                        document.getElementById(id).innerHTML='';
-                        return;
-                    }else if (dday<=-1){
-                        document.getElementById(id).innerHTML="";
-                        return;
-                    }else{
-                        var countdown_html = '';
-                        if(dday>0){
-                            countdown_html = '<span class="dday">'+dday+'</span>';
-                            countdown_html +='<span class="text_day">D</span>';
-                        }
-                        countdown_html  +=  '<span class="dhour">'+dhour+'</span>'+
-                                            '<span class="dmin">'+dmin+'</span>'+
-                                            '<span class="dsec">'+dsec+'</span>';
-                        document.getElementById(id).innerHTML = countdown_html;
-                        setTimeout(function(){countdown(id,yr,mo,da,ho,mi,se)},1000);
-                    }
-                }
                 <?php $date_time = strtotime($show_countdown->getAltText()); ?>
-                countdown('countdownie',
-                    <?php echo date("Y",$date_time)?>,
-                    <?php echo date("m",$date_time)?>,
-                    <?php echo date("d",$date_time)?>,
-                    <?php echo date("H",$date_time)?>,
-                    <?php echo date("i",$date_time)?>,
-                    <?php echo date("s",$date_time)?>);
+                jQuery(document).ready(function(){
+                    countdown('countdownie', <?php echo date("Y",$date_time)?>, <?php echo date("m",$date_time)?>, <?php echo date("d",$date_time)?>, <?php echo date("H",$date_time)?>, <?php echo date("i",$date_time)?>, <?php echo date("s",$date_time)?>);
+                });
             </script>
         </div>
     <?php endif;?>
@@ -153,35 +98,35 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
     $_reviewsCollection = Mage::getModel('review/review')->getCollection()
         ->addStoreFilter(Mage::app()->getStore()->getId())
         ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
-        ->addFieldToFilter(
-            array(
-                array('attribute'=>'detailc','eq'=>'reviewimage1'),
-                array('attribute'=>'detailc','eq'=>'reviewimage2'),
-                array('attribute'=>'detailc','eq'=>'reviewimage3'),
-                array('attribute'=>'detailc','eq'=>'reviewimage4'),
-                array('attribute'=>'detailc','eq'=>'reviewimage5'),
-            ),
-            array(
-                array(  array('notnull' => true) ),
-                array(  array('notnull' => true) ),
-                array(  array('notnull' => true) ),
-                array(  array('notnull' => true) ),
-                array(  array('notnull' => true) ),
-            )
-        )
+//        ->addFieldToFilter(
+//            array(
+//                array('attribute'=>'detailc','eq'=>'reviewimage1'),
+//                array('attribute'=>'detailc','eq'=>'reviewimage2'),
+//                array('attribute'=>'detailc','eq'=>'reviewimage3'),
+//                array('attribute'=>'detailc','eq'=>'reviewimage4'),
+//                array('attribute'=>'detailc','eq'=>'reviewimage5'),
+//            ),
+//            array(
+//                array(  array('notnull' => true) ),
+//                array(  array('notnull' => true) ),
+//                array(  array('notnull' => true) ),
+//                array(  array('notnull' => true) ),
+//                array(  array('notnull' => true) ),
+//            )
+//        )
         ->getSelect()
         ->joinleft( array('cp'=> 'catalog_category_product'), 'cp.product_id = main_table.entity_pk_value')
         ->where("main_table.status_id=1  and cp.`category_id`='".$this->getCurrentCategory()->getId()."'")
-        ->limit(30);
+        ->order("main_table.created_at DESC")
+        ->limit(10);
 
     $results = Mage::getSingleton('core/resource')->getConnection('core_read')->fetchAll($_reviewsCollection);
 ?>
 <?php if(count($results)):?>
     <div class="box_shadow">
         <div class="category_name_bottom">
-            <h3><?php echo $cur_cat_name ?> reviews </h3>
-            <span>(
-                <?php
+            <h3>Most Helpful Reviews about <?php echo $cur_cat_name ?></h3>
+            <span>(<?php
                 $review_count_sql = Mage::getModel('review/review')->getCollection()
                     ->getSelect()
                     ->columns(array(
@@ -195,48 +140,40 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
                 ?>)</span>
 
         </div>
-        <div class="user_photos">
-            <div class="photos_title">User Photos</div>
-            <div class="home_review owl-carousel">
-                <?php foreach ($results as $review):?>
-                    <?php if( $review['entity_pk_value'] ):?>
-                        <?php
-                        $review_product = Mage::getModel('catalog/product')
-                            ->setStoreId(Mage::app()->getStore()->getId())
-                            ->load($review['entity_pk_value']);
-                        ?>
-                        <a class="item" href="<?php echo $this->getUrl().$review_product->getUrlPath();?>#review">
-                            <?php if(  $review['reviewimage1']  ):?>
-                                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages'.$review['reviewimage1'];?>);"></span>
-                            <?php elseif(  $review['reviewimage2']  ): ?>
-                                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages'.$review['reviewimage2'];?>);"></span>
-                            <?php elseif(  $review['reviewimage3']  ): ?>
-                                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages'.$review['reviewimage3'];?>);"></span>
-                            <?php elseif(  $review['reviewimage4']  ): ?>
-                                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages'.$review['reviewimage4'];?>);"></span>
-                            <?php elseif(  $review['reviewimage5']  ): ?>
-                                <span style="background-image:url(<?php echo Mage::getBaseUrl("media").'reviewimages'.$review['reviewimage5'];?>);"></span>
-                            <?php endif;?>
+        <div class="last_review">
+            <?php foreach ($results as $review):?>
+                <?php if( $review['entity_pk_value'] ):?>
+
+                    <div class="review_row">
+                        <?php $review_product = Mage::getModel('catalog/product')->setStoreId(Mage::app()->getStore()->getId())->load($review['entity_pk_value']);?>
+                        <a class="p_image" href="<?php echo $review_product->getProductUrl()?>">
+                            <img src="<?php echo Mage::helper('catalog/image')->init($review_product, 'image')->resize(333,444);?>"/>
                         </a>
-                    <?php endif;?>
-                <?php endforeach;?>
-            </div>
-            <script>
-                jQuery(document).ready(function(){
-                    jQuery('.home_review').each(function() {
-                        if(jQuery('.item', this).length > 0) {
-                            jQuery(this).owlCarousel({
-                                loop: true,
-                                nav: true,
-                                dots: false,
-                                autoWidth:true,
-                                margin:10,
-                                autoplay: false
-                            });
-                        }
-                    });
-                });
-            </script>
+
+
+
+                        <div class="review_d">
+                            <?php
+                            $votesCollection = Mage::getModel('rating/rating_option_vote')
+                                ->getResourceCollection()
+                                ->setReviewFilter($review['review_id'])
+                                ->setStoreFilter(Mage::app()->getStore()->getId())
+                                ->addRatingInfo(Mage::app()->getStore()->getId())
+                                ->load();
+                            ?>
+                            <?php if (count($votesCollection)): ?>
+                                <?php $percent = 0;foreach ($votesCollection as $_vote): $percent += $_vote->getPercent(); ?><?php endforeach; ?>
+                                <div class="rating-box">
+                                    <div class="rating" style="width:<?php echo $percent/3 ?>%;"></div>
+                                </div>
+                            <?php endif; ?>
+                            <div class="review_info_1"><?php echo $this->escapeHtml($review['title']) ?></div>
+                            <div class="review_info_2">By <?php echo $this->escapeHtml($review['nickname']);?>, Posted on <?php echo $this->formatDate($review['created_at']);?></div>
+                            <div class="review_info_3"><?php echo $review['detail']?></div>
+                        </div>
+                    </div>
+                <?php endif;?>
+            <?php endforeach;?>
         </div>
     </div>
 

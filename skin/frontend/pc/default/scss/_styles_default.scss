@@ -1,7 +1,7 @@
 /* Reset ================================================================================= */
 * { margin:0; padding:0; box-sizing: border-box;}
 
-body          { font:12px/1.55 Arial, Helvetica, sans-serif; color:#000000; text-align:left; }
+body          { font:12px/1.55 Arial, Helvetica, sans-serif; color:#4d4c3a; text-align:left; }
 
 img           { border:0; vertical-align:top; }
 
@@ -127,7 +127,7 @@ input.qty { width:2.5em !important; }
 button.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
 button.button { -webkit-border-fit:lines; } /* <- Safari & Google Chrome Fix */
 button.button { overflow:visible; width:auto; border:0; padding:0; margin:0; background:transparent; cursor:pointer; }
-button.button span { display:block; height:19px; background:#f39; padding:0 8px; font:bold 12px/19px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; }
+button.button span { display:block; height:19px; background:#ab7505; padding:0 8px; font:bold 12px/19px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; }
 button.button span span { border:0; padding:0; }
 button.disabled span { border-color:#bbb !important; background:#bbb !important; }
 
@@ -148,7 +148,7 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 .form-list li { margin:0 0 8px; }
 .form-list label { float:left; color:#666; font-weight:bold; position:relative; z-index:0; }
 .form-list label.required {}
-.form-list label.required em { float:right; font-style:normal; color:#f39; position:absolute; top:0; right:-8px; }
+.form-list label.required em { float:right; font-style:normal; color:#ab7505; position:absolute; top:0; right:-8px; }
 .form-list li.control label { float:none; }
 .form-list li.control input.radio,
 .form-list li.control input.checkbox { margin-right:6px; }
@@ -277,7 +277,7 @@ input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
 
 /* Form Validation */
 .validation-advice { clear:both; min-height:13px; margin:3px 0 0; padding-left:17px; font-size:11px; font-weight:bold; line-height:13px; background:url(../images/validation_advice_bg.gif) 2px 0 no-repeat; color:#eb340a; }
-.validation-failed { border:1px dashed #f39 !important; }
+.validation-failed { border:1px dashed #ab7505 !important; }
 .validation-passed {}
 p.required { font-size:11px; text-align:right; color:#EB340A; }
 /* Expiration date and CVV number validation fix */
@@ -628,13 +628,13 @@ tr.summary-details-excluded { font-style:italic; }
 
 /* Block: Account */
 .block-account { border-color:#bbb; }
-.block-account .block-title { background:#f39; border:0; padding:3px 10px; }
+.block-account .block-title { background:#ab7505; border:0; padding:3px 10px; }
 .block-account .block-title strong { font-size:13px; color:#fff; }
 .block-account .block-content { padding:7px 10px 7px; }
 .block-account .block-content li a { display:block; border-bottom:1px solid #ddd; padding:3px 0; color:#5f5d5c; text-decoration:none !important; }
 .block-account .block-content li a:hover { color:#ea7900; }
 .block-account .block-content li.last a { border-bottom:0; }
-.block-account .block-content li.current { border-bottom:1px solid #ddd; padding:3px 0; color:#f39; }
+.block-account .block-content li.current { border-bottom:1px solid #ddd; padding:3px 0; color:#ab7505; }
 .block-account .block-content li.current.last { border-bottom:0; }
 
 /* Block: Currency Switcher */
@@ -1151,7 +1151,7 @@ tr.summary-details-excluded { font-style:italic; }
 .page-sitemap .sitemap a { color:#1b2d3b; }
 .page-sitemap .sitemap li { margin:3px 0; }
 .page-sitemap .sitemap li.level-0 { margin:10px 0 0; font-weight:bold; }
-.page-sitemap .sitemap li.level-0 a { color:#f39; }
+.page-sitemap .sitemap li.level-0 a { color:#ab7505; }
 
 /* RSS */
 .rss-title h1 { background:url(../images/i_rss-big.png) 0 4px no-repeat; padding-left:27px; }

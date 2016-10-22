@@ -71,16 +71,17 @@
 }
 
 .customer_help{
+    background:#4d4c3a;
     display: inline-block;
     width:100%;
     font: 12px/21px helvetica,arial,sans-serif;
-    color: #555;
+    color: #fff;
     padding: 30px 10px 0;
     margin: 0 auto 17px;
     text-align: left;
 
     dl{
-        width: 25%;
+        width: 20%;
         float: left;
         display: block;
     }
@@ -88,7 +89,7 @@
     dt{
         font-weight: bold;
         line-height: 14px;
-        color: #333;
+        color: #fff;
         padding: 0;
         margin: 0;
         font-family: Helvetica,Arial,sans-serif;
@@ -99,8 +100,9 @@
     a{
         font-size: 12px;
         line-height: 18px;
-        color: #555;
+        color: #fff;
         font-family: Helvetica,Arial,sans-serif;
+        img{margin-bottom:15px;}
     }
 }
 
@@ -177,7 +179,7 @@
     a {
         background-image: url("../images/commont/back.png");
         background-repeat:no-repeat;
-        background-color:#f39;
+        background-color:#ab7505;
         background-position:center center;
         bottom: 200px;
         cursor: pointer;

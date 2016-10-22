@@ -1,20 +1,25 @@
 <footer>
     <div class="footer_contant">
-        <div class="join_us">
-            <h2>Join our community</h2>
-            <ul>
-                <li class="mini-facebook"><a href="https://www.facebook.com/Ddaydressonline/"></a></li>
-                <li class="mini-instagram"><a href="https://www.instagram.com/ddaydress/"></a></li>
-                <li class="mini-pinterest"><a href="https://www.pinterest.com/ddaydress/"></a></li>
-                <li class="mini-youtube"><a href="https://www.youtube.com/channel/UCFXTTCjX3wrvgJMYiqwZXew"></a></li>
-                <li class="mini-twitter"><a href="https://twitter.com/ddaydress"></a></li>
-                <li class="mini-tumbler"><a href="http://d-daydress.tumblr.com/"></a></li>
-                <li class="mini-blog"><a href="http://ddaydresscoupon.blogspot.com/"></a></li>
-                <li class="mini-vk"><a href="http://new.vk.com/ddaydress"></a></li>
-            </ul>
-        </div>
         <div class="customer_help">
             <?php echo $this->getChildHtml('help_left');?>
+            <dl>
+                <dt>OUR COMMUNITY</dt>
+                <dd>
+                    <a href="https://www.pinterest.com/islambridal/">
+                        <img src="<?php echo $this->getUrl()?>/skin/frontend/pc/default/images/commont/Pinterest.jpg"/>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="https://www.facebook.com/islambridal/">
+                        <img src="<?php echo $this->getUrl()?>/skin/frontend/pc/default/images/commont/facebook.gif"/>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="https://www.instagram.com/islambridal/">
+                        <img src="<?php echo $this->getUrl()?>/skin/frontend/pc/default/images/commont/Instagram.jpg"/>
+                    </a>
+                </dd>
+            </dl>
         </div>
         <div class="payments">
             <span class="banks">visa, master card, maestro, carte blue</span>
@@ -30,24 +35,66 @@
 </footer>
 
 <div id="gotopbtn" style="display:none;"><a href="#"><span></span>Back To Top</a></div>
-<script type="text/javascript">
+<script type="text/javascript" data-name="backtotop">
     jQuery(function($){
         $("#gotopbtn").hide();
         $(function () {
-            $(window).scroll(function(){
-                if ($(window).scrollTop()>100){
-                    $("#gotopbtn").show();
-                }
-                else
-                {
-                    $("#gotopbtn").hide();
-                }
-            });
+            $(window).scroll(function(){if($(window).scrollTop()>100){$("#gotopbtn").show();}else{$("#gotopbtn").hide();}});
             //back to top
-            $("#gotopbtn").click(function(){
-                $('body,html').animate({scrollTop:0},1000);
-                return false;
-            });
+            $("#gotopbtn").click(function(){$('body,html').animate({scrollTop:0},1000);return false;});
         });
     });
+</script>
+<script data-name="js-function">
+    function countdown(id,theyear,themonth,theday,thehour,themin,thesec){
+        var id=id;
+        var yr=theyear;
+        var mo=themonth;
+        var da=theday;
+        var ho=thehour;
+        var mi=themin;
+        var se=thesec;
+        var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+        var today=new Date();
+        var todayy=today.getYear();
+        if (todayy < 1000)
+            todayy+=1900;
+        var todaym=today.getMonth();
+        var todayd=today.getDate();
+        var todayh=today.getHours();
+        var todaymin=today.getMinutes();
+        var todaysec=today.getSeconds();
+        var todaystring=montharray[todaym]+" "+todayd+", "+todayy+" "+todayh+":"+todaymin+":"+todaysec;
+        futurestring=montharray[mo-1]+" "+da+", "+yr+" "+ho+":"+mi+":"+se;
+        dd=Date.parse(futurestring)-Date.parse(todaystring);
+        dday=Math.floor(dd/(60*60*1000*24)*1);
+        dhour=Math.floor((dd%(60*60*1000*24))/(60*60*1000)*1);
+
+        if(0<dhour && dhour<10){dhour="0"+dhour;}
+        dmin=Math.floor(((dd%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+        if(0<dmin && dmin<10){dmin="0"+dmin;}
+        dsec=Math.floor((((dd%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+        if(0<dsec && dsec<10){dsec = "0"+dsec;}
+
+
+
+        if(dday<=0 && dhour<=0&&dmin<=0&&dsec<=1&&todayd==da){
+            document.getElementById(id).innerHTML='';
+            return;
+        }else if (dday<=-1){
+            document.getElementById(id).innerHTML="";
+            return;
+        }else{
+            var countdown_html = '';
+            if(dday>0){
+                countdown_html = '<span class="dday">'+dday+'</span>';
+                countdown_html +='<span class="text_day">D</span>';
+            }
+            countdown_html  +=  '<span class="dhour">'+dhour+'</span>'+
+                '<span class="dmin">'+dmin+'</span>'+
+                '<span class="dsec">'+dsec+'</span>';
+            document.getElementById(id).innerHTML = countdown_html;
+            setTimeout(function(){countdown(id,yr,mo,da,ho,mi,se)},1000);
+        }
+    }
 </script>

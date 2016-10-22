@@ -11,7 +11,7 @@
 .estorm-zoom-gallery { width:100px; height:400px; float:left; position:relative; overflow:hidden; }
 .estorm-zoom-gallery ul { position:absolute; top:0;margin:0; padding:0; list-style:none; } 
 .estorm-zoom-gallery li { float:left; margin:0; list-style:none; padding:0; border:4px #ffffff solid; }
-.estorm-zoom-gallery li.current { border-color:#f39; }
+.estorm-zoom-gallery li.current { border-color:#ab7505; }
 .estorm-zoom-gallery li img { border:1px #eeeeee solid; display:block; }
 
 
@@ -83,7 +83,7 @@
                 }
                 .special-price{
                     .price{
-                        color:#f39;
+                        color:#ab7505;
                         font-size:17px;
                         &:before{
                             content:"Special Price: "
@@ -116,7 +116,7 @@
 
                         .required{
                             em{
-                                color:#f39;
+                                color:#ab7505;
                                 vertical-align: sub;
                                 display: inline-block;
                                 width: 10px;
@@ -134,7 +134,7 @@
                             color:#444;
                             padding-left: 5px;
                             &:hover{
-                              color:#f39;
+                              color:#ab7505;
                             }
                         }
                         select.product-custom-option{
@@ -189,7 +189,7 @@
                   left:225px;
                   .co {
                     font-size: 14px;
-                    color: #f39;
+                    color: #ab7505;
                     display: block;
                     font-weight: normal;
                   }
@@ -197,10 +197,10 @@
                     font-size:12px;
                   }
                   .F39{
-                    color:#f39;
+                    color:#ab7505;
                   }
                   .BB{
-                    border-bottom:1px solid #f39;
+                    border-bottom:1px solid #ab7505;
                   }
                   img{
                     width:99%;
@@ -238,7 +238,7 @@
                     color: #645B56;
 
                     .num{
-                        color:#f39;
+                        color:#ab7505;
                         font-style: normal;
                         font-weight: bold;
                     }
@@ -260,7 +260,7 @@
                     }
                 }
                 .infomations2{
-                    color:#f39;
+                    color:#ab7505;
                     position:relative;
                     height:30px;
                     line-height: 30px;
@@ -312,13 +312,13 @@
                             left:-165px;
                             z-index:10;
                             width:160px;
-                            border:1px solid #f39;
+                            border:1px solid #ab7505;
                             padding:5px;
                             background: #fff;
                             .to{
                                 position: absolute;
                                 right: -6px;
-                                color: #f39;
+                                color: #ab7505;
                                 font-size: 18px;
                                 background: #fff;
                                 line-height: 13px;
@@ -327,7 +327,7 @@
 
                             .va_title{
                                 color:#444;
-                                border-bottom:1px dashed #f39;
+                                border-bottom:1px dashed #ab7505;
                                 text-align: center;
                             }
                             .va_list{
@@ -341,7 +341,7 @@
                                         line-height:20px;
                                         display: inline-block;
                                         text-align: right;
-                                        color:#f39;
+                                        color:#ab7505;
                                     }
                                 }
                             }
@@ -351,7 +351,7 @@
                         height:35px;
                         width:170px;
                         border-radius:3px;
-                        background-color:#f39;
+                        background-color:#ab7505;
                         span span{
                             font-size:18px;
                             font-weight: normal;
@@ -369,7 +369,7 @@
                         span{
                             font-size: 30px;
                             line-height: 30px;
-                            color:#f39;
+                            color:#ab7505;
                             padding:0 5px;
                         }
                     }
@@ -391,7 +391,7 @@
                     line-height: 25px;
                     display: inline-block;
                     padding: 0 5px;
-                    background-color: #f39;
+                    background-color: #ab7505;
                     font-size: 14px;
                     color: #fff;
                     font-family: georgia;
@@ -485,7 +485,7 @@
             ul.questions-tabs {
                 width: 100%;
                 float: left;
-                border-top: 2px solid #f39;
+                border-top: 2px solid #ab7505;
                 background-color: #f8f8f8;
                 li {
                     padding: 2px 10px;
@@ -499,7 +499,7 @@
                 }
                 li.on {
                     background-color: #eee;
-                    color: #f39;
+                    color: #ab7505;
                 }
             }
             .questions-panls {
@@ -587,7 +587,7 @@
 
         h4{
             float: left;
-            background-color: #f39;
+            background-color: #ab7505;
             color: #fff;
             cursor: pointer;
             line-height: 2em;
@@ -644,7 +644,7 @@
                 border: none;
                 margin: 10px 0;
                 cursor: pointer;
-                background-color: #f39;
+                background-color:#ab7505;
                 border-radius: 3px;
                 padding: 5px 10px;
                 color: #fff;
@@ -744,7 +744,7 @@
                             margin:10px 5px 0 0;
                             padding: 3px;
                             &.active{
-                                border:1px solid #f39;
+                                border:1px solid #ab7505;
                             }
 
                             span{
@@ -788,7 +788,7 @@
             .btn_to_review{
                 text-align: right;
                 input{
-                    background:#f39;
+                    background:#ab7505;
                     padding:0 20px;
                     line-height: 30px;
                     border:0;
