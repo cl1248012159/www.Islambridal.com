@@ -320,7 +320,7 @@
 }
 .home_product{
     @include float_clear;
-    padding:10px;
+    padding:10px 0;
     position:relative;
     width:100%;
 
@@ -332,8 +332,7 @@
         margin:0;
 
         .owl-prev,.owl-next{
-            position:absolute;
-            bottom:50%;
+            position:absolute;  top:50%;  margin-top:-22.5px;
             width: 45px;
             height: 45px;
             z-index: 125;
@@ -360,10 +359,9 @@
         width: 216px;
         height: 380px;
         background: #fff;
-        padding-bottom: 5px;
+        padding-bottom: 5px;border: 1px solid #ccc;
 
         dt {
-            border: 1px solid #ccc;
             padding: 2px;
             width: 216px;
             height: 280px;

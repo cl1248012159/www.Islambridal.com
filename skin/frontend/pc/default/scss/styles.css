@@ -2607,17 +2607,17 @@ tr.summary-details-excluded { font-style: italic; }
 .home_product_title { display: block; height: 33px; line-height: 33px; background-color: #d3d4d4; padding-left: 10px; font-size: 16px; }
 .home_product_title h3 { font-weight: normal; line-height: 33px; }
 
-.home_product { *zoom: 1; padding: 10px; position: relative; width: 100%; }
+.home_product { *zoom: 1; padding: 10px 0; position: relative; width: 100%; }
 .home_product:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .home_product.owl-carousel { overflow-y: hidden; }
 .home_product.owl-theme .owl-controls { margin: 0; }
-.home_product.owl-theme .owl-controls .owl-prev, .home_product.owl-theme .owl-controls .owl-next { position: absolute; bottom: 50%; width: 45px; height: 45px; z-index: 125; text-indent: -99999px; }
+.home_product.owl-theme .owl-controls .owl-prev, .home_product.owl-theme .owl-controls .owl-next { position: absolute; top: 50%; margin-top: -22.5px; width: 45px; height: 45px; z-index: 125; text-indent: -99999px; }
 .home_product.owl-theme .owl-controls .owl-prev { left: 0; background: url(../images/commont/index_slide_btn01.png) no-repeat 0 -53px; }
 .home_product.owl-theme .owl-controls .owl-prev:hover { background: url(../images/commont/index_slide_btn.png) no-repeat 0 0; }
 .home_product.owl-theme .owl-controls .owl-next { right: 0; background: url(../images/commont/index_slide_btn01.png) no-repeat 0 0; }
 .home_product.owl-theme .owl-controls .owl-next:hover { background: url(../images/commont/index_slide_btn.png) no-repeat 0 -55px; }
-.home_product dl { float: left; width: 216px; height: 380px; background: #fff; padding-bottom: 5px; }
-.home_product dl dt { border: 1px solid #ccc; padding: 2px; width: 216px; height: 280px; margin-bottom: 5px; display: table; }
+.home_product dl { float: left; width: 216px; height: 380px; background: #fff; padding-bottom: 5px; border: 1px solid #ccc; }
+.home_product dl dt { padding: 2px; width: 216px; height: 280px; margin-bottom: 5px; display: table; }
 .home_product dl dt a { display: table-cell; vertical-align: middle; }
 .home_product dl dt img { border: none; max-width: 210px; max-height: 280px; }
 .home_product dl dd { text-align: center; font-family: verdana; font-size: 12px; }

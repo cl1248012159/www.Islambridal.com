@@ -1,5 +1,6 @@
+<?php $home_big_banners = Mage::getModel('ibanners/group')->loadByCode('home_big_banners')->getBannerCollection(); ?>
+<?php if($home_big_banners->count()>0):?>
 <div class="owl-carousel home_banners_1">
-    <?php $home_big_banners = Mage::getModel('ibanners/group')->loadByCode('home_big_banners')->getBannerCollection(); ?>
     <?php foreach($home_big_banners as $banner): ?>
         <a class="item" href="<?php echo $banner->getUrl(); ?>">
             <img title="<?php echo $banner->getTitle();?>" alt="<?php echo $banner->getAlt();?>" src="<?php echo $banner->getImageUrl();?>"/>
@@ -22,10 +23,17 @@
         });
     });
 </script>
+<?php endif;?>
 
 
+
+
+
+
+
+<?php $home_banners_3 = Mage::getModel('ibanners/group')->loadByCode('home_banners_3')->getBannerCollection(); ?>
+<?php if($home_banners_3->count()>0):?>
 <div class="home_banners_3">
-    <?php $home_banners_3 = Mage::getModel('ibanners/group')->loadByCode('home_banners_3')->getBannerCollection(); ?>
     <?php foreach($home_banners_3 as $banner): ?>
         <a class="item" href="<?php echo $banner->getUrl(); ?>">
             <img title="<?php echo $banner->getTitle();?>" alt="<?php echo $banner->getAlt();?>" src="<?php echo $banner->getImageUrl();?>"/>
@@ -33,13 +41,59 @@
     <?php endforeach; ?>
     <div class="clearer"></div>
 </div>
+<?php endif;?>
 
 
+
+
+
+
+
+<?php $home_category_banners = Mage::getModel('ibanners/group')->loadByCode('home_category_banners')->getBannerCollection(); ?>
+<?php if($home_category_banners->count()>0):?>
 <div class="MT10 home_category_banners">
-    <?php $home_category_banners = Mage::getModel('ibanners/group')->loadByCode('home_category_banners')->getBannerCollection(); ?>
     <?php foreach($home_category_banners as $banner): ?>
         <a class="item" href="<?php echo $banner->getUrl(); ?>">
             <img src="<?php echo $banner->getImageUrl();?>" title="<?php echo $banner->getTitle();?>" alt="<?php echo $banner->getAlt();?>"/>
         </a>
     <?php endforeach; ?>
 </div>
+<?php endif;?>
+
+
+
+
+
+
+
+<?php
+    /** Real Dresses Show **/
+    $real_dresses_show_banners = Mage::getModel('ibanners/group')->loadByCode('real_dresses_show')->getBannerCollection();
+?>
+<?php if($real_dresses_show_banners->count()>0):?>
+    <div class="home_product_title"><h3>Real Dresses Show</h3></div>
+    <div class="home_product Real_Dresses_Show owl-carousel">
+        <?php foreach($real_dresses_show_banners as $banner): ?>
+            <a class="item" href="<?php echo $banner->getUrl(); ?>">
+                <img src="<?php echo $banner->getImageUrl();?>" title="<?php echo $banner->getTitle();?>" alt="<?php echo $banner->getAlt();?>"/>
+            </a>
+        <?php endforeach; ?>
+    </div>
+<?php endif;?>
+
+<script>
+    jQuery(document).ready(function(){
+        jQuery('.Real_Dresses_Show').each(function() {
+            if(jQuery('.item', this).length > 0) {
+                jQuery(this).owlCarousel({
+                    loop: true,
+                    nav: true,
+                    dots:false,
+                    items:4,
+                    margin:10,
+                    autoplay: false
+                });
+            }
+        });
+    });
+</script>
