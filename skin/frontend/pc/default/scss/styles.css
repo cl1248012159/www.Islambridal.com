@@ -2456,7 +2456,7 @@ tr.summary-details-excluded { font-style: italic; }
 .new_header .header_content .header_logo a img { max-height: 112px; max-width: 100%; }
 .new_header .header_content .header_cart { float: left; height: 112px; width: 26.33%; padding: 55px 20px 0 0; text-align: right; }
 .new_header .header_content .header_cart a { display: inline-block; }
-.new_header .header_content .header_cart a em { text-indent: 9999px; display: inline-block; }
+.new_header .header_content .header_cart a em { display: inline-block; }
 .new_header .header_content .header_cart .favor { background: url(../images/commont/favor.png) no-repeat; width: 23px; height: 22px; margin-right: 30px; }
 .new_header .header_content .header_cart .bag { line-height: 32px; color: #000; }
 .new_header .header_content .header_cart .bag em { background: url(../images/commont/bag.png) no-repeat; width: 32px; height: 32px; }
