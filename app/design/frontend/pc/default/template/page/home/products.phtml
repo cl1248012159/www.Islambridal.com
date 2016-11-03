@@ -1,9 +1,12 @@
 <?php
-    $Hot_Selling_Products = Mage::getModel('catalog/category')->load(206)
-                            ->getProductCollection()
-                            ->addAttributeToSelect('*')
-                            ->addAttributeToFilter('status', 1)
-                            ->addAttributeToFilter('visibility', 4);
+$Hot_Selling_Products = Mage::getModel('catalog/category')
+    ->getCollection()
+    ->addAttributeToFilter('url_key', 'hot-selling-products')
+    ->getFirstItem()
+    ->getProductCollection()
+    ->addAttributeToSelect('*')
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToFilter('visibility', 4);
 ?>
 <?php if($Hot_Selling_Products->count()>0):?>
     <div class="home_product_title"><h3>Hot Selling Products</h3></div>
@@ -38,11 +41,14 @@
 
 
 <?php
-    $New_Arrival_Products = Mage::getModel('catalog/category')->load(207)
-                            ->getProductCollection()
-                            ->addAttributeToSelect('*')
-                            ->addAttributeToFilter('status', 1)
-                            ->addAttributeToFilter('visibility', 4);
+$New_Arrival_Products = Mage::getModel('catalog/category')
+    ->getCollection()
+    ->addAttributeToFilter('url_key', 'low-price-products')
+    ->getFirstItem()
+    ->getProductCollection()
+    ->addAttributeToSelect('*')
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToFilter('visibility', 4);
 ?>
 <?php if($New_Arrival_Products->count()>0):?>
     <div class="home_product_title"><h3>Low Price Products</h3></div>
