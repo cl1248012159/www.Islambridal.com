@@ -239,6 +239,7 @@
         }
     }
 
+    .product_discount{display:none;}
     .dress_list{
         .products-grid{
             width: 100%;
@@ -248,6 +249,7 @@
                 padding:0;
 
                 .item_deatil{
+                    position: relative;
                     margin: 3px;
                     border: 2px solid #e9e9e9;
                     border-radius:3px;
@@ -321,6 +323,12 @@
                         .label,.price{
                             color:#ab7505;
                         }
+                    }
+                    .product_discount{
+                        display:block;position: absolute;top:0;right:0;width:50px;height:50px;background:url(../images/commont/islam-discount.png) no-repeat;
+                        span{text-align: center;color:#fff;width:100%;float:left;}
+                        .discount_price{font-size: 20px;line-height: 21px;padding-top: 10px;}
+                        .discount_off{line-height: 13px;}
                     }
                 }
             }

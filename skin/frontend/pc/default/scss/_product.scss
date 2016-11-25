@@ -49,6 +49,7 @@
                 margin-top: 10px;
                 a{
                     text-decoration: underline;
+                    &:hover{color:#ab7505;}
                 }
 
                 .ratings,.no-rating{
@@ -67,6 +68,7 @@
                     float: left;
                     margin-left: 8px;
                 }
+                .share-reviews{}
             }
 
             .product_price{
@@ -458,9 +460,8 @@
     .parent_cat_related{
         .home_product{
             dl{
-                width:16.6%;
-                height:auto;
-                padding:0 3px;
+                width:16%;height:auto;padding:0 1px;margin-left:0.8%;
+                &:first-child{margin-left:0;}
                 dt{
                     margin:0 auto 5px;
                     width:100%;

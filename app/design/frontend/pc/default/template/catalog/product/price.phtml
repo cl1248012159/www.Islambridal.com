@@ -346,6 +346,26 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
             <?php endif; ?>
         <?php endif; ?>
 
+        <?php // product_list_page Discount percents output start ?>
+        <?php
+    $module_name = $this->getRequest()->getModuleName();
+    $controller_name = $this->getRequest()->getControllerName();
+    $action_name = $this->getRequest()->getActionName();
+    ?>
+    <?php if(   $this->getRequest()->getModuleName()=="catalog"  &&
+                $this->getRequest()->getControllerName()=="category"  &&
+                $this->getRequest()->getActionName()=="view"
+     ):?>
+        <?php if($_finalPrice < $_price): ?>
+        <?php $_savePercent = 100 - round(($_finalPrice / $_price)*100); ?>
+            <p class="product_discount">
+                <span class="discount_price"><?php echo $_savePercent; ?></span>
+                <span class="discount_off">% off</span>
+            </p>
+        <?php endif; ?>
+    <?php endif;?>
+        
+
     <?php endif; /* if ($_finalPrice == $_price): */ ?>
 
     <?php /*
