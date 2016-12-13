@@ -46,7 +46,8 @@ class MageWorx_SeoSuite_Block_Review_Helper extends MageWorx_SeoSuite_Block_Revi
                 $path[] = 'category';
                 $path[] = $this->getProduct()->getCategory()->getUrlKey();
             }
-            return Mage::getUrl() . implode('/', $path);            
+            //return Mage::getUrl() . implode('/', $path);
+            return parent::getReviewsUrl();
         } else {
             return parent::getReviewsUrl();
         }

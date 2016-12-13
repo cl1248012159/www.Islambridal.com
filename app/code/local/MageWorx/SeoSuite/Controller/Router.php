@@ -70,7 +70,7 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
             return false;
         }
 
-
+/**
         if ('reviews' == $d[1] && Mage::getStoreConfig('mageworx_seo/seosuite/reviews_friendly_urls')) {
             $product = Mage::getModel('catalog/product')->loadByAttribute('url_key', $d[0]);
             if (!$product || !$product->getId()) {
@@ -117,7 +117,7 @@ class MageWorx_SeoSuite_Controller_Router extends Mage_Core_Controller_Varien_Ro
 
             return true;
         }
-        
+ */
         switch ($d[0]) {
             case 'catalogsearch':
                 $request->setModuleName('catalogsearch')

@@ -345,8 +345,14 @@ class MageWorx_SeoSuite_Block_Page_Html_Head extends MageWorx_SeoSuite_Block_Pag
                 $category_name = end($request_uri_arr);
             }
             $category_name = trim($category_name,'/');
-            $category_name = ucwords($category_name);
-            $category_name = str_replace('-',' ',$category_name);
+            $category_name = Mage::getModel('catalog/category')
+                ->getCollection()
+                ->addNameToResult()
+                ->addAttributeToFilter('url_key', $category_name)
+                ->getFirstItem()
+                ->getName();
+            //$category_name = ucwords($category_name);
+            //$category_name = str_replace('-',' ',$category_name);
             array_pop($url_para);
             $url_para = array_map("ucwords",$url_para);
             if(!$url_para){
