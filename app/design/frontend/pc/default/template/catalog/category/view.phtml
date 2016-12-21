@@ -170,6 +170,26 @@ $cur_cat_pro_size = Mage::getSingleton('catalog/layer')->getProductCollection()-
                             <div class="review_info_1"><?php echo $this->escapeHtml($review['title']) ?></div>
                             <div class="review_info_2">By <?php echo $this->escapeHtml($review['nickname']);?>, Posted on <?php echo $this->formatDate($review['created_at']);?></div>
                             <div class="review_info_3"><?php echo $review['detail']?></div>
+                            <div class="review_info_4">
+                                <?php 
+                                    if($review['reviewimage1']){
+                                        echo '<img src="'.Mage::getBaseUrl("media").'reviewimages'.$review['reviewimage1'].'"/>';
+                                    }
+                                    if($review['reviewimage2']){
+                                        echo '<img src="'.Mage::getBaseUrl("media").'reviewimages'.$review['reviewimage2'].'"/>';
+                                    }
+                                    if($review['reviewimage3']){
+                                        echo '<img src="'.Mage::getBaseUrl("media").'reviewimages'.$review['reviewimage3'].'"/>';
+                                    }
+                                    if($review['reviewimage4']){
+                                        echo '<img src="'.Mage::getBaseUrl("media").'reviewimages'.$review['reviewimage4'].'"/>';
+                                    }
+                                    if($review['reviewimage5']){
+                                        echo '<img src="'.Mage::getBaseUrl("media").'reviewimages'.$review['reviewimage5'].'"/>';
+                                    }
+                                ?>  
+                            </div>
+                            
                         </div>
                     </div>
                 <?php endif;?>

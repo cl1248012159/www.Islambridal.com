@@ -433,14 +433,10 @@
     text-align: center;
 
     .h1{
-        font-size:20px;
-        font-family: cursive,fantasy,sans-serif;
-        position:relative;
+        position:relative; margin: 20px 0px;font-size:25px; font-family: "Myriad Pro";
+        
         strong{
-            display: inline-block;
-            background-color:#fff;
-            padding:0 20px;
-            color:#000;
+            display: inline-block; background-color:#fff;padding:0 20px;color:#333;font-weight: normal;
         }
         &:after{
             content: ' ';

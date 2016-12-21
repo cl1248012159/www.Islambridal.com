@@ -6,7 +6,9 @@
     <div class="estorm-zoom-stage">
         <img class="m_image"
              data-bigurl="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600,800);?>"
-             src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(375,500) ;?>">
+             src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(375,500) ;?>"
+             alt="<?php echo $this->escapeHtml($this->getImageLabel());?>" 
+             title="<?php echo $this->escapeHtml($this->getImageLabel());?>" />
     </div>
 
 
@@ -19,16 +21,27 @@
                 <?php if($img_i==0):?>
 
                     <li class="item current">
-                        <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile())->resize(600,800); ?>" data-middle="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(375,500); ?>">
-                            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(375,500); ?>" width="90" height="120">
+                        <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image',$_image->getFile())->resize(600,800); ?>" 
+                            data-middle="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(375,500); ?>"
+                            title="<?php echo $this->escapeHtml($_image->getLabel()) ?>">
+                            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(375,500); ?>" 
+                                width="90" 
+                                height="120"
+                                title="<?php echo $this->escapeHtml($_image->getLabel()) ?>"
+                                alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>"/>
                         </a>
                     </li>
 
                 <?php else: ?>
 
                     <li class="item">
-                        <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail',$_image->getFile())->resize(600,800); ?>">
-                            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(375,500); ?>"  width="90" height="120">
+                        <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail',$_image->getFile())->resize(600,800); ?>"
+                            title="<?php echo $this->escapeHtml($_image->getLabel()) ?>">
+                            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image',$_image->getFile())->resize(375,500); ?>"  
+                                width="90" 
+                                height="120"
+                                title="<?php echo $this->escapeHtml($_image->getLabel()) ?>"
+                                alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>"/>
                         </a>
                     </li>
 

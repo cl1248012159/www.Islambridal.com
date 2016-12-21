@@ -2632,8 +2632,8 @@ tr.summary-details-excluded { font-style: italic; }
 .home_product dl dd .home_price > span, .home_product dl dd .home_price .price-box .special-price, .home_product dl dd .home_price .price-box .special-price .price { float: left; display: inline-block; color: #ab7505; font-size: 14px; height: 26px; line-height: 26px; font-weight: normal; }
 
 .home_review_title { text-align: center; }
-.home_review_title .h1 { font-size: 20px; font-family: cursive,fantasy,sans-serif; position: relative; }
-.home_review_title .h1 strong { display: inline-block; background-color: #fff; padding: 0 20px; color: #000; }
+.home_review_title .h1 { position: relative; margin: 20px 0px; font-size: 25px; font-family: "Myriad Pro"; }
+.home_review_title .h1 strong { display: inline-block; background-color: #fff; padding: 0 20px; color: #333; font-weight: normal; }
 .home_review_title .h1:after { content: ' '; display: block; position: absolute; height: 1px; width: 100%; background-color: #f4eff5; bottom: 50%; z-index: -1; }
 .home_review_title .h2 { color: #555; }
 
@@ -2768,6 +2768,7 @@ tr.summary-details-excluded { font-style: italic; }
 .page .last_review .review_row .review_d .review_info_1 { font-weight: bold; padding-top: 5px; }
 .page .last_review .review_row .review_d .review_info_2 { font-size: 10px; line-height: 30px; }
 .page .last_review .review_row .review_d .review_info_3 { line-height: 15px; }
+.page .last_review .review_row .review_d .review_info_4 img { max-width: 50px; max-height: 50px; margin: 5px 5px 0 0; }
 
 .time-item strong { background: #C71C60; color: #fff; line-height: 49px; font-size: 36px; font-family: Arial; padding: 0 10px; margin-right: 10px; border-radius: 5px; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); }
 
