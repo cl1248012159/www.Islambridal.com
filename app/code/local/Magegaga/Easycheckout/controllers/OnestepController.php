@@ -5,7 +5,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
         
     public function indexAction()
     {
-        
+
         if (!Mage::helper('easycheckout')->getEasycheckoutConfig('general/active')) {
             $this->_redirect('checkout/onepage');
             return;
@@ -209,9 +209,9 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
         }
     }
     
-        public function save_Before_ReviewAction()
+    public function save_Before_ReviewAction()
     {
-          if ($this->_expireAjax()) {
+        if ($this->_expireAjax()) {
             return;
         }
            
@@ -299,28 +299,29 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
         $this->getResponse()->setBody(Zend_Json::encode($result));
     }
     
-    public function saveShippingMethodAction() {
-  if($this->_expireAjax()) {
-      return;
-  }
-  $result = array();
-  $data = $this->getRequest()->getPost();
-  if($data) {
-      try{
-    $return = $this->getOnepage()->saveShippingMethod($data['shipping_method']);
-    if(!$return) {
-        Mage::dispatchEvent('checkout_controller_onepage_save_shipping_method', array('request'=>$this->getRequest(), 'quote'=>$this->getOnepage()->getQuote()));
-        $this->getQuote()->collectTotals()->save();
-    }
-    $result['payment'] = $this->_getPaymentMethodsHtml();
-    $result['review'] = $this->_getReviewHtml();
-      } catch(Exception $e) {
-        $result['success'] = false;
-        $result['error'] = true;
-        $result['error_messages'] = $e->getMessage();
-      }
-  }
-  $this->getResponse()->setBody(Zend_Json::encode($result));
+    public function saveShippingMethodAction()
+    {
+        if($this->_expireAjax()) {
+          return;
+        }
+        $result = array();
+        $data = $this->getRequest()->getPost();
+        if($data) {
+            try{
+                $return = $this->getOnepage()->saveShippingMethod($data['shipping_method']);
+                if(!$return) {
+                    Mage::dispatchEvent('checkout_controller_onepage_save_shipping_method', array('request'=>$this->getRequest(), 'quote'=>$this->getOnepage()->getQuote()));
+                    $this->getQuote()->collectTotals()->save();
+                }
+                $result['payment'] = $this->_getPaymentMethodsHtml();
+                $result['review'] = $this->_getReviewHtml();
+            } catch(Exception $e) {
+                $result['success'] = false;
+                $result['error'] = true;
+                $result['error_messages'] = $e->getMessage();
+            }
+        }
+        $this->getResponse()->setBody(Zend_Json::encode($result));
     }
     
     public function savePaymentAction()
@@ -371,7 +372,9 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
     {
         return $this->_getCart()->getQuote();
     }
-      public function cartupdateAction()
+
+
+    public function cartupdateAction()
     {
         $a=$this->getRequest()->getParam('productid');
         $b=$this->getRequest()->getParam('update');
@@ -425,7 +428,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
                 return;
         }
     }
-     public function couponPostAction()
+    public function couponPostAction()
     {
         /**
          * No reason continue with empty shopping cart
@@ -488,9 +491,9 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
         
         if ($this->getRequest()->isPost()) {
             $result = array();
-                $paymentData   = $this->getRequest()->getPost('payment', array());
-                $resultPayment = $this->getOnepage()->savePayment($paymentData);
-//           /// for fieldsmanager compatibility ///
+            $paymentData   = $this->getRequest()->getPost('payment', array());
+            $resultPayment = $this->getOnepage()->savePayment($paymentData);
+            /// for fieldsmanager compatibility ///
             if($fields = $this->getRequest()->getPost('fm_fields', array())){
                 Mage::getSingleton('core/session')->setRegistry('');
                 foreach($fields as $key=>$value){
@@ -517,10 +520,9 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
             //save BillingAddres
             $billingPostData   = $this->getRequest()->getPost('billing', array());
             if(Mage::getVersion() >= '1.4.0.1' && Mage::getVersion() < '1.4.2.0' ){
-		 $billingData       = $this->_filterPostData($billingPostData);
+                $billingData       = $this->_filterPostData($billingPostData);
             }else{
                 //Not supported by some versions.
-               
                 $billingData       = $billingPostData;
             }
             $customerAddressId = $this->getRequest()->getPost('billing_address_id', false);
@@ -548,6 +550,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
             if (isset($resultBilling['error'])) {
                 $result['success'] = false;
                 $result['error'] = true;
+                $result['test'] = 1;
                 if(is_array($resultBilling['message'])){
                     $errors = implode(' And ',$resultBilling['message']);
                 }else{
@@ -562,6 +565,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
                 if(count($iscustomer) > 0){
                     $result['success'] = false;
                     $result['error'] = true;
+                    $result['test'] = 2;
                     $result['error_messages'] = 'Billing Error: ' . $this->__('There is already a customer registered using this email address. Please login using this email address or enter a different email address to register your account.');
                     $this->getResponse()->setBody(Zend_Json::encode($result));
                     return;
@@ -575,6 +579,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
                 if (isset($resultShipping['error'])) {
                     $result['success'] = false;
                     $result['error'] = true;
+                    $result['test'] = 3;
                     if(is_array($resultShipping['message'])){
                         $errors = implode(' And ',$resultShipping['message']);
                     }else{
@@ -589,6 +594,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
                 if (isset($resultShipping['error'])) {
                     $result['success'] = false;
                     $result['error'] = true;
+                    $result['test'] = 4;
                     if(is_array($resultShipping['message'])){
                         $errors = implode(' And ',$resultShipping['message']);
                     }else{
@@ -610,18 +616,16 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
                //$redirectUrl = $this->getOnepage()->getQuote()->getPayment()->getCheckoutRedirectUrl();
                 //     $this->getResponse()->setBody(Zend_Json::encode($redirectUrl));
                 //return;
-                
-
                 if ($this->getRequest()->getPost('payment', false) && Mage::getSingleton('checkout/session')->getRBR()) {
                     $data= $this->getRequest()->getPost('payment', false);
                     $this->getOnepage()->getQuote()->getPayment()->importData($data);
                     $this->getOnepage()->saveOrder();
                     $redirectUrl = $this->getOnepage()->getCheckout()->getRedirectUrl();
-                  }
-       
+                }
                 if (isset($resultPayment['error'])) {
                     $result['success'] = false;
                     $result['error'] = true;
+                    $result['test'] = 5;
                     $result['error_messages'] = 'Your order cannot be completed at this time as there is no payment methods available for it.';
                     $this->getResponse()->setBody(Zend_Json::encode($result));
                     return;
@@ -633,6 +637,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
                 }
                 $result['success'] = false;
                 $result['error'] = true;
+                $result['test'] = 6;
                 $result['error_messages'] = 'Payment Method Error:' . $e->getMessage();
                 $this->getResponse()->setBody(Zend_Json::encode($result));
                 return;
@@ -640,6 +645,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
             catch (Mage_Core_Exception $e) {
                 $result['success'] = false;
                 $result['error'] = true;
+                $result['test'] = 7;
                 $result['error_messages'] = 'Core Exception: ' . $e->getMessage();
                 $this->getResponse()->setBody(Zend_Json::encode($result));
                 return;
@@ -648,6 +654,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
                 Mage::logException($e);
                 $result['success'] = false;
                 $result['error'] = true;
+                $result['test'] = 8;
                 $result['error_messages'] = 'Exception: ' . $this->__('Unable to set Payment Method.');
                 $this->getResponse()->setBody(Zend_Json::encode($result));
                 return;
@@ -659,19 +666,19 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
                     if ($diff = array_diff($requiredAgreements, $postedAgreements)) {
                         $result['success'] = false;
                         $result['error'] = true;
+                        $result['test'] = 9;
                         $result['error_messages'] = $this->__('Please agree to all Terms and Conditions before placing the order.');
                         $this->getResponse()->setBody(Zend_Json::encode($result));
                         return;
                     }
                 }
                 if($this->getOnepage()->getQuote()->getPayment()->getCheckoutRedirectUrl()){
-                   
-                    $redirectUrl       = $this->getOnepage()->getQuote()->getPayment()->getCheckoutRedirectUrl();
-                    
+                    $redirectUrl       = $this->getOnepage()->getQuote()->getPayment()->getCheckoutRedirectUrl();  
                 }
-             
+
                 $result['success'] = true;
                 $result['error']   = false;
+                $result['test'] = 10;
             }
             catch (Mage_Core_Exception $e) {
                 Mage::logException($e);
@@ -679,6 +686,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
                 $this->getOnepage()->getQuote()->save();
                 $result['success'] = false;
                 $result['error'] = true;
+                $result['test'] = 11;
                 $result['error_messages'] = $e->getMessage();
                 $this->getResponse()->setBody(Zend_Json::encode($result));
                 return;
@@ -689,6 +697,7 @@ class Magegaga_Easycheckout_OnestepController extends Mage_Checkout_OnepageContr
                 $this->getOnepage()->getQuote()->save();
                 $result['success']  = false;
                 $result['error']    = true;
+                $result['test'] = 12;
                 $result['error_messages'] = 'Exception: ' . $this->__('There was an error processing your order. Please contact us or try again later.');
                 $this->getResponse()->setBody(Zend_Json::encode($result));
                 return;
