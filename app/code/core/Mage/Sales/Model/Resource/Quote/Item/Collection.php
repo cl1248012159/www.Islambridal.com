@@ -64,7 +64,11 @@ class Mage_Sales_Model_Resource_Quote_Item_Collection extends Mage_Core_Model_Re
      */
     public function getStoreId()
     {
-        return (int)$this->_quote->getStoreId();
+        if($this->_quote){
+            return (int)$this->_quote->getStoreId();
+        }else{
+            return Mage::app()->getStore()->getId();
+        }
     }
 
     /**
