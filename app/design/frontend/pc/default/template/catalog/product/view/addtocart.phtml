@@ -63,10 +63,12 @@
             <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart"
                     onmouseout="hideMessageDivs()"
                     onmouseover="showMessageDiv()"
-                    onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+                    onclick="productAddToCartForm.submit(this);fbq('track', 'AddToCart', {value: 3.50,currency: 'USD'});"><span><span><?php echo $buttonTitle ?></span></span></button>
             <?php if ($this->helper('wishlist')->isAllow()) : ?>
                 <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
-                <a class="wishlist" href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><span>♥</span>Add to Wishlist</a>
+                <a class="wishlist"
+                   href="<?php echo $_wishlistSubmitUrl ?>"
+                   onclick="productAddToCartForm.submitLight(this, this.href);fbq('track', 'AddToWishlist', {value: 247.35,currency: 'USD'});return false;"><span>♥</span>Add to Wishlist</a>
             <?php endif; ?>
         </div>
 

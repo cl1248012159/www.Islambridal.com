@@ -54,3 +54,8 @@
 </p>
 <?php endif; ?>
 <div class="MT10"></div>
+<script>
+    fbq('track', 'Search', {
+        search_string: '<?php echo $this->helper('catalogsearch')->getEscapedQueryText();?>'
+    });
+</script>

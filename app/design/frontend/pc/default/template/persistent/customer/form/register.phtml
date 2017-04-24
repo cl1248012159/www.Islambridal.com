@@ -44,5 +44,9 @@
     <?php if($this->getShowAddressFields()): ?>
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
     <?php endif; ?>
+    fbq('track', 'CompleteRegistration', {
+        value: 25.00,
+        currency: 'USD'
+    });
 //]]>
 </script>

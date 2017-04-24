@@ -48,7 +48,7 @@
    </p>
   <?php endif; ?>
 		<div class="margin-top">             
-            <button type="button" title="<?php echo $this->__('Place Order') ?>" style="<?php echo Mage::helper('easycheckout')->getEasycheckoutbuttonCSS(); ?>" class="place_order_btn easycheout_bg" onclick="billing.save_review();"><span><span><?php echo $this->__('Place Order') ?></span></span></button>
+            <button type="button" title="<?php echo $this->__('Place Order') ?>" style="<?php echo Mage::helper('easycheckout')->getEasycheckoutbuttonCSS(); ?>" class="place_order_btn easycheout_bg" onclick="billing.save_review();fbq('track', 'Purchase', {value: 247.35,currency: 'USD'});"><span><span><?php echo $this->__('Place Order') ?></span></span></button>
         </div>
     </div>
     <script type="text/javascript">
