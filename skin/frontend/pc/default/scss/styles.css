@@ -2507,6 +2507,7 @@ tr.summary-details-excluded { font-style: italic; }
 
 .payments { width: 100%; margin: 0 auto; text-align: center; vertical-align: middle; }
 .payments span, .payments a { display: inline-block; margin-right: 5px; background-image: url(../images/footer_payments.png); background-repeat: no-repeat; text-indent: -9999px; height: 30px; margin-top: 21px; }
+.payments .payssion_onecard { width: 118.5px; height: 30px; background: url(/skin/frontend/base/default/images/payssion/onecard.png) no-repeat; background-size: 100%; }
 .payments .banks { width: 222px; background-position: 0 0; }
 .payments .paypal { width: 51px; background-position: -229px 0; }
 .payments .paypalVerified { margin-top: 10px; height: 44px; width: 44px; vertical-align: middle; background-position: 0 -153px; }
