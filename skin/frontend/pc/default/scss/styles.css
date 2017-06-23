@@ -4059,6 +4059,42 @@ img { vertical-align: middle; }
 .size_tab caption { font-size: 13px; }
 .size_tab th { background: #ab7505; height: 40px; color: #fff; font-weight: bold; }
 
+.sizeGuide { color: #000; text-align: center; }
+
+.sizeGuide table { background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #D1D1C5; border-collapse: collapse; }
+
+.sizeGuide th { background: none repeat scroll 0 0 #E6E6D5; border: 1px solid #D1D1C5; border-collapse: collapse; line-height: 18px; padding: 3px 0 5px; text-align: center; vertical-align: middle; }
+
+.sizeGuide td { border: 1px solid #D1D1C5; border-collapse: collapse; text-align: center; vertical-align: middle; }
+
+.size_table { margin-bottom: 20px; }
+
+.size_table table { border-collapse: collapse; border: 1px solid #ebebe6; background: #fff; }
+
+.size_table td { border-collapse: collapse; border: 1px solid #ebebe6; text-align: center; vertical-align: middle; }
+
+.size_table th { border-collapse: collapse; border: 1px solid #ebebe6; background: #e6e6d5; text-align: center; padding: 8px 0; line-height: 19px; vertical-align: middle; }
+
+.item_size_nav { height: 36px; line-height: 34px; padding-bottom: 10px; }
+
+.plase_selet_nav li { float: left; margin-left: -1px; }
+
+.plase_selet_nav a { display: block; padding: 0 20px; border: #c8c8c8 solid 1px; background: linear-gradient(to top, #ebebeb, #fff); text-shadow: 3px 3px 2px rgba(255, 255, 255, 0.5); }
+
+.plase_selet_nav .On a, .plase_selet_nav a:hover { box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15) inset; background: #e2e2e2; }
+
+.item_size_nav li { font-size: 14px; font-weight: bold; }
+
+.item_size_nav a { border: #ccccc4 solid 1px; background: linear-gradient(to top, #f0f0e6, #fff); text-decoration: none; }
+
+.item_size_nav .On a, .item_size_nav a:hover { background: #e6e6df; }
+
+.plase_selet_nav .On .arrow_bottom { display: block; width: 0; height: 0; border-color: #ccc transparent transparent; border-style: solid; border-width: 5px 5px 0; margin: 0 auto; }
+
+.size_table th { background: #fafaf7; }
+
+.size_table .bghover { background: #c4a158; color: #fff; }
+
 .aw_blog { box-shadow: 0px 0px 5px #ccc; margin-bottom: 20px; }
 .aw_blog .postWrapper { clear: both; padding-bottom: 25px; padding-left: 10px; padding-right: 10px; }
 .aw_blog .postTitle { margin-bottom: 15px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #DDD; }
